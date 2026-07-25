@@ -11,13 +11,14 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #f5f5f5;
-    text-align: center;
+    color: #222;
 }
 
 header {
     background: #0d6efd;
     color: white;
     padding: 25px;
+    text-align: center;
 }
 
 nav {
@@ -33,6 +34,7 @@ nav a {
 .hero {
     padding: 80px 20px;
     background: white;
+    text-align: center;
 }
 
 .hero h1 {
@@ -44,18 +46,9 @@ nav a {
     font-size: 20px;
 }
 
-button {
-    background: #25D366;
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    font-size: 18px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
 .products {
     padding: 50px 20px;
+    text-align: center;
 }
 
 .product {
@@ -69,12 +62,34 @@ button {
 
 .product h3 {
     color: #0d6efd;
+    font-size: 25px;
+}
+
+button {
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.contact {
+    padding: 50px 20px;
+    text-align: center;
+    background: white;
 }
 
 footer {
     background: #222;
     color: white;
     padding: 25px;
+    text-align: center;
 }
 </style>
 
@@ -99,10 +114,10 @@ footer {
 
 <h1>Welcome to Trusted Network</h1>
 
-<p>Your Trusted Online Shopping Partner</p>
+<p>Quality Mouse and Earbuds at Great Prices</p>
 
-<a href="https://wa.me/8801726409431">
-<button>Order on WhatsApp</button>
+<a href="#products">
+<button>View Products</button>
 </a>
 
 </section>
@@ -112,24 +127,41 @@ footer {
 
 <h2>Our Products</h2>
 
+
 <div class="product">
 
-<h3>Product Name</h3>
+<h3>🖱️ Wireless Mouse</h3>
 
-<p>High Quality Product</p>
+<p>High quality wireless mouse for work, study and gaming.</p>
 
-<p>Contact us for price and details.</p>
+<p>Price: Contact us</p>
 
 <a href="https://wa.me/8801726409431">
-<button>Order Now</button>
+<button>Order on WhatsApp</button>
 </a>
 
 </div>
 
+
+<div class="product">
+
+<h3>🎧 Wireless Earbuds</h3>
+
+<p>Enjoy clear sound and comfortable wireless listening.</p>
+
+<p>Price: Contact us</p>
+
+<a href="https://wa.me/8801726409431">
+<button>Order on WhatsApp</button>
+</a>
+
+</div>
+
+
 </section>
 
 
-<section class="hero" id="contact">
+<section class="contact" id="contact">
 
 <h2>Contact Us</h2>
 
@@ -137,6 +169,12 @@ footer {
 
 <a href="https://wa.me/8801726409431">
 <button>Chat on WhatsApp</button>
+</a>
+
+<br><br>
+
+<a href="https://www.facebook.com/samiul7028">
+<button>Visit Our Facebook</button>
 </a>
 
 </section>
