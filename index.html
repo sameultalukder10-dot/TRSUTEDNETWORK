@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Trusted Network | Online Shopping</title>
+<title>Men's Fashion | Trusted Network</title>
 
 <style>
 
@@ -72,7 +72,6 @@ header{
     background:white;
     color:#f85606;
     font-size:20px;
-    cursor:pointer;
 }
 
 .cart{
@@ -99,119 +98,160 @@ nav a:hover{
     color:#f85606;
 }
 
-/* HERO */
+/* BREADCRUMB */
 
-.hero{
-    margin:20px 5%;
-    background:linear-gradient(135deg,#fff0e8,#ffffff);
-    min-height:300px;
-    display:flex;
-    align-items:center;
+.breadcrumb{
+    padding:20px 5%;
+    color:#777;
+    font-size:14px;
+}
+
+.breadcrumb a{
+    color:#f85606;
+    text-decoration:none;
+}
+
+/* BANNER */
+
+.banner{
+    margin:0 5% 25px;
     padding:45px;
     border-radius:10px;
+    background:linear-gradient(135deg,#ffe5d6,#ffffff);
 }
 
-.hero-text{
-    max-width:650px;
-}
-
-.hero h1{
-    font-size:45px;
+.banner h1{
     color:#f85606;
-    margin-bottom:15px;
+    font-size:38px;
+    margin-bottom:10px;
 }
 
-.hero p{
-    font-size:20px;
+.banner p{
     color:#666;
-    margin-bottom:25px;
+    font-size:18px;
 }
 
-.shop-btn{
-    display:inline-block;
-    background:#f85606;
-    color:white;
-    padding:14px 30px;
-    text-decoration:none;
-    border-radius:5px;
-    font-weight:bold;
+/* CATEGORY MENU */
+
+.category-section{
+    margin:0 5% 30px;
 }
 
-/* SECTION */
-
-.section{
-    margin:35px 5%;
-}
-
-.section-title{
-    font-size:28px;
-    margin-bottom:25px;
-}
-
-/* CATEGORY */
-
-.categories{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
-
-.category{
-    background:white;
-    padding:30px;
-    text-align:center;
-    border-radius:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,.08);
-}
-
-.category-icon{
-    font-size:60px;
-    margin-bottom:15px;
-}
-
-.category h3{
-    font-size:24px;
-    margin-bottom:12px;
-}
-
-.category p{
-    color:#777;
+.category-section h2{
     margin-bottom:20px;
 }
 
-.category-btn{
-    display:inline-block;
+.category-menu{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.category-menu a{
+    background:white;
+    padding:15px 25px;
+    border-radius:8px;
+    text-decoration:none;
+    color:#333;
+    font-weight:bold;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.category-menu a:hover{
     background:#f85606;
     color:white;
-    padding:11px 20px;
-    text-decoration:none;
-    border-radius:5px;
+}
+
+/* MAIN SHOP AREA */
+
+.shop-area{
+    display:grid;
+    grid-template-columns:230px 1fr;
+    gap:25px;
+    margin:0 5% 40px;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    height:max-content;
+}
+
+.sidebar h3{
+    margin-bottom:20px;
+    color:#f85606;
+}
+
+.filter-group{
+    border-bottom:1px solid #ddd;
+    padding:15px 0;
+}
+
+.filter-group h4{
+    margin-bottom:12px;
+}
+
+.filter-group label{
+    display:block;
+    margin:10px 0;
+    color:#666;
+}
+
+/* PRODUCTS AREA */
+
+.products-area{
+    min-width:0;
+}
+
+.products-header{
+    background:white;
+    padding:15px 20px;
+    margin-bottom:20px;
+    border-radius:8px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.products-header select{
+    padding:8px 15px;
+    border:1px solid #ddd;
 }
 
 /* PRODUCT GRID */
 
 .products{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(3,1fr);
     gap:20px;
 }
 
 .product{
     background:white;
-    padding:15px;
     border-radius:10px;
+    overflow:hidden;
     box-shadow:0 2px 8px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.product:hover{
+    transform:translateY(-5px);
 }
 
 .product-image{
-    height:170px;
+    height:220px;
     background:#f1f1f1;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:65px;
-    border-radius:7px;
-    margin-bottom:15px;
+    font-size:80px;
+}
+
+.product-info{
+    padding:18px;
 }
 
 .product h3{
@@ -219,47 +259,53 @@ nav a:hover{
     margin-bottom:8px;
 }
 
-.product p{
-    color:#777;
-    font-size:14px;
-    line-height:1.5;
-    margin-bottom:10px;
+.category-name{
+    color:#888;
+    font-size:13px;
+}
+
+.rating{
+    color:#f5a623;
+    margin:10px 0;
 }
 
 .price{
     color:#f85606;
-    font-size:21px;
+    font-size:22px;
     font-weight:bold;
     margin-bottom:15px;
 }
 
+.old-price{
+    color:#999;
+    text-decoration:line-through;
+    font-size:14px;
+    margin-left:8px;
+}
+
+.product-buttons{
+    display:flex;
+    gap:8px;
+}
+
+.details-btn,
 .order-btn{
-    display:block;
+    flex:1;
     text-align:center;
-    background:#25D366;
-    color:white;
-    padding:11px;
+    padding:10px;
     text-decoration:none;
     border-radius:5px;
     font-weight:bold;
 }
 
-/* CONTACT */
-
-.contact{
-    background:white;
-    padding:50px 5%;
-    text-align:center;
-    margin-top:40px;
+.details-btn{
+    background:#f1f1f1;
+    color:#333;
 }
 
-.contact h2{
-    color:#f85606;
-    margin-bottom:15px;
-}
-
-.contact p{
-    margin:8px;
+.order-btn{
+    background:#25D366;
+    color:white;
 }
 
 /* FOOTER */
@@ -268,10 +314,10 @@ footer{
     background:#222;
     color:white;
     padding:40px 5%;
-    margin-top:30px;
+    margin-top:40px;
 }
 
-.footer-box{
+.footer-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:30px;
@@ -281,21 +327,28 @@ footer h3{
     margin-bottom:15px;
 }
 
-footer p{
-    color:#bbb;
-    line-height:1.8;
-}
-
+footer p,
 footer a{
     color:#bbb;
+    line-height:1.8;
     text-decoration:none;
-    display:block;
-    margin:8px 0;
 }
 
 /* MOBILE */
 
-@media(max-width:800px){
+@media(max-width:900px){
+
+    .shop-area{
+        grid-template-columns:1fr;
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
 
     header{
         flex-wrap:wrap;
@@ -306,31 +359,17 @@ footer a{
         text-align:center;
     }
 
-    .categories{
-        grid-template-columns:1fr;
-    }
-
-    .products{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-}
-
-@media(max-width:500px){
-
     .products{
         grid-template-columns:1fr;
     }
 
-    .hero{
-        padding:30px 20px;
+    .products-header{
+        flex-direction:column;
+        gap:15px;
+        align-items:flex-start;
     }
 
-    .hero h1{
-        font-size:32px;
-    }
-
-    .footer-box{
+    .footer-grid{
         grid-template-columns:1fr;
     }
 
@@ -347,7 +386,7 @@ footer a{
 
 <div class="topbar">
 
-<a href="#contact">Help Center</a>
+<a href="index.html">Home</a>
 
 <a href="https://www.facebook.com/samiul7028">
 Facebook
@@ -366,7 +405,10 @@ Trusted Network
 
 <div class="search">
 
-<input type="text" placeholder="Search for products...">
+<input
+type="text"
+placeholder="Search Men's Fashion..."
+>
 
 <button>🔍</button>
 
@@ -383,317 +425,9 @@ Trusted Network
 
 <nav>
 
-<a href="index.html">Home</a>
-
-<a href="mens.html">Men's Fashion</a>
-
-<a href="womens.html">Women's Fashion</a>
-
-<a href="electronics.html">Digital & Electronics</a>
-
-<a href="#contact">Contact</a>
-
-</nav>
-
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="hero-text">
-
-<h1>
-Welcome to Trusted Network
-</h1>
-
-<p>
-Shop fashion, electronics and everyday products
-at affordable prices.
-</p>
-
-<a href="#categories" class="shop-btn">
-Shop Now
+<a href="index.html">
+Home
 </a>
-
-</div>
-
-</section>
-
-
-<!-- CATEGORIES -->
-
-<section class="section" id="categories">
-
-<h2 class="section-title">
-Shop by Category
-</h2>
-
-<div class="categories">
-
-
-<!-- MEN -->
-
-<div class="category">
-
-<div class="category-icon">
-👕
-</div>
-
-<h3>
-Men's Fashion
-</h3>
-
-<p>
-T-Shirt, Shirt, Pant, Panjabi,
-Hoodie, Jacket and more.
-</p>
-
-<a href="mens.html" class="category-btn">
-View Men's Items
-</a>
-
-</div>
-
-
-<!-- WOMEN -->
-
-<div class="category">
-
-<div class="category-icon">
-👗
-</div>
-
-<h3>
-Women's Fashion
-</h3>
-
-<p>
-Saree, Three-Piece, Kurti,
-Hijab, Abaya and more.
-</p>
-
-<a href="womens.html" class="category-btn">
-View Women's Items
-</a>
-
-</div>
-
-
-<!-- ELECTRONICS -->
-
-<div class="category">
-
-<div class="category-icon">
-💻
-</div>
-
-<h3>
-Digital & Electronics
-</h3>
-
-<p>
-Mouse, Earbuds, Headphone,
-Keyboard and more.
-</p>
-
-<a href="electronics.html" class="category-btn">
-View Electronics
-</a>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<!-- POPULAR PRODUCTS -->
-
-<section class="section">
-
-<h2 class="section-title">
-Popular Products
-</h2>
-
-<div class="products">
-
-
-<!-- MOUSE -->
-
-<div class="product">
-
-<div class="product-image">
-🖱️
-</div>
-
-<h3>
-Wireless Mouse
-</h3>
-
-<p>
-High quality wireless mouse
-for work and everyday use.
-</p>
-
-<div class="price">
-250 টাকা
-</div>
-
-<a href="https://wa.me/8801726409431"
-class="order-btn">
-Order on WhatsApp
-</a>
-
-</div>
-
-
-<!-- EARBUDS -->
-
-<div class="product">
-
-<div class="product-image">
-🎧
-</div>
-
-<h3>
-Wireless Earbuds
-</h3>
-
-<p>
-Clear sound and comfortable
-wireless listening experience.
-</p>
-
-<div class="price">
-3,000 টাকা
-</div>
-
-<a href="https://wa.me/8801726409431"
-class="order-btn">
-Order on WhatsApp
-</a>
-
-</div>
-
-
-<!-- MEN -->
-
-<div class="product">
-
-<div class="product-image">
-👕
-</div>
-
-<h3>
-Men's T-Shirt
-</h3>
-
-<p>
-Stylish and comfortable
-T-Shirt for everyday use.
-</p>
-
-<div class="price">
-Coming Soon
-</div>
-
-<a href="mens.html"
-class="order-btn">
-View Men's Items
-</a>
-
-</div>
-
-
-<!-- WOMEN -->
-
-<div class="product">
-
-<div class="product-image">
-👗
-</div>
-
-<h3>
-Women's Three-Piece
-</h3>
-
-<p>
-Beautiful and stylish
-women's fashion collection.
-</p>
-
-<div class="price">
-Coming Soon
-</div>
-
-<a href="womens.html"
-class="order-btn">
-View Women's Items
-</a>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<!-- CONTACT -->
-
-<section class="contact" id="contact">
-
-<h2>
-Contact Trusted Network
-</h2>
-
-<p>
-📱 WhatsApp: +8801726409431
-</p>
-
-<p>
-📍 Bangladesh
-</p>
-
-<br>
-
-<a href="https://wa.me/8801726409431"
-class="shop-btn">
-
-Chat on WhatsApp
-
-</a>
-
-</section>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-<div class="footer-box">
-
-
-<div>
-
-<h3>
-Trusted Network
-</h3>
-
-<p>
-Your trusted online shopping partner.
-Quality products at affordable prices.
-</p>
-
-</div>
-
-
-<div>
-
-<h3>
-Categories
-</h3>
 
 <a href="mens.html">
 Men's Fashion
@@ -707,33 +441,695 @@ Women's Fashion
 Digital & Electronics
 </a>
 
+</nav>
+
+
+<!-- BREADCRUMB -->
+
+<div class="breadcrumb">
+
+<a href="index.html">
+Home
+</a>
+
+› Men's Fashion
+
+</div>
+
+
+<!-- BANNER -->
+
+<section class="banner">
+
+<h1>
+Men's Fashion
+</h1>
+
+<p>
+Discover the latest styles in men's clothing and fashion.
+</p>
+
+</section>
+
+
+<!-- SUB CATEGORIES -->
+
+<section class="category-section">
+
+<h2>
+Shop Men's Categories
+</h2>
+
+<div class="category-menu">
+
+<a href="#tshirts">
+👕 T-Shirts
+</a>
+
+<a href="#shirts">
+👔 Shirts
+</a>
+
+<a href="#pants">
+👖 Pants & Jeans
+</a>
+
+<a href="#panjabi">
+🕌 Panjabi
+</a>
+
+<a href="#hoodies">
+🧥 Hoodies
+</a>
+
+<a href="#jackets">
+🧥 Jackets
+</a>
+
+</div>
+
+</section>
+
+
+<!-- SHOP AREA -->
+
+<section class="shop-area">
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+<h3>
+Filter Products
+</h3>
+
+
+<div class="filter-group">
+
+<h4>
+Categories
+</h4>
+
+<label>
+<input type="checkbox">
+T-Shirts
+</label>
+
+<label>
+<input type="checkbox">
+Shirts
+</label>
+
+<label>
+<input type="checkbox">
+Pants & Jeans
+</label>
+
+<label>
+<input type="checkbox">
+Panjabi
+</label>
+
+<label>
+<input type="checkbox">
+Hoodies
+</label>
+
+<label>
+<input type="checkbox">
+Jackets
+</label>
+
+</div>
+
+
+<div class="filter-group">
+
+<h4>
+Size
+</h4>
+
+<label>
+<input type="checkbox">
+S
+</label>
+
+<label>
+<input type="checkbox">
+M
+</label>
+
+<label>
+<input type="checkbox">
+L
+</label>
+
+<label>
+<input type="checkbox">
+XL
+</label>
+
+<label>
+<input type="checkbox">
+XXL
+</label>
+
+</div>
+
+
+<div class="filter-group">
+
+<h4>
+Color
+</h4>
+
+<label>
+<input type="checkbox">
+Black
+</label>
+
+<label>
+<input type="checkbox">
+White
+</label>
+
+<label>
+<input type="checkbox">
+Blue
+</label>
+
+<label>
+<input type="checkbox">
+Red
+</label>
+
+</div>
+
+</aside>
+
+
+<!-- PRODUCTS -->
+
+<div class="products-area">
+
+
+<div class="products-header">
+
+<strong>
+Men's Fashion Products
+</strong>
+
+<select>
+
+<option>
+Sort by: Popular
+</option>
+
+<option>
+Newest
+</option>
+
+<option>
+Price: Low to High
+</option>
+
+<option>
+Price: High to Low
+</option>
+
+</select>
+
+</div>
+
+
+<div class="products">
+
+
+<!-- PRODUCT 1 -->
+
+<div class="product" id="tshirts">
+
+<div class="product-image">
+👕
+</div>
+
+<div class="product-info">
+
+<span class="category-name">
+T-Shirts
+</span>
+
+<h3>
+Men's Casual T-Shirt
+</h3>
+
+<div class="rating">
+★★★★★
+</div>
+
+<div class="price">
+Price Coming Soon
+</div>
+
+<div class="product-buttons">
+
+<a href="#" class="details-btn">
+View Details
+</a>
+
+<a href="https://wa.me/8801726409431"
+class="order-btn">
+Order
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 2 -->
+
+<div class="product">
+
+<div class="product-image">
+👕
+</div>
+
+<div class="product-info">
+
+<span class="category-name">
+T-Shirts
+</span>
+
+<h3>
+Men's Polo T-Shirt
+</h3>
+
+<div class="rating">
+★★★★★
+</div>
+
+<div class="price">
+Price Coming Soon
+</div>
+
+<div class="product-buttons">
+
+<a href="#" class="details-btn">
+View Details
+</a>
+
+<a href="https://wa.me/8801726409431"
+class="order-btn">
+Order
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 3 -->
+
+<div class="product" id="shirts">
+
+<div class="product-image">
+👔
+</div>
+
+<div class="product-info">
+
+<span class="category-name">
+Shirts
+</span>
+
+<h3>
+Men's Formal Shirt
+</h3>
+
+<div class="rating">
+★★★★★
+</div>
+
+<div class="price">
+Price Coming Soon
+</div>
+
+<div class="product-buttons">
+
+<a href="#" class="details-btn">
+View Details
+</a>
+
+<a href="https://wa.me/8801726409431"
+class="order-btn">
+Order
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 4 -->
+
+<div class="product">
+
+<div class="product-image">
+👔
+</div>
+
+<div class="product-info">
+
+<span class="category-name">
+Shirts
+</span>
+
+<h3>
+Men's Casual Shirt
+</h3>
+
+<div class="rating">
+★★★★☆
+</div>
+
+<div class="price">
+Price Coming Soon
+</div>
+
+<div class="product-buttons">
+
+<a href="#" class="details-btn">
+View Details
+</a>
+
+<a href="https://wa.me/8801726409431"
+class="order-btn">
+Order
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 5 -->
+
+<div class="product" id="pants">
+
+<div class="product-image">
+👖
+</div>
+
+<div class="product-info">
+
+<span class="category-name">
+Pants & Jeans
+</span>
+
+<h3>
+Men's Denim Jeans
+</h3>
+
+<div class="rating">
+★★★★★
+</div>
+
+<div class="price">
+Price Coming Soon
+</div>
+
+<div class="product-buttons">
+
+<a href="#" class="details-btn">
+View Details
+</a>
+
+<a href="https://wa.me/8801726409431"
+class="order-btn">
+Order
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 6 -->
+
+<div class="product">
+
+<div class="product-image">
+👖
+</div>
+
+<div class="product-info">
+
+<span class="category-name">
+Pants & Jeans
+</span>
+
+<h3>
+Men's Chino Pant
+</h3>
+
+<div class="rating">
+★★★★☆
+</div>
+
+<div class="price">
+Price Coming Soon
+</div>
+
+<div class="product-buttons">
+
+<a href="#" class="details-btn">
+View Details
+</a>
+
+<a href="https://wa.me/8801726409431"
+class="order-btn">
+Order
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 7 -->
+
+<div class="product" id="panjabi">
+
+<div class="product-image">
+🕌
+</div>
+
+<div class="product-info">
+
+<span class="category-name">
+Panjabi
+</span>
+
+<h3>
+Premium Men's Panjabi
+</h3>
+
+<div class="rating">
+★★★★★
+</div>
+
+<div class="price">
+Price Coming Soon
+</div>
+
+<div class="product-buttons">
+
+<a href="#" class="details-btn">
+View Details
+</a>
+
+<a href="https://wa.me/8801726409431"
+class="order-btn">
+Order
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 8 -->
+
+<div class="product" id="hoodies">
+
+<div class="product-image">
+🧥
+</div>
+
+<div class="product-info">
+
+<span class="category-name">
+Hoodies
+</span>
+
+<h3>
+Men's Casual Hoodie
+</h3>
+
+<div class="rating">
+★★★★★
+</div>
+
+<div class="price">
+Price Coming Soon
+</div>
+
+<div class="product-buttons">
+
+<a href="#" class="details-btn">
+View Details
+</a>
+
+<a href="https://wa.me/8801726409431"
+class="order-btn">
+Order
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 9 -->
+
+<div class="product" id="jackets">
+
+<div class="product-image">
+🧥
+</div>
+
+<div class="product-info">
+
+<span class="category-name">
+Jackets
+</span>
+
+<h3>
+Men's Casual Jacket
+</h3>
+
+<div class="rating">
+★★★★☆
+</div>
+
+<div class="price">
+Price Coming Soon
+</div>
+
+<div class="product-buttons">
+
+<a href="#" class="details-btn">
+View Details
+</a>
+
+<a href="https://wa.me/8801726409431"
+class="order-btn">
+Order
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-grid">
+
+
+<div>
+
+<h3>
+Trusted Network
+</h3>
+
+<p>
+Your trusted online shopping partner.
+</p>
+
 </div>
 
 
 <div>
 
 <h3>
-Contact & Social
+Categories
 </h3>
 
-<a href="https://www.facebook.com/samiul7028">
-Facebook
+<p>
+<a href="mens.html">
+Men's Fashion
 </a>
 
-<a href="https://wa.me/8801726409431">
-WhatsApp
+<a href="womens.html">
+Women's Fashion
 </a>
 
-</div>
-
-
-</div>
-
-<br>
-
-<p style="text-align:center;">
-© 2026 Trusted Network. All Rights Reserved.
+<a href="electronics.html">
+Digital & Electronics
+</a>
 </p>
+
+</div>
+
+
+<div>
+
+<h3>
+Contact
+</h3>
+
+<p>
+WhatsApp: +8801726409431
+</p>
+
+<p>
+Bangladesh
+</p>
+
+</div>
+
+
+</div>
 
 </footer>
 
