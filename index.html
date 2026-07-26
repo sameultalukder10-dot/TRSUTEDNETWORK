@@ -3,505 +3,183 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SmartBazaar AI — AI Powered Marketplace</title>
+<title>SmartBazaar AI Marketplace</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Inter,Arial,sans-serif;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
 
-body{
-    background:#f5f7fb;
-    color:#172033;
-}
-
-/* HEADER */
 header{
-    background:linear-gradient(135deg,#101828,#172554,#312e81);
-    color:white;
-    position:sticky;
-    top:0;
-    z-index:1000;
-    box-shadow:0 5px 20px rgba(0,0,0,.2);
+  position:sticky;top:0;z-index:1000;
+  background:#111827;color:white;
+  box-shadow:0 5px 20px #0002
 }
 
-.topbar{
-    max-width:1400px;
-    margin:auto;
-    padding:15px 25px;
-    display:flex;
-    align-items:center;
-    gap:25px;
+.top{
+  max-width:1400px;margin:auto;padding:14px 20px;
+  display:flex;align-items:center;gap:15px
 }
 
-.logo{
-    font-size:25px;
-    font-weight:900;
-    white-space:nowrap;
+.logo{font-size:25px;font-weight:bold;white-space:nowrap}
+.logo span{color:#38bdf8}
+
+.search{
+  flex:1;display:flex;background:white;border-radius:12px;overflow:hidden
+}
+.search input{flex:1;border:0;outline:0;padding:13px}
+.search button{border:0;padding:0 18px;background:#38bdf8}
+
+.nav{
+  max-width:1400px;margin:auto;padding:0 20px 12px;
+  display:flex;gap:8px;overflow:auto
+}
+.nav button{
+  white-space:nowrap;border:0;border-radius:20px;
+  padding:8px 14px;background:#ffffff15;color:white
 }
 
-.logo span{
-    color:#38bdf8;
-}
+.page{max-width:1400px;margin:auto;padding:25px 20px}
 
-.search-area{
-    flex:1;
-    display:flex;
-    background:white;
-    border-radius:14px;
-    overflow:hidden;
-}
-
-.search-area input{
-    flex:1;
-    border:0;
-    outline:0;
-    padding:15px;
-    font-size:15px;
-}
-
-.search-btn{
-    border:0;
-    background:#38bdf8;
-    color:#06111f;
-    padding:0 20px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.header-actions{
-    display:flex;
-    gap:10px;
-}
-
-.header-btn{
-    border:1px solid rgba(255,255,255,.2);
-    background:rgba(255,255,255,.1);
-    color:white;
-    padding:11px 14px;
-    border-radius:10px;
-    cursor:pointer;
-}
-
-/* NAV */
-nav{
-    max-width:1400px;
-    margin:auto;
-    padding:0 25px 14px;
-    display:flex;
-    gap:10px;
-    overflow:auto;
-}
-
-nav button{
-    white-space:nowrap;
-    border:0;
-    background:rgba(255,255,255,.1);
-    color:white;
-    padding:9px 14px;
-    border-radius:20px;
-    cursor:pointer;
-}
-
-/* HERO */
 .hero{
-    max-width:1400px;
-    margin:25px auto;
-    padding:55px;
-    border-radius:25px;
-    background:linear-gradient(135deg,#312e81,#1d4ed8,#0284c7);
-    color:white;
-    position:relative;
-    overflow:hidden;
+  background:linear-gradient(135deg,#312e81,#1d4ed8,#0284c7);
+  color:white;border-radius:25px;padding:55px 35px
 }
+.hero h1{font-size:45px;margin-bottom:15px}
+.hero p{max-width:700px;line-height:1.7}
 
-.hero h1{
-    font-size:48px;
-    max-width:700px;
-    margin-bottom:15px;
+.aiSearch{
+  margin-top:25px;background:white;border-radius:15px;
+  display:flex;overflow:hidden;max-width:850px
 }
-
-.hero p{
-    max-width:650px;
-    font-size:18px;
-    line-height:1.7;
-    opacity:.9;
-}
-
-.ai-search{
-    margin-top:25px;
-    max-width:850px;
-    background:white;
-    padding:8px;
-    border-radius:16px;
-    display:flex;
-    gap:8px;
-}
-
-.ai-search input{
-    flex:1;
-    border:0;
-    outline:0;
-    padding:15px;
-}
-
-.ai-search button{
-    border:0;
-    padding:0 18px;
-    border-radius:10px;
-    background:#111827;
-    color:white;
-    cursor:pointer;
-}
-
-/* AI TOOLS */
-.ai-tools{
-    max-width:1400px;
-    margin:25px auto;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.tool{
-    background:white;
-    border-radius:18px;
-    padding:22px;
-    box-shadow:0 5px 20px rgba(0,0,0,.06);
-    cursor:pointer;
-    transition:.25s;
-}
-
-.tool:hover{
-    transform:translateY(-5px);
-}
-
-.tool-icon{
-    font-size:32px;
-    margin-bottom:10px;
-}
-
-.tool h3{
-    margin-bottom:8px;
-}
-
-/* CATEGORY */
-.section{
-    max-width:1400px;
-    margin:35px auto;
-    padding:0 20px;
-}
-
-.section-title{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
-}
+.aiSearch input{flex:1;padding:16px;border:0;outline:0}
+.aiSearch button{border:0;background:#111827;color:white;padding:0 20px}
 
 .categories{
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
-    gap:15px;
+  display:grid;grid-template-columns:repeat(6,1fr);
+  gap:15px;margin-top:20px
 }
-
 .category{
-    background:white;
-    padding:22px 10px;
-    text-align:center;
-    border-radius:16px;
-    cursor:pointer;
-    box-shadow:0 4px 15px rgba(0,0,0,.05);
-    transition:.2s;
+  background:white;padding:25px 10px;text-align:center;
+  border-radius:15px;box-shadow:0 5px 18px #0000000d;
+  transition:.2s
+}
+.category:hover{transform:translateY(-5px)}
+.category div{font-size:35px;margin-bottom:8px}
+
+.section-title{
+  margin:35px 0 18px;display:flex;
+  justify-content:space-between;align-items:center
 }
 
-.category:hover{
-    transform:translateY(-4px);
-}
-
-.category-icon{
-    font-size:35px;
-    margin-bottom:10px;
-}
-
-/* PRODUCTS */
 .products{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:20px
 }
 
 .product{
-    background:white;
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 5px 18px rgba(0,0,0,.06);
-    transition:.25s;
+  background:white;border-radius:18px;overflow:hidden;
+  box-shadow:0 5px 20px #0000000d
 }
 
-.product:hover{
-    transform:translateY(-5px);
+.product-image{
+  height:220px;background:#eef2ff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:80px
 }
 
-.product-img{
-    height:230px;
-    background:#eef2ff;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:75px;
+.product-body{padding:18px}
+.product-body h3{margin:7px 0}
+.brand{color:#64748b;font-size:13px}
+.rating{color:#f59e0b;margin:8px 0}
+.price{font-size:22px;font-weight:bold}
+
+.actions{display:flex;gap:8px;margin-top:15px}
+.actions button{
+  flex:1;padding:11px;border:0;border-radius:10px
+}
+.details{background:#e0e7ff;color:#3730a3}
+.cart{background:#111827;color:white}
+
+.hidden{display:none!important}
+
+.productPage{
+  background:white;border-radius:20px;padding:25px
 }
 
-.product-info{
-    padding:18px;
+.back{
+  border:0;background:#e2e8f0;padding:10px 15px;
+  border-radius:10px;margin-bottom:20px
 }
 
-.brand{
-    color:#64748b;
-    font-size:13px;
+.productDetail{
+  display:grid;grid-template-columns:1fr 1fr;gap:30px
 }
 
-.product h3{
-    margin:7px 0;
+.bigImage{
+  min-height:400px;background:#eef2ff;
+  border-radius:20px;display:flex;
+  justify-content:center;align-items:center;font-size:150px
 }
 
-.rating{
-    color:#f59e0b;
-    margin:8px 0;
+.info h1{font-size:32px;margin:10px 0}
+.info p{line-height:1.7;margin:12px 0}
+
+.aiBox{
+  margin-top:25px;background:linear-gradient(135deg,#eef2ff,#f0fdf4);
+  border-radius:18px;padding:20px
 }
 
-.price{
-    font-size:22px;
-    font-weight:800;
-}
+.aiBox h2{margin-bottom:8px}
 
-.old-price{
-    color:#94a3b8;
-    text-decoration:line-through;
-    font-size:13px;
-}
-
-.product-actions{
-    display:flex;
-    gap:8px;
-    margin-top:15px;
-}
-
-.product-actions button{
-    flex:1;
-    padding:11px;
-    border-radius:10px;
-    cursor:pointer;
-    border:0;
-}
-
-.ai-btn{
-    background:#eef2ff;
-    color:#3730a3;
-}
-
-.cart-btn{
-    background:#111827;
-    color:white;
-}
-
-/* MODAL */
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.65);
-    z-index:3000;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
-}
-
-.modal.active{
-    display:flex;
-}
-
-.modal-box{
-    width:100%;
-    max-width:850px;
-    max-height:90vh;
-    overflow:auto;
-    background:white;
-    border-radius:22px;
-    padding:25px;
-    position:relative;
-}
-
-.close{
-    position:absolute;
-    right:20px;
-    top:15px;
-    font-size:25px;
-    cursor:pointer;
-}
-
-/* AI CHAT */
 .chat{
-    background:#f8fafc;
-    border-radius:15px;
-    padding:15px;
-    margin-top:15px;
+  margin-top:15px;background:white;border-radius:12px;padding:12px
 }
 
 .messages{
-    height:280px;
-    overflow:auto;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    padding:10px;
+  height:260px;overflow:auto;
+  display:flex;flex-direction:column;gap:10px
 }
 
 .msg{
-    padding:12px;
-    border-radius:12px;
-    max-width:85%;
+  padding:11px;border-radius:10px;max-width:85%
+}
+.msg.ai{background:#ede9fe;align-self:flex-start}
+.msg.user{background:#dbeafe;align-self:flex-end}
+
+.chatInput{display:flex;gap:8px;margin-top:10px}
+.chatInput input{
+  flex:1;border:1px solid #ddd;border-radius:9px;padding:12px
+}
+.chatInput button{
+  border:0;background:#4f46e5;color:white;
+  padding:0 18px;border-radius:9px
 }
 
-.user{
-    align-self:flex-end;
-    background:#dbeafe;
-}
-
-.ai{
-    align-self:flex-start;
-    background:#ede9fe;
-}
-
-.chat-input{
-    display:flex;
-    gap:8px;
-}
-
-.chat-input input{
-    flex:1;
-    padding:13px;
-    border:1px solid #ddd;
-    border-radius:10px;
-}
-
-.chat-input button{
-    border:0;
-    padding:0 16px;
-    background:#4f46e5;
-    color:white;
-    border-radius:10px;
-    cursor:pointer;
-}
-
-/* REVIEWS */
 .review{
-    border-bottom:1px solid #eee;
-    padding:15px 0;
+  margin-top:25px;border-top:1px solid #ddd;padding-top:20px
 }
 
-.review:last-child{
-    border-bottom:0;
+.reviewItem{
+  padding:15px 0;border-bottom:1px solid #eee
 }
 
-.review-user{
-    font-weight:bold;
-}
-
-.verified{
-    color:#16a34a;
-    font-size:12px;
-}
-
-/* AI SUMMARY */
-.ai-summary{
-    background:linear-gradient(135deg,#eef2ff,#f0fdf4);
-    padding:18px;
-    border-radius:15px;
-    margin:15px 0;
-}
-
-.ai-summary ul{
-    margin:10px 0 10px 20px;
-}
-
-/* FOOTER */
 footer{
-    background:#0f172a;
-    color:white;
-    padding:50px 20px;
-    margin-top:50px;
+  margin-top:50px;background:#111827;color:white;
+  padding:45px 20px;text-align:center
 }
 
-.footer-grid{
-    max-width:1400px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:30px;
+@media(max-width:900px){
+  .categories{grid-template-columns:repeat(3,1fr)}
+  .products{grid-template-columns:repeat(2,1fr)}
+  .productDetail{grid-template-columns:1fr}
 }
-
-footer h3{
-    margin-bottom:15px;
-}
-
-footer p{
-    color:#cbd5e1;
-    line-height:1.8;
-}
-
-/* RESPONSIVE */
-@media(max-width:1000px){
-    .products{
-        grid-template-columns:repeat(3,1fr);
-    }
-
-    .categories{
-        grid-template-columns:repeat(4,1fr);
-    }
-
-    .ai-tools{
-        grid-template-columns:1fr;
-    }
-
-    .hero h1{
-        font-size:38px;
-    }
-}
-
-@media(max-width:700px){
-    .topbar{
-        flex-wrap:wrap;
-    }
-
-    .search-area{
-        order:3;
-        flex-basis:100%;
-    }
-
-    .products{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .categories{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .hero{
-        margin:15px;
-        padding:30px 20px;
-    }
-
-    .hero h1{
-        font-size:30px;
-    }
-
-    .footer-grid{
-        grid-template-columns:1fr 1fr;
-    }
+@media(max-width:600px){
+  .top{flex-wrap:wrap}
+  .search{flex-basis:100%;order:3}
+  .categories{grid-template-columns:repeat(2,1fr)}
+  .products{grid-template-columns:1fr}
+  .hero h1{font-size:32px}
 }
 </style>
 </head>
@@ -510,257 +188,129 @@ footer p{
 
 <header>
 
-<div class="topbar">
+<div class="top">
 
 <div class="logo">
 Smart<span>Bazaar</span> AI
 </div>
 
-<div class="search-area">
-<input id="mainSearch" placeholder="Search products, brands or ask AI...">
-<button class="search-btn" onclick="smartSearch()">🔍 Search</button>
-</div>
-
-<div class="header-actions">
-<button class="header-btn" onclick="startVoice()">🎤</button>
-<button class="header-btn" onclick="openImageSearch()">📷</button>
-<button class="header-btn" onclick="openCart()">🛒 <span id="cartCount">0</span></button>
+<div class="search">
+<input id="searchInput" placeholder="Search products...">
+<button onclick="searchProducts()">Search</button>
 </div>
 
 </div>
 
-<nav>
-<button onclick="filterCategory('All')">All</button>
-<button onclick="filterCategory('Men Fashion')">👕 Men's Fashion</button>
-<button onclick="filterCategory('Women Fashion')">👗 Women's Fashion</button>
+<div class="nav">
+
+<button onclick="showHome()">Home</button>
+<button onclick="filterCategory('Men')">👕 Men's Fashion</button>
+<button onclick="filterCategory('Women')">👗 Women's Fashion</button>
 <button onclick="filterCategory('Mobile')">📱 Mobile</button>
 <button onclick="filterCategory('Electronics')">💻 Electronics</button>
 <button onclick="filterCategory('Beauty')">💄 Beauty</button>
 <button onclick="filterCategory('Home')">🏠 Home</button>
 <button onclick="filterCategory('Sports')">🏋️ Sports</button>
 <button onclick="filterCategory('Grocery')">🛒 Grocery</button>
-</nav>
+
+</div>
 
 </header>
 
 
+<main class="page">
+
+<div id="homePage">
+
 <section class="hero">
 
-<h1>Shop Smarter with AI</h1>
+<h1>Shop Smarter With AI</h1>
 
 <p>
-Find the right product, understand customer reviews,
-compare your options and make better buying decisions —
-all without leaving SmartBazaar.
+Find products, understand reviews, ask questions and make
+better buying decisions with your personal AI shopping assistant.
 </p>
 
-<div class="ai-search">
+<div class="aiSearch">
 
-<input id="aiQuery"
-placeholder="🤖 Tell AI what you need... Example: Best gaming phone under $500">
+<input id="aiSearchInput"
+placeholder="Example: I need a good gaming phone...">
 
-<button onclick="aiRecommend()">Ask AI</button>
+<button onclick="aiSearch()">Ask AI 🤖</button>
 
 </div>
 
 </section>
 
 
-<section class="ai-tools">
-
-<div class="tool" onclick="aiRecommend()">
-<div class="tool-icon">🤖</div>
-<h3>AI Shopping Assistant</h3>
-<p>Tell us what you need and AI will recommend the best options.</p>
-</div>
-
-<div class="tool" onclick="startVoice()">
-<div class="tool-icon">🎤</div>
-<h3>Voice Search</h3>
-<p>Speak naturally and search for products using your voice.</p>
-</div>
-
-<div class="tool" onclick="openImageSearch()">
-<div class="tool-icon">📸</div>
-<h3>Search by Image</h3>
-<p>Upload a product image to find similar products.</p>
-</div>
-
-</section>
-
-
-<section class="section">
-
-<div class="section-title">
-<h2>Explore Categories</h2>
-</div>
+<h2 class="section-title">Explore Categories</h2>
 
 <div class="categories">
 
-<div class="category" onclick="filterCategory('Men Fashion')">
-<div class="category-icon">👕</div>
-Men's Fashion
+<div class="category" onclick="filterCategory('Men')">
+<div>👕</div>Men's Fashion
 </div>
 
-<div class="category" onclick="filterCategory('Women Fashion')">
-<div class="category-icon">👗</div>
-Women's Fashion
+<div class="category" onclick="filterCategory('Women')">
+<div>👗</div>Women's Fashion
 </div>
 
 <div class="category" onclick="filterCategory('Mobile')">
-<div class="category-icon">📱</div>
-Mobile & Tablets
+<div>📱</div>Mobile
 </div>
 
 <div class="category" onclick="filterCategory('Electronics')">
-<div class="category-icon">💻</div>
-Electronics
+<div>💻</div>Electronics
 </div>
 
 <div class="category" onclick="filterCategory('Beauty')">
-<div class="category-icon">💄</div>
-Beauty
+<div>💄</div>Beauty
 </div>
 
 <div class="category" onclick="filterCategory('Home')">
-<div class="category-icon">🏠</div>
-Home & Living
-</div>
-
-<div class="category" onclick="filterCategory('Grocery')">
-<div class="category-icon">🛒</div>
-Grocery
-</div>
-
-<div class="category" onclick="filterCategory('Sports')">
-<div class="category-icon">🏋️</div>
-Sports
+<div>🏠</div>Home
 </div>
 
 </div>
 
-</section>
 
-
-<section class="section">
-
-<div class="section-title">
-<h2 id="productTitle">Recommended Products</h2>
-</div>
+<h2 class="section-title" id="listTitle">
+Recommended Products
+</h2>
 
 <div class="products" id="productGrid"></div>
 
-</section>
-
-
-<!-- AI MODAL -->
-
-<div class="modal" id="aiModal">
-
-<div class="modal-box">
-
-<span class="close" onclick="closeModal('aiModal')">×</span>
-
-<h2>🤖 AI Product Expert</h2>
-
-<p id="aiProductName"></p>
-
-<div class="ai-summary">
-
-<h3>AI Review Summary</h3>
-
-<p>
-Customers are generally positive about this product.
-The most appreciated features are quality, performance
-and value for money.
-</p>
-
-<br>
-
-<strong>👍 Customers Like</strong>
-
-<ul>
-<li>Good overall quality</li>
-<li>Strong performance</li>
-<li>Good value</li>
-</ul>
-
-<strong>👎 Common Concerns</strong>
-
-<ul>
-<li>Some customers mention delivery delays</li>
-<li>Availability may vary</li>
-</ul>
-
-</div>
-
-<div class="chat">
-
-<div class="messages" id="messages">
-
-<div class="msg ai">
-Hello! I'm your AI Product Expert.
-Ask me anything about this product.
-</div>
-
-</div>
-
-<div class="chat-input">
-
-<input id="chatInput" placeholder="Ask about this product...">
-
-<button onclick="sendAIMessage()">Send</button>
-
-</div>
-
-</div>
-
-</div>
-
 </div>
 
 
-<!-- IMAGE SEARCH MODAL -->
+<div id="productPage" class="hidden">
 
-<div class="modal" id="imageModal">
+<button class="back" onclick="showHome()">
+← Back to Products
+</button>
 
-<div class="modal-box">
+<div class="productPage">
 
-<span class="close" onclick="closeModal('imageModal')">×</span>
+<div class="productDetail">
 
-<h2>📸 Search by Image</h2>
+<div class="bigImage" id="detailImage"></div>
 
-<p>Upload a product image to find similar products.</p>
+<div class="info">
 
-<br>
+<span class="brand" id="detailBrand"></span>
 
-<input type="file" accept="image/*" onchange="previewImage(event)">
+<h1 id="detailName"></h1>
 
-<div id="imagePreview"></div>
+<div class="rating" id="detailRating"></div>
 
-<div id="imageResult"></div>
+<h2 id="detailPrice"></h2>
 
-</div>
+<p id="detailDescription"></p>
 
-</div>
-
-
-<!-- CART MODAL -->
-
-<div class="modal" id="cartModal">
-
-<div class="modal-box">
-
-<span class="close" onclick="closeModal('cartModal')">×</span>
-
-<h2>🛒 Your Cart</h2>
-
-<div id="cartItems"></div>
-
-<br>
-
-<button onclick="checkout()" style="padding:14px;width:100%;background:#111827;color:white;border:0;border-radius:10px;">
-Proceed to Checkout
+<button class="cart"
+style="padding:14px 25px;border:0;border-radius:10px"
+onclick="addToCart()">
+🛒 Add to Cart
 </button>
 
 </div>
@@ -768,45 +318,67 @@ Proceed to Checkout
 </div>
 
 
+<div class="aiBox">
+
+<h2>🤖 Ask AI About This Product</h2>
+
+<p>
+Ask anything about this specific product.
+The AI will use the product information and customer reviews
+to help you make a better decision.
+</p>
+
+<div class="chat">
+
+<div class="messages" id="messages">
+
+<div class="msg ai">
+Hello! Ask me anything about this product.
+For example: "Is it good for gaming?" or
+"What are the common problems?"
+</div>
+
+</div>
+
+<div class="chatInput">
+
+<input id="questionInput"
+placeholder="Type your question...">
+
+<button onclick="askProductAI()">
+Ask AI
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="review">
+
+<h2>⭐ Customer Reviews</h2>
+
+<div id="reviews"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+
 <footer>
 
-<div class="footer-grid">
+<h2>SmartBazaar AI</h2>
 
-<div>
-<h3>SmartBazaar AI</h3>
-<p>
-A next-generation AI powered marketplace
-designed to help customers shop smarter.
+<p style="margin-top:10px">
+An intelligent marketplace designed to help people
+make better shopping decisions.
 </p>
-</div>
-
-<div>
-<h3>AI Features</h3>
-<p>AI Product Expert</p>
-<p>AI Review Analysis</p>
-<p>Smart Recommendations</p>
-<p>Voice Search</p>
-<p>Image Search</p>
-</div>
-
-<div>
-<h3>Marketplace</h3>
-<p>Men's Fashion</p>
-<p>Women's Fashion</p>
-<p>Electronics</p>
-<p>Mobile</p>
-<p>Home & Living</p>
-</div>
-
-<div>
-<h3>Customer Support</h3>
-<p>Help Center</p>
-<p>Order Tracking</p>
-<p>Returns</p>
-<p>Contact Us</p>
-</div>
-
-</div>
 
 </footer>
 
@@ -817,107 +389,162 @@ const products = [
 
 {
 id:1,
-name:"Premium Men's Casual Shirt",
+category:"Men",
 brand:"SmartStyle",
-category:"Men Fashion",
-price:35,
+name:"Premium Men's Shirt",
+price:"$35",
 icon:"👔",
-rating:4.8,
-reviews:245
+rating:"⭐ 4.8",
+description:"Premium quality casual shirt suitable for everyday wear.",
+reviews:[
+"Excellent fabric quality.",
+"Very comfortable and stylish.",
+"Good value for money."
+]
 },
 
 {
 id:2,
-name:"Women's Elegant Fashion Dress",
-brand:"LuxeWear",
-category:"Women Fashion",
-price:49,
-icon:"👗",
-rating:4.7,
-reviews:321
+category:"Men",
+brand:"ClassicWear",
+name:"Premium Panjabi",
+price:"$45",
+icon:"🥻",
+rating:"⭐ 4.7",
+description:"Elegant traditional Panjabi made with comfortable premium fabric.",
+reviews:[
+"Very beautiful design.",
+"Fabric quality is excellent."
+]
 },
 
 {
 id:3,
-name:"AI Pro Max Smartphone",
-brand:"TechPro",
-category:"Mobile",
-price:499,
-icon:"📱",
-rating:4.9,
-reviews:892
+category:"Women",
+brand:"LuxeWear",
+name:"Elegant Women's Dress",
+price:"$55",
+icon:"👗",
+rating:"⭐ 4.8",
+description:"Elegant modern dress designed for comfort and style.",
+reviews:[
+"Beautiful design.",
+"Perfect fitting."
+]
 },
 
 {
 id:4,
-name:"Ultra Gaming Laptop",
-brand:"PowerTech",
-category:"Electronics",
-price:899,
-icon:"💻",
-rating:4.8,
-reviews:540
+category:"Mobile",
+brand:"TechPro",
+name:"AI Pro Smartphone",
+price:"$499",
+icon:"📱",
+rating:"⭐ 4.9",
+description:"High-performance smartphone with advanced camera and long battery life.",
+reviews:[
+"Excellent performance.",
+"Camera quality is amazing.",
+"Battery backup is very good."
+]
 },
 
 {
 id:5,
-name:"Premium Beauty Care Kit",
-brand:"GlowBeauty",
-category:"Beauty",
-price:29,
-icon:"💄",
-rating:4.6,
-reviews:183
+category:"Electronics",
+brand:"PowerTech",
+name:"Ultra Gaming Laptop",
+price:"$899",
+icon:"💻",
+rating:"⭐ 4.8",
+description:"High-performance laptop designed for gaming and professional work.",
+reviews:[
+"Great gaming performance.",
+"Fast and powerful.",
+"Display quality is excellent."
+]
 },
 
 {
 id:6,
-name:"Modern Home Sofa",
-brand:"HomeCraft",
-category:"Home",
-price:599,
-icon:"🛋️",
-rating:4.7,
-reviews:102
+category:"Beauty",
+brand:"GlowBeauty",
+name:"Complete Beauty Care Kit",
+price:"$29",
+icon:"💄",
+rating:"⭐ 4.6",
+description:"A complete beauty care set for daily personal care.",
+reviews:[
+"Good quality products.",
+"Nice packaging."
+]
 },
 
 {
 id:7,
-name:"Professional Running Shoes",
-brand:"SportMax",
-category:"Sports",
-price:79,
-icon:"👟",
-rating:4.8,
-reviews:440
+category:"Home",
+brand:"HomeCraft",
+name:"Modern Sofa",
+price:"$599",
+icon:"🛋️",
+rating:"⭐ 4.7",
+description:"Modern comfortable sofa designed for contemporary homes.",
+reviews:[
+"Very comfortable.",
+"Looks beautiful in the living room."
+]
 },
 
 {
 id:8,
-name:"Premium Grocery Essentials",
-brand:"FreshMart",
+category:"Sports",
+brand:"SportMax",
+name:"Professional Running Shoes",
+price:"$79",
+icon:"👟",
+rating:"⭐ 4.8",
+description:"Lightweight running shoes designed for daily training.",
+reviews:[
+"Very comfortable for running.",
+"Excellent grip."
+]
+},
+
+{
+id:9,
 category:"Grocery",
-price:45,
+brand:"FreshMart",
+name:"Premium Grocery Pack",
+price:"$45",
 icon:"🛒",
-rating:4.5,
-reviews:220
+rating:"⭐ 4.5",
+description:"A selection of essential grocery products.",
+reviews:[
+"Fresh products.",
+"Good packaging."
+]
 }
 
 ];
 
 
-let cart = [];
+let currentProduct=null;
+let cart=[];
 
-let currentProduct = null;
 
-
-/* LOAD PRODUCTS */
-
-function renderProducts(list=products){
+function renderProducts(list){
 
 const grid=document.getElementById("productGrid");
 
 grid.innerHTML="";
+
+if(list.length===0){
+
+grid.innerHTML="<h3>No products found.</h3>";
+
+return;
+
+}
 
 list.forEach(p=>{
 
@@ -925,32 +552,36 @@ grid.innerHTML+=`
 
 <div class="product">
 
-<div class="product-img">
+<div class="product-image">
 ${p.icon}
 </div>
 
-<div class="product-info">
+<div class="product-body">
 
-<span class="brand">${p.brand}</span>
+<span class="brand">
+${p.brand}
+</span>
 
 <h3>${p.name}</h3>
 
 <div class="rating">
-⭐ ${p.rating} (${p.reviews} Reviews)
+${p.rating}
 </div>
 
-<div class="price">$${p.price}</div>
+<div class="price">
+${p.price}
+</div>
 
-<div class="product-actions">
+<div class="actions">
 
-<button class="ai-btn"
-onclick="openAI(${p.id})">
-🤖 Ask AI
+<button class="details"
+onclick="openProduct(${p.id})">
+View Product
 </button>
 
-<button class="cart-btn"
+<button class="cart"
 onclick="addCart(${p.id})">
-Add to Cart
+Add Cart
 </button>
 
 </div>
@@ -966,144 +597,180 @@ Add to Cart
 }
 
 
-/* CATEGORY FILTER */
+function openProduct(id){
+
+currentProduct=
+products.find(p=>p.id===id);
+
+document.getElementById("homePage")
+.classList.add("hidden");
+
+document.getElementById("productPage")
+.classList.remove("hidden");
+
+document.getElementById("detailImage")
+.innerText=currentProduct.icon;
+
+document.getElementById("detailBrand")
+.innerText=currentProduct.brand;
+
+document.getElementById("detailName")
+.innerText=currentProduct.name;
+
+document.getElementById("detailRating")
+.innerText=currentProduct.rating;
+
+document.getElementById("detailPrice")
+.innerText=currentProduct.price;
+
+document.getElementById("detailDescription")
+.innerText=currentProduct.description;
+
+document.getElementById("reviews").innerHTML=
+currentProduct.reviews.map(r=>`
+
+<div class="reviewItem">
+⭐ ⭐ ⭐ ⭐ ⭐
+<p>${r}</p>
+<span class="verified">
+✓ Verified Customer
+</span>
+</div>
+
+`).join("");
+
+document.getElementById("messages").innerHTML=`
+
+<div class="msg ai">
+Hello! I am your AI Product Expert for
+<strong>${currentProduct.name}</strong>.
+Ask me anything about this product.
+</div>
+
+`;
+
+window.scrollTo(0,0);
+
+}
+
+
+function showHome(){
+
+document.getElementById("productPage")
+.classList.add("hidden");
+
+document.getElementById("homePage")
+.classList.remove("hidden");
+
+window.scrollTo(0,0);
+
+}
+
 
 function filterCategory(category){
 
-if(category==="All"){
+const result=
+products.filter(p=>p.category===category);
 
-renderProducts(products);
-
-return;
-
-}
-
-const result=products.filter(p=>p.category===category);
-
-document.getElementById("productTitle").innerText=
-category+" Products";
+document.getElementById("listTitle")
+.innerText=category+" Products";
 
 renderProducts(result);
 
+document.getElementById("homePage")
+.classList.remove("hidden");
+
+document.getElementById("productPage")
+.classList.add("hidden");
+
 }
 
 
-/* SEARCH */
+function searchProducts(){
 
-function smartSearch(){
+const q=
+document.getElementById("searchInput")
+.value.toLowerCase();
 
-const query=document
-.getElementById("mainSearch")
-.value
-.toLowerCase();
+const result=
+products.filter(p=>
 
-const result=products.filter(p=>
-
-p.name.toLowerCase().includes(query) ||
-
-p.brand.toLowerCase().includes(query) ||
-
-p.category.toLowerCase().includes(query)
+p.name.toLowerCase().includes(q) ||
+p.brand.toLowerCase().includes(q) ||
+p.category.toLowerCase().includes(q)
 
 );
 
-renderProducts(result);
+document.getElementById("listTitle")
+.innerText="Search Results";
 
-document.getElementById("productTitle").innerText=
-"Search Results";
+renderProducts(result);
 
 }
 
 
-/* AI RECOMMEND */
+function aiSearch(){
 
-function aiRecommend(){
-
-const query=document
-.getElementById("aiQuery")
-.value
-.toLowerCase();
+const q=
+document.getElementById("aiSearchInput")
+.value.toLowerCase();
 
 let result=products;
 
-if(query.includes("phone") ||
-query.includes("mobile")){
+if(q.includes("phone") ||
+q.includes("mobile")){
 
-result=products.filter(p=>p.category==="Mobile");
-
-}
-
-else if(query.includes("laptop") ||
-query.includes("computer")){
-
-result=products.filter(p=>p.category==="Electronics");
+result=
+products.filter(p=>p.category==="Mobile");
 
 }
 
-else if(query.includes("shirt") ||
-query.includes("men")){
+else if(q.includes("laptop") ||
+q.includes("computer") ||
+q.includes("gaming")){
 
-result=products.filter(p=>p.category==="Men Fashion");
-
-}
-
-else if(query.includes("women") ||
-query.includes("dress")){
-
-result=products.filter(p=>p.category==="Women Fashion");
+result=
+products.filter(p=>p.category==="Electronics");
 
 }
 
-else if(query.includes("beauty")){
+else if(q.includes("shirt") ||
+q.includes("panjabi") ||
+q.includes("men")){
 
-result=products.filter(p=>p.category==="Beauty");
-
-}
-
-else if(query.includes("sport") ||
-query.includes("shoe")){
-
-result=products.filter(p=>p.category==="Sports");
+result=
+products.filter(p=>p.category==="Men");
 
 }
 
-document.getElementById("productTitle").innerText=
-"🤖 AI Recommended For You";
+else if(q.includes("women") ||
+q.includes("dress")){
+
+result=
+products.filter(p=>p.category==="Women");
+
+}
+
+document.getElementById("listTitle")
+.innerText="🤖 AI Recommended Products";
 
 renderProducts(result);
 
 }
 
 
-/* AI PRODUCT */
+async function askProductAI(){
 
-function openAI(id){
+const input=
+document.getElementById("questionInput");
 
-currentProduct=products.find(p=>p.id===id);
+const question=
+input.value.trim();
 
-document.getElementById("aiProductName").innerHTML=
-"<strong>"+currentProduct.name+
-"</strong> — AI Product Expert";
+if(!question || !currentProduct)return;
 
-document.getElementById("aiModal")
-.classList.add("active");
-
-}
-
-
-/* AI CHAT */
-
-function sendAIMessage(){
-
-const input=document
-.getElementById("chatInput");
-
-const question=input.value.trim();
-
-if(!question)return;
-
-const messages=document
-.getElementById("messages");
+const messages=
+document.getElementById("messages");
 
 messages.innerHTML+=`
 
@@ -1113,145 +780,99 @@ ${question}
 
 `;
 
-let answer=
-"Based on the available product information and customer feedback, this product is a strong option. I recommend checking your budget, intended use and personal priorities before purchasing.";
 
-if(question.toLowerCase().includes("good")){
+/*
+REAL AI CONNECTION
 
-answer=
-"Yes. Based on its rating and available customer feedback, this product is considered a good choice for its category.";
+এই অংশে আপনার Backend API থাকবে।
 
+Backend Endpoint:
+POST /api/ai/product-chat
+
+Backend-এ পাঠানো হবে:
+
+{
+ product: currentProduct,
+ question: question
 }
 
-if(question.toLowerCase().includes("problem") ||
-question.toLowerCase().includes("bad")){
+তারপর AI API থেকে আসা উত্তর
+এখানে দেখানো হবে।
+*/
 
-answer=
-"Some customers may experience issues depending on usage. I recommend reviewing the common concerns and comparing alternatives before making your final decision.";
+try{
 
-}
+const response=
+await fetch("/api/ai/product-chat",{
 
-if(question.toLowerCase().includes("review")){
+method:"POST",
 
-answer=
-"Customers generally appreciate the product quality and overall performance. The current average rating is "+currentProduct.rating+" out of 5 based on "+currentProduct.reviews+" reviews.";
+headers:{
+"Content-Type":"application/json"
+},
 
-}
+body:JSON.stringify({
+
+product:currentProduct,
+
+question:question
+
+})
+
+});
+
+
+if(!response.ok)
+throw new Error("AI server unavailable");
+
+
+const data=
+await response.json();
+
 
 messages.innerHTML+=`
 
 <div class="msg ai">
-${answer}
+${data.answer}
 </div>
 
 `;
+
+}
+
+catch(error){
+
+/*
+Backend চালু না থাকলে এখানে পরিষ্কার
+message দেখাবে। এটি Fake AI Answer নয়।
+*/
+
+messages.innerHTML+=`
+
+<div class="msg ai">
+
+⚠️ AI Server এখনো Connected নয়।
+
+এই Product-এর AI Expert চালু করতে
+আপনার Backend Server-এর
+
+<strong>/api/ai/product-chat</strong>
+
+Endpoint চালু করতে হবে।
+
+</div>
+
+`;
+
+}
 
 input.value="";
 
-messages.scrollTop=messages.scrollHeight;
+messages.scrollTop=
+messages.scrollHeight;
 
 }
 
-
-/* IMAGE SEARCH */
-
-function openImageSearch(){
-
-document
-.getElementById("imageModal")
-.classList
-.add("active");
-
-}
-
-
-function previewImage(event){
-
-const file=event.target.files[0];
-
-if(!file)return;
-
-const reader=new FileReader();
-
-reader.onload=function(e){
-
-document.getElementById("imagePreview").innerHTML=`
-
-<br>
-
-<img src="${e.target.result}"
-style="max-width:250px;border-radius:15px;">
-
-<br><br>
-
-<p>🤖 AI is analyzing your image...</p>
-
-`;
-
-setTimeout(()=>{
-
-document.getElementById("imageResult").innerHTML=`
-
-<div class="ai-summary">
-
-<h3>AI Image Search Result</h3>
-
-<p>
-Similar products found in SmartBazaar catalog.
-In the full AI version, this image will be analyzed
-by an AI Vision system and matched against the real
-product database.
-</p>
-
-</div>
-
-`;
-
-},1200);
-
-};
-
-reader.readAsDataURL(file);
-
-}
-
-
-/* VOICE SEARCH */
-
-function startVoice(){
-
-if(!("webkitSpeechRecognition" in window)){
-
-alert("Voice Search is not supported in this browser.");
-
-return;
-
-}
-
-const recognition=
-new webkitSpeechRecognition();
-
-recognition.lang="en-US";
-
-recognition.start();
-
-recognition.onresult=function(event){
-
-const text=
-event.results[0][0].transcript;
-
-document
-.getElementById("mainSearch")
-.value=text;
-
-smartSearch();
-
-};
-
-}
-
-
-/* CART */
 
 function addCart(id){
 
@@ -1260,88 +881,31 @@ products.find(p=>p.id===id);
 
 cart.push(product);
 
-document
-.getElementById("cartCount")
-.innerText=cart.length;
-
-alert(product.name+
-" added to your cart.");
-
-}
-
-
-function openCart(){
-
-const modal=
-document.getElementById("cartModal");
-
-modal.classList.add("active");
-
-const box=
-document.getElementById("cartItems");
-
-if(cart.length===0){
-
-box.innerHTML=
-"<p>Your cart is empty.</p>";
-
-return;
-
-}
-
-box.innerHTML=
-cart.map((p,index)=>`
-
-<div style="
-padding:12px;
-border-bottom:1px solid #ddd;
-display:flex;
-justify-content:space-between;
-">
-
-<span>${p.name}</span>
-
-<strong>$${p.price}</strong>
-
-</div>
-
-`).join("");
-
-}
-
-
-function checkout(){
-
-if(cart.length===0){
-
-alert("Your cart is empty.");
-
-return;
-
-}
-
 alert(
-"Checkout system ready. Connect your payment and delivery backend here."
+product.name+
+" added to cart."
 );
 
 }
 
 
-/* MODAL */
+function addToCart(){
 
-function closeModal(id){
+if(currentProduct){
 
-document
-.getElementById(id)
-.classList
-.remove("active");
+cart.push(currentProduct);
+
+alert(
+currentProduct.name+
+" added to cart."
+);
+
+}
 
 }
 
 
-/* INITIALIZE */
-
-renderProducts();
+renderProducts(products);
 
 </script>
 
