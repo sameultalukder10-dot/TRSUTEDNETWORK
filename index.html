@@ -3,930 +3,295 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>NovaMart | Premium Shopping</title>
+<title>NovaMart - Premium Shopping</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f4f6f8;color:#17202a}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none}
 
-:root{
-    --navy:#07111f;
-    --navy2:#10243b;
-    --orange:#ff9900;
-    --orange2:#ffb84d;
-    --pink:#e2136e;
-    --green:#15803d;
-    --blue:#146eb4;
-    --bg:#f3f4f6;
-    --white:#ffffff;
-    --text:#17202a;
-    --muted:#667085;
-    --border:#e5e7eb;
-    --shadow:0 8px 30px rgba(0,0,0,.08);
+.header{
+background:#07111f;color:white;padding:14px 5%;
+display:flex;align-items:center;gap:20px;position:sticky;top:0;z-index:1000
 }
+.logo{font-size:28px;font-weight:bold;cursor:pointer}
+.logo span{color:#ff9900}
 
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    line-height:1.5;
-}
+.search{display:flex;flex:1;max-width:700px}
+.search input{flex:1;padding:13px;border:0;outline:0}
+.search button{width:55px;border:0;background:#ff9900}
 
-button,
-input,
-select,
-textarea{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-}
-
-a{
-    text-decoration:none;
-}
-
-.topbar{
-    background:#050b13;
-    color:white;
-    padding:7px 4%;
-    display:flex;
-    justify-content:space-between;
-    font-size:13px;
-}
-
-.navbar{
-    background:var(--navy);
-    color:white;
-    padding:12px 4%;
-    display:flex;
-    align-items:center;
-    gap:15px;
-    position:sticky;
-    top:0;
-    z-index:100;
-}
-
-.logo{
-    font-size:27px;
-    font-weight:800;
-    cursor:pointer;
-    white-space:nowrap;
-}
-
-.logo span{
-    color:var(--orange);
-}
-
-.search{
-    flex:1;
-    max-width:850px;
-    height:45px;
-    display:flex;
-}
-
-.search select{
-    width:110px;
-    border:0;
-    padding:0 8px;
-    background:#eee;
-}
-
-.search input{
-    flex:1;
-    border:0;
-    outline:0;
-    padding:0 15px;
-}
-
-.search button{
-    width:55px;
-    border:0;
-    background:var(--orange);
-    font-size:20px;
-}
-
-.navlink{
-    color:white;
-    background:none;
-    border:0;
-    white-space:nowrap;
-}
-
-.navlink small{
-    display:block;
-}
-
-.navlink strong{
-    font-size:14px;
-}
-
-.cart-link{
-    color:white;
-    background:none;
-    border:0;
-    font-weight:bold;
-    white-space:nowrap;
+.header-btn{
+background:none;color:white;border:0;font-weight:bold
 }
 
 .cart-count{
-    background:var(--orange);
-    color:#111;
-    border-radius:50%;
-    padding:2px 7px;
+background:#ff9900;color:#111;border-radius:50%;padding:3px 8px
 }
 
-.subnav{
-    background:var(--navy2);
-    color:white;
-    padding:10px 4%;
-    display:flex;
-    gap:25px;
-    overflow:auto;
+.nav{
+background:#10243b;color:white;padding:10px 5%;
+display:flex;gap:25px;overflow:auto
 }
-
-.subnav span{
-    white-space:nowrap;
-    cursor:pointer;
-}
+.nav span{cursor:pointer;white-space:nowrap}
 
 .hero{
-    min-height:420px;
-    padding:65px 8%;
-    display:flex;
-    align-items:center;
-    color:white;
-    background:
-    linear-gradient(90deg,rgba(3,13,26,.96),rgba(3,13,26,.55),rgba(3,13,26,.1)),
-    linear-gradient(135deg,#17375e,#126b82,#d79019);
+padding:70px 7%;color:white;
+background:linear-gradient(110deg,#07111f,#145477,#d18b20)
 }
+.hero h1{font-size:50px;max-width:700px}
+.hero p{font-size:19px;margin:18px 0}
 
-.hero-content{
-    max-width:680px;
-}
-
-.hero-badge{
-    display:inline-block;
-    background:var(--orange);
-    color:#111;
-    padding:7px 14px;
-    border-radius:25px;
-    font-weight:bold;
-    margin-bottom:15px;
-}
-
-.hero h1{
-    font-size:52px;
-    line-height:1.05;
-    margin-bottom:18px;
-}
-
-.hero p{
-    font-size:19px;
-    margin-bottom:25px;
-}
-
-.container{
-    width:92%;
-    max-width:1450px;
-    margin:auto;
-}
-
-.section{
-    margin:32px 0;
-}
-
-.section-title{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:18px;
-}
-
-.section-title h2{
-    font-size:26px;
-}
+.container{width:92%;max-width:1400px;margin:auto}
+.page{display:none;padding:35px 0;min-height:600px}
+.page.active{display:block}
 
 .btn{
-    border:0;
-    border-radius:6px;
-    padding:12px 20px;
-    font-weight:bold;
+border:0;border-radius:6px;padding:12px 20px;font-weight:bold
 }
+.primary{background:#ff9900;color:#111}
+.dark{background:#07111f;color:white}
+.green{background:#15803d;color:white}
+.white{background:white;border:1px solid #ddd}
 
-.btn-primary{
-    background:var(--orange);
-    color:#111;
-}
-
-.btn-dark{
-    background:var(--navy);
-    color:white;
-}
-
-.btn-white{
-    background:white;
-    border:1px solid var(--border);
-}
-
-.btn-danger{
-    background:#fee2e2;
-    color:#b91c1c;
+.section-title{
+display:flex;justify-content:space-between;align-items:center;margin-bottom:20px
 }
 
 .categories{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
-    gap:15px;
+display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:40px
 }
-
 .category{
-    background:white;
-    padding:22px;
-    text-align:center;
-    border-radius:10px;
-    box-shadow:var(--shadow);
-    cursor:pointer;
-    transition:.2s;
+background:white;padding:30px;text-align:center;border-radius:10px;
+box-shadow:0 5px 20px #00000012;cursor:pointer
 }
-
-.category:hover{
-    transform:translateY(-4px);
-}
-
-.category-icon{
-    font-size:45px;
-    margin-bottom:8px;
-}
+.category div{font-size:50px}
 
 .products{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-    gap:18px;
+display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px
 }
 
 .card{
-    background:white;
-    border-radius:10px;
-    overflow:hidden;
-    box-shadow:0 4px 18px rgba(0,0,0,.06);
-    transition:.2s;
+background:white;border-radius:10px;overflow:hidden;
+box-shadow:0 5px 20px #00000012
 }
 
-.card:hover{
-    transform:translateY(-4px);
-    box-shadow:var(--shadow);
+.product-img{
+height:220px;background:#e9eef3;display:flex;
+align-items:center;justify-content:center;font-size:90px;cursor:pointer
 }
 
-.product-image{
-    height:220px;
-    background:linear-gradient(135deg,#eef3f7,#dce7ef);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:90px;
-    cursor:pointer;
-}
-
-.card-body{
-    padding:15px;
-}
-
-.card h3{
-    font-size:16px;
-    margin-bottom:8px;
-}
-
-.rating{
-    color:#f59e0b;
-    font-size:14px;
-}
-
-.rating span{
-    color:#667085;
-}
-
-.price{
-    font-size:23px;
-    font-weight:bold;
-    margin:8px 0;
-}
-
-.old-price{
-    color:#888;
-    text-decoration:line-through;
-    font-size:13px;
-}
-
-.discount{
-    color:var(--green);
-    font-size:13px;
-    font-weight:bold;
-}
-
-.card-actions{
-    display:flex;
-    gap:8px;
-    margin-top:12px;
-}
-
-.card-actions button{
-    flex:1;
-}
-
-.page{
-    display:none;
-    min-height:600px;
-    padding:35px 0;
-}
-
-.page.active{
-    display:block;
-}
+.card-body{padding:16px}
+.card h3{font-size:17px}
+.rating{color:#f59e0b;margin:8px 0}
+.price{font-size:23px;font-weight:bold;margin:8px 0}
+.old{text-decoration:line-through;color:#777;font-size:14px}
+.actions{display:flex;gap:8px;margin-top:12px}
+.actions button{flex:1}
 
 .product-view{
-    background:white;
-    border-radius:12px;
-    padding:30px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
-    box-shadow:var(--shadow);
+background:white;padding:30px;border-radius:12px;
+display:grid;grid-template-columns:1fr 1fr;gap:40px
 }
-
-.big-product-image{
-    height:500px;
-    background:#eef3f7;
-    border-radius:10px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:180px;
+.big-img{
+height:450px;background:#e9eef3;display:flex;
+align-items:center;justify-content:center;font-size:180px
 }
-
-.product-info h1{
-    font-size:34px;
-    margin:12px 0;
-}
-
-.big-price{
-    color:#b12704;
-    font-size:35px;
-    font-weight:bold;
-    margin:15px 0;
-}
-
-.option{
-    margin:20px 0;
-}
-
-.option button{
-    padding:9px 15px;
-    background:white;
-    border:1px solid #aaa;
-    border-radius:5px;
-    margin:5px;
-}
-
-.option button.active{
-    border:2px solid var(--orange);
-}
-
-.quantity{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    margin:20px 0;
-}
-
-.quantity button{
-    width:35px;
-    height:35px;
-    border:1px solid #aaa;
-    background:white;
-}
-
-.quantity span{
-    min-width:30px;
-    text-align:center;
-}
+.product-view h1{font-size:35px;margin:15px 0}
 
 .cart-layout{
-    display:grid;
-    grid-template-columns:1fr 360px;
-    gap:25px;
+display:grid;grid-template-columns:1fr 360px;gap:25px
 }
-
 .cart-item{
-    background:white;
-    padding:20px;
-    display:flex;
-    gap:20px;
-    border-bottom:1px solid var(--border);
+background:white;padding:20px;display:flex;gap:20px;
+border-bottom:1px solid #ddd
 }
-
-.cart-product-image{
-    width:120px;
-    height:120px;
-    background:#eef3f7;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:60px;
+.cart-img{
+width:110px;height:110px;background:#e9eef3;
+display:flex;align-items:center;justify-content:center;font-size:60px
 }
-
 .cart-summary{
-    background:white;
-    padding:25px;
-    border-radius:10px;
-    height:max-content;
-    box-shadow:var(--shadow);
+background:white;padding:25px;border-radius:10px;height:max-content
 }
-
-.summary-row{
-    display:flex;
-    justify-content:space-between;
-    padding:10px 0;
+.row{
+display:flex;justify-content:space-between;padding:10px 0
 }
-
-.summary-total{
-    border-top:1px solid #ddd;
-    padding-top:15px;
-    margin-top:10px;
-    font-size:23px;
-    font-weight:bold;
+.total{
+font-size:23px;font-weight:bold;border-top:1px solid #ddd;padding-top:15px
 }
 
 .form-card{
-    background:white;
-    padding:30px;
-    max-width:850px;
-    margin:auto;
-    border-radius:12px;
-    box-shadow:var(--shadow);
+background:white;padding:30px;max-width:850px;margin:auto;border-radius:12px
+}
+.form-group{margin:15px 0}
+.form-group label{display:block;font-weight:bold;margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{
+width:100%;padding:13px;border:1px solid #ccc;border-radius:6px
 }
 
-.form-group{
-    margin-bottom:16px;
+.payment-box{
+border:2px solid #e2136e;background:#fff7fa;padding:20px;
+border-radius:10px;margin:25px 0
 }
-
-.form-group label{
-    display:block;
-    font-weight:bold;
-    margin-bottom:6px;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea{
-    width:100%;
-    padding:13px;
-    border:1px solid #ccc;
-    border-radius:6px;
-    outline:none;
-}
-
-.form-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
-}
-
-.payment-card{
-    margin:22px 0;
-    padding:22px;
-    border-radius:10px;
-    border:2px solid var(--pink);
-    background:#fff7fa;
-}
-
-.payment-card h3{
-    color:var(--pink);
-}
-
-.payment-option{
-    background:white;
-    padding:14px;
-    margin:10px 0;
-    border:1px solid #ddd;
-    border-radius:7px;
-}
-
-.payment-option label{
-    cursor:pointer;
-    display:block;
-}
-
-.payment-details{
-    margin-top:15px;
-}
-
 .payment-number{
-    font-size:22px;
-    font-weight:bold;
-    color:var(--pink);
-    margin:8px 0;
+font-size:25px;font-weight:bold;color:#e2136e;margin:10px 0
 }
-
-.payment-notice{
-    background:#fff3cd;
-    padding:12px;
-    border-radius:6px;
-    margin:12px 0;
+.payment-option{
+background:white;padding:15px;border:1px solid #ddd;
+border-radius:7px;margin:10px 0
 }
-
-.order-summary-box{
-    background:#f8fafc;
-    padding:18px;
-    border-radius:8px;
-    margin:20px 0;
+.payment-details{
+background:#fff3cd;padding:15px;border-radius:7px;margin-top:15px
 }
 
 .order-card{
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    margin-bottom:15px;
-    border:1px solid var(--border);
+background:white;padding:22px;border-radius:10px;margin-bottom:15px
 }
+.order-head{
+display:flex;justify-content:space-between;padding-bottom:15px;
+border-bottom:1px solid #ddd;margin-bottom:15px
+}
+.status{color:#15803d;font-weight:bold}
 
-.order-header{
-    display:flex;
-    justify-content:space-between;
-    background:#f8fafc;
-    padding:12px;
-    margin:-20px -20px 15px;
+.help{
+background:white;padding:35px;border-radius:12px
 }
-
-.status{
-    color:var(--green);
-    font-weight:bold;
-}
-
-.empty{
-    background:white;
-    text-align:center;
-    padding:70px 20px;
-    border-radius:10px;
-}
-
-.help-section{
-    background:white;
-    padding:35px;
-    border-radius:12px;
-    box-shadow:var(--shadow);
-}
-
-.help-item{
-    padding:20px 0;
-    border-bottom:1px solid #eee;
-}
-
-.help-item h3{
-    margin-bottom:8px;
-}
-
-.help-buttons{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-top:20px;
-}
-
-.help-buttons a{
-    color:white;
-    padding:12px 20px;
-    border-radius:6px;
-    font-weight:bold;
-}
-
-.call-button{
-    background:var(--green);
-}
-
-.whatsapp-button{
-    background:#25d366;
-}
+.help-item{padding:20px 0;border-bottom:1px solid #ddd}
 
 footer{
-    background:#101827;
-    color:white;
-    margin-top:50px;
+background:#07111f;color:white;padding:45px 6%;margin-top:50px
 }
-
 .footer-grid{
-    padding:45px 5%;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:30px;
+display:grid;grid-template-columns:repeat(3,1fr);gap:30px
 }
+footer p{margin:8px 0;color:#ccd6e0}
 
-.footer-grid p{
-    color:#cbd5e1;
-    margin:7px 0;
-}
-
-.footer-bottom{
-    border-top:1px solid #334155;
-    padding:20px;
-    text-align:center;
-    color:#cbd5e1;
-}
-
-.floating-help{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-    z-index:50;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-}
-
-.floating-help a{
-    color:white;
-    padding:12px 17px;
-    border-radius:30px;
-    font-weight:bold;
-    box-shadow:0 5px 20px #0003;
-}
-
-.float-call{
-    background:var(--green);
-}
-
-.float-whatsapp{
-    background:#25d366;
+.empty{
+background:white;padding:70px;text-align:center;border-radius:10px
 }
 
 .toast{
-    position:fixed;
-    right:25px;
-    bottom:25px;
-    background:#111;
-    color:white;
-    padding:15px 22px;
-    border-radius:8px;
-    display:none;
-    z-index:999;
+position:fixed;bottom:25px;right:25px;background:#111;color:white;
+padding:15px 25px;border-radius:7px;display:none;z-index:9999
+}
+.toast.show{display:block}
+
+@media(max-width:800px){
+.header{flex-wrap:wrap}
+.search{order:5;flex-basis:100%}
+.hero h1{font-size:36px}
+.categories{grid-template-columns:repeat(2,1fr)}
+.product-view,.cart-layout{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr}
 }
 
-.toast.show{
-    display:block;
+@media(max-width:500px){
+.products{grid-template-columns:repeat(2,1fr);gap:10px}
+.product-img{height:150px;font-size:60px}
+.card-body{padding:10px}
+.product-view{padding:15px}
+.big-img{height:280px;font-size:120px}
+.cart-item{flex-direction:column}
 }
-
-@media(max-width:900px){
-
-    .navbar{
-        flex-wrap:wrap;
-    }
-
-    .search{
-        order:5;
-        flex-basis:100%;
-        max-width:none;
-    }
-
-    .navlink{
-        display:none;
-    }
-
-    .hero h1{
-        font-size:38px;
-    }
-
-    .product-view,
-    .cart-layout{
-        grid-template-columns:1fr;
-    }
-
-}
-
-@media(max-width:600px){
-
-    .topbar{
-        display:none;
-    }
-
-    .hero{
-        min-height:450px;
-        padding:45px 6%;
-    }
-
-    .hero h1{
-        font-size:34px;
-    }
-
-    .products{
-        grid-template-columns:repeat(2,1fr);
-        gap:10px;
-    }
-
-    .product-image{
-        height:160px;
-        font-size:65px;
-    }
-
-    .card-body{
-        padding:10px;
-    }
-
-    .product-view{
-        padding:15px;
-    }
-
-    .big-product-image{
-        height:300px;
-        font-size:120px;
-    }
-
-    .form-grid{
-        grid-template-columns:1fr;
-    }
-
-    .cart-item{
-        flex-direction:column;
-    }
-
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="topbar">
-    <span>🚚 Fast & Reliable Delivery</span>
-    <span>📞 Customer Support: 01613040095</span>
+<header class="header">
+
+<div class="logo" onclick="go('home')">
+Nova<span>Mart</span>
 </div>
 
-<header class="navbar">
+<div class="search">
+<input id="searchInput" placeholder="Search products..." onkeydown="searchEnter(event)">
+<button onclick="search()">🔍</button>
+</div>
 
-    <div class="logo" onclick="showPage('home')">
-        Nova<span>Mart</span>
-    </div>
+<button class="header-btn" onclick="go('orders')">
+📦 My Orders
+</button>
 
-    <div class="search">
+<button class="header-btn" onclick="go('help')">
+☎ Help
+</button>
 
-        <select id="searchCategory">
-            <option value="All">All</option>
-            <option value="Electronics">Electronics</option>
-            <option value="Fashion">Fashion</option>
-            <option value="Home">Home</option>
-            <option value="Beauty">Beauty</option>
-        </select>
-
-        <input
-            id="searchInput"
-            placeholder="Search products..."
-            onkeydown="handleSearchKey(event)"
-        >
-
-        <button onclick="searchProducts()">🔍</button>
-
-    </div>
-
-    <button class="navlink" onclick="showPage('orders')">
-        <small>Returns</small>
-        <strong>& Orders</strong>
-    </button>
-
-    <button class="navlink" onclick="showPage('help')">
-        <small>Need Help?</small>
-        <strong>Customer Care</strong>
-    </button>
-
-    <button class="cart-link" onclick="showPage('cart')">
-        🛒 Cart
-        <span class="cart-count" id="cartCount">0</span>
-    </button>
+<button class="header-btn" onclick="go('cart')">
+🛒 Cart <span class="cart-count" id="cartCount">0</span>
+</button>
 
 </header>
 
-<nav class="subnav">
-
-    <span onclick="showPage('home')">☰ All</span>
-    <span onclick="showPage('home')">Today's Deals</span>
-    <span onclick="filterCategory('Electronics')">Electronics</span>
-    <span onclick="filterCategory('Fashion')">Fashion</span>
-    <span onclick="filterCategory('Home')">Home</span>
-    <span onclick="filterCategory('Beauty')">Beauty</span>
-    <span onclick="showPage('orders')">My Orders</span>
-    <span onclick="showPage('help')">Help Center</span>
-
+<nav class="nav">
+<span onclick="go('home')">Home</span>
+<span onclick="filter('Electronics')">Electronics</span>
+<span onclick="filter('Fashion')">Fashion</span>
+<span onclick="filter('Home')">Home & Living</span>
+<span onclick="filter('Beauty')">Beauty</span>
+<span onclick="go('orders')">My Orders</span>
+<span onclick="go('help')">Customer Support</span>
 </nav>
 
-
-<main>
 
 <!-- HOME -->
 
 <section id="home" class="page active">
 
-    <div class="hero">
+<div class="hero">
+<h1>Premium Shopping, Simple & Reliable.</h1>
+<p>Quality products, flexible payment and Cash on Delivery.</p>
+<button class="btn primary" onclick="scrollProducts()">Shop Now</button>
+</div>
 
-        <div class="hero-content">
+<div class="container">
 
-            <span class="hero-badge">
-                PREMIUM SHOPPING
-            </span>
+<div style="margin:35px 0">
 
-            <h1>
-                Everything You Love. Delivered.
-            </h1>
+<div class="section-title">
+<h2>Shop by Category</h2>
+</div>
 
-            <p>
-                Discover quality products with flexible bKash payment
-                and Cash on Delivery.
-            </p>
+<div class="categories">
 
-            <button
-                class="btn btn-primary"
-                onclick="scrollToProducts()"
-            >
-                Shop Now →
-            </button>
+<div class="category" onclick="filter('Electronics')">
+<div>📱</div>
+<h3>Electronics</h3>
+</div>
 
-        </div>
+<div class="category" onclick="filter('Fashion')">
+<div>👕</div>
+<h3>Fashion</h3>
+</div>
 
-    </div>
+<div class="category" onclick="filter('Home')">
+<div>🏠</div>
+<h3>Home</h3>
+</div>
 
+<div class="category" onclick="filter('Beauty')">
+<div>💄</div>
+<h3>Beauty</h3>
+</div>
 
-    <div class="container">
+</div>
 
-        <div class="section">
+</div>
 
-            <div class="section-title">
-                <h2>Shop by Category</h2>
-            </div>
+<div id="productsSection">
 
-            <div class="categories">
+<div class="section-title">
+<h2>Featured Products</h2>
+<button class="btn white" onclick="render(products)">View All</button>
+</div>
 
-                <div class="category"
-                    onclick="filterCategory('Electronics')">
+<div class="products" id="productGrid"></div>
 
-                    <div class="category-icon">📱</div>
-                    <h3>Electronics</h3>
+</div>
 
-                </div>
-
-                <div class="category"
-                    onclick="filterCategory('Fashion')">
-
-                    <div class="category-icon">👕</div>
-                    <h3>Fashion</h3>
-
-                </div>
-
-                <div class="category"
-                    onclick="filterCategory('Home')">
-
-                    <div class="category-icon">🏠</div>
-                    <h3>Home</h3>
-
-                </div>
-
-                <div class="category"
-                    onclick="filterCategory('Beauty')">
-
-                    <div class="category-icon">💄</div>
-                    <h3>Beauty</h3>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="section" id="productSection">
-
-            <div class="section-title">
-
-                <h2>Featured Products</h2>
-
-                <button
-                    class="btn btn-white"
-                    onclick="renderProducts(products)"
-                >
-                    View All
-                </button>
-
-            </div>
-
-            <div
-                class="products"
-                id="productGrid"
-            ></div>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
@@ -934,13 +299,9 @@ footer{
 <!-- PRODUCT -->
 
 <section id="product" class="page">
-
-    <div class="container">
-
-        <div id="productDetails"></div>
-
-    </div>
-
+<div class="container">
+<div id="productDetails"></div>
+</div>
 </section>
 
 
@@ -948,17 +309,13 @@ footer{
 
 <section id="cart" class="page">
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-title">
+<h2 style="margin-bottom:25px">🛒 Shopping Cart</h2>
 
-            <h2>🛒 Your Shopping Cart</h2>
+<div id="cartContent"></div>
 
-        </div>
-
-        <div id="cartContent"></div>
-
-    </div>
+</div>
 
 </section>
 
@@ -967,215 +324,155 @@ footer{
 
 <section id="checkout" class="page">
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-title">
+<div class="form-card">
 
-            <h2>Checkout</h2>
+<h2>Checkout</h2>
 
-        </div>
+<div class="form-group">
+<label>Customer Name</label>
+<input id="customerName" placeholder="আপনার নাম">
+</div>
 
-        <div class="form-card">
+<div class="form-group">
+<label>Mobile Number</label>
+<input id="customerPhone" placeholder="01XXXXXXXXX">
+</div>
 
-            <h2>Delivery Information</h2>
+<div class="form-group">
+<label>Delivery Address</label>
+<textarea id="customerAddress" rows="4" placeholder="আপনার সম্পূর্ণ ঠিকানা"></textarea>
+</div>
 
-            <br>
 
-            <div class="form-grid">
+<div class="payment-box">
 
-                <div class="form-group">
+<h2>💳 Payment Method</h2>
 
-                    <label>
-                        Customer Name
-                    </label>
+<p style="margin-top:8px">
+bKash Number:
+</p>
 
-                    <input
-                        id="customerName"
-                        placeholder="আপনার নাম"
-                    >
+<div class="payment-number">
+01726409431
+</div>
 
-                </div>
 
+<!-- DELIVERY BKASH -->
 
-                <div class="form-group">
+<div class="payment-option">
 
-                    <label>
-                        Phone Number
-                    </label>
+<label>
 
-                    <input
-                        id="customerPhone"
-                        placeholder="01XXXXXXXXX"
-                    >
+<input
+type="radio"
+name="payment"
+value="delivery"
+checked
+onchange="paymentChange()"
+>
 
-                </div>
+<b>🟣 শুধু Delivery Charge bKash</b>
 
-            </div>
+</label>
 
+<p>
+Delivery Charge bKash করবেন।
+Product Price Delivery-এর সময় Cash on Delivery দিতে পারবেন।
+</p>
 
-            <div class="form-group">
+</div>
 
-                <label>
-                    Full Delivery Address
-                </label>
 
-                <textarea
-                    id="customerAddress"
-                    rows="4"
-                    placeholder="House, Road, Area, City"
-                ></textarea>
+<!-- FULL BKASH -->
 
-            </div>
+<div class="payment-option">
 
+<label>
 
-            <!-- PAYMENT -->
+<input
+type="radio"
+name="payment"
+value="full"
+onchange="paymentChange()"
+>
 
-            <div class="payment-card">
+<b>🟣 Full Payment bKash</b>
 
-                <h3>🟣 Payment Options</h3>
+</label>
 
-                <p>
-                    bKash Number:
-                </p>
+<p>
+Product Price + Delivery Charge পুরো টাকা bKash করতে পারবেন।
+</p>
 
-                <div class="payment-number">
-                    01726409431
-                </div>
+</div>
 
-                <div class="payment-notice">
 
-                    আপনি চাইলে:
+<!-- COD -->
 
-                    <br><br>
+<div class="payment-option">
 
-                    <b>Option 1:</b>
-                    শুধু Delivery Charge bKash করে
-                    Product-এর বাকি টাকা Cash on Delivery দিতে পারবেন।
+<label>
 
-                    <br><br>
+<input
+type="radio"
+name="payment"
+value="cod"
+onchange="paymentChange()"
+>
 
-                    <b>Option 2:</b>
-                    Product Price + Delivery Charge
-                    পুরো টাকা bKash করতে পারবেন।
+<b>💵 Full Cash on Delivery</b>
 
-                    <br><br>
+</label>
 
-                    <b>Option 3:</b>
-                    সম্পূর্ণ Cash on Delivery নিতে পারবেন।
+<p>
+কোনো অগ্রিম Payment লাগবে না।
+</p>
 
-                </div>
+</div>
 
 
-                <div class="payment-option">
+<div id="bkashDetails" class="payment-details">
 
-                    <label>
+<b>Payment Instruction</b>
 
-                        <input
-                            type="radio"
-                            name="paymentMethod"
-                            value="delivery"
-                            checked
-                            onchange="updatePayment()"
-                        >
+<p style="margin-top:10px">
+bKash Number:
+<strong>01726409431</strong>
+</p>
 
-                        🟣 শুধু Delivery Charge bKash
-                        + বাকি টাকা COD
+<p>
+Payment করার পর নিচে Transaction ID দিন।
+</p>
 
-                    </label>
+<div class="form-group">
 
-                </div>
+<label>Transaction ID</label>
 
+<input id="transactionId" placeholder="আপনার bKash Transaction ID">
 
-                <div class="payment-option">
+</div>
 
-                    <label>
+</div>
 
-                        <input
-                            type="radio"
-                            name="paymentMethod"
-                            value="full"
-                            onchange="updatePayment()"
-                        >
+</div>
 
-                        🟣 Full Payment via bKash
 
-                    </label>
+<div id="checkoutSummary"></div>
 
-                </div>
 
+<button
+class="btn primary"
+style="width:100%;margin-top:20px"
+onclick="placeOrder()"
+>
+📦 Confirm & Place Order
+</button>
 
-                <div class="payment-option">
+</div>
 
-                    <label>
-
-                        <input
-                            type="radio"
-                            name="paymentMethod"
-                            value="cod"
-                            onchange="updatePayment()"
-                        >
-
-                        💵 Full Cash on Delivery
-
-                    </label>
-
-                </div>
-
-
-                <div
-                    id="bkashPaymentDetails"
-                    class="payment-details"
-                >
-
-                    <p>
-                        1️⃣ bKash করুন:
-                        <b>01726409431</b>
-                    </p>
-
-                    <p>
-                        2️⃣ Payment করার পর
-                        Transaction ID দিন।
-                    </p>
-
-                    <br>
-
-                    <div class="form-group">
-
-                        <label>
-                            bKash Transaction ID
-                        </label>
-
-                        <input
-                            id="transactionId"
-                            placeholder="Example: 8A7B6C5D"
-                        >
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div
-                id="checkoutSummary"
-                class="order-summary-box"
-            ></div>
-
-
-            <button
-                class="btn btn-primary"
-                style="width:100%"
-                onclick="placeOrder()"
-            >
-
-                📦 Confirm & Place Order
-
-            </button>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
@@ -1184,17 +481,13 @@ footer{
 
 <section id="orders" class="page">
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-title">
+<h2 style="margin-bottom:25px">📦 My Orders</h2>
 
-            <h2>📦 My Orders</h2>
+<div id="ordersContent"></div>
 
-        </div>
-
-        <div id="ordersContent"></div>
-
-    </div>
+</div>
 
 </section>
 
@@ -1203,198 +496,88 @@ footer{
 
 <section id="help" class="page">
 
-    <div class="container">
+<div class="container">
 
-        <div class="help-section">
+<div class="help">
 
-            <h1>Customer Help Center</h1>
+<h1>Customer Support</h1>
 
-            <br>
+<div class="help-item">
 
-            <div class="help-item">
+<h3>📞 Helpline</h3>
 
-                <h3>📞 Customer Helpline</h3>
+<p>01613040095</p>
 
-                <p>
-                    01613040095
-                </p>
+<a class="btn green" href="tel:01613040095">
+Call Now
+</a>
 
-            </div>
+</div>
 
+<div class="help-item">
 
-            <div class="help-item">
+<h3>💬 WhatsApp Support</h3>
 
-                <h3>💬 WhatsApp Support</h3>
+<p>01613040095</p>
 
-                <p>
-                    01613040095
-                </p>
+<a
+class="btn green"
+target="_blank"
+href="https://wa.me/8801613040095"
+>
+Open WhatsApp
+</a>
 
-            </div>
+</div>
 
+<div class="help-item">
 
-            <div class="help-item">
+<h3>🟣 bKash Payment</h3>
 
-                <h3>🟣 bKash Payment Support</h3>
+<p>01726409431</p>
 
-                <p>
-                    bKash Number:
-                    01726409431
-                </p>
+</div>
 
-            </div>
+</div>
 
-
-            <div class="help-buttons">
-
-                <a
-                    class="call-button"
-                    href="tel:01613040095"
-                >
-                    📞 Call Customer Care
-                </a>
-
-                <a
-                    class="whatsapp-button"
-                    target="_blank"
-                    href="https://wa.me/8801613040095"
-                >
-                    💬 WhatsApp Support
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
-</main>
-
-
-<!-- FOOTER -->
 
 <footer>
 
-    <div class="footer-grid">
+<div class="footer-grid">
 
-        <div>
+<div>
+<h2>NovaMart</h2>
+<p>Premium online shopping experience.</p>
+</div>
 
-            <h2>
-                NovaMart
-            </h2>
+<div>
+<h3>Customer Care</h3>
+<p>📞 01613040095</p>
+<p>💬 WhatsApp Support</p>
+</div>
 
-            <p>
-                Premium online shopping experience.
-            </p>
+<div>
+<h3>Payment</h3>
+<p>🟣 bKash: 01726409431</p>
+<p>💵 Cash on Delivery</p>
+</div>
 
-        </div>
-
-
-        <div>
-
-            <h3>
-                Customer Support
-            </h3>
-
-            <p>
-                📞 01613040095
-            </p>
-
-            <p>
-                💬 WhatsApp 01613040095
-            </p>
-
-        </div>
-
-
-        <div>
-
-            <h3>
-                Payment
-            </h3>
-
-            <p>
-                🟣 bKash 01726409431
-            </p>
-
-            <p>
-                💵 Cash on Delivery
-            </p>
-
-        </div>
-
-
-        <div>
-
-            <h3>
-                Quick Links
-            </h3>
-
-            <p onclick="showPage('home')">
-                Home
-            </p>
-
-            <p onclick="showPage('cart')">
-                Cart
-            </p>
-
-            <p onclick="showPage('orders')">
-                My Orders
-            </p>
-
-            <p onclick="showPage('help')">
-                Help Center
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-        © 2026 NovaMart. All Rights Reserved.
-
-    </div>
+</div>
 
 </footer>
 
 
-<!-- FLOATING SUPPORT -->
-
-<div class="floating-help">
-
-    <a
-        class="float-call"
-        href="tel:01613040095"
-    >
-        📞 Call
-    </a>
-
-    <a
-        class="float-whatsapp"
-        target="_blank"
-        href="https://wa.me/8801613040095"
-    >
-        💬 WhatsApp
-    </a>
-
-</div>
-
-
-<div
-    id="toast"
-    class="toast"
-></div>
+<div id="toast" class="toast"></div>
 
 
 <script>
 
-
 /* =========================
-   WEBSITE SETTINGS
+   SETTINGS
 ========================= */
 
 const DELIVERY_CHARGE = 100;
@@ -1410,133 +593,162 @@ const HELPLINE = "01613040095";
 
 const products = [
 
-    {
-        id:1,
-        name:"Nova X Pro Smartphone",
-        category:"Electronics",
-        price:699,
-        oldPrice:799,
-        rating:4.8,
-        reviews:1245,
-        icon:"📱"
-    },
+{
+id:1,
+name:"Nova X Pro Smartphone",
+category:"Electronics",
+price:699,
+oldPrice:799,
+rating:4.8,
+reviews:1245,
+icon:"📱"
+},
 
-    {
-        id:2,
-        name:"UltraBook Pro Laptop",
-        category:"Electronics",
-        price:1199,
-        oldPrice:1399,
-        rating:4.9,
-        reviews:876,
-        icon:"💻"
-    },
+{
+id:2,
+name:"UltraBook Pro Laptop",
+category:"Electronics",
+price:1199,
+oldPrice:1399,
+rating:4.9,
+reviews:876,
+icon:"💻"
+},
 
-    {
-        id:3,
-        name:"Wireless Noise Cancelling Headphones",
-        category:"Electronics",
-        price:149,
-        oldPrice:199,
-        rating:4.7,
-        reviews:2340,
-        icon:"🎧"
-    },
+{
+id:3,
+name:"Wireless Headphones",
+category:"Electronics",
+price:149,
+oldPrice:199,
+rating:4.7,
+reviews:2340,
+icon:"🎧"
+},
 
-    {
-        id:4,
-        name:"Premium Running Shoes",
-        category:"Fashion",
-        price:89,
-        oldPrice:129,
-        rating:4.6,
-        reviews:981,
-        icon:"👟"
-    },
+{
+id:4,
+name:"Premium Running Shoes",
+category:"Fashion",
+price:89,
+oldPrice:129,
+rating:4.6,
+reviews:981,
+icon:"👟"
+},
 
-    {
-        id:5,
-        name:"Classic Premium Watch",
-        category:"Fashion",
-        price:179,
-        oldPrice:249,
-        rating:4.8,
-        reviews:453,
-        icon:"⌚"
-    },
+{
+id:5,
+name:"Classic Premium Watch",
+category:"Fashion",
+price:179,
+oldPrice:249,
+rating:4.8,
+reviews:453,
+icon:"⌚"
+},
 
-    {
-        id:6,
-        name:"Modern Coffee Maker",
-        category:"Home",
-        price:129,
-        oldPrice:169,
-        rating:4.5,
-        reviews:643,
-        icon:"☕"
-    },
+{
+id:6,
+name:"Modern Coffee Maker",
+category:"Home",
+price:129,
+oldPrice:169,
+rating:4.5,
+reviews:643,
+icon:"☕"
+},
 
-    {
-        id:7,
-        name:"Smart LED Home Lamp",
-        category:"Home",
-        price:39,
-        oldPrice:59,
-        rating:4.4,
-        reviews:318,
-        icon:"💡"
-    },
+{
+id:7,
+name:"Smart LED Lamp",
+category:"Home",
+price:39,
+oldPrice:59,
+rating:4.4,
+reviews:318,
+icon:"💡"
+},
 
-    {
-        id:8,
-        name:"Luxury Skincare Set",
-        category:"Beauty",
-        price:79,
-        oldPrice:109,
-        rating:4.7,
-        reviews:761,
-        icon:"🧴"
-    }
+{
+id:8,
+name:"Luxury Skincare Set",
+category:"Beauty",
+price:79,
+oldPrice:109,
+rating:4.7,
+reviews:761,
+icon:"🧴"
+}
 
 ];
 
 
 /* =========================
-   LOCAL DATA
+   DATA
 ========================= */
 
 let cart =
-JSON.parse(
-localStorage.getItem("novamart_cart") || "[]"
-);
+JSON.parse(localStorage.getItem("cart") || "[]");
 
 let orders =
-JSON.parse(
-localStorage.getItem("novamart_orders") || "[]"
-);
+JSON.parse(localStorage.getItem("orders") || "[]");
 
 let currentProduct = null;
 
-let productQuantity = 1;
+let productQty = 1;
 
 
 /* =========================
-   SAVE DATA
+   SAVE
 ========================= */
 
-function saveData(){
+function save(){
 
-    localStorage.setItem(
-        "novamart_cart",
-        JSON.stringify(cart)
-    );
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
 
-    localStorage.setItem(
-        "novamart_orders",
-        JSON.stringify(orders)
-    );
+localStorage.setItem(
+"orders",
+JSON.stringify(orders)
+);
 
-    updateCartCount();
+updateCart();
+
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+function go(id){
+
+document
+.querySelectorAll(".page")
+.forEach(
+p=>p.classList.remove("active")
+);
+
+document
+.getElementById(id)
+.classList.add("active");
+
+if(id==="cart")
+renderCart();
+
+if(id==="checkout")
+paymentChange();
+
+if(id==="orders")
+renderOrders();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
 }
 
@@ -1545,58 +757,9 @@ function saveData(){
    MONEY
 ========================= */
 
-function money(amount){
+function money(n){
 
-    return "৳" +
-    Number(amount).toLocaleString("en-BD");
-
-}
-
-
-/* =========================
-   PAGE NAVIGATION
-========================= */
-
-function showPage(pageId){
-
-    document
-    .querySelectorAll(".page")
-    .forEach(
-        page =>
-        page.classList.remove("active")
-    );
-
-    const page =
-    document.getElementById(pageId);
-
-    if(page){
-
-        page.classList.add("active");
-
-    }
-
-    if(pageId === "cart"){
-
-        renderCart();
-
-    }
-
-    if(pageId === "orders"){
-
-        renderOrders();
-
-    }
-
-    if(pageId === "checkout"){
-
-        updatePayment();
-
-    }
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+return "৳"+Number(n).toLocaleString();
 
 }
 
@@ -1605,764 +768,461 @@ function showPage(pageId){
    CART COUNT
 ========================= */
 
-function updateCartCount(){
+function updateCart(){
 
-    const count =
-    cart.reduce(
-        (total,item)=>
-        total + item.quantity,
-        0
-    );
+let count =
+cart.reduce(
+(a,b)=>a+b.qty,
+0
+);
 
-    document
-    .getElementById("cartCount")
-    .innerText = count;
+document
+.getElementById("cartCount")
+.innerText=count;
 
 }
 
 
 /* =========================
-   RENDER PRODUCTS
+   PRODUCTS
 ========================= */
 
-function renderProducts(list){
+function render(list){
 
-    const grid =
-    document.getElementById(
-        "productGrid"
-    );
+let grid =
+document.getElementById(
+"productGrid"
+);
 
-    if(!list.length){
+grid.innerHTML =
+list.map(p=>`
 
-        grid.innerHTML = `
+<div class="card">
 
-        <div class="empty">
+<div
+class="product-img"
+onclick="openProduct(${p.id})"
+>
+${p.icon}
+</div>
 
-            <h2>
-                No products found
-            </h2>
+<div class="card-body">
 
-            <br>
+<h3>${p.name}</h3>
 
-            <button
-                class="btn btn-primary"
-                onclick="renderProducts(products)"
-            >
-                View All Products
-            </button>
+<div class="rating">
+★★★★★ ${p.rating}
+</div>
 
-        </div>
+<div class="price">
+${money(p.price)}
+</div>
 
-        `;
+<span class="old">
+${money(p.oldPrice)}
+</span>
 
-        return;
+<div class="actions">
 
-    }
+<button
+class="btn white"
+onclick="openProduct(${p.id})"
+>
+View
+</button>
 
+<button
+class="btn primary"
+onclick="addCart(${p.id})"
+>
+Add to Cart
+</button>
 
-    grid.innerHTML =
+</div>
 
-    list.map(product => `
+</div>
 
-        <div class="card">
+</div>
 
-            <div
-                class="product-image"
-                onclick="openProduct(${product.id})"
-            >
-
-                ${product.icon}
-
-            </div>
-
-
-            <div class="card-body">
-
-                <h3>
-                    ${product.name}
-                </h3>
-
-
-                <div class="rating">
-
-                    ★★★★★
-
-                    <span>
-                        ${product.rating}
-                        (${product.reviews})
-                    </span>
-
-                </div>
-
-
-                <div class="price">
-
-                    ${money(product.price)}
-
-                </div>
-
-
-                <div>
-
-                    <span class="old-price">
-
-                        ${money(product.oldPrice)}
-
-                    </span>
-
-                    <span class="discount">
-
-                        ${Math.round(
-                            (1 -
-                            product.price /
-                            product.oldPrice)
-                            * 100
-                        )}% OFF
-
-                    </span>
-
-                </div>
-
-
-                <div class="card-actions">
-
-                    <button
-                        class="btn btn-white"
-                        onclick="openProduct(${product.id})"
-                    >
-                        View
-                    </button>
-
-
-                    <button
-                        class="btn btn-primary"
-                        onclick="addToCart(${product.id})"
-                    >
-                        Add to Cart
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    `).join("");
+`).join("");
 
 }
 
 
 /* =========================
-   OPEN PRODUCT
+   PRODUCT
 ========================= */
 
 function openProduct(id){
 
-    currentProduct =
-    products.find(
-        product =>
-        product.id === id
-    );
+currentProduct =
+products.find(p=>p.id===id);
 
-    productQuantity = 1;
+productQty=1;
 
+document
+.getElementById("productDetails")
+.innerHTML=`
 
-    document
-    .getElementById("productDetails")
-    .innerHTML = `
+<div class="product-view">
 
-        <div class="product-view">
+<div class="big-img">
+${currentProduct.icon}
+</div>
 
+<div>
 
-            <div class="big-product-image">
+<div class="rating">
+★★★★★ ${currentProduct.rating}
+(${currentProduct.reviews} Reviews)
+</div>
 
-                ${currentProduct.icon}
+<h1>
+${currentProduct.name}
+</h1>
 
-            </div>
+<p>
+Premium quality product with excellent value.
+</p>
 
+<div class="price">
+${money(currentProduct.price)}
+</div>
 
-            <div class="product-info">
+<p class="old">
+${money(currentProduct.oldPrice)}
+</p>
 
+<br>
 
-                <div class="rating">
+<div>
 
-                    ★★★★★
+<button
+class="btn white"
+onclick="qty(-1)"
+>
+−
+</button>
 
-                    ${currentProduct.rating}
+<span
+id="qtyValue"
+style="padding:20px"
+>
+1
+</span>
 
-                    (${currentProduct.reviews}
-                    reviews)
+<button
+class="btn white"
+onclick="qty(1)"
+>
++
+</button>
 
-                </div>
+</div>
 
+<br>
 
-                <h1>
+<div class="actions">
 
-                    ${currentProduct.name}
+<button
+class="btn primary"
+onclick="addCurrent()"
+>
+🛒 Add to Cart
+</button>
 
-                </h1>
+<button
+class="btn dark"
+onclick="buyNow()"
+>
+Buy Now
+</button>
 
+</div>
 
-                <p>
+<br>
 
-                    Premium quality product
-                    with excellent value
-                    and reliable performance.
+<p>🚚 Fast Delivery</p>
+<p>🟣 bKash Payment</p>
+<p>💵 Cash on Delivery</p>
 
-                </p>
+</div>
 
+</div>
 
-                <div class="big-price">
+`;
 
-                    ${money(
-                        currentProduct.price
-                    )}
-
-                </div>
-
-
-                <div>
-
-                    <span class="old-price">
-
-                        ${money(
-                            currentProduct.oldPrice
-                        )}
-
-                    </span>
-
-                </div>
-
-
-                <div class="option">
-
-                    <strong>
-                        Choose Option
-                    </strong>
-
-                    <br>
-
-                    <button class="active">
-                        Standard
-                    </button>
-
-                    <button>
-                        Premium
-                    </button>
-
-                </div>
-
-
-                <div class="quantity">
-
-                    <strong>
-                        Quantity
-                    </strong>
-
-                    <button
-                        onclick="changeProductQuantity(-1)"
-                    >
-                        −
-                    </button>
-
-                    <span id="productQuantity">
-                        1
-                    </span>
-
-                    <button
-                        onclick="changeProductQuantity(1)"
-                    >
-                        +
-                    </button>
-
-                </div>
-
-
-                <div class="card-actions">
-
-                    <button
-                        class="btn btn-primary"
-                        onclick="addCurrentProduct()"
-                    >
-                        🛒 Add to Cart
-                    </button>
-
-
-                    <button
-                        class="btn btn-dark"
-                        onclick="buyNow()"
-                    >
-                        Buy Now
-                    </button>
-
-                </div>
-
-
-                <br>
-
-
-                <p>
-                    🚚 Fast Delivery Available
-                </p>
-
-                <p>
-                    🟣 bKash Payment Available
-                </p>
-
-                <p>
-                    💵 Cash on Delivery Available
-                </p>
-
-
-            </div>
-
-        </div>
-
-    `;
-
-
-    showPage("product");
+go("product");
 
 }
 
 
-/* =========================
-   PRODUCT QUANTITY
-========================= */
+function qty(n){
 
-function changeProductQuantity(amount){
+productQty =
+Math.max(
+1,
+productQty+n
+);
 
-    productQuantity =
-    Math.max(
-        1,
-        productQuantity + amount
-    );
-
-    document
-    .getElementById(
-        "productQuantity"
-    )
-    .innerText =
-    productQuantity;
+document
+.getElementById("qtyValue")
+.innerText=productQty;
 
 }
 
 
-/* =========================
-   ADD CURRENT PRODUCT
-========================= */
+function addCurrent(){
 
-function addCurrentProduct(){
-
-    addToCart(
-        currentProduct.id,
-        productQuantity
-    );
+addCart(
+currentProduct.id,
+productQty
+);
 
 }
 
 
-/* =========================
-   ADD TO CART
-========================= */
+function addCart(id,qty=1){
 
-function addToCart(
-    productId,
-    quantity = 1
-){
+let item =
+cart.find(
+x=>x.id===id
+);
 
-    const existing =
-    cart.find(
-        item =>
-        item.productId === productId
-    );
+if(item){
 
+item.qty+=qty;
 
-    if(existing){
+}else{
 
-        existing.quantity +=
-        quantity;
-
-    }else{
-
-        cart.push({
-
-            productId:
-            productId,
-
-            quantity:
-            quantity
-
-        });
-
-    }
-
-
-    saveData();
-
-
-    showToast(
-        "Product added to cart!"
-    );
-
-
-    /*
-       Add to Cart করলে
-       সরাসরি Payment খুলবে না।
-       Customer আগে Cart দেখবে।
-    */
-
-    setTimeout(
-        () => showPage("cart"),
-        500
-    );
+cart.push({
+id:id,
+qty:qty
+});
 
 }
 
+save();
 
-/* =========================
-   BUY NOW
-========================= */
+toast(
+"Product added to cart"
+);
+
+setTimeout(
+()=>go("cart"),
+400
+);
+
+}
+
 
 function buyNow(){
 
-    cart = [];
+cart=[];
 
+cart.push({
+id:currentProduct.id,
+qty:productQty
+});
 
-    cart.push({
+save();
 
-        productId:
-        currentProduct.id,
-
-        quantity:
-        productQuantity
-
-    });
-
-
-    saveData();
-
-
-    showPage("cart");
+go("cart");
 
 }
 
 
 /* =========================
-   GET SUBTOTAL
+   CART TOTAL
 ========================= */
 
-function getSubtotal(){
+function subtotal(){
 
-    return cart.reduce(
-        (total,item) => {
+return cart.reduce(
+(total,item)=>{
 
-            const product =
-            products.find(
-                p =>
-                p.id ===
-                item.productId
-            );
+let p =
+products.find(
+x=>x.id===item.id
+);
 
-            return total +
-            (
-                product.price *
-                item.quantity
-            );
+return total+
+p.price*item.qty;
 
-        },
-        0
-    );
+},
+0
+);
 
 }
 
 
 /* =========================
-   RENDER CART
+   CART
 ========================= */
 
 function renderCart(){
 
-    const container =
-    document.getElementById(
-        "cartContent"
-    );
+let box =
+document.getElementById(
+"cartContent"
+);
 
+if(!cart.length){
 
-    if(!cart.length){
+box.innerHTML=`
 
-        container.innerHTML = `
+<div class="empty">
 
-            <div class="empty">
+<h2>Your Cart is Empty</h2>
 
-                <h2>
-                    Your Cart is Empty
-                </h2>
+<br>
 
-                <br>
+<button
+class="btn primary"
+onclick="go('home')"
+>
+Continue Shopping
+</button>
 
-                <button
-                    class="btn btn-primary"
-                    onclick="showPage('home')"
-                >
-                    Continue Shopping
-                </button>
+</div>
 
-            </div>
+`;
 
-        `;
-
-        return;
-
-    }
-
-
-    const subtotal =
-    getSubtotal();
-
-
-    const total =
-    subtotal +
-    DELIVERY_CHARGE;
-
-
-    container.innerHTML = `
-
-        <div class="cart-layout">
-
-
-            <div>
-
-                ${cart.map(
-                    (item,index) => {
-
-                        const product =
-                        products.find(
-                            p =>
-                            p.id ===
-                            item.productId
-                        );
-
-
-                        return `
-
-                            <div
-                                class="cart-item"
-                            >
-
-
-                                <div
-                                    class="cart-product-image"
-                                >
-                                    ${product.icon}
-                                </div>
-
-
-                                <div
-                                    style="flex:1"
-                                >
-
-
-                                    <h2>
-
-                                        ${product.name}
-
-                                    </h2>
-
-
-                                    <p>
-
-                                        ${money(
-                                            product.price
-                                        )}
-
-                                    </p>
-
-
-                                    <div
-                                        class="quantity"
-                                    >
-
-                                        <button
-                                            onclick="
-                                            changeCartQuantity(
-                                                ${index},
-                                                -1
-                                            )"
-                                        >
-                                            −
-                                        </button>
-
-
-                                        <span>
-
-                                            ${item.quantity}
-
-                                        </span>
-
-
-                                        <button
-                                            onclick="
-                                            changeCartQuantity(
-                                                ${index},
-                                                1
-                                            )"
-                                        >
-                                            +
-                                        </button>
-
-
-                                        <button
-                                            class="
-                                            btn
-                                            btn-danger
-                                            "
-                                            onclick="
-                                            removeFromCart(
-                                                ${index}
-                                            )"
-                                        >
-                                            Remove
-                                        </button>
-
-                                    </div>
-
-
-                                </div>
-
-
-                            </div>
-
-                        `;
-
-                    }
-                ).join("")}
-
-            </div>
-
-
-            <div
-                class="cart-summary"
-            >
-
-
-                <h2>
-                    Order Summary
-                </h2>
-
-
-                <div
-                    class="summary-row"
-                >
-
-                    <span>
-                        Product Total
-                    </span>
-
-                    <strong>
-                        ${money(subtotal)}
-                    </strong>
-
-                </div>
-
-
-                <div
-                    class="summary-row"
-                >
-
-                    <span>
-                        Delivery Charge
-                    </span>
-
-                    <strong>
-                        ${money(
-                            DELIVERY_CHARGE
-                        )}
-                    </strong>
-
-                </div>
-
-
-                <div
-                    class="summary-total"
-                >
-
-                    Total:
-                    ${money(total)}
-
-                </div>
-
-
-                <button
-                    class="btn btn-primary"
-                    style="
-                    width:100%;
-                    margin-top:20px
-                    "
-                    onclick="goToCheckout()"
-                >
-
-                    Proceed to Checkout →
-
-                </button>
-
-
-            </div>
-
-
-        </div>
-
-    `;
+return;
 
 }
 
 
-/* =========================
-   CART QUANTITY
-========================= */
+let sub=subtotal();
 
-function changeCartQuantity(
-    index,
-    amount
-){
-
-    cart[index].quantity =
-    Math.max(
-        1,
-        cart[index].quantity +
-        amount
-    );
+let total=
+sub+DELIVERY_CHARGE;
 
 
-    saveData();
+box.innerHTML=`
+
+<div class="cart-layout">
+
+<div>
+
+${cart.map((item,i)=>{
+
+let p =
+products.find(
+x=>x.id===item.id
+);
+
+return`
+
+<div class="cart-item">
+
+<div class="cart-img">
+${p.icon}
+</div>
+
+<div>
+
+<h2>${p.name}</h2>
+
+<p>${money(p.price)}</p>
+
+<br>
+
+<button
+class="btn white"
+onclick="changeCart(${i},-1)"
+>
+−
+</button>
+
+<b style="padding:15px">
+${item.qty}
+</b>
+
+<button
+class="btn white"
+onclick="changeCart(${i},1)"
+>
++
+</button>
+
+<button
+class="btn"
+style="background:#fee2e2;color:red"
+onclick="removeCart(${i})"
+>
+Remove
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}).join("")}
+
+</div>
 
 
-    renderCart();
+<div class="cart-summary">
+
+<h2>Order Summary</h2>
+
+<div class="row">
+<span>Product Total</span>
+<b>${money(sub)}</b>
+</div>
+
+<div class="row">
+<span>Delivery Charge</span>
+<b>${money(DELIVERY_CHARGE)}</b>
+</div>
+
+<div class="row total">
+<span>Total</span>
+<b>${money(total)}</b>
+</div>
+
+<button
+class="btn primary"
+style="width:100%;margin-top:20px"
+onclick="checkout()"
+>
+Proceed to Checkout
+</button>
+
+</div>
+
+</div>
+
+`;
 
 }
 
 
-/* =========================
-   REMOVE CART
-========================= */
+function changeCart(i,n){
 
-function removeFromCart(index){
+cart[i].qty=
+Math.max(
+1,
+cart[i].qty+n
+);
 
-    cart.splice(
-        index,
-        1
-    );
+save();
 
+renderCart();
 
-    saveData();
-
-
-    renderCart();
+}
 
 
-    showToast(
-        "Product removed"
-    );
+function removeCart(i){
+
+cart.splice(i,1);
+
+save();
+
+renderCart();
 
 }
 
@@ -2371,200 +1231,122 @@ function removeFromCart(index){
    CHECKOUT
 ========================= */
 
-function goToCheckout(){
+function checkout(){
 
-    if(!cart.length){
+if(!cart.length){
 
-        showToast(
-            "Your cart is empty"
-        );
+toast(
+"Cart is empty"
+);
 
-        return;
+return;
 
-    }
+}
 
-
-    showPage(
-        "checkout"
-    );
+go("checkout");
 
 }
 
 
 /* =========================
-   PAYMENT UPDATE
+   PAYMENT CHANGE
 ========================= */
 
-function updatePayment(){
+function paymentChange(){
 
-    const selected =
-    document.querySelector(
-        'input[name="paymentMethod"]:checked'
-    );
+let selected =
+document.querySelector(
+'input[name="payment"]:checked'
+);
 
+if(!selected)return;
 
-    if(!selected){
-        return;
-    }
+let method =
+selected.value;
 
+let bkash =
+document.getElementById(
+"bkashDetails"
+);
 
-    const method =
-    selected.value;
 
+if(method==="cod"){
 
-    const subtotal =
-    getSubtotal();
+bkash.style.display="none";
 
+}else{
 
-    const total =
-    subtotal +
-    DELIVERY_CHARGE;
+bkash.style.display="block";
 
+}
 
-    let bkashPaid = 0;
 
-    let codDue = total;
+let sub=subtotal();
 
+let total=
+sub+DELIVERY_CHARGE;
 
-    if(method === "delivery"){
+let bkashPaid=0;
 
-        bkashPaid =
-        DELIVERY_CHARGE;
+let codDue=total;
 
-        codDue =
-        subtotal;
 
-    }
+if(method==="delivery"){
 
+bkashPaid=
+DELIVERY_CHARGE;
 
-    if(method === "full"){
+codDue=sub;
 
-        bkashPaid =
-        total;
+}
 
-        codDue = 0;
+if(method==="full"){
 
-    }
+bkashPaid=total;
 
+codDue=0;
 
-    if(method === "cod"){
+}
 
-        bkashPaid = 0;
 
-        codDue =
-        total;
+document
+.getElementById(
+"checkoutSummary"
+)
+.innerHTML=`
 
-    }
+<div class="cart-summary">
 
+<h3>Payment Summary</h3>
 
-    const details =
-    document.getElementById(
-        "bkashPaymentDetails"
-    );
+<div class="row">
+<span>Product Total</span>
+<b>${money(sub)}</b>
+</div>
 
+<div class="row">
+<span>Delivery Charge</span>
+<b>${money(DELIVERY_CHARGE)}</b>
+</div>
 
-    if(method === "cod"){
+<div class="row">
+<span>bKash Paid</span>
+<b>${money(bkashPaid)}</b>
+</div>
 
-        details.style.display =
-        "none";
+<div class="row">
+<span>Cash on Delivery</span>
+<b>${money(codDue)}</b>
+</div>
 
-    }else{
+<div class="row total">
+<span>Grand Total</span>
+<b>${money(total)}</b>
+</div>
 
-        details.style.display =
-        "block";
+</div>
 
-    }
-
-
-    document
-    .getElementById(
-        "checkoutSummary"
-    )
-    .innerHTML = `
-
-        <h3>
-            Payment Summary
-        </h3>
-
-        <br>
-
-
-        <div
-            class="summary-row"
-        >
-
-            <span>
-                Product Total
-            </span>
-
-            <strong>
-                ${money(subtotal)}
-            </strong>
-
-        </div>
-
-
-        <div
-            class="summary-row"
-        >
-
-            <span>
-                Delivery Charge
-            </span>
-
-            <strong>
-                ${money(
-                    DELIVERY_CHARGE
-                )}
-            </strong>
-
-        </div>
-
-
-        <div
-            class="summary-row"
-        >
-
-            <span>
-                bKash Paid
-            </span>
-
-            <strong>
-                ${money(
-                    bkashPaid
-                )}
-            </strong>
-
-        </div>
-
-
-        <div
-            class="summary-row"
-        >
-
-            <span>
-                Cash on Delivery Due
-            </span>
-
-            <strong>
-                ${money(
-                    codDue
-                )}
-            </strong>
-
-        </div>
-
-
-        <div
-            class="summary-total"
-        >
-
-            Grand Total:
-            ${money(total)}
-
-        </div>
-
-    `;
+`;
 
 }
 
@@ -2575,227 +1357,171 @@ function updatePayment(){
 
 function placeOrder(){
 
-    const name =
-    document
-    .getElementById(
-        "customerName"
-    )
-    .value.trim();
+let name =
+document
+.getElementById(
+"customerName"
+)
+.value.trim();
 
+let phone =
+document
+.getElementById(
+"customerPhone"
+)
+.value.trim();
 
-    const phone =
-    document
-    .getElementById(
-        "customerPhone"
-    )
-    .value.trim();
+let address =
+document
+.getElementById(
+"customerAddress"
+)
+.value.trim();
 
+let selected =
+document.querySelector(
+'input[name="payment"]:checked'
+);
 
-    const address =
-    document
-    .getElementById(
-        "customerAddress"
-    )
-    .value.trim();
+let transaction =
+document
+.getElementById(
+"transactionId"
+)
+.value.trim();
 
 
-    const selected =
-    document.querySelector(
-        'input[name="paymentMethod"]:checked'
-    );
+if(!name||!phone||!address){
 
+toast(
+"Customer information পূরণ করুন"
+);
 
-    const transactionId =
-    document
-    .getElementById(
-        "transactionId"
-    )
-    .value.trim();
+return;
 
+}
 
-    if(
-        !name ||
-        !phone ||
-        !address
-    ){
 
-        showToast(
-            "Please complete delivery information"
-        );
+let method =
+selected.value;
 
-        return;
 
-    }
+if(
+method!=="cod"
+&&
+!transaction
+){
 
+toast(
+"bKash Transaction ID দিন"
+);
 
-    const method =
-    selected.value;
+return;
 
+}
 
-    const subtotal =
-    getSubtotal();
 
+let sub=subtotal();
 
-    const total =
-    subtotal +
-    DELIVERY_CHARGE;
+let total=
+sub+DELIVERY_CHARGE;
 
+let bkashPaid=0;
 
-    let bkashPaid = 0;
+let codDue=total;
 
-    let codDue = total;
+let paymentName="";
 
 
-    if(
-        method === "delivery"
-    ){
+if(method==="delivery"){
 
-        bkashPaid =
-        DELIVERY_CHARGE;
+paymentName=
+"bKash Delivery Charge + COD";
 
-        codDue =
-        subtotal;
+bkashPaid=
+DELIVERY_CHARGE;
 
-    }
+codDue=sub;
 
+}
 
-    if(
-        method === "full"
-    ){
 
-        bkashPaid =
-        total;
+if(method==="full"){
 
-        codDue = 0;
+paymentName=
+"Full bKash Payment";
 
-    }
+bkashPaid=total;
 
+codDue=0;
 
-    if(
-        method !== "cod" &&
-        !transactionId
-    ){
+}
 
-        showToast(
-            "Please enter bKash Transaction ID"
-        );
 
-        return;
+if(method==="cod"){
 
-    }
+paymentName=
+"Cash on Delivery";
 
+}
 
-    let paymentName;
 
+let order={
 
-    if(
-        method === "delivery"
-    ){
+id:
+"NM-"+Date.now(),
 
-        paymentName =
-        "bKash Delivery Charge + COD";
+date:
+new Date().toLocaleString(),
 
-    }
+name:name,
 
+phone:phone,
 
-    if(
-        method === "full"
-    ){
+address:address,
 
-        paymentName =
-        "Full bKash Payment";
+payment:
+paymentName,
 
-    }
+transaction:
+transaction||"N/A",
 
+productTotal:sub,
 
-    if(
-        method === "cod"
-    ){
+delivery:DELIVERY_CHARGE,
 
-        paymentName =
-        "Cash on Delivery";
+bkashPaid:bkashPaid,
 
-    }
+codDue:codDue,
 
+total:total,
 
-    const order = {
+status:"Order Received",
 
-        orderId:
-        "NM" +
-        Date.now(),
+items:
+JSON.parse(
+JSON.stringify(cart)
+)
 
-        date:
-        new Date()
-        .toLocaleString(),
+};
 
-        customerName:
-        name,
 
-        phone:
-        phone,
+orders.unshift(order);
 
-        address:
-        address,
+cart=[];
 
-        paymentMethod:
-        paymentName,
+save();
 
-        transactionId:
-        transactionId ||
-        "Not Applicable",
 
-        productTotal:
-        subtotal,
+toast(
+"Order Successfully Placed!"
+);
 
-        deliveryCharge:
-        DELIVERY_CHARGE,
 
-        bkashPaid:
-        bkashPaid,
-
-        codDue:
-        codDue,
-
-        grandTotal:
-        total,
-
-        status:
-        "Order Received",
-
-        items:
-        JSON.parse(
-            JSON.stringify(cart)
-        )
-
-    };
-
-
-    orders.unshift(
-        order
-    );
-
-
-    cart = [];
-
-
-    saveData();
-
-
-    showToast(
-        "Order placed successfully!"
-    );
-
-
-    setTimeout(
-        () => {
-
-            showPage(
-                "orders"
-            );
-
-        },
-        900
-    );
+setTimeout(
+()=>go("orders"),
+800
+);
 
 }
 
@@ -2806,179 +1532,97 @@ function placeOrder(){
 
 function renderOrders(){
 
-    const container =
-    document.getElementById(
-        "ordersContent"
-    );
+let box =
+document.getElementById(
+"ordersContent"
+);
 
+if(!orders.length){
 
-    if(!orders.length){
+box.innerHTML=`
 
-        container.innerHTML = `
+<div class="empty">
 
-            <div class="empty">
+<h2>No Orders Yet</h2>
 
-                <h2>
-                    No Orders Yet
-                </h2>
+<br>
 
-                <br>
+<button
+class="btn primary"
+onclick="go('home')"
+>
+Start Shopping
+</button>
 
-                <button
-                    class="btn btn-primary"
-                    onclick="showPage('home')"
-                >
-                    Start Shopping
-                </button>
+</div>
 
-            </div>
+`;
 
-        `;
+return;
 
-        return;
+}
 
-    }
 
+box.innerHTML=
+orders.map(o=>`
 
-    container.innerHTML =
+<div class="order-card">
 
-    orders.map(
-        order => `
+<div class="order-head">
 
-        <div
-            class="order-card"
-        >
+<strong>
+Order #${o.id}
+</strong>
 
+<span class="status">
+${o.status}
+</span>
 
-            <div
-                class="order-header"
-            >
+</div>
 
-                <div>
+<p>
+<b>Date:</b> ${o.date}
+</p>
 
-                    <strong>
-                        Order #${order.orderId}
-                    </strong>
+<p>
+<b>Customer:</b> ${o.name}
+</p>
 
-                    <br>
+<p>
+<b>Phone:</b> ${o.phone}
+</p>
 
-                    ${order.date}
+<p>
+<b>Address:</b> ${o.address}
+</p>
 
-                </div>
+<br>
 
+<p>
+<b>Payment:</b> ${o.payment}
+</p>
 
-                <div
-                    class="status"
-                >
+<p>
+<b>bKash Paid:</b> ${money(o.bkashPaid)}
+</p>
 
-                    ${order.status}
+<p>
+<b>COD Due:</b> ${money(o.codDue)}
+</p>
 
-                </div>
+<p>
+<b>Transaction ID:</b> ${o.transaction}
+</p>
 
-            </div>
+<br>
 
+<h3>
+Grand Total: ${money(o.total)}
+</h3>
 
-            <p>
+</div>
 
-                <b>
-                    Customer:
-                </b>
-
-                ${order.customerName}
-
-            </p>
-
-
-            <p>
-
-                <b>
-                    Phone:
-                </b>
-
-                ${order.phone}
-
-            </p>
-
-
-            <p>
-
-                <b>
-                    Address:
-                </b>
-
-                ${order.address}
-
-            </p>
-
-
-            <br>
-
-
-            <p>
-
-                <b>
-                    Payment:
-                </b>
-
-                ${order.paymentMethod}
-
-            </p>
-
-
-            <p>
-
-                <b>
-                    bKash Paid:
-                </b>
-
-                ${money(
-                    order.bkashPaid
-                )}
-
-            </p>
-
-
-            <p>
-
-                <b>
-                    COD Due:
-                </b>
-
-                ${money(
-                    order.codDue
-                )}
-
-            </p>
-
-
-            <p>
-
-                <b>
-                    Transaction ID:
-                </b>
-
-                ${order.transactionId}
-
-            </p>
-
-
-            <br>
-
-
-            <h3>
-
-                Grand Total:
-                ${money(
-                    order.grandTotal
-                )}
-
-            </h3>
-
-
-        </div>
-
-        `
-    ).join("");
+`).join("");
 
 }
 
@@ -2987,142 +1631,81 @@ function renderOrders(){
    SEARCH
 ========================= */
 
-function searchProducts(){
+function search(){
 
-    const query =
-    document
-    .getElementById(
-        "searchInput"
-    )
-    .value
-    .toLowerCase();
+let q =
+document
+.getElementById(
+"searchInput"
+)
+.value
+.toLowerCase();
 
+let result =
+products.filter(
+p=>
+p.name
+.toLowerCase()
+.includes(q)
+||
+p.category
+.toLowerCase()
+.includes(q)
+);
 
-    const category =
-    document
-    .getElementById(
-        "searchCategory"
-    )
-    .value;
+go("home");
 
+render(result);
 
-    const results =
-    products.filter(
-        product =>
+scrollProducts();
 
-        (
-            product.name
-            .toLowerCase()
-            .includes(query)
-
-            ||
-
-            product.category
-            .toLowerCase()
-            .includes(query)
-        )
-
-        &&
-
-        (
-            category ===
-            "All"
-
-            ||
-
-            product.category ===
-            category
-        )
-    );
+}
 
 
-    showPage(
-        "home"
-    );
+function searchEnter(e){
+
+if(e.key==="Enter")
+search();
+
+}
 
 
-    renderProducts(
-        results
-    );
+function filter(category){
 
+let result =
+products.filter(
+p=>p.category===category
+);
 
-    scrollToProducts();
+go("home");
+
+render(result);
+
+scrollProducts();
 
 }
 
 
 /* =========================
-   SEARCH ENTER
+   SCROLL
 ========================= */
 
-function handleSearchKey(
-    event
-){
+function scrollProducts(){
 
-    if(
-        event.key ===
-        "Enter"
-    ){
+setTimeout(
+()=>{
 
-        searchProducts();
+document
+.getElementById(
+"productsSection"
+)
+.scrollIntoView({
+behavior:"smooth"
+});
 
-    }
-
-}
-
-
-/* =========================
-   CATEGORY
-========================= */
-
-function filterCategory(
-    category
-){
-
-    const results =
-    products.filter(
-        product =>
-        product.category ===
-        category
-    );
-
-
-    showPage(
-        "home"
-    );
-
-
-    renderProducts(
-        results
-    );
-
-
-    scrollToProducts();
-
-}
-
-
-/* =========================
-   SCROLL PRODUCTS
-========================= */
-
-function scrollToProducts(){
-
-    setTimeout(
-        () => {
-
-            document
-            .getElementById(
-                "productSection"
-            )
-            .scrollIntoView({
-                behavior:
-                "smooth"
-            });
-
-        },
-        200
-    );
+},
+200
+);
 
 }
 
@@ -3131,50 +1714,32 @@ function scrollToProducts(){
    TOAST
 ========================= */
 
-function showToast(
-    message
-){
+function toast(message){
 
-    const toast =
-    document
-    .getElementById(
-        "toast"
-    );
+let t =
+document.getElementById(
+"toast"
+);
 
+t.innerText=message;
 
-    toast.innerText =
-    message;
+t.classList.add("show");
 
-
-    toast.classList.add(
-        "show"
-    );
-
-
-    setTimeout(
-        () => {
-
-            toast.classList.remove(
-                "show"
-            );
-
-        },
-        2500
-    );
+setTimeout(
+()=>t.classList.remove("show"),
+2500
+);
 
 }
 
 
 /* =========================
-   START WEBSITE
+   START
 ========================= */
 
-renderProducts(
-    products
-);
+render(products);
 
-updateCartCount();
-
+updateCart();
 
 </script>
 
