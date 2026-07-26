@@ -5,9 +5,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Trusted Network | Category</title>
+<title>Trusted Network | Bangladesh Marketplace</title>
 
 <style>
+
+/* =========================
+GLOBAL
+========================= */
 
 *{
     margin:0;
@@ -16,139 +20,286 @@
 }
 
 body{
-    font-family:Arial, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
     background:#f5f6f8;
     color:#222;
 }
 
-/* HEADER */
+button,
+input,
+select{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+
+/* =========================
+TOP BAR
+========================= */
+
+.topbar{
+    background:#111827;
+    color:white;
+    padding:8px 5%;
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+}
+
+
+/* =========================
+HEADER
+========================= */
 
 header{
     background:white;
-    padding:18px 5%;
+    padding:16px 5%;
     display:flex;
     align-items:center;
     gap:25px;
-    border-bottom:1px solid #eee;
     position:sticky;
     top:0;
-    z-index:10;
+    z-index:1000;
+    border-bottom:1px solid #eee;
 }
 
 .logo{
-    font-size:27px;
+    font-size:26px;
     font-weight:bold;
     color:#f85606;
+    white-space:nowrap;
 }
 
 .search{
     flex:1;
     display:flex;
+    max-width:700px;
 }
 
 .search input{
-    width:100%;
+    flex:1;
     padding:14px;
     border:1px solid #ddd;
+    outline:none;
     border-radius:6px 0 0 6px;
 }
 
 .search button{
-    padding:0 25px;
+    width:60px;
     border:none;
     background:#f85606;
     color:white;
-    cursor:pointer;
+    border-radius:0 6px 6px 0;
 }
 
-.home{
-    text-decoration:none;
-    color:#222;
+.header-actions{
+    display:flex;
+    gap:20px;
+}
+
+.header-actions button{
+    border:none;
+    background:none;
+    font-size:22px;
+}
+
+
+/* =========================
+NAV
+========================= */
+
+nav{
+    background:white;
+    padding:13px 5%;
+    border-bottom:1px solid #eee;
+    overflow-x:auto;
+    white-space:nowrap;
+}
+
+nav a{
+    margin-right:25px;
+    font-size:14px;
     font-weight:bold;
 }
 
-/* PAGE */
-
-.container{
-    width:90%;
-    max-width:1400px;
-    margin:35px auto;
+nav a:hover{
+    color:#f85606;
 }
 
-.breadcrumb{
-    color:#777;
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+    margin:25px 5%;
+    background:linear-gradient(120deg,#fff0e7,#ffffff);
+    border-radius:15px;
+    padding:60px;
+}
+
+.hero h1{
+    font-size:48px;
+    max-width:700px;
+    line-height:1.15;
+}
+
+.hero h1 span{
+    color:#f85606;
+}
+
+.hero p{
+    margin:20px 0;
+    max-width:650px;
+    color:#666;
+    font-size:18px;
+    line-height:1.6;
+}
+
+.hero button{
+    padding:14px 25px;
+    border:none;
+    background:#f85606;
+    color:white;
+    border-radius:6px;
+    font-weight:bold;
+}
+
+
+/* =========================
+SECTION
+========================= */
+
+.section{
+    width:90%;
+    max-width:1500px;
+    margin:45px auto;
+}
+
+.section-title{
+    display:flex;
+    justify-content:space-between;
     margin-bottom:20px;
 }
 
-.title{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:25px;
+.section-title h2{
+    font-size:26px;
 }
 
-.title h1{
-    font-size:32px;
-}
 
-/* SUB CATEGORY */
+/* =========================
+CATEGORY
+========================= */
 
-.subcategories{
+.category-grid{
     display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:18px;
+    grid-template-columns:repeat(6,1fr);
+    gap:15px;
 }
 
-.subcategory{
+.category{
     background:white;
-    padding:30px 15px;
+    padding:25px 10px;
     text-align:center;
-    border-radius:12px;
-    text-decoration:none;
-    color:#222;
+    border-radius:10px;
     border:1px solid #eee;
-    transition:.25s;
+    transition:.2s;
 }
 
-.subcategory:hover{
-    transform:translateY(-5px);
-    box-shadow:0 8px 25px rgba(0,0,0,.1);
+.category:hover{
+    transform:translateY(-4px);
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
 }
 
-.icon{
-    font-size:50px;
+.category-icon{
+    font-size:45px;
+    margin-bottom:12px;
+}
+
+.category h3{
+    font-size:14px;
+}
+
+
+/* =========================
+PRODUCT AREA
+========================= */
+
+.shop-area{
+    display:none;
+}
+
+.shop-layout{
+    display:grid;
+    grid-template-columns:240px 1fr;
+    gap:25px;
+}
+
+.filters{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    height:max-content;
+}
+
+.filters h3{
     margin-bottom:15px;
 }
 
-.subcategory h3{
-    font-size:17px;
+.filters label{
+    display:block;
+    margin:12px 0;
+    font-size:14px;
 }
 
-/* PRODUCTS */
-
-.product-section{
-    margin-top:45px;
+.filters select,
+.filters input{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    border:1px solid #ddd;
+    border-radius:5px;
 }
 
-.product-section h2{
-    margin-bottom:20px;
+.clear{
+    width:100%;
+    padding:10px;
+    background:#111827;
+    color:white;
+    border:none;
+    border-radius:5px;
+    margin-top:15px;
 }
 
-.products{
+.product-grid{
     display:grid;
-    grid-template-columns:repeat(5,1fr);
+    grid-template-columns:repeat(4,1fr);
     gap:18px;
 }
 
 .product{
     background:white;
-    border-radius:12px;
+    border-radius:10px;
     overflow:hidden;
     border:1px solid #eee;
+    transition:.2s;
+}
+
+.product:hover{
+    transform:translateY(-4px);
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
 }
 
 .product-image{
-    height:200px;
+    height:210px;
     background:#f1f2f4;
     display:flex;
     align-items:center;
@@ -160,66 +311,334 @@ header{
     padding:15px;
 }
 
+.product-info small{
+    color:#777;
+}
+
 .product-info h3{
     margin:8px 0;
     font-size:16px;
 }
 
-.brand{
-    color:#777;
-    font-size:13px;
+.rating{
+    color:#f59e0b;
+    margin:7px 0;
 }
 
 .price{
     color:#f85606;
-    font-size:20px;
     font-weight:bold;
-    margin-top:10px;
+    font-size:19px;
 }
 
-.buy{
-    width:100%;
+.product-buttons{
+    display:flex;
+    gap:8px;
     margin-top:12px;
-    padding:10px;
+}
+
+.product-buttons button{
+    flex:1;
+    padding:9px;
+    border:none;
+    border-radius:5px;
+}
+
+.view{
+    background:#111827;
+    color:white;
+}
+
+.cart{
+    background:#f85606;
+    color:white;
+}
+
+
+/* =========================
+BRANDS
+========================= */
+
+.brand-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:15px;
+}
+
+.brand{
+    background:white;
+    padding:20px;
+    text-align:center;
+    border-radius:8px;
+    font-weight:bold;
+    border:1px solid #eee;
+}
+
+
+/* =========================
+CART
+========================= */
+
+.cart-panel{
+    display:none;
+    position:fixed;
+    right:0;
+    top:0;
+    width:400px;
+    max-width:100%;
+    height:100vh;
+    background:white;
+    z-index:2000;
+    box-shadow:-5px 0 20px rgba(0,0,0,.2);
+    padding:25px;
+    overflow-y:auto;
+}
+
+.cart-header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:25px;
+}
+
+.cart-header button{
+    border:none;
+    background:none;
+    font-size:22px;
+}
+
+.cart-item{
+    display:flex;
+    gap:12px;
+    border-bottom:1px solid #eee;
+    padding:15px 0;
+}
+
+.cart-item-icon{
+    font-size:40px;
+}
+
+.cart-total{
+    margin-top:25px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.checkout{
+    width:100%;
+    padding:14px;
+    margin-top:15px;
     border:none;
     background:#f85606;
     color:white;
     border-radius:5px;
-    cursor:pointer;
 }
 
-/* MOBILE */
 
-@media(max-width:1000px){
+/* =========================
+DETAIL MODAL
+========================= */
 
-    .subcategories{
-        grid-template-columns:repeat(3,1fr);
-    }
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    z-index:3000;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
 
-    .products{
-        grid-template-columns:repeat(3,1fr);
-    }
+.modal-box{
+    background:white;
+    max-width:800px;
+    width:100%;
+    border-radius:12px;
+    padding:30px;
+    max-height:90vh;
+    overflow:auto;
+}
+
+.modal-close{
+    float:right;
+    border:none;
+    background:none;
+    font-size:25px;
+}
+
+.detail{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.detail-image{
+    background:#f1f2f4;
+    min-height:300px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:100px;
+    border-radius:10px;
+}
+
+.detail-info h2{
+    margin-bottom:15px;
+}
+
+.detail-info p{
+    color:#666;
+    line-height:1.7;
+    margin:15px 0;
+}
+
+.buy-now{
+    padding:14px;
+    width:100%;
+    background:#f85606;
+    color:white;
+    border:none;
+    border-radius:5px;
+}
+
+
+/* =========================
+SERVICES
+========================= */
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.service{
+    background:white;
+    padding:25px;
+    text-align:center;
+    border-radius:10px;
+}
+
+.service div{
+    font-size:35px;
+}
+
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+    background:#111827;
+    color:white;
+    padding:50px 5%;
+    margin-top:50px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:30px;
+}
+
+footer p,
+footer a{
+    color:#aaa;
+    line-height:1.8;
+}
+
+footer a{
+    display:block;
+    margin:7px 0;
+}
+
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:1100px){
+
+.category-grid{
+    grid-template-columns:repeat(4,1fr);
+}
+
+.product-grid{
+    grid-template-columns:repeat(3,1fr);
+}
+
+.brand-grid{
+    grid-template-columns:repeat(4,1fr);
+}
 
 }
 
-@media(max-width:600px){
+@media(max-width:750px){
 
-    header{
-        flex-wrap:wrap;
-    }
+.topbar{
+    display:none;
+}
 
-    .logo{
-        width:100%;
-        text-align:center;
-    }
+header{
+    flex-wrap:wrap;
+}
 
-    .subcategories{
-        grid-template-columns:repeat(2,1fr);
-    }
+.logo{
+    width:100%;
+    text-align:center;
+}
 
-    .products{
-        grid-template-columns:repeat(2,1fr);
-    }
+.search{
+    width:100%;
+}
+
+.category-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.shop-layout{
+    grid-template-columns:1fr;
+}
+
+.product-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.brand-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.service-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.hero{
+    padding:35px 25px;
+}
+
+.hero h1{
+    font-size:35px;
+}
+
+.detail{
+    grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:450px){
+
+.product-grid{
+    grid-template-columns:1fr;
+}
+
+.service-grid{
+    grid-template-columns:1fr;
+}
+
+.footer-grid{
+    grid-template-columns:1fr;
+}
 
 }
 
@@ -227,14 +646,26 @@ header{
 
 </head>
 
+
 <body>
 
 
-<header>
+<!-- TOP BAR -->
 
-<a href="index.html" class="home">
-← Home
-</a>
+<div class="topbar">
+
+<span>🇧🇩 Bangladesh Marketplace</span>
+
+<span>
+Help Center | Track Order | Become a Seller
+</span>
+
+</div>
+
+
+<!-- HEADER -->
+
+<header>
 
 <div class="logo">
 Trusted Network
@@ -243,12 +674,29 @@ Trusted Network
 <div class="search">
 
 <input
-type="text"
-placeholder="Search products..."
+id="searchInput"
+placeholder="Search products, brands, categories..."
+onkeyup="searchProducts()"
 >
 
+<button onclick="searchProducts()">
+🔍
+</button>
+
+</div>
+
+<div class="header-actions">
+
+<button onclick="showWishlist()">
+♡
+</button>
+
+<button onclick="openCart()">
+🛒 <span id="cartCount">0</span>
+</button>
+
 <button>
-🔍 Search
+👤
 </button>
 
 </div>
@@ -256,40 +704,471 @@ placeholder="Search products..."
 </header>
 
 
-<div class="container">
+<!-- NAVIGATION -->
 
-<div class="breadcrumb">
+<nav>
 
-Home → <span id="breadcrumb"></span>
+<a href="#" onclick="goHome()">Home</a>
 
-</div>
+<a href="#categories">Categories</a>
+
+<a href="#brands">Brands</a>
+
+<a href="#" onclick="showShop('New Arrivals')">New Arrivals</a>
+
+<a href="#" onclick="showShop('Best Sellers')">Best Sellers</a>
+
+<a href="#" onclick="showShop('Deals')">Deals</a>
+
+<a href="#" onclick="showShop('Local Products')">🇧🇩 Local Products</a>
+
+</nav>
 
 
-<div class="title">
+<!-- HERO -->
 
-<h1 id="categoryTitle">
-Category
+<section class="hero">
+
+<h1>
+Everything You Need,
+<span>All in One Place.</span>
 </h1>
 
-</div>
+<p>
+Discover fashion, electronics, mobile phones,
+beauty products, home essentials and everyday
+products from trusted sellers.
+</p>
+
+<button onclick="document.getElementById('categories').scrollIntoView()">
+Explore Categories
+</button>
+
+</section>
 
 
-<div class="subcategories" id="subcategories">
-</div>
+<!-- CATEGORIES -->
 
+<section class="section" id="categories">
 
-<div class="product-section">
+<div class="section-title">
 
 <h2>
-Featured Products
+Shop by Category
 </h2>
 
-<div class="products" id="products">
+</div>
+
+<div class="category-grid" id="categoryGrid">
+</div>
+
+</section>
+
+
+<!-- BRANDS -->
+
+<section class="section" id="brands">
+
+<div class="section-title">
+
+<h2>
+Popular Brands
+</h2>
+
+</div>
+
+<div class="brand-grid">
+
+<div class="brand" onclick="filterBrand('Apple')">
+Apple
+</div>
+
+<div class="brand" onclick="filterBrand('Samsung')">
+Samsung
+</div>
+
+<div class="brand" onclick="filterBrand('Xiaomi')">
+Xiaomi
+</div>
+
+<div class="brand" onclick="filterBrand('Microsoft')">
+Microsoft
+</div>
+
+<div class="brand" onclick="filterBrand('Sony')">
+Sony
+</div>
+
+<div class="brand" onclick="filterBrand('Logitech')">
+Logitech
+</div>
+
+<div class="brand" onclick="filterBrand('HP')">
+HP
+</div>
+
+<div class="brand" onclick="filterBrand('Dell')">
+Dell
+</div>
+
+<div class="brand" onclick="filterBrand('Lenovo')">
+Lenovo
+</div>
+
+<div class="brand" onclick="filterBrand('A4Tech')">
+A4Tech
+</div>
+
+<div class="brand" onclick="filterBrand('Anker')">
+Anker
+</div>
+
+<div class="brand" onclick="filterBrand('Razer')">
+Razer
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SHOP AREA -->
+
+<section class="section shop-area" id="shop">
+
+<div class="section-title">
+
+<h2 id="shopTitle">
+Products
+</h2>
+
+</div>
+
+
+<div class="shop-layout">
+
+
+<!-- FILTER -->
+
+<aside class="filters">
+
+<h3>
+Filter Products
+</h3>
+
+<label>
+
+Category
+
+<select id="categoryFilter"
+onchange="applyFilters()">
+
+<option value="all">
+All
+</option>
+
+</select>
+
+</label>
+
+
+<label>
+
+Brand
+
+<select id="brandFilter"
+onchange="applyFilters()">
+
+<option value="all">
+All Brands
+</option>
+
+</select>
+
+</label>
+
+
+<label>
+
+Condition
+
+<select id="conditionFilter"
+onchange="applyFilters()">
+
+<option value="all">
+All
+</option>
+
+<option value="New">
+New
+</option>
+
+<option value="Used">
+Used
+</option>
+
+</select>
+
+</label>
+
+
+<label>
+
+Maximum Price
+
+<input
+type="number"
+id="priceFilter"
+placeholder="Example: 50000"
+oninput="applyFilters()"
+>
+
+</label>
+
+
+<button
+class="clear"
+onclick="clearFilters()">
+
+Clear Filters
+
+</button>
+
+</aside>
+
+
+<!-- PRODUCTS -->
+
+<div class="product-grid" id="productGrid">
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section class="section">
+
+<div class="service-grid">
+
+<div class="service">
+
+<div>🚚</div>
+
+<h3>Fast Delivery</h3>
+
+<p>Delivery across Bangladesh.</p>
+
+</div>
+
+
+<div class="service">
+
+<div>🔒</div>
+
+<h3>Secure Shopping</h3>
+
+<p>Safe and trusted shopping.</p>
+
+</div>
+
+
+<div class="service">
+
+<div>⭐</div>
+
+<h3>Trusted Products</h3>
+
+<p>Quality products from sellers.</p>
+
+</div>
+
+
+<div class="service">
+
+<div>💬</div>
+
+<h3>Customer Support</h3>
+
+<p>We're here to help.</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CART -->
+
+<div class="cart-panel" id="cartPanel">
+
+<div class="cart-header">
+
+<h2>
+Your Cart
+</h2>
+
+<button onclick="closeCart()">
+✕
+</button>
+
+</div>
+
+<div id="cartItems">
+</div>
+
+<div class="cart-total">
+
+Total:
+৳ <span id="cartTotal">0</span>
+
+</div>
+
+<button class="checkout"
+onclick="checkout()">
+
+Proceed to Checkout
+
+</button>
+
+</div>
+
+
+<!-- PRODUCT MODAL -->
+
+<div class="modal" id="productModal">
+
+<div class="modal-box">
+
+<button
+class="modal-close"
+onclick="closeModal()">
+
+✕
+
+</button>
+
+<div class="detail">
+
+<div class="detail-image" id="detailImage">
+</div>
+
+<div class="detail-info">
+
+<h2 id="detailName">
+Product
+</h2>
+
+<h3 id="detailPrice">
+</h3>
+
+<p id="detailDescription">
+</p>
+
+<button
+class="buy-now"
+onclick="addCurrentProduct()">
+
+🛒 Add to Cart
+
+</button>
+
+</div>
+
 </div>
 
 </div>
 
 </div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+
+<h2>
+Trusted Network
+</h2>
+
+<p>
+A modern Bangladesh-focused marketplace
+for fashion, electronics, lifestyle and
+everyday products.
+</p>
+
+</div>
+
+<div>
+
+<h3>
+Shopping
+</h3>
+
+<a href="#categories">
+Categories
+</a>
+
+<a href="#brands">
+Brands
+</a>
+
+<a href="#">
+New Arrivals
+</a>
+
+</div>
+
+<div>
+
+<h3>
+Customer Care
+</h3>
+
+<a href="#">
+Help Center
+</a>
+
+<a href="#">
+Track Order
+</a>
+
+<a href="#">
+Return Policy
+</a>
+
+<a href="#">
+Contact
+</a>
+
+</div>
+
+<div>
+
+<h3>
+Sell With Us
+</h3>
+
+<a href="#">
+Become a Seller
+</a>
+
+<a href="#">
+Seller Center
+</a>
+
+</div>
+
+</div>
+
+</footer>
 
 
 <script>
@@ -298,578 +1177,728 @@ Featured Products
 CATEGORY DATA
 ========================= */
 
-const categories = {
+const categories=[
 
-mens:{
+["👕","Men's Fashion","mens"],
 
-name:"Men's Fashion",
+["👗","Women's Fashion","womens"],
 
-items:[
+["📱","Mobile & Tablets","mobile"],
 
-["👕","T-Shirts"],
-["👔","Shirts"],
-["🧥","Panjabi"],
-["👖","Pants & Jeans"],
-["🧥","Hoodies & Sweatshirts"],
-["🧥","Jackets & Coats"],
-["🤵","Suits & Blazers"],
-["🩲","Underwear & Innerwear"],
-["🏃","Sportswear"],
-["👞","Shoes"],
-["🩴","Sandals & Slippers"],
-["⌚","Watches"],
-["👝","Wallets"],
-["🕶️","Sunglasses"],
-["🎒","Bags"],
-["🧴","Men's Grooming"]
+["💻","Computers & Laptops","computers"],
 
-]
+["🎧","Electronics & Gadgets","electronics"],
 
-},
+["💄","Beauty & Cosmetics","beauty"],
 
-womens:{
+["🏠","Home & Living","home"],
 
-name:"Women's Fashion",
+["🍳","Kitchen & Dining","kitchen"],
 
-items:[
+["🛒","Grocery","grocery"],
 
-["🥻","Saree"],
-["👗","Three-Piece"],
-["👚","Kurti"],
-["👘","Salwar Kameez"],
-["👗","Dresses"],
-["🧕","Abaya"],
-["🧕","Hijab"],
-["👕","T-Shirts & Tops"],
-["👖","Pants & Jeans"],
-["👠","Shoes"],
-["👜","Handbags"],
-["💍","Jewelry"],
-["⌚","Watches"],
-["🕶️","Sunglasses"],
-["💄","Beauty Accessories"]
+["👶","Kids & Baby","kids"],
 
-]
+["🏋️","Sports & Fitness","sports"],
 
-},
+["🎒","Bags & Travel","travel"],
 
-mobile:{
+["🚗","Automotive","automotive"],
 
-name:"Mobile & Tablets",
+["🧸","Toys & Games","toys"],
 
-items:[
+["📚","Books & Stationery","books"],
 
-["📱","Smartphones"],
-["📞","Feature Phones"],
-["📱","Tablets"],
-["🔋","Power Banks"],
-["🔌","Chargers"],
-["🔗","Charging Cables"],
-["📱","Phone Cases"],
-["🛡️","Screen Protectors"],
-["🎧","Mobile Earphones"],
-["📱","Mobile Accessories"]
+["🪑","Furniture","furniture"],
 
-]
+["🔧","Tools & Hardware","tools"],
 
-},
+["🌿","Garden & Outdoor","garden"],
 
-computers:{
+["🐶","Pet Supplies","pets"],
 
-name:"Computers & Laptops",
+["📁","Office Supplies","office"]
 
-items:[
-
-["💻","Laptops"],
-["🖥️","Desktop Computers"],
-["🖥️","Monitors"],
-["⌨️","Keyboards"],
-["🖱️","Mouse"],
-["📷","Webcams"],
-["🖨️","Printers"],
-["💾","SSD & HDD"],
-["💿","Pendrive"],
-["🎒","Laptop Bags"],
-["🔌","USB Hub"],
-["❄️","Laptop Cooling Pad"]
-
-]
-
-},
-
-electronics:{
-
-name:"Electronics & Gadgets",
-
-items:[
-
-["🖱️","Wireless Mouse"],
-["🎧","Wireless Earbuds"],
-["🎧","Headphones"],
-["🎵","Bluetooth Speakers"],
-["⌨️","Keyboard"],
-["🎮","Gaming Accessories"],
-["⌚","Smart Watch"],
-["📷","Digital Camera"],
-["📺","Television"],
-["💡","Smart Lights"],
-["🔌","Smart Plug"],
-["🎙️","Microphone"]
-
-]
-
-},
-
-beauty:{
-
-name:"Beauty & Cosmetics",
-
-items:[
-
-["💄","Makeup"],
-["🧴","Skincare"],
-["🧼","Face Wash"],
-["☀️","Sunscreen"],
-["✨","Serum"],
-["💇","Haircare"],
-["🧴","Shampoo"],
-["🌸","Perfume"],
-["🧔","Men's Grooming"],
-["💅","Nail Care"],
-["💋","Lipstick"],
-["🖌️","Makeup Tools"]
-
-]
-
-},
-
-home:{
-
-name:"Home & Living",
-
-items:[
-
-["🛏️","Bedding"],
-["🛋️","Home Furniture"],
-["🪑","Chairs"],
-["🗄️","Storage"],
-["🪞","Mirror"],
-["🖼️","Home Decor"],
-["💡","Lighting"],
-["🧹","Cleaning"],
-["🛁","Bathroom"],
-["🧺","Laundry"]
-
-]
-
-},
-
-kitchen:{
-
-name:"Kitchen & Dining",
-
-items:[
-
-["🍳","Cookware"],
-["🍽️","Dinnerware"],
-["🥄","Kitchen Tools"],
-["🔪","Knives"],
-["🥤","Water Bottles"],
-["☕","Mugs & Cups"],
-["🍱","Lunch Boxes"],
-["🫙","Food Storage"],
-["🫖","Electric Kettle"],
-["🍚","Rice Cooker"],
-["🥤","Blender"],
-["🧂","Spice Storage"]
-
-]
-
-},
-
-grocery:{
-
-name:"Grocery & Daily Essentials",
-
-items:[
-
-["🍚","Rice"],
-["🛢️","Cooking Oil"],
-["🧂","Salt & Spices"],
-["🍪","Snacks"],
-["🥤","Beverages"],
-["☕","Tea & Coffee"],
-["🥫","Canned Food"],
-["🧼","Household Essentials"],
-["🧴","Personal Care"]
-
-]
-
-},
-
-kids:{
-
-name:"Kids & Baby",
-
-items:[
-
-["👶","Baby Clothing"],
-["👕","Kids Clothing"],
-["👟","Kids Shoes"],
-["🍼","Baby Feeding"],
-["🧴","Baby Care"],
-["🧸","Toys"],
-["🎒","School Bags"],
-["✏️","School Supplies"],
-["🚲","Kids Outdoor"]
-
-]
-
-},
-
-sports:{
-
-name:"Sports & Fitness",
-
-items:[
-
-["⚽","Football"],
-["🏏","Cricket"],
-["🏸","Badminton"],
-["🏋️","Gym Equipment"],
-["🧘","Yoga"],
-["🏃","Running"],
-["👟","Sports Shoes"],
-["👕","Sportswear"],
-["🎒","Sports Bags"],
-["🥤","Sports Bottles"]
-
-]
-
-},
-
-travel:{
-
-name:"Bags & Travel",
-
-items:[
-
-["🎒","Backpacks"],
-["💻","Laptop Bags"],
-["🧳","Suitcases"],
-["👜","Travel Bags"],
-["👝","Wallets"],
-["🛂","Passport Holders"],
-["🛏️","Travel Pillows"],
-["🔒","Travel Locks"]
-
-]
-
-},
-
-automotive:{
-
-name:"Automotive",
-
-items:[
-
-["🚗","Car Accessories"],
-["🏍️","Bike Accessories"],
-["🔋","Car Chargers"],
-["📱","Car Phone Holders"],
-["🧼","Car Cleaning"],
-["🛞","Car Care"],
-["⛑️","Safety Equipment"],
-["🪖","Helmets"]
-
-]
-
-},
-
-toys:{
-
-name:"Toys & Games",
-
-items:[
-
-["🧸","Soft Toys"],
-["🚗","Remote Control Toys"],
-["🧩","Educational Toys"],
-["🎲","Board Games"],
-["🎮","Gaming"],
-["⚽","Outdoor Games"],
-["🪀","Kids Toys"]
-
-]
-
-},
-
-books:{
-
-name:"Books & Stationery",
-
-items:[
-
-["📚","Books"],
-["📓","Notebooks"],
-["✏️","School Supplies"],
-["🖊️","Pens"],
-["🎨","Art Supplies"],
-["📁","Office Stationery"]
-
-]
-
-},
-
-furniture:{
-
-name:"Furniture",
-
-items:[
-
-["🛏️","Beds"],
-["🛋️","Sofas"],
-["🪑","Chairs"],
-["🗄️","Tables"],
-["🗃️","Storage"],
-["🪞","Mirrors"]
-
-]
-
-},
-
-tools:{
-
-name:"Tools & Hardware",
-
-items:[
-
-["🔨","Hand Tools"],
-["🛠️","Power Tools"],
-["🔧","Hardware"],
-["🔌","Electrical Tools"],
-["🪛","Screwdrivers"],
-["📦","Construction Supplies"]
-
-]
-
-},
-
-garden:{
-
-name:"Garden & Outdoor",
-
-items:[
-
-["🌱","Plants"],
-["🌿","Gardening Tools"],
-["🪴","Plant Pots"],
-["💧","Watering Tools"],
-["🌳","Outdoor Items"]
-
-]
-
-},
-
-pets:{
-
-name:"Pet Supplies",
-
-items:[
-
-["🐶","Dog Supplies"],
-["🐱","Cat Supplies"],
-["🍖","Pet Food"],
-["🧸","Pet Toys"],
-["🧴","Pet Grooming"]
-
-]
-
-},
-
-office:{
-
-name:"Office Supplies",
-
-items:[
-
-["🖊️","Pens"],
-["📓","Notebooks"],
-["📁","Files"],
-["🖨️","Printers"],
-["🪑","Office Chairs"],
-["🖥️","Office Electronics"]
-
-]
-
-}
-
-};
+];
 
 
 /* =========================
-GET CATEGORY
+PRODUCT DATABASE
 ========================= */
 
-const params =
-new URLSearchParams(window.location.search);
-
-const cat =
-params.get("cat") || "mens";
-
-
-const data =
-categories[cat] || categories.mens;
-
-
-/* =========================
-SHOW TITLE
-========================= */
-
-document.getElementById(
-"categoryTitle"
-).textContent = data.name;
-
-document.getElementById(
-"breadcrumb"
-).textContent = data.name;
-
-
-/* =========================
-SHOW SUB CATEGORIES
-========================= */
-
-const subContainer =
-document.getElementById("subcategories");
-
-
-data.items.forEach((item,index)=>{
-
-const link =
-document.createElement("a");
-
-link.className =
-"subcategory";
-
-link.href =
-"#products";
-
-link.innerHTML = `
-
-<div class="icon">
-${item[0]}
-</div>
-
-<h3>
-${item[1]}
-</h3>
-
-`;
-
-link.onclick = function(){
-
-showProducts(item[1]);
-
-};
-
-subContainer.appendChild(link);
-
-});
-
-
-/* =========================
-PRODUCTS
-========================= */
-
-function showProducts(category){
-
-const productContainer =
-document.getElementById("products");
-
-productContainer.innerHTML = "";
-
-
-/* Demo Product Data */
-
-const products = [
+const products=[
 
 {
-name:category+" Premium Product",
-brand:"Trusted Brand",
-price:"৳ 1,499",
-icon:"🛍️"
+id:1,
+name:"Premium Men's T-Shirt",
+category:"Men's Fashion",
+sub:"T-Shirt",
+brand:"Local Brand",
+price:799,
+condition:"New",
+icon:"👕",
+description:"Premium quality men's casual T-shirt."
 },
 
 {
-name:category+" Classic Collection",
-brand:"Popular Brand",
-price:"৳ 1,999",
-icon:"⭐"
+id:2,
+name:"Premium Panjabi",
+category:"Men's Fashion",
+sub:"Panjabi",
+brand:"Local Brand",
+price:1899,
+condition:"New",
+icon:"🧥",
+description:"Elegant Panjabi collection."
 },
 
 {
-name:category+" Premium Edition",
-brand:"Premium Brand",
-price:"৳ 2,499",
-icon:"✨"
+id:3,
+name:"Men's Sneakers",
+category:"Men's Fashion",
+sub:"Shoes",
+brand:"Nike",
+price:4500,
+condition:"New",
+icon:"👟",
+description:"Comfortable stylish sneakers."
 },
 
 {
-name:category+" New Arrival",
-brand:"New Brand",
-price:"৳ 999",
-icon:"🆕"
+id:4,
+name:"Women's Saree",
+category:"Women's Fashion",
+sub:"Saree",
+brand:"Local Brand",
+price:2500,
+condition:"New",
+icon:"🥻",
+description:"Beautiful traditional saree."
 },
 
 {
-name:category+" Best Seller",
-brand:"Top Brand",
-price:"৳ 1,799",
-icon:"🔥"
+id:5,
+name:"Women's Three Piece",
+category:"Women's Fashion",
+sub:"Three-Piece",
+brand:"Local Brand",
+price:2200,
+condition:"New",
+icon:"👗",
+description:"Premium three-piece collection."
+},
+
+{
+id:6,
+name:"Women's Handbag",
+category:"Women's Fashion",
+sub:"Handbags",
+brand:"Michael Kors",
+price:6500,
+condition:"New",
+icon:"👜",
+description:"Stylish premium handbag."
+},
+
+{
+id:7,
+name:"Apple Smartphone",
+category:"Mobile & Tablets",
+sub:"Smartphones",
+brand:"Apple",
+price:95000,
+condition:"New",
+icon:"📱",
+description:"Premium Apple smartphone."
+},
+
+{
+id:8,
+name:"Samsung Smartphone",
+category:"Mobile & Tablets",
+sub:"Smartphones",
+brand:"Samsung",
+price:55000,
+condition:"New",
+icon:"📱",
+description:"Modern Samsung smartphone."
+},
+
+{
+id:9,
+name:"Xiaomi Smartphone",
+category:"Mobile & Tablets",
+sub:"Smartphones",
+brand:"Xiaomi",
+price:25000,
+condition:"New",
+icon:"📱",
+description:"Affordable Xiaomi smartphone."
+},
+
+{
+id:10,
+name:"Apple Laptop",
+category:"Computers & Laptops",
+sub:"Laptops",
+brand:"Apple",
+price:150000,
+condition:"New",
+icon:"💻",
+description:"Premium Apple laptop."
+},
+
+{
+id:11,
+name:"Dell Laptop",
+category:"Computers & Laptops",
+sub:"Laptops",
+brand:"Dell",
+price:85000,
+condition:"New",
+icon:"💻",
+description:"Professional Dell laptop."
+},
+
+{
+id:12,
+name:"Wireless Mouse",
+category:"Electronics & Gadgets",
+sub:"Mouse",
+brand:"Logitech",
+price:1500,
+condition:"New",
+icon:"🖱️",
+description:"Reliable wireless mouse."
+},
+
+{
+id:13,
+name:"Wireless Earbuds",
+category:"Electronics & Gadgets",
+sub:"Earbuds",
+brand:"Anker",
+price:3500,
+condition:"New",
+icon:"🎧",
+description:"High quality wireless earbuds."
+},
+
+{
+id:14,
+name:"Bluetooth Speaker",
+category:"Electronics & Gadgets",
+sub:"Speakers",
+brand:"Sony",
+price:6500,
+condition:"New",
+icon:"🔊",
+description:"Powerful Bluetooth speaker."
+},
+
+{
+id:15,
+name:"Gaming Mouse",
+category:"Electronics & Gadgets",
+sub:"Mouse",
+brand:"Razer",
+price:4500,
+condition:"New",
+icon:"🖱️",
+description:"Professional gaming mouse."
+},
+
+{
+id:16,
+name:"Skincare Set",
+category:"Beauty & Cosmetics",
+sub:"Skincare",
+brand:"Local Brand",
+price:1800,
+condition:"New",
+icon:"🧴",
+description:"Complete skincare collection."
+},
+
+{
+id:17,
+name:"Premium Perfume",
+category:"Beauty & Cosmetics",
+sub:"Perfume",
+brand:"International Brand",
+price:5000,
+condition:"New",
+icon:"🌸",
+description:"Premium fragrance."
+},
+
+{
+id:18,
+name:"Home Decor",
+category:"Home & Living",
+sub:"Decor",
+brand:"Local Brand",
+price:1200,
+condition:"New",
+icon:"🖼️",
+description:"Modern home decoration."
+},
+
+{
+id:19,
+name:"Kitchen Cookware",
+category:"Kitchen & Dining",
+sub:"Cookware",
+brand:"Local Brand",
+price:3500,
+condition:"New",
+icon:"🍳",
+description:"Quality cookware set."
+},
+
+{
+id:20,
+name:"Sports Shoes",
+category:"Sports & Fitness",
+sub:"Sports Shoes",
+brand:"Nike",
+price:6500,
+condition:"New",
+icon:"👟",
+description:"Comfortable sports shoes."
 }
 
 ];
 
 
-products.forEach(product=>{
+/* =========================
+CREATE CATEGORIES
+========================= */
 
-const card =
+const categoryGrid=
+document.getElementById("categoryGrid");
+
+categories.forEach(c=>{
+
+const div=
 document.createElement("div");
 
-card.className =
-"product";
+div.className="category";
 
-card.innerHTML = `
+div.innerHTML=`
+
+<div class="category-icon">
+${c[0]}
+</div>
+
+<h3>
+${c[1]}
+</h3>
+
+`;
+
+div.onclick=()=>showCategory(c[1]);
+
+categoryGrid.appendChild(div);
+
+});
+
+
+/* =========================
+SHOW SHOP
+========================= */
+
+function showCategory(category){
+
+document.getElementById("shop").style.display="block";
+
+document.getElementById("shopTitle").textContent=
+category;
+
+document.getElementById("categoryFilter").value=
+category;
+
+renderProducts(
+products.filter(p=>p.category===category)
+);
+
+document.getElementById("shop")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+/* =========================
+RENDER PRODUCTS
+========================= */
+
+function renderProducts(list){
+
+const grid=
+document.getElementById("productGrid");
+
+grid.innerHTML="";
+
+if(list.length===0){
+
+grid.innerHTML=
+"<p>No products found.</p>";
+
+return;
+
+}
+
+list.forEach(p=>{
+
+const card=
+document.createElement("div");
+
+card.className="product";
+
+card.innerHTML=`
 
 <div class="product-image">
-
-${product.icon}
-
+${p.icon}
 </div>
 
 <div class="product-info">
 
-<span class="brand">
-
-${product.brand}
-
-</span>
+<small>
+${p.brand} | ${p.condition}
+</small>
 
 <h3>
-
-${product.name}
-
+${p.name}
 </h3>
 
-<div class="price">
+<div class="rating">
+★★★★★
+</div>
 
-${product.price}
+<div class="price">
+৳ ${p.price.toLocaleString()}
+</div>
+
+<div class="product-buttons">
+
+<button class="view"
+onclick="viewProduct(${p.id})">
+
+View
+
+</button>
+
+<button class="cart"
+onclick="addToCart(${p.id})">
+
+Add to Cart
+
+</button>
 
 </div>
 
-<button class="buy">
+</div>
 
-View Product
+`;
+
+grid.appendChild(card);
+
+});
+
+}
+
+
+/* =========================
+FILTER DATA
+========================= */
+
+function setupFilters(){
+
+const cf=
+document.getElementById("categoryFilter");
+
+const bf=
+document.getElementById("brandFilter");
+
+[...new Set(products.map(p=>p.category))]
+.forEach(c=>{
+
+const option=
+document.createElement("option");
+
+option.value=c;
+
+option.textContent=c;
+
+cf.appendChild(option);
+
+});
+
+
+[...new Set(products.map(p=>p.brand))]
+.forEach(b=>{
+
+const option=
+document.createElement("option");
+
+option.value=b;
+
+option.textContent=b;
+
+bf.appendChild(option);
+
+});
+
+}
+
+setupFilters();
+
+
+/* =========================
+APPLY FILTERS
+========================= */
+
+function applyFilters(){
+
+const category=
+document.getElementById("categoryFilter").value;
+
+const brand=
+document.getElementById("brandFilter").value;
+
+const condition=
+document.getElementById("conditionFilter").value;
+
+const maxPrice=
+Number(document.getElementById("priceFilter").value);
+
+let result=products.filter(p=>{
+
+return
+
+(category==="all" ||
+p.category===category)
+
+&&
+
+(brand==="all" ||
+p.brand===brand)
+
+&&
+
+(condition==="all" ||
+p.condition===condition)
+
+&&
+
+(!maxPrice ||
+p.price<=maxPrice);
+
+});
+
+renderProducts(result);
+
+}
+
+
+/* =========================
+SEARCH
+========================= */
+
+function searchProducts(){
+
+const query=
+document.getElementById("searchInput")
+.value
+.toLowerCase();
+
+document.getElementById("shop")
+.style.display="block";
+
+document.getElementById("shopTitle")
+.textContent=
+"Search Results";
+
+const result=
+products.filter(p=>
+
+p.name.toLowerCase()
+.includes(query)
+
+||
+
+p.brand.toLowerCase()
+.includes(query)
+
+||
+
+p.category.toLowerCase()
+.includes(query)
+
+||
+
+p.sub.toLowerCase()
+.includes(query)
+
+);
+
+renderProducts(result);
+
+}
+
+
+/* =========================
+BRAND
+========================= */
+
+function filterBrand(brand){
+
+document.getElementById("shop")
+.style.display="block";
+
+document.getElementById("shopTitle")
+.textContent=
+brand+" Products";
+
+renderProducts(
+products.filter(p=>
+p.brand===brand
+)
+);
+
+document.getElementById("shop")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+/* =========================
+PRODUCT DETAIL
+========================= */
+
+let currentProduct=null;
+
+function viewProduct(id){
+
+currentProduct=
+products.find(p=>p.id===id);
+
+document.getElementById("detailImage")
+.textContent=
+currentProduct.icon;
+
+document.getElementById("detailName")
+.textContent=
+currentProduct.name;
+
+document.getElementById("detailPrice")
+textContent=
+"৳ "+
+currentProduct.price.toLocaleString();
+
+document.getElementById("detailDescription")
+.textContent=
+currentProduct.description;
+
+document.getElementById("productModal")
+.style.display="flex";
+
+}
+
+
+function closeModal(){
+
+document.getElementById("productModal")
+.style.display="none";
+
+}
+
+
+/* =========================
+CART
+========================= */
+
+let cart=[];
+
+function addToCart(id){
+
+const product=
+products.find(p=>p.id===id);
+
+cart.push(product);
+
+updateCart();
+
+alert(
+product.name+
+" added to cart!"
+);
+
+}
+
+
+function addCurrentProduct(){
+
+if(currentProduct){
+
+addToCart(
+currentProduct.id
+);
+
+closeModal();
+
+}
+
+}
+
+
+function updateCart(){
+
+document.getElementById("cartCount")
+.textContent=
+cart.length;
+
+const box=
+document.getElementById("cartItems");
+
+box.innerHTML="";
+
+let total=0;
+
+cart.forEach((p,index)=>{
+
+total+=p.price;
+
+const item=
+document.createElement("div");
+
+item.className=
+"cart-item";
+
+item.innerHTML=`
+
+<div class="cart-item-icon">
+${p.icon}
+</div>
+
+<div>
+
+<strong>
+${p.name}
+</strong>
+
+<p>
+৳ ${p.price.toLocaleString()}
+</p>
+
+<button
+onclick="removeCart(${index})">
+
+Remove
 
 </button>
 
@@ -877,14 +1906,74 @@ View Product
 
 `;
 
-productContainer.appendChild(card);
+box.appendChild(item);
 
 });
 
+document.getElementById("cartTotal")
+.textContent=
+total.toLocaleString();
 
-document.querySelector(
-".product-section"
-).scrollIntoView({
+}
+
+
+function removeCart(index){
+
+cart.splice(index,1);
+
+updateCart();
+
+}
+
+
+function openCart(){
+
+document.getElementById("cartPanel")
+.style.display="block";
+
+}
+
+
+function closeCart(){
+
+document.getElementById("cartPanel")
+.style.display="none";
+
+}
+
+
+/* =========================
+CHECKOUT
+========================= */
+
+function checkout(){
+
+if(cart.length===0){
+
+alert(
+"Your cart is empty."
+);
+
+return;
+
+}
+
+alert(
+"Checkout system will be connected to Bangladesh payment and delivery system."
+);
+
+}
+
+
+/* =========================
+HOME
+========================= */
+
+function goHome(){
+
+window.scrollTo({
+
+top:0,
 
 behavior:"smooth"
 
@@ -892,7 +1981,45 @@ behavior:"smooth"
 
 }
 
+
+/* =========================
+CLEAR FILTER
+========================= */
+
+function clearFilters(){
+
+document.getElementById("categoryFilter")
+.value="all";
+
+document.getElementById("brandFilter")
+.value="all";
+
+document.getElementById("conditionFilter")
+.value="all";
+
+document.getElementById("priceFilter")
+.value="";
+
+renderProducts(products);
+
+}
+
+
+/* =========================
+WISHLIST
+========================= */
+
+function showWishlist(){
+
+alert(
+"Wishlist system is ready to connect with user accounts."
+);
+
+}
+
 </script>
 
+
 </body>
+
 </html>
