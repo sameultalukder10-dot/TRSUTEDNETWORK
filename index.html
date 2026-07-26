@@ -1,20 +1,898 @@
-<a href="category.html?cat=mens">Men's Fashion</a>
-<a href="category.html?cat=womens">Women's Fashion</a>
-<a href="category.html?cat=mobile">Mobile & Tablets</a>
-<a href="category.html?cat=computers">Computers & Laptops</a>
-<a href="category.html?cat=electronics">Electronics & Gadgets</a>
-<a href="category.html?cat=beauty">Beauty & Cosmetics</a>
-<a href="category.html?cat=home">Home & Living</a>
-<a href="category.html?cat=kitchen">Kitchen & Dining</a>
-<a href="category.html?cat=grocery">Grocery & Daily Essentials</a>
-<a href="category.html?cat=kids">Kids & Baby</a>
-<a href="category.html?cat=sports">Sports & Fitness</a>
-<a href="category.html?cat=travel">Bags & Travel</a>
-<a href="category.html?cat=automotive">Automotive</a>
-<a href="category.html?cat=toys">Toys & Games</a>
-<a href="category.html?cat=books">Books & Stationery</a>
-<a href="category.html?cat=furniture">Furniture</a>
-<a href="category.html?cat=tools">Tools & Hardware</a>
-<a href="category.html?cat=garden">Garden & Outdoor</a>
-<a href="category.html?cat=pets">Pet Supplies</a>
-<a href="category.html?cat=office">Office Supplies</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Trusted Network | Category</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f5f6f8;
+    color:#222;
+}
+
+/* HEADER */
+
+header{
+    background:white;
+    padding:18px 5%;
+    display:flex;
+    align-items:center;
+    gap:25px;
+    border-bottom:1px solid #eee;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+.logo{
+    font-size:27px;
+    font-weight:bold;
+    color:#f85606;
+}
+
+.search{
+    flex:1;
+    display:flex;
+}
+
+.search input{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:6px 0 0 6px;
+}
+
+.search button{
+    padding:0 25px;
+    border:none;
+    background:#f85606;
+    color:white;
+    cursor:pointer;
+}
+
+.home{
+    text-decoration:none;
+    color:#222;
+    font-weight:bold;
+}
+
+/* PAGE */
+
+.container{
+    width:90%;
+    max-width:1400px;
+    margin:35px auto;
+}
+
+.breadcrumb{
+    color:#777;
+    margin-bottom:20px;
+}
+
+.title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.title h1{
+    font-size:32px;
+}
+
+/* SUB CATEGORY */
+
+.subcategories{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:18px;
+}
+
+.subcategory{
+    background:white;
+    padding:30px 15px;
+    text-align:center;
+    border-radius:12px;
+    text-decoration:none;
+    color:#222;
+    border:1px solid #eee;
+    transition:.25s;
+}
+
+.subcategory:hover{
+    transform:translateY(-5px);
+    box-shadow:0 8px 25px rgba(0,0,0,.1);
+}
+
+.icon{
+    font-size:50px;
+    margin-bottom:15px;
+}
+
+.subcategory h3{
+    font-size:17px;
+}
+
+/* PRODUCTS */
+
+.product-section{
+    margin-top:45px;
+}
+
+.product-section h2{
+    margin-bottom:20px;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:18px;
+}
+
+.product{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid #eee;
+}
+
+.product-image{
+    height:200px;
+    background:#f1f2f4;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:70px;
+}
+
+.product-info{
+    padding:15px;
+}
+
+.product-info h3{
+    margin:8px 0;
+    font-size:16px;
+}
+
+.brand{
+    color:#777;
+    font-size:13px;
+}
+
+.price{
+    color:#f85606;
+    font-size:20px;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.buy{
+    width:100%;
+    margin-top:12px;
+    padding:10px;
+    border:none;
+    background:#f85606;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+    .subcategories{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .products{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    header{
+        flex-wrap:wrap;
+    }
+
+    .logo{
+        width:100%;
+        text-align:center;
+    }
+
+    .subcategories{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<header>
+
+<a href="index.html" class="home">
+← Home
+</a>
+
+<div class="logo">
+Trusted Network
+</div>
+
+<div class="search">
+
+<input
+type="text"
+placeholder="Search products..."
+>
+
+<button>
+🔍 Search
+</button>
+
+</div>
+
+</header>
+
+
+<div class="container">
+
+<div class="breadcrumb">
+
+Home → <span id="breadcrumb"></span>
+
+</div>
+
+
+<div class="title">
+
+<h1 id="categoryTitle">
+Category
+</h1>
+
+</div>
+
+
+<div class="subcategories" id="subcategories">
+</div>
+
+
+<div class="product-section">
+
+<h2>
+Featured Products
+</h2>
+
+<div class="products" id="products">
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================
+CATEGORY DATA
+========================= */
+
+const categories = {
+
+mens:{
+
+name:"Men's Fashion",
+
+items:[
+
+["👕","T-Shirts"],
+["👔","Shirts"],
+["🧥","Panjabi"],
+["👖","Pants & Jeans"],
+["🧥","Hoodies & Sweatshirts"],
+["🧥","Jackets & Coats"],
+["🤵","Suits & Blazers"],
+["🩲","Underwear & Innerwear"],
+["🏃","Sportswear"],
+["👞","Shoes"],
+["🩴","Sandals & Slippers"],
+["⌚","Watches"],
+["👝","Wallets"],
+["🕶️","Sunglasses"],
+["🎒","Bags"],
+["🧴","Men's Grooming"]
+
+]
+
+},
+
+womens:{
+
+name:"Women's Fashion",
+
+items:[
+
+["🥻","Saree"],
+["👗","Three-Piece"],
+["👚","Kurti"],
+["👘","Salwar Kameez"],
+["👗","Dresses"],
+["🧕","Abaya"],
+["🧕","Hijab"],
+["👕","T-Shirts & Tops"],
+["👖","Pants & Jeans"],
+["👠","Shoes"],
+["👜","Handbags"],
+["💍","Jewelry"],
+["⌚","Watches"],
+["🕶️","Sunglasses"],
+["💄","Beauty Accessories"]
+
+]
+
+},
+
+mobile:{
+
+name:"Mobile & Tablets",
+
+items:[
+
+["📱","Smartphones"],
+["📞","Feature Phones"],
+["📱","Tablets"],
+["🔋","Power Banks"],
+["🔌","Chargers"],
+["🔗","Charging Cables"],
+["📱","Phone Cases"],
+["🛡️","Screen Protectors"],
+["🎧","Mobile Earphones"],
+["📱","Mobile Accessories"]
+
+]
+
+},
+
+computers:{
+
+name:"Computers & Laptops",
+
+items:[
+
+["💻","Laptops"],
+["🖥️","Desktop Computers"],
+["🖥️","Monitors"],
+["⌨️","Keyboards"],
+["🖱️","Mouse"],
+["📷","Webcams"],
+["🖨️","Printers"],
+["💾","SSD & HDD"],
+["💿","Pendrive"],
+["🎒","Laptop Bags"],
+["🔌","USB Hub"],
+["❄️","Laptop Cooling Pad"]
+
+]
+
+},
+
+electronics:{
+
+name:"Electronics & Gadgets",
+
+items:[
+
+["🖱️","Wireless Mouse"],
+["🎧","Wireless Earbuds"],
+["🎧","Headphones"],
+["🎵","Bluetooth Speakers"],
+["⌨️","Keyboard"],
+["🎮","Gaming Accessories"],
+["⌚","Smart Watch"],
+["📷","Digital Camera"],
+["📺","Television"],
+["💡","Smart Lights"],
+["🔌","Smart Plug"],
+["🎙️","Microphone"]
+
+]
+
+},
+
+beauty:{
+
+name:"Beauty & Cosmetics",
+
+items:[
+
+["💄","Makeup"],
+["🧴","Skincare"],
+["🧼","Face Wash"],
+["☀️","Sunscreen"],
+["✨","Serum"],
+["💇","Haircare"],
+["🧴","Shampoo"],
+["🌸","Perfume"],
+["🧔","Men's Grooming"],
+["💅","Nail Care"],
+["💋","Lipstick"],
+["🖌️","Makeup Tools"]
+
+]
+
+},
+
+home:{
+
+name:"Home & Living",
+
+items:[
+
+["🛏️","Bedding"],
+["🛋️","Home Furniture"],
+["🪑","Chairs"],
+["🗄️","Storage"],
+["🪞","Mirror"],
+["🖼️","Home Decor"],
+["💡","Lighting"],
+["🧹","Cleaning"],
+["🛁","Bathroom"],
+["🧺","Laundry"]
+
+]
+
+},
+
+kitchen:{
+
+name:"Kitchen & Dining",
+
+items:[
+
+["🍳","Cookware"],
+["🍽️","Dinnerware"],
+["🥄","Kitchen Tools"],
+["🔪","Knives"],
+["🥤","Water Bottles"],
+["☕","Mugs & Cups"],
+["🍱","Lunch Boxes"],
+["🫙","Food Storage"],
+["🫖","Electric Kettle"],
+["🍚","Rice Cooker"],
+["🥤","Blender"],
+["🧂","Spice Storage"]
+
+]
+
+},
+
+grocery:{
+
+name:"Grocery & Daily Essentials",
+
+items:[
+
+["🍚","Rice"],
+["🛢️","Cooking Oil"],
+["🧂","Salt & Spices"],
+["🍪","Snacks"],
+["🥤","Beverages"],
+["☕","Tea & Coffee"],
+["🥫","Canned Food"],
+["🧼","Household Essentials"],
+["🧴","Personal Care"]
+
+]
+
+},
+
+kids:{
+
+name:"Kids & Baby",
+
+items:[
+
+["👶","Baby Clothing"],
+["👕","Kids Clothing"],
+["👟","Kids Shoes"],
+["🍼","Baby Feeding"],
+["🧴","Baby Care"],
+["🧸","Toys"],
+["🎒","School Bags"],
+["✏️","School Supplies"],
+["🚲","Kids Outdoor"]
+
+]
+
+},
+
+sports:{
+
+name:"Sports & Fitness",
+
+items:[
+
+["⚽","Football"],
+["🏏","Cricket"],
+["🏸","Badminton"],
+["🏋️","Gym Equipment"],
+["🧘","Yoga"],
+["🏃","Running"],
+["👟","Sports Shoes"],
+["👕","Sportswear"],
+["🎒","Sports Bags"],
+["🥤","Sports Bottles"]
+
+]
+
+},
+
+travel:{
+
+name:"Bags & Travel",
+
+items:[
+
+["🎒","Backpacks"],
+["💻","Laptop Bags"],
+["🧳","Suitcases"],
+["👜","Travel Bags"],
+["👝","Wallets"],
+["🛂","Passport Holders"],
+["🛏️","Travel Pillows"],
+["🔒","Travel Locks"]
+
+]
+
+},
+
+automotive:{
+
+name:"Automotive",
+
+items:[
+
+["🚗","Car Accessories"],
+["🏍️","Bike Accessories"],
+["🔋","Car Chargers"],
+["📱","Car Phone Holders"],
+["🧼","Car Cleaning"],
+["🛞","Car Care"],
+["⛑️","Safety Equipment"],
+["🪖","Helmets"]
+
+]
+
+},
+
+toys:{
+
+name:"Toys & Games",
+
+items:[
+
+["🧸","Soft Toys"],
+["🚗","Remote Control Toys"],
+["🧩","Educational Toys"],
+["🎲","Board Games"],
+["🎮","Gaming"],
+["⚽","Outdoor Games"],
+["🪀","Kids Toys"]
+
+]
+
+},
+
+books:{
+
+name:"Books & Stationery",
+
+items:[
+
+["📚","Books"],
+["📓","Notebooks"],
+["✏️","School Supplies"],
+["🖊️","Pens"],
+["🎨","Art Supplies"],
+["📁","Office Stationery"]
+
+]
+
+},
+
+furniture:{
+
+name:"Furniture",
+
+items:[
+
+["🛏️","Beds"],
+["🛋️","Sofas"],
+["🪑","Chairs"],
+["🗄️","Tables"],
+["🗃️","Storage"],
+["🪞","Mirrors"]
+
+]
+
+},
+
+tools:{
+
+name:"Tools & Hardware",
+
+items:[
+
+["🔨","Hand Tools"],
+["🛠️","Power Tools"],
+["🔧","Hardware"],
+["🔌","Electrical Tools"],
+["🪛","Screwdrivers"],
+["📦","Construction Supplies"]
+
+]
+
+},
+
+garden:{
+
+name:"Garden & Outdoor",
+
+items:[
+
+["🌱","Plants"],
+["🌿","Gardening Tools"],
+["🪴","Plant Pots"],
+["💧","Watering Tools"],
+["🌳","Outdoor Items"]
+
+]
+
+},
+
+pets:{
+
+name:"Pet Supplies",
+
+items:[
+
+["🐶","Dog Supplies"],
+["🐱","Cat Supplies"],
+["🍖","Pet Food"],
+["🧸","Pet Toys"],
+["🧴","Pet Grooming"]
+
+]
+
+},
+
+office:{
+
+name:"Office Supplies",
+
+items:[
+
+["🖊️","Pens"],
+["📓","Notebooks"],
+["📁","Files"],
+["🖨️","Printers"],
+["🪑","Office Chairs"],
+["🖥️","Office Electronics"]
+
+]
+
+}
+
+};
+
+
+/* =========================
+GET CATEGORY
+========================= */
+
+const params =
+new URLSearchParams(window.location.search);
+
+const cat =
+params.get("cat") || "mens";
+
+
+const data =
+categories[cat] || categories.mens;
+
+
+/* =========================
+SHOW TITLE
+========================= */
+
+document.getElementById(
+"categoryTitle"
+).textContent = data.name;
+
+document.getElementById(
+"breadcrumb"
+).textContent = data.name;
+
+
+/* =========================
+SHOW SUB CATEGORIES
+========================= */
+
+const subContainer =
+document.getElementById("subcategories");
+
+
+data.items.forEach((item,index)=>{
+
+const link =
+document.createElement("a");
+
+link.className =
+"subcategory";
+
+link.href =
+"#products";
+
+link.innerHTML = `
+
+<div class="icon">
+${item[0]}
+</div>
+
+<h3>
+${item[1]}
+</h3>
+
+`;
+
+link.onclick = function(){
+
+showProducts(item[1]);
+
+};
+
+subContainer.appendChild(link);
+
+});
+
+
+/* =========================
+PRODUCTS
+========================= */
+
+function showProducts(category){
+
+const productContainer =
+document.getElementById("products");
+
+productContainer.innerHTML = "";
+
+
+/* Demo Product Data */
+
+const products = [
+
+{
+name:category+" Premium Product",
+brand:"Trusted Brand",
+price:"৳ 1,499",
+icon:"🛍️"
+},
+
+{
+name:category+" Classic Collection",
+brand:"Popular Brand",
+price:"৳ 1,999",
+icon:"⭐"
+},
+
+{
+name:category+" Premium Edition",
+brand:"Premium Brand",
+price:"৳ 2,499",
+icon:"✨"
+},
+
+{
+name:category+" New Arrival",
+brand:"New Brand",
+price:"৳ 999",
+icon:"🆕"
+},
+
+{
+name:category+" Best Seller",
+brand:"Top Brand",
+price:"৳ 1,799",
+icon:"🔥"
+}
+
+];
+
+
+products.forEach(product=>{
+
+const card =
+document.createElement("div");
+
+card.className =
+"product";
+
+card.innerHTML = `
+
+<div class="product-image">
+
+${product.icon}
+
+</div>
+
+<div class="product-info">
+
+<span class="brand">
+
+${product.brand}
+
+</span>
+
+<h3>
+
+${product.name}
+
+</h3>
+
+<div class="price">
+
+${product.price}
+
+</div>
+
+<button class="buy">
+
+View Product
+
+</button>
+
+</div>
+
+`;
+
+productContainer.appendChild(card);
+
+});
+
+
+document.querySelector(
+".product-section"
+).scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
