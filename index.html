@@ -1,34 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Trusted Network | Premium Online Shopping</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
 :root{
 --primary:#2563eb;
---dark:#0b1220;
+--dark:#07152d;
 --light:#f5f7fb;
---card:#fff;
+--card:#ffffff;
 --text:#172033;
 --muted:#667085;
 --border:#e5e7eb;
 --danger:#ef4444;
 --success:#16a34a;
 }
+
 body{
 font-family:Inter,Arial,sans-serif;
 background:var(--light);
 color:var(--text);
 }
-button,input,select{font:inherit}
-button{cursor:pointer}
-a{text-decoration:none;color:inherit}
+
+button,
+input,
+textarea,
+select{
+font:inherit;
+}
+
+button{
+cursor:pointer;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+
+/* TOP BAR */
 
 .top{
-background:var(--dark);
+background:#07152d;
 color:#fff;
 padding:8px 5%;
 display:flex;
@@ -36,12 +61,15 @@ justify-content:space-between;
 font-size:13px;
 }
 
+
+/* HEADER */
+
 header{
 background:#fff;
 position:sticky;
 top:0;
 z-index:1000;
-box-shadow:0 2px 20px #00000012;
+box-shadow:0 3px 20px rgba(0,0,0,.08);
 }
 
 .nav{
@@ -59,7 +87,10 @@ font-weight:900;
 color:var(--primary);
 white-space:nowrap;
 }
-.logo span{color:var(--dark)}
+
+.logo span{
+color:var(--dark);
+}
 
 .search{
 flex:1;
@@ -69,6 +100,7 @@ border:1px solid var(--border);
 border-radius:12px;
 overflow:hidden;
 }
+
 .search input{
 flex:1;
 border:0;
@@ -76,6 +108,7 @@ outline:0;
 background:transparent;
 padding:14px 18px;
 }
+
 .search button{
 width:60px;
 border:0;
@@ -87,12 +120,14 @@ color:#fff;
 display:flex;
 gap:8px;
 }
+
 .action{
 border:1px solid var(--border);
 background:#fff;
 padding:11px 14px;
 border-radius:9px;
 }
+
 .badge{
 background:var(--danger);
 color:#fff;
@@ -100,6 +135,9 @@ border-radius:20px;
 padding:2px 7px;
 font-size:11px;
 }
+
+
+/* CATEGORY BAR */
 
 .categories{
 border-top:1px solid var(--border);
@@ -112,11 +150,25 @@ font-size:14px;
 font-weight:700;
 }
 
+.categories span{
+cursor:pointer;
+}
+
+.categories span:hover{
+color:var(--primary);
+}
+
+
+/* MAIN */
+
 .container{
 max-width:1500px;
 margin:auto;
 padding:0 5%;
 }
+
+
+/* HERO */
 
 .hero{
 display:grid;
@@ -142,10 +194,13 @@ border-radius:9px;
 cursor:pointer;
 margin:3px 0;
 }
-.cat:hover,.cat.active{
+
+.cat:hover,
+.cat.active{
 background:#eff6ff;
 color:var(--primary);
 }
+
 
 .banner{
 min-height:430px;
@@ -161,22 +216,12 @@ position:relative;
 overflow:hidden;
 }
 
-.banner:after{
-content:"";
-position:absolute;
-width:400px;
-height:400px;
-right:-150px;
-bottom:-200px;
-border:50px solid #ffffff15;
-border-radius:50%;
-}
-
 .banner h1{
 font-size:54px;
 line-height:1.08;
 max-width:700px;
 }
+
 .banner p{
 font-size:17px;
 line-height:1.7;
@@ -185,25 +230,34 @@ max-width:600px;
 color:#e8eefc;
 }
 
+.heroBtns{
+display:flex;
+gap:10px;
+}
+
 .btn{
 border:0;
 padding:13px 22px;
 border-radius:9px;
 font-weight:800;
 }
+
 .primary{
 background:var(--primary);
 color:#fff;
 }
+
 .white{
 background:#fff;
 color:var(--primary);
 }
 
-.heroBtns{
-display:flex;
-gap:10px;
+.full{
+width:100%;
 }
+
+
+/* SECTION */
 
 .section{
 margin:45px 0;
@@ -216,9 +270,8 @@ align-items:center;
 margin-bottom:20px;
 }
 
-.sectionHead h2{
-font-size:25px;
-}
+
+/* FLASH SALE */
 
 .flash{
 background:linear-gradient(90deg,#111827,#1e3a8a);
@@ -236,6 +289,9 @@ font-size:22px;
 font-weight:900;
 }
 
+
+/* PRODUCTS */
+
 .products{
 display:grid;
 grid-template-columns:repeat(5,1fr);
@@ -250,6 +306,7 @@ overflow:hidden;
 transition:.25s;
 position:relative;
 }
+
 .product:hover{
 transform:translateY(-5px);
 box-shadow:0 15px 35px #00000012;
@@ -260,6 +317,7 @@ height:210px;
 background:#f3f5f8;
 position:relative;
 }
+
 .productImg img{
 width:100%;
 height:100%;
@@ -329,22 +387,28 @@ display:flex;
 gap:7px;
 margin-top:10px;
 }
+
 .productBtns button{
 flex:1;
 padding:9px;
 border-radius:7px;
 font-weight:bold;
 }
+
 .cartBtn{
 background:#eff6ff;
 color:var(--primary);
 border:0;
 }
+
 .buyBtn{
 background:var(--primary);
 color:#fff;
 border:0;
 }
+
+
+/* BENEFITS */
 
 .benefits{
 display:grid;
@@ -359,13 +423,17 @@ border-radius:15px;
 text-align:center;
 border:1px solid var(--border);
 }
+
 .benefit div{
 font-size:30px;
 margin-bottom:10px;
 }
 
+
+/* FOOTER */
+
 footer{
-background:#0b1220;
+background:#07152d;
 color:#fff;
 padding:50px 5%;
 margin-top:60px;
@@ -378,11 +446,26 @@ display:grid;
 grid-template-columns:2fr 1fr 1fr 1fr;
 gap:30px;
 }
+
 footer p{
 color:#cbd5e1;
-margin-top:9px;
+margin-top:10px;
 font-size:14px;
 }
+
+footer a{
+color:#cbd5e1;
+transition:.2s;
+cursor:pointer;
+}
+
+footer a:hover{
+color:#60a5fa;
+padding-left:5px;
+}
+
+
+/* WHATSAPP */
 
 .whatsapp{
 position:fixed;
@@ -401,7 +484,8 @@ z-index:3000;
 box-shadow:0 8px 25px #0004;
 }
 
-/* MODALS */
+
+/* MODAL */
 
 .modal{
 display:none;
@@ -413,7 +497,10 @@ align-items:center;
 justify-content:center;
 padding:20px;
 }
-.modal.show{display:flex}
+
+.modal.show{
+display:flex;
+}
 
 .modalBox{
 background:#fff;
@@ -442,12 +529,16 @@ border-radius:8px;
 .form{
 margin-bottom:15px;
 }
+
 .form label{
 display:block;
 font-weight:bold;
 margin-bottom:7px;
 }
-.form input,.form textarea,.form select{
+
+.form input,
+.form textarea,
+.form select{
 width:100%;
 padding:12px;
 border:1px solid #ddd;
@@ -455,14 +546,11 @@ border-radius:8px;
 outline:0;
 }
 
-.full{
-width:100%;
-}
-
 .switch{
 text-align:center;
 margin-top:15px;
 }
+
 .link{
 border:0;
 background:none;
@@ -470,9 +558,13 @@ color:var(--primary);
 font-weight:bold;
 }
 
+
+/* PROFILE */
+
 .profile{
 text-align:center;
 }
+
 .avatar{
 width:75px;
 height:75px;
@@ -485,11 +577,13 @@ justify-content:center;
 font-size:30px;
 margin:auto;
 }
+
 .profileMenu{
 display:grid;
 gap:10px;
 margin-top:20px;
 }
+
 .profileMenu button{
 padding:13px;
 border:1px solid var(--border);
@@ -497,6 +591,9 @@ background:#fff;
 border-radius:8px;
 text-align:left;
 }
+
+
+/* CART */
 
 .cartDrawer{
 position:fixed;
@@ -512,7 +609,10 @@ transition:.3s;
 box-shadow:-10px 0 40px #0003;
 overflow:auto;
 }
-.cartDrawer.open{right:0}
+
+.cartDrawer.open{
+right:0;
+}
 
 .cartItem{
 display:flex;
@@ -520,12 +620,14 @@ gap:12px;
 padding:14px 0;
 border-bottom:1px solid #eee;
 }
+
 .cartItem img{
 width:70px;
 height:70px;
 object-fit:cover;
 border-radius:8px;
 }
+
 .remove{
 border:0;
 background:none;
@@ -533,12 +635,16 @@ color:#ef4444;
 font-size:12px;
 }
 
+
+/* PAYMENT */
+
 .payment{
 background:#f5f7fb;
 padding:15px;
 border-radius:12px;
 margin:15px 0;
 }
+
 .payOption{
 display:block;
 background:#fff;
@@ -548,111 +654,284 @@ border-radius:8px;
 margin-top:8px;
 }
 
+
+/* ORDER */
+
+.orderCard{
+border:1px solid #e5e7eb;
+padding:18px;
+border-radius:12px;
+margin-bottom:12px;
+text-align:left;
+}
+
+.orderStatus{
+color:#16a34a;
+font-weight:bold;
+}
+
+
+/* RESPONSIVE */
+
 @media(max-width:1100px){
-.products{grid-template-columns:repeat(4,1fr)}
+
+.products{
+grid-template-columns:repeat(4,1fr);
+}
+
 }
 
 @media(max-width:800px){
-.hero{grid-template-columns:1fr}
-.products{grid-template-columns:repeat(3,1fr)}
-.benefits{grid-template-columns:repeat(2,1fr)}
-.footerGrid{grid-template-columns:1fr 1fr}
+
+.hero{
+grid-template-columns:1fr;
+}
+
+.products{
+grid-template-columns:repeat(3,1fr);
+}
+
+.benefits{
+grid-template-columns:repeat(2,1fr);
+}
+
+.footerGrid{
+grid-template-columns:1fr 1fr;
+}
+
 }
 
 @media(max-width:600px){
-.top{display:none}
-.nav{flex-wrap:wrap}
-.search{order:3;flex-basis:100%}
-.banner{padding:30px}
-.banner h1{font-size:36px}
-.products{grid-template-columns:repeat(2,1fr)}
-.productImg{height:160px}
-.benefits{grid-template-columns:1fr}
-.footerGrid{grid-template-columns:1fr}
-.flash{display:block}
+
+.top{
+display:none;
 }
+
+.nav{
+flex-wrap:wrap;
+}
+
+.search{
+order:3;
+flex-basis:100%;
+}
+
+.banner{
+padding:30px;
+}
+
+.banner h1{
+font-size:36px;
+}
+
+.products{
+grid-template-columns:repeat(2,1fr);
+}
+
+.productImg{
+height:160px;
+}
+
+.benefits{
+grid-template-columns:1fr;
+}
+
+.footerGrid{
+grid-template-columns:1fr;
+}
+
+.flash{
+display:block;
+}
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- TOP BAR -->
+
 <div class="top">
-<span>🚚 Fast Delivery Across Bangladesh</span>
-<span>📞 WhatsApp Support: 01613040095</span>
+
+<span>
+🚚 Fast Delivery Across Bangladesh
+</span>
+
+<span>
+📞 WhatsApp Support: 01613040095
+</span>
+
 </div>
+
+
+<!-- HEADER -->
 
 <header>
 
 <div class="nav">
 
+
 <div class="logo">
+
 Trusted <span>Network</span>
+
 </div>
 
+
 <div class="search">
-<input id="search" placeholder="Search products, brands and categories...">
-<button onclick="searchProducts()">🔍</button>
+
+<input
+id="search"
+placeholder="Search products, brands and categories..."
+>
+
+<button onclick="searchProducts()">
+🔍
+</button>
+
 </div>
+
 
 <div class="actions">
 
-<button class="action" onclick="openAccount()">
-👤 <span id="accountName">Account</span>
+<button
+class="action"
+onclick="openAccount()"
+>
+
+👤 <span id="accountName">
+Account
+</span>
+
 </button>
 
-<button class="action" onclick="openCart()">
-🛒 <span id="cartCount" class="badge">0</span>
+
+<button
+class="action"
+onclick="openCart()"
+>
+
+🛒
+
+<span
+id="cartCount"
+class="badge"
+>
+0
+</span>
+
 </button>
 
 </div>
 
+
 </div>
+
 
 <div class="categories">
-<span onclick="filterCategory('all')">All Products</span>
-<span onclick="filterCategory('electronics')">Electronics</span>
-<span onclick="filterCategory('mobile')">Mobile</span>
-<span onclick="filterCategory('audio')">Audio</span>
-<span onclick="filterCategory('gaming')">Gaming</span>
-<span onclick="filterCategory('accessories')">Accessories</span>
+
+<span onclick="filterCategory('all')">
+All Products
+</span>
+
+<span onclick="filterCategory('electronics')">
+Electronics
+</span>
+
+<span onclick="filterCategory('mobile')">
+Mobile
+</span>
+
+<span onclick="filterCategory('audio')">
+Audio
+</span>
+
+<span onclick="filterCategory('gaming')">
+Gaming
+</span>
+
+<span onclick="filterCategory('accessories')">
+Accessories
+</span>
+
 </div>
+
 
 </header>
 
 
+<!-- MAIN -->
+
 <main class="container">
+
+
+<!-- HERO -->
 
 <section class="hero">
 
+
 <aside class="sidebar">
 
-<h3>🛍️ Shop By Category</h3>
+<h3>
+🛍️ Shop By Category
+</h3>
 
-<div class="cat active" onclick="filterCategory('all')">
+
+<div
+class="cat active"
+onclick="filterCategory('all')"
+>
 🛒 All Products
 </div>
 
-<div class="cat" onclick="filterCategory('electronics')">
+
+<div
+class="cat"
+onclick="filterCategory('electronics')"
+>
 💻 Electronics
 </div>
 
-<div class="cat" onclick="filterCategory('mobile')">
+
+<div
+class="cat"
+onclick="filterCategory('mobile')"
+>
 📱 Mobile & Gadgets
 </div>
 
-<div class="cat" onclick="filterCategory('audio')">
+
+<div
+class="cat"
+onclick="filterCategory('audio')"
+>
 🎧 Audio
 </div>
 
-<div class="cat" onclick="filterCategory('gaming')">
+
+<div
+class="cat"
+onclick="filterCategory('gaming')"
+>
 🎮 Gaming
 </div>
 
-<div class="cat" onclick="filterCategory('accessories')">
+
+<div
+class="cat"
+onclick="filterCategory('accessories')"
+>
 ⌨️ Accessories
 </div>
 
+
 </aside>
+
 
 <div class="banner">
 
@@ -663,19 +942,31 @@ Shop Smarter.
 Live Better.
 </h1>
 
+
 <p>
+
 Discover premium products,
 exclusive deals and trusted service
 —all in one place.
+
 </p>
+
 
 <div class="heroBtns">
 
-<button class="btn white" onclick="scrollProducts()">
+<button
+class="btn white"
+onclick="scrollProducts()"
+>
 Shop Now
 </button>
 
-<button class="btn" style="background:#ffffff22;color:white" onclick="openAccount()">
+
+<button
+class="btn"
+style="background:#ffffff22;color:white"
+onclick="openAccount()"
+>
 My Account
 </button>
 
@@ -688,298 +979,745 @@ My Account
 </section>
 
 
+<!-- PRODUCTS -->
+
 <section class="section">
+
 
 <div class="flash">
 
 <div>
-<h2>🔥 Flash Sale</h2>
-<p>Limited time deals. Don't miss out!</p>
+
+<h2>
+🔥 Flash Sale
+</h2>
+
+<p>
+Limited time deals. Don't miss out!
+</p>
+
 </div>
 
-<div class="timer" id="timer">
+
+<div
+class="timer"
+id="timer"
+>
 05:00:00
 </div>
 
 </div>
 
+
 <div class="sectionHead">
-<h2>🔥 Trending Products</h2>
+
+<h2>
+🔥 Trending Products
+</h2>
+
 </div>
 
-<div class="products" id="productGrid"></div>
+
+<div
+class="products"
+id="productGrid"
+>
+</div>
+
 
 </section>
 
+
+<!-- BENEFITS -->
 
 <section class="section">
 
+
 <div class="sectionHead">
-<h2>✨ Why Choose Trusted Network?</h2>
+
+<h2>
+✨ Why Choose Trusted Network?
+</h2>
+
 </div>
+
 
 <div class="benefits">
 
-<div class="benefit">
-<div>🚚</div>
-<h3>Fast Delivery</h3>
-<p>Reliable delivery service across Bangladesh.</p>
-</div>
 
 <div class="benefit">
-<div>🔒</div>
-<h3>Secure Shopping</h3>
-<p>Simple and trusted shopping experience.</p>
+
+<div>
+🚚
 </div>
 
-<div class="benefit">
-<div>💳</div>
-<h3>Flexible Payment</h3>
-<p>bKash, Nagad and Cash on Delivery.</p>
+<h3>
+Fast Delivery
+</h3>
+
+<p>
+Reliable delivery service across Bangladesh.
+</p>
+
 </div>
 
+
 <div class="benefit">
-<div>📞</div>
-<h3>Customer Support</h3>
-<p>Fast support through WhatsApp.</p>
+
+<div>
+🔒
 </div>
+
+<h3>
+Secure Shopping
+</h3>
+
+<p>
+Simple and trusted shopping experience.
+</p>
+
+</div>
+
+
+<div class="benefit">
+
+<div>
+💳
+</div>
+
+<h3>
+Flexible Payment
+</h3>
+
+<p>
+bKash, Nagad and Cash on Delivery.
+</p>
+
+</div>
+
+
+<div class="benefit">
+
+<div>
+📞
+</div>
+
+<h3>
+Customer Support
+</h3>
+
+<p>
+Fast support through WhatsApp.
+</p>
+
+</div>
+
 
 </div>
 
 </section>
+
 
 </main>
 
 
+<!-- FOOTER -->
+
 <footer>
+
 
 <div class="footerGrid">
 
-<div>
-<h2>Trusted Network</h2>
-<p>Premium online shopping experience for everyone.</p>
-</div>
 
 <div>
-<h3>Payment</h3>
-<p>bKash: 01726409431</p>
-<p>Nagad: 01356001478</p>
-<p>Cash on Delivery</p>
+
+<h2>
+Trusted Network
+</h2>
+
+<p>
+Premium online shopping experience for everyone.
+</p>
+
 </div>
 
-<div>
-<h3>Support</h3>
-<p>WhatsApp: 01613040095</p>
-<p>Open 24/7</p>
-</div>
 
 <div>
-<h3>Quick Links</h3>
-<p>My Account</p>
-<p>My Orders</p>
-<p>Privacy Policy</p>
+
+<h3>
+Payment
+</h3>
+
+<p>
+bKash: 01726409431
+</p>
+
+<p>
+Nagad: 01356001478
+</p>
+
+<p>
+Cash on Delivery
+</p>
+
 </div>
+
+
+<div>
+
+<h3>
+Support
+</h3>
+
+<p>
+WhatsApp: 01613040095
+</p>
+
+<p>
+Open 24/7
+</p>
+
+</div>
+
+
+<!-- QUICK LINKS -->
+
+<div>
+
+<h3>
+Quick Links
+</h3>
+
+
+<p>
+
+<a
+href="#"
+onclick="openAccount();return false;"
+>
+
+My Account
+
+</a>
+
+</p>
+
+
+<p>
+
+<a
+href="#"
+onclick="openOrders();return false;"
+>
+
+My Orders
+
+</a>
+
+</p>
+
+
+<p>
+
+<a
+href="#"
+onclick="openPrivacy();return false;"
+>
+
+Privacy Policy
+
+</a>
+
+</p>
+
+
+</div>
+
 
 </div>
 
 </footer>
 
 
-<a class="whatsapp"
+<!-- WHATSAPP -->
+
+<a
+class="whatsapp"
 href="https://wa.me/8801613040095"
-target="_blank">💬</a>
+target="_blank"
+>
+
+💬
+
+</a>
 
 
 <!-- ACCOUNT MODAL -->
 
-<div class="modal" id="accountModal">
+<div
+class="modal"
+id="accountModal"
+>
+
 
 <div class="modalBox">
 
+
 <div class="modalHead">
 
-<h2 id="accountTitle">Login</h2>
 
-<button class="close" onclick="closeAccount()">✕</button>
+<h2 id="accountTitle">
+Login
+</h2>
+
+
+<button
+class="close"
+onclick="closeAccount()"
+>
+✕
+</button>
+
 
 </div>
 
+
+<!-- LOGIN -->
 
 <div id="loginBox">
 
-<div class="form">
-<label>Email</label>
-<input id="loginEmail" type="email" placeholder="Enter email">
-</div>
 
 <div class="form">
-<label>Password</label>
-<input id="loginPassword" type="password" placeholder="Enter password">
+
+<label>
+Email
+</label>
+
+<input
+id="loginEmail"
+type="email"
+placeholder="Enter email"
+>
+
 </div>
 
-<button class="btn primary full" onclick="login()">
+
+<div class="form">
+
+<label>
+Password
+</label>
+
+<input
+id="loginPassword"
+type="password"
+placeholder="Enter password"
+>
+
+</div>
+
+
+<button
+class="btn primary full"
+onclick="login()"
+>
+
 🔐 Login
+
 </button>
 
+
 <div class="switch">
+
 Don't have an account?
-<button class="link" onclick="showRegister()">Create Account</button>
-</div>
 
-</div>
+<button
+class="link"
+onclick="showRegister()"
+>
 
+Create Account
 
-<div id="registerBox" style="display:none">
-
-<div class="form">
-<label>Full Name</label>
-<input id="regName" placeholder="Your full name">
-</div>
-
-<div class="form">
-<label>Email</label>
-<input id="regEmail" type="email" placeholder="Your email">
-</div>
-
-<div class="form">
-<label>Password</label>
-<input id="regPassword" type="password" placeholder="Minimum 6 characters">
-</div>
-
-<button class="btn primary full" onclick="register()">
-📝 Create Account
 </button>
 
+</div>
+
+
+</div>
+
+
+<!-- REGISTER -->
+
+<div
+id="registerBox"
+style="display:none"
+>
+
+
+<div class="form">
+
+<label>
+Full Name
+</label>
+
+<input
+id="regName"
+placeholder="Your full name"
+>
+
+</div>
+
+
+<div class="form">
+
+<label>
+Email
+</label>
+
+<input
+id="regEmail"
+type="email"
+placeholder="Your email"
+>
+
+</div>
+
+
+<div class="form">
+
+<label>
+Password
+</label>
+
+<input
+id="regPassword"
+type="password"
+placeholder="Minimum 6 characters"
+>
+
+</div>
+
+
+<button
+class="btn primary full"
+onclick="register()"
+>
+
+📝 Create Account
+
+</button>
+
+
 <div class="switch">
+
 Already have account?
-<button class="link" onclick="showLogin()">Login</button>
-</div>
+
+<button
+class="link"
+onclick="showLogin()"
+>
+
+Login
+
+</button>
 
 </div>
 
 
-<div id="profileBox" style="display:none">
+</div>
+
+
+<!-- PROFILE -->
+
+<div
+id="profileBox"
+style="display:none"
+>
+
 
 <div class="profile">
 
-<div class="avatar">👤</div>
 
-<h2 id="profileName">Customer</h2>
+<div class="avatar">
+👤
+</div>
 
-<p id="profileEmail"></p>
+
+<h2 id="profileName">
+Customer
+</h2>
+
+
+<p id="profileEmail">
+</p>
+
 
 <div class="profileMenu">
 
-<button onclick="alert('My Orders system ready for Firebase/Backend connection.')">
+
+<button
+onclick="openOrders()"
+>
+
 📦 My Orders
+
 </button>
 
-<button onclick="logout()">
+
+<button
+onclick="logout()"
+>
+
 🚪 Logout
+
 </button>
 
-</div>
-
-</div>
-
-</div>
-
-</div>
 
 </div>
 
 
-<!-- CART DRAWER -->
+</div>
 
-<div class="cartDrawer" id="cartDrawer">
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- CART -->
+
+<div
+class="cartDrawer"
+id="cartDrawer"
+>
+
 
 <div class="modalHead">
-<h2>🛒 Your Cart</h2>
-<button class="close" onclick="closeCart()">✕</button>
-</div>
-
-<div id="cartItems"></div>
-
-<hr style="margin:20px 0">
 
 <h2>
-Total: ৳<span id="cartTotal">0</span>
+🛒 Your Cart
 </h2>
 
-<button class="btn primary full" style="margin-top:15px" onclick="checkout()">
-Proceed to Checkout
+
+<button
+class="close"
+onclick="closeCart()"
+>
+✕
 </button>
+
+</div>
+
+
+<div id="cartItems">
+</div>
+
+
+<hr
+style="margin:20px 0"
+>
+
+
+<h2>
+
+Total: ৳<span id="cartTotal">
+0
+</span>
+
+</h2>
+
+
+<button
+class="btn primary full"
+style="margin-top:15px"
+onclick="checkout()"
+>
+
+Proceed to Checkout
+
+</button>
+
 
 </div>
 
 
 <!-- CHECKOUT -->
 
-<div class="modal" id="checkoutModal">
+<div
+class="modal"
+id="checkoutModal"
+>
+
 
 <div class="modalBox">
 
+
 <div class="modalHead">
-<h2>Checkout</h2>
-<button class="close" onclick="closeCheckout()">✕</button>
-</div>
 
-<div class="form">
-<label>Full Name</label>
-<input id="orderName" placeholder="Your name">
-</div>
+<h2>
+Checkout
+</h2>
 
-<div class="form">
-<label>Mobile Number</label>
-<input id="orderPhone" placeholder="01XXXXXXXXX">
-</div>
-
-<div class="form">
-<label>Delivery Address</label>
-<textarea id="orderAddress" rows="4"></textarea>
-</div>
-
-<div class="payment">
-
-<h3>💳 Payment Method</h3>
-
-<label class="payOption">
-<input type="radio" name="payment" value="COD" checked>
-💵 Cash on Delivery
-</label>
-
-<label class="payOption">
-<input type="radio" name="payment" value="bKash">
-📱 bKash
-</label>
-
-<label class="payOption">
-<input type="radio" name="payment" value="Nagad">
-🟠 Nagad
-</label>
-
-<p style="margin-top:15px;font-size:14px">
-<b>bKash:</b> 01726409431<br>
-<b>Nagad:</b> 01356001478
-</p>
-
-</div>
-
-<div class="form">
-<label>Transaction ID (if paid manually)</label>
-<input id="transaction" placeholder="Enter transaction ID">
-</div>
-
-<button class="btn primary full" onclick="placeOrder()">
-✅ Confirm Order
+<button
+class="close"
+onclick="closeCheckout()"
+>
+✕
 </button>
 
 </div>
 
+
+<div class="form">
+
+<label>
+Full Name
+</label>
+
+<input
+id="orderName"
+placeholder="Your name"
+>
+
 </div>
 
 
+<div class="form">
+
+<label>
+Mobile Number
+</label>
+
+<input
+id="orderPhone"
+placeholder="01XXXXXXXXX"
+>
+
+</div>
+
+
+<div class="form">
+
+<label>
+Delivery Address
+</label>
+
+<textarea
+id="orderAddress"
+rows="4"
+></textarea>
+
+</div>
+
+
+<div class="payment">
+
+
+<h3>
+💳 Payment Method
+</h3>
+
+
+<label class="payOption">
+
+<input
+type="radio"
+name="payment"
+value="COD"
+checked
+>
+
+💵 Cash on Delivery
+
+</label>
+
+
+<label class="payOption">
+
+<input
+type="radio"
+name="payment"
+value="bKash"
+>
+
+📱 bKash
+
+</label>
+
+
+<label class="payOption">
+
+<input
+type="radio"
+name="payment"
+value="Nagad"
+>
+
+🟠 Nagad
+
+</label>
+
+
+<p
+style="margin-top:15px;font-size:14px"
+>
+
+<b>
+bKash:
+</b>
+
+01726409431
+
+<br>
+
+<b>
+Nagad:
+</b>
+
+01356001478
+
+</p>
+
+
+</div>
+
+
+<div class="form">
+
+<label>
+Transaction ID (if paid manually)
+</label>
+
+<input
+id="transaction"
+placeholder="Enter transaction ID"
+>
+
+</div>
+
+
+<button
+class="btn primary full"
+onclick="placeOrder()"
+>
+
+✅ Confirm Order
+
+</button>
+
+
+</div>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+
 <script>
+
 
 /* PRODUCTS */
 
@@ -1078,16 +1816,26 @@ img:"https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800"
 ];
 
 
-let cart=JSON.parse(
-localStorage.getItem("tn_cart")||"[]"
+let cart=
+
+JSON.parse(
+
+localStorage.getItem(
+"tn_cart"
+) || "[]"
+
 );
 
 
-/* RENDER PRODUCTS */
+/* RENDER */
 
 function render(list){
 
-document.getElementById("productGrid").innerHTML=
+document
+.getElementById(
+"productGrid"
+)
+.innerHTML=
 
 list.map(p=>`
 
@@ -1098,39 +1846,80 @@ list.map(p=>`
 <img src="${p.img}">
 
 <span class="discount">
--${Math.round((1-p.price/p.old)*100)}%
+
+-${Math.round(
+(1-p.price/p.old)*100
+)}%
+
 </span>
 
-<button class="heart" onclick="wishlist(${p.id})">
+<button
+class="heart"
+onclick="wishlist(${p.id})"
+>
+
 ♡
+
 </button>
 
 </div>
+
 
 <div class="productInfo">
 
-<h3>${p.name}</h3>
+<h3>
+${p.name}
+</h3>
 
-<div class="stars">★★★★★</div>
 
-<div>
-<span class="price">৳${p.price}</span>
-<span class="old">৳${p.old}</span>
+<div class="stars">
+★★★★★
 </div>
 
-<div class="stock">● In Stock</div>
+
+<div>
+
+<span class="price">
+৳${p.price}
+</span>
+
+<span class="old">
+৳${p.old}
+</span>
+
+</div>
+
+
+<div class="stock">
+● In Stock
+</div>
+
 
 <div class="productBtns">
 
-<button class="cartBtn" onclick="addCart(${p.id})">
+
+<button
+class="cartBtn"
+onclick="addCart(${p.id})"
+>
+
 Add Cart
+
 </button>
 
-<button class="buyBtn" onclick="buy(${p.id})">
+
+<button
+class="buyBtn"
+onclick="buy(${p.id})"
+>
+
 Buy Now
+
 </button>
+
 
 </div>
+
 
 </div>
 
@@ -1146,9 +1935,17 @@ Buy Now
 function filterCategory(cat){
 
 if(cat==="all"){
+
 render(products);
+
 }else{
-render(products.filter(p=>p.cat===cat));
+
+render(
+products.filter(
+p=>p.cat===cat
+)
+);
+
 }
 
 scrollProducts();
@@ -1160,12 +1957,26 @@ scrollProducts();
 
 function searchProducts(){
 
-let q=document.getElementById("search").value.toLowerCase();
+let q=
+
+document
+.getElementById("search")
+.value
+.toLowerCase();
+
 
 render(
+
 products.filter(
-p=>p.name.toLowerCase().includes(q)
+
+p=>
+
+p.name
+.toLowerCase()
+.includes(q)
+
 )
+
 );
 
 scrollProducts();
@@ -1177,13 +1988,19 @@ scrollProducts();
 
 function addCart(id){
 
-let p=products.find(x=>x.id===id);
+let p=
+
+products.find(
+x=>x.id===id
+);
 
 cart.push(p);
 
 saveCart();
 
-alert("Added to cart!");
+alert(
+"Added to cart!"
+);
 
 }
 
@@ -1200,8 +2017,11 @@ openCart();
 function saveCart(){
 
 localStorage.setItem(
+
 "tn_cart",
+
 JSON.stringify(cart)
+
 );
 
 renderCart();
@@ -1211,14 +2031,22 @@ renderCart();
 
 function renderCart(){
 
-document.getElementById("cartCount").innerText=cart.length;
+document
+.getElementById("cartCount")
+.innerText=
+cart.length;
+
 
 let html="";
+
 let total=0;
 
-cart.forEach((p,i)=>{
+
+cart.forEach(
+(p,i)=>{
 
 total+=p.price;
+
 
 html+=`
 
@@ -1228,12 +2056,21 @@ html+=`
 
 <div style="flex:1">
 
-<b>${p.name}</b>
+<b>
+${p.name}
+</b>
 
-<p>৳${p.price}</p>
+<p>
+৳${p.price}
+</p>
 
-<button class="remove" onclick="removeCart(${i})">
+<button
+class="remove"
+onclick="removeCart(${i})"
+>
+
 Remove
+
 </button>
 
 </div>
@@ -1244,10 +2081,20 @@ Remove
 
 });
 
-document.getElementById("cartItems").innerHTML=
-html||"<p>Your cart is empty.</p>";
 
-document.getElementById("cartTotal").innerText=total;
+document
+.getElementById("cartItems")
+.innerHTML=
+
+html ||
+
+"<p>Your cart is empty.</p>";
+
+
+document
+.getElementById("cartTotal")
+.innerText=
+total;
 
 }
 
@@ -1265,7 +2112,8 @@ function openCart(){
 
 document
 .getElementById("cartDrawer")
-.classList.add("open");
+.classList
+.add("open");
 
 }
 
@@ -1274,7 +2122,795 @@ function closeCart(){
 
 document
 .getElementById("cartDrawer")
-.classList.remove("open");
+.classList
+.remove("open");
+
+}
+
+
+/* ACCOUNT */
+
+function openAccount(){
+
+document
+.getElementById("accountModal")
+.classList
+.add("show");
+
+
+let user=
+
+JSON.parse(
+
+localStorage.getItem(
+"tn_user"
+)
+
+);
+
+
+if(user){
+
+showProfile();
+
+}else{
+
+showLogin();
+
+}
+
+}
+
+
+function closeAccount(){
+
+document
+.getElementById("accountModal")
+.classList
+.remove("show");
+
+}
+
+
+function showLogin(){
+
+document
+.getElementById("loginBox")
+.style.display=
+"block";
+
+
+document
+.getElementById("registerBox")
+.style.display=
+"none";
+
+
+document
+.getElementById("profileBox")
+.style.display=
+"none";
+
+
+document
+.getElementById("accountTitle")
+.innerText=
+"Login";
+
+}
+
+
+function showRegister(){
+
+document
+.getElementById("loginBox")
+.style.display=
+"none";
+
+
+document
+.getElementById("registerBox")
+.style.display=
+"block";
+
+
+document
+.getElementById("profileBox")
+.style.display=
+"none";
+
+
+document
+.getElementById("accountTitle")
+.innerText=
+"Create Account";
+
+}
+
+
+/* REGISTER */
+
+function register(){
+
+let name=
+
+document
+.getElementById("regName")
+.value
+.trim();
+
+
+let email=
+
+document
+.getElementById("regEmail")
+.value
+.trim()
+.toLowerCase();
+
+
+let password=
+
+document
+.getElementById("regPassword")
+.value;
+
+
+if(
+!name ||
+!email ||
+!password
+){
+
+alert(
+"Please fill all fields."
+);
+
+return;
+
+}
+
+
+if(
+password.length<6
+){
+
+alert(
+"Password must be at least 6 characters."
+);
+
+return;
+
+}
+
+
+let users=
+
+JSON.parse(
+
+localStorage.getItem(
+"tn_users"
+) || "[]"
+
+);
+
+
+if(
+
+users.find(
+u=>u.email===email
+)
+
+){
+
+alert(
+"This email is already registered."
+);
+
+return;
+
+}
+
+
+users.push({
+
+id:Date.now(),
+
+name:name,
+
+email:email,
+
+password:password
+
+});
+
+
+localStorage.setItem(
+
+"tn_users",
+
+JSON.stringify(users)
+
+);
+
+
+localStorage.setItem(
+
+"tn_user",
+
+JSON.stringify({
+
+name:name,
+
+email:email
+
+})
+
+);
+
+
+alert(
+"Account created successfully!"
+);
+
+
+showProfile();
+
+updateAccount();
+
+}
+
+
+/* LOGIN */
+
+function login(){
+
+let email=
+
+document
+.getElementById("loginEmail")
+.value
+.trim()
+.toLowerCase();
+
+
+let password=
+
+document
+.getElementById("loginPassword")
+.value;
+
+
+let users=
+
+JSON.parse(
+
+localStorage.getItem(
+"tn_users"
+) || "[]"
+
+);
+
+
+let user=
+
+users.find(
+
+u=>
+
+u.email===email &&
+
+u.password===password
+
+);
+
+
+if(!user){
+
+alert(
+"Invalid email or password."
+);
+
+return;
+
+}
+
+
+localStorage.setItem(
+
+"tn_user",
+
+JSON.stringify({
+
+name:user.name,
+
+email:user.email
+
+})
+
+);
+
+
+alert(
+"Login successful!"
+);
+
+
+showProfile();
+
+updateAccount();
+
+}
+
+
+/* PROFILE */
+
+function showProfile(){
+
+let user=
+
+JSON.parse(
+
+localStorage.getItem(
+"tn_user"
+)
+
+);
+
+
+if(!user){
+
+showLogin();
+
+return;
+
+}
+
+
+document
+.getElementById("loginBox")
+.style.display=
+"none";
+
+
+document
+.getElementById("registerBox")
+.style.display=
+"none";
+
+
+document
+.getElementById("profileBox")
+.style.display=
+"block";
+
+
+document
+.getElementById("accountTitle")
+.innerText=
+"My Account";
+
+
+document
+.getElementById("profileName")
+.innerText=
+user.name;
+
+
+document
+.getElementById("profileEmail")
+.innerText=
+user.email;
+
+}
+
+
+/* LOGOUT */
+
+function logout(){
+
+localStorage.removeItem(
+"tn_user"
+);
+
+
+showLogin();
+
+updateAccount();
+
+
+alert(
+"Logged out successfully."
+);
+
+}
+
+
+function updateAccount(){
+
+let user=
+
+JSON.parse(
+
+localStorage.getItem(
+"tn_user"
+)
+
+);
+
+
+document
+.getElementById("accountName")
+.innerText=
+
+user
+?
+user.name
+:
+"Account";
+
+}
+
+
+/* MY ORDERS */
+
+function openOrders(){
+
+let user=
+
+JSON.parse(
+
+localStorage.getItem(
+"tn_user"
+)
+
+);
+
+
+if(!user){
+
+alert(
+"Please login to view your orders."
+);
+
+openAccount();
+
+return;
+
+}
+
+
+let orders=
+
+JSON.parse(
+
+localStorage.getItem(
+"tn_orders"
+) || "[]"
+
+);
+
+
+let myOrders=
+
+orders.filter(
+
+order=>
+
+order.user===user.email
+
+);
+
+
+let html="";
+
+
+if(
+myOrders.length===0
+){
+
+html=
+
+`
+
+<div
+style="text-align:center;padding:30px"
+>
+
+<div
+style="font-size:50px"
+>
+📦
+</div>
+
+<h3>
+No Orders Yet
+</h3>
+
+<p
+style="color:#667085;margin-top:8px"
+>
+
+You haven't placed any orders yet.
+
+</p>
+
+</div>
+
+`;
+
+}else{
+
+
+myOrders.forEach(
+
+order=>{
+
+html+=`
+
+<div class="orderCard">
+
+<h3>
+
+Order #${order.id}
+
+</h3>
+
+
+<p>
+
+📅 ${order.date}
+
+</p>
+
+
+<p>
+
+💳 Payment:
+${order.payment}
+
+</p>
+
+
+<p>
+
+💰 Total:
+৳${order.total}
+
+</p>
+
+
+<p class="orderStatus">
+
+● ${order.status}
+
+</p>
+
+
+</div>
+
+`;
+
+}
+
+);
+
+}
+
+
+document
+.getElementById("accountTitle")
+.innerText=
+"My Orders";
+
+
+document
+.getElementById("loginBox")
+.style.display=
+"none";
+
+
+document
+.getElementById("registerBox")
+.style.display=
+"none";
+
+
+document
+.getElementById("profileBox")
+.style.display=
+"block";
+
+
+document
+.getElementById("profileBox")
+.innerHTML=
+
+`
+
+<button
+class="close"
+onclick="showProfile()"
+style="margin-bottom:20px"
+>
+
+← Back to Account
+
+</button>
+
+${html}
+
+`;
+
+
+document
+.getElementById("accountModal")
+.classList
+.add("show");
+
+}
+
+
+/* PRIVACY POLICY */
+
+function openPrivacy(){
+
+document
+.getElementById("accountTitle")
+.innerText=
+"Privacy Policy";
+
+
+document
+.getElementById("loginBox")
+.style.display=
+"none";
+
+
+document
+.getElementById("registerBox")
+.style.display=
+"none";
+
+
+document
+.getElementById("profileBox")
+.style.display=
+"block";
+
+
+document
+.getElementById("profileBox")
+.innerHTML=
+
+`
+
+<div
+style="text-align:left"
+>
+
+
+<button
+class="close"
+onclick="closeAccount()"
+style="margin-bottom:20px"
+>
+
+✕ Close
+
+</button>
+
+
+<h2>
+🔒 Privacy Policy
+</h2>
+
+
+<p
+style="
+margin-top:15px;
+line-height:1.8;
+color:#667085;
+"
+>
+
+At Trusted Network, we respect your privacy.
+We collect only the information required to
+process your orders and provide customer support.
+
+</p>
+
+
+<h3
+style="margin-top:20px"
+>
+
+Information We Collect
+
+</h3>
+
+
+<p
+style="
+margin-top:10px;
+line-height:1.8;
+color:#667085;
+"
+>
+
+We may collect your name, email address,
+phone number, delivery address and order
+information when you use our services.
+
+</p>
+
+
+<h3
+style="margin-top:20px"
+>
+
+Payment Information
+
+</h3>
+
+
+<p
+style="
+margin-top:10px;
+line-height:1.8;
+color:#667085;
+"
+>
+
+Payment information is used only for processing
+your order. We do not sell or share your personal
+information with third parties.
+
+</p>
+
+
+<h3
+style="margin-top:20px"
+>
+
+Contact Us
+
+</h3>
+
+
+<p
+style="
+margin-top:10px;
+line-height:1.8;
+color:#667085;
+"
+>
+
+WhatsApp:
+01613040095
+
+<br>
+
+bKash:
+01726409431
+
+<br>
+
+Nagad:
+01356001478
+
+</p>
+
+
+</div>
+
+`;
+
+
+document
+.getElementById("accountModal")
+.classList
+.add("show");
 
 }
 
@@ -1283,19 +2919,26 @@ document
 
 function checkout(){
 
-if(cart.length===0){
+if(
+cart.length===0
+){
 
-alert("Your cart is empty!");
+alert(
+"Your cart is empty!"
+);
 
 return;
 
 }
 
+
 closeCart();
+
 
 document
 .getElementById("checkoutModal")
-.classList.add("show");
+.classList
+.add("show");
 
 }
 
@@ -1304,22 +2947,32 @@ function closeCheckout(){
 
 document
 .getElementById("checkoutModal")
-.classList.remove("show");
+.classList
+.remove("show");
 
 }
 
 
+/* PLACE ORDER */
+
 function placeOrder(){
 
 let user=
+
 JSON.parse(
-localStorage.getItem("tn_user")
+
+localStorage.getItem(
+"tn_user"
+)
+
 );
 
 
 if(!user){
 
-alert("Please login first.");
+alert(
+"Please login first."
+);
 
 closeCheckout();
 
@@ -1330,20 +2983,52 @@ return;
 }
 
 
-let name=document.getElementById("orderName").value;
+let name=
 
-let phone=document.getElementById("orderPhone").value;
+document
+.getElementById("orderName")
+.value;
 
-let address=document.getElementById("orderAddress").value;
 
-let payment=document.querySelector(
+let phone=
+
+document
+.getElementById("orderPhone")
+.value;
+
+
+let address=
+
+document
+.getElementById("orderAddress")
+.value;
+
+
+let payment=
+
+document
+.querySelector(
 'input[name="payment"]:checked'
-).value;
+)
+.value;
 
 
-if(!name||!phone||!address){
+let transaction=
 
-alert("Please fill all delivery information.");
+document
+.getElementById("transaction")
+.value;
+
+
+if(
+!name ||
+!phone ||
+!address
+){
+
+alert(
+"Please fill all delivery information."
+);
 
 return;
 
@@ -1351,43 +3036,64 @@ return;
 
 
 let total=
+
 cart.reduce(
-(a,b)=>a+b.price,0
+
+(a,b)=>
+a+b.price,
+
+0
+
 );
 
 
 let orders=
+
 JSON.parse(
-localStorage.getItem("tn_orders")||"[]"
+
+localStorage.getItem(
+"tn_orders"
+) || "[]"
+
 );
 
 
 orders.push({
 
-id:"TN"+Date.now(),
+id:
+"TN"+Date.now(),
 
-user:user.email,
+user:
+user.email,
 
-name,
+name:name,
 
-phone,
+phone:phone,
 
-address,
+address:address,
 
-payment,
+payment:payment,
 
-total,
+transaction:transaction,
 
-status:"Pending",
+total:total,
 
-date:new Date().toLocaleString()
+status:
+"Pending",
+
+date:
+new Date()
+.toLocaleString()
 
 });
 
 
 localStorage.setItem(
+
 "tn_orders",
+
 JSON.stringify(orders)
+
 );
 
 
@@ -1409,320 +3115,145 @@ alert(
 
 function wishlist(id){
 
-let p=products.find(x=>x.id===id);
+let p=
 
-let list=
-JSON.parse(
-localStorage.getItem("tn_wishlist")||"[]"
+products.find(
+x=>x.id===id
 );
 
-if(!list.find(x=>x.id===id)){
+
+let list=
+
+JSON.parse(
+
+localStorage.getItem(
+"tn_wishlist"
+) || "[]"
+
+);
+
+
+if(
+
+!list.find(
+x=>x.id===id
+)
+
+){
 
 list.push(p);
 
+
 localStorage.setItem(
+
 "tn_wishlist",
+
 JSON.stringify(list)
+
 );
 
-alert("Added to wishlist ❤️");
+
+alert(
+"Added to wishlist ❤️"
+);
 
 }else{
 
-alert("Already in wishlist.");
-
-}
-
-}
-
-
-/* ACCOUNT */
-
-function openAccount(){
-
-document
-.getElementById("accountModal")
-.classList.add("show");
-
-let user=
-JSON.parse(
-localStorage.getItem("tn_user")
+alert(
+"Already in wishlist."
 );
 
-
-if(user){
-
-showProfile();
-
-}else{
-
-showLogin();
-
 }
 
 }
 
 
-function closeAccount(){
-
-document
-.getElementById("accountModal")
-.classList.remove("show");
-
-}
-
-
-function showLogin(){
-
-document.getElementById("loginBox").style.display="block";
-
-document.getElementById("registerBox").style.display="none";
-
-document.getElementById("profileBox").style.display="none";
-
-document.getElementById("accountTitle").innerText="Login";
-
-}
-
-
-function showRegister(){
-
-document.getElementById("loginBox").style.display="none";
-
-document.getElementById("registerBox").style.display="block";
-
-document.getElementById("profileBox").style.display="none";
-
-document.getElementById("accountTitle").innerText="Create Account";
-
-}
-
-
-function register(){
-
-let name=document.getElementById("regName").value.trim();
-
-let email=document.getElementById("regEmail").value.trim().toLowerCase();
-
-let password=document.getElementById("regPassword").value;
-
-
-if(!name||!email||!password){
-
-alert("Please fill all fields.");
-
-return;
-
-}
-
-
-if(password.length<6){
-
-alert("Password must be at least 6 characters.");
-
-return;
-
-}
-
-
-let users=
-JSON.parse(
-localStorage.getItem("tn_users")||"[]"
-);
-
-
-if(users.find(u=>u.email===email)){
-
-alert("This email is already registered.");
-
-return;
-
-}
-
-
-users.push({
-
-id:Date.now(),
-
-name,
-
-email,
-
-password
-
-});
-
-
-localStorage.setItem(
-"tn_users",
-JSON.stringify(users)
-);
-
-
-localStorage.setItem(
-"tn_user",
-JSON.stringify({
-name,
-email
-})
-);
-
-
-alert("Account created successfully!");
-
-showProfile();
-
-updateAccount();
-
-}
-
-
-function login(){
-
-let email=document.getElementById("loginEmail").value.trim().toLowerCase();
-
-let password=document.getElementById("loginPassword").value;
-
-
-let users=
-JSON.parse(
-localStorage.getItem("tn_users")||"[]"
-);
-
-
-let user=
-users.find(
-u=>u.email===email&&u.password===password
-);
-
-
-if(!user){
-
-alert("Invalid email or password.");
-
-return;
-
-}
-
-
-localStorage.setItem(
-"tn_user",
-JSON.stringify({
-name:user.name,
-email:user.email
-})
-);
-
-
-alert("Login successful!");
-
-showProfile();
-
-updateAccount();
-
-}
-
-
-function showProfile(){
-
-let user=
-JSON.parse(
-localStorage.getItem("tn_user")
-);
-
-
-if(!user){
-
-showLogin();
-
-return;
-
-}
-
-
-document.getElementById("loginBox").style.display="none";
-
-document.getElementById("registerBox").style.display="none";
-
-document.getElementById("profileBox").style.display="block";
-
-document.getElementById("accountTitle").innerText="My Account";
-
-document.getElementById("profileName").innerText=user.name;
-
-document.getElementById("profileEmail").innerText=user.email;
-
-}
-
-
-function logout(){
-
-localStorage.removeItem("tn_user");
-
-showLogin();
-
-updateAccount();
-
-alert("Logged out successfully.");
-
-}
-
-
-function updateAccount(){
-
-let user=
-JSON.parse(
-localStorage.getItem("tn_user")
-);
-
-
-document.getElementById("accountName").innerText=
-user?user.name:"Account";
-
-}
-
+/* SCROLL */
 
 function scrollProducts(){
 
 document
 .getElementById("productGrid")
 .scrollIntoView({
+
 behavior:"smooth"
+
 });
 
 }
 
 
-/* FLASH TIMER */
+/* TIMER */
 
 let seconds=18000;
 
-setInterval(()=>{
+
+setInterval(
+
+()=>{
 
 seconds--;
 
-let h=Math.floor(seconds/3600);
 
-let m=Math.floor((seconds%3600)/60);
+let h=
 
-let s=seconds%60;
+Math.floor(
+seconds/3600
+);
 
-document.getElementById("timer").innerText=
 
-String(h).padStart(2,"0")+":"+
-String(m).padStart(2,"0")+":"+
-String(s).padStart(2,"0");
+let m=
 
-if(seconds<=0){
+Math.floor(
+
+(seconds%3600)/60
+
+);
+
+
+let s=
+
+seconds%60;
+
+
+document
+.getElementById("timer")
+.innerText=
+
+String(h)
+.padStart(2,"0")
+
++":"
+
++
+
+String(m)
+.padStart(2,"0")
+
++":"
+
++
+
+String(s)
+.padStart(2,"0");
+
+
+if(
+seconds<=0
+){
 
 seconds=18000;
 
 }
 
-},1000);
+},
+
+1000
+
+);
 
 
-/* INITIAL */
+/* INITIALIZE */
 
 render(products);
 
@@ -1730,7 +3261,10 @@ renderCart();
 
 updateAccount();
 
+
 </script>
 
+
 </body>
+
 </html>
