@@ -1,333 +1,655 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>SmartBazaar AI - Intelligent Marketplace</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SmartBazaar AI - Online Shopping</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Inter,Arial,sans-serif;background:#f5f7fb;color:#172033}
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
-.hidden{display:none!important}
-button:disabled{opacity:.5;cursor:not-allowed}
 
-header{position:sticky;top:0;z-index:1000;background:#111827;color:white;box-shadow:0 5px 25px #0004}
-.top{max-width:1500px;margin:auto;padding:14px 20px;display:flex;align-items:center;gap:15px}
-.logo{font-size:25px;font-weight:900;white-space:nowrap}
-.logo span{color:#38bdf8}
-.search{flex:1;display:flex;background:#fff;border-radius:13px;overflow:hidden}
-.search input{flex:1;border:0;outline:0;padding:13px;color:#111}
-.search button{border:0;background:#38bdf8;padding:0 18px}
-.actions{display:flex;gap:7px}
-.actions button{background:#ffffff14;border:1px solid #ffffff20;color:white;padding:10px;border-radius:9px}
-.nav{max-width:1500px;margin:auto;padding:0 20px 12px;display:flex;gap:7px;overflow:auto}
-.nav button{white-space:nowrap;background:#ffffff12;color:#fff;border:0;padding:9px 14px;border-radius:20px}
-
-.container{max-width:1500px;margin:auto;padding:25px 20px}
-.hero{background:linear-gradient(135deg,#312e81,#1d4ed8,#0284c7);color:#fff;border-radius:28px;padding:55px 40px}
-.hero h1{font-size:48px;max-width:850px}
-.hero p{margin-top:12px;max-width:750px;line-height:1.7}
-.aiSearch{margin-top:25px;background:#fff;padding:7px;border-radius:15px;max-width:900px;display:flex}
-.aiSearch input{flex:1;border:0;outline:0;padding:14px;color:#111}
-.aiSearch button{border:0;background:#111827;color:#fff;padding:0 20px;border-radius:10px}
-
-.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:25px}
-.tool,.card,.box{background:#fff;border-radius:18px;padding:20px;box-shadow:0 5px 20px #0000000d}
-.tool:hover,.card:hover{transform:translateY(-4px)}
-.tool{transition:.2s}
-.toolIcon{font-size:35px;margin-bottom:10px}
-
-.title{display:flex;justify-content:space-between;align-items:center;margin:35px 0 18px}
-.categories{display:grid;grid-template-columns:repeat(6,1fr);gap:15px}
-.category{text-align:center;background:#fff;padding:22px 10px;border-radius:17px;box-shadow:0 5px 18px #0001;cursor:pointer}
-.category:hover{transform:translateY(-4px)}
-.catIcon{font-size:35px;margin-bottom:8px}
-
-.subs{display:flex;gap:10px;overflow:auto;margin:20px 0}
-.subs button{white-space:nowrap;padding:10px 16px;border-radius:20px;border:1px solid #ddd;background:#fff}
-
-.products{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.product{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 5px 20px #0001}
-.productImage{height:220px;background:#eef2ff;display:flex;align-items:center;justify-content:center;font-size:85px}
-.productBody{padding:17px}
-.brand{color:#64748b;font-size:13px}
-.productBody h3{margin:7px 0}
-.rating{color:#f59e0b;margin:7px 0}
-.price{font-size:22px;font-weight:900}
-.old{color:#94a3b8;text-decoration:line-through;font-size:13px}
-.pButtons{display:flex;gap:6px;margin-top:14px}
-.pButtons button{flex:1;border:0;padding:10px;border-radius:9px}
-.view{background:#e0e7ff;color:#3730a3}
-.cart{background:#111827;color:white}
-.wish{background:#fee2e2}
-
-.page{background:#fff;border-radius:22px;padding:25px}
-.back{border:0;background:#e2e8f0;padding:10px 15px;border-radius:9px;margin-bottom:20px}
-.detail{display:grid;grid-template-columns:1fr 1fr;gap:35px}
-.largeImage{min-height:430px;background:#eef2ff;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:160px}
-.info h1{font-size:36px;margin:10px 0}
-.info p{line-height:1.8;margin:15px 0}
-.buy{display:flex;gap:10px;margin-top:20px}
-.buy button{border:0;padding:14px 20px;border-radius:10px}
-.buyNow{background:#16a34a;color:white}
-.add{background:#111827;color:white}
-
-.aiProduct{margin-top:35px;background:linear-gradient(135deg,#eef2ff,#f0fdf4);padding:25px;border-radius:20px}
-.chat{background:#fff;margin-top:15px;padding:15px;border-radius:15px}
-.messages{height:280px;overflow:auto;display:flex;flex-direction:column;gap:10px}
-.msg{padding:12px;border-radius:12px;max-width:85%;line-height:1.6}
-.msg.ai{background:#ede9fe;align-self:flex-start}
-.msg.user{background:#dbeafe;align-self:flex-end}
-.chatInput{display:flex;gap:7px;margin-top:12px}
-.chatInput input{flex:1;padding:13px;border:1px solid #ddd;border-radius:10px}
-.chatInput button{border:0;background:#4f46e5;color:white;padding:0 18px;border-radius:10px}
-
-.review{padding:17px 0;border-bottom:1px solid #eee}
-.verified{font-size:13px;color:#16a34a}
-
-.modal{position:fixed;inset:0;background:#0009;z-index:5000;display:none;align-items:center;justify-content:center;padding:20px}
-.modal.active{display:flex}
-.modalContent{width:100%;max-width:800px;max-height:90vh;overflow:auto;background:#fff;border-radius:20px;padding:25px;position:relative}
-.close{position:absolute;right:20px;top:12px;font-size:27px;cursor:pointer}
-
-.cartItem{display:flex;justify-content:space-between;gap:15px;padding:15px 0;border-bottom:1px solid #eee}
-.qty button{padding:5px 9px;border:1px solid #ddd;background:#fff}
-.checkout{width:100%;padding:15px;border:0;border-radius:10px;background:#16a34a;color:#fff;margin-top:20px}
-
-.form{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.form input,.form textarea,.form select{width:100%;padding:13px;border:1px solid #ddd;border-radius:10px}
-.form textarea{height:110px}
-.full{grid-column:1/-1}
-
-.summary{background:#f8fafc;padding:20px;border-radius:15px}
-.row{display:flex;justify-content:space-between;padding:9px 0}
-
-.orderCard{background:#fff;border-radius:16px;padding:20px;margin-bottom:15px;box-shadow:0 4px 18px #0001}
-.status{display:flex;justify-content:space-between;gap:5px;margin-top:20px}
-.step{flex:1;text-align:center;padding:10px;border-radius:8px;background:#e5e7eb;font-size:12px}
-.step.active{background:#22c55e;color:#fff}
-
-footer{background:#111827;color:#fff;margin-top:50px;padding:50px 20px}
-.footer{max-width:1500px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
-footer p{color:#cbd5e1;line-height:1.8}
-
-@media(max-width:1100px){
-.products{grid-template-columns:repeat(3,1fr)}
-.categories{grid-template-columns:repeat(4,1fr)}
-.tools{grid-template-columns:repeat(2,1fr)}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
 }
+
+body{
+    background:#f5f7fb;
+    color:#222;
+}
+
+.hidden{
+    display:none !important;
+}
+
+header{
+    background:linear-gradient(135deg,#6c2bd9,#0d6efd);
+    color:white;
+    padding:15px 5%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.navbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.search{
+    flex:1;
+    max-width:600px;
+    display:flex;
+    background:white;
+    border-radius:30px;
+    overflow:hidden;
+}
+
+.search input{
+    flex:1;
+    border:0;
+    padding:14px 20px;
+    outline:none;
+}
+
+.search button{
+    border:0;
+    background:#ffca28;
+    padding:0 18px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.nav-buttons{
+    display:flex;
+    gap:8px;
+}
+
+.nav-buttons button{
+    border:0;
+    padding:10px 13px;
+    border-radius:20px;
+    cursor:pointer;
+    background:white;
+    color:#333;
+    font-weight:bold;
+}
+
+.hero{
+    margin:25px 5%;
+    padding:55px 30px;
+    border-radius:25px;
+    color:white;
+    background:linear-gradient(135deg,#6c2bd9,#00a8ff);
+    text-align:center;
+}
+
+.hero h1{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:18px;
+    margin-bottom:25px;
+}
+
+.hero button{
+    background:#ffca28;
+    border:0;
+    padding:14px 28px;
+    border-radius:30px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.section{
+    padding:25px 5%;
+}
+
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+    gap:15px;
+}
+
+.category{
+    background:white;
+    padding:20px 10px;
+    border-radius:18px;
+    text-align:center;
+    cursor:pointer;
+    box-shadow:0 4px 15px #00000012;
+    transition:.2s;
+}
+
+.category:hover{
+    transform:translateY(-5px);
+}
+
+.category .icon{
+    font-size:35px;
+    margin-bottom:8px;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+    gap:20px;
+}
+
+.product{
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 5px 20px #00000012;
+    transition:.2s;
+}
+
+.product:hover{
+    transform:translateY(-5px);
+}
+
+.product-img{
+    height:190px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#eef1f8;
+    font-size:75px;
+    cursor:pointer;
+}
+
+.product-info{
+    padding:15px;
+}
+
+.product-info h3{
+    margin-bottom:8px;
+}
+
+.price{
+    color:#6c2bd9;
+    font-size:21px;
+    font-weight:bold;
+    margin:8px 0;
+}
+
+.old-price{
+    color:#999;
+    text-decoration:line-through;
+    font-size:14px;
+}
+
+.rating{
+    color:#ff9800;
+    margin:7px 0;
+}
+
+.product-actions{
+    display:flex;
+    gap:8px;
+}
+
+.product-actions button{
+    flex:1;
+    padding:10px;
+    border:0;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.cart-btn{
+    background:#e8ddff;
+    color:#6c2bd9;
+}
+
+.buy-btn{
+    background:#6c2bd9;
+    color:white;
+}
+
+.page{
+    padding:30px 5%;
+    max-width:1100px;
+    margin:auto;
+}
+
+.back{
+    margin-bottom:20px;
+    border:0;
+    background:white;
+    padding:10px 18px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+.details{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+    background:white;
+    padding:25px;
+    border-radius:20px;
+}
+
+.big-img{
+    min-height:350px;
+    background:#eef1f8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:130px;
+    border-radius:18px;
+}
+
+.ai-box{
+    margin-top:25px;
+    background:linear-gradient(135deg,#17172b,#31205e);
+    color:white;
+    padding:25px;
+    border-radius:20px;
+}
+
+.ai-box input{
+    width:100%;
+    padding:13px;
+    margin:15px 0;
+    border-radius:10px;
+    border:0;
+}
+
+.ai-box button{
+    background:#ffca28;
+    border:0;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.ai-answer{
+    background:#ffffff15;
+    padding:15px;
+    border-radius:10px;
+    min-height:50px;
+}
+
+.form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    background:white;
+    padding:25px;
+    border-radius:20px;
+}
+
+.form div{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.form .full{
+    grid-column:1/-1;
+}
+
+.form input,
+.form textarea,
+.form select{
+    padding:13px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    outline:none;
+}
+
+.form textarea{
+    min-height:100px;
+}
+
+.box{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    margin-top:20px;
+    box-shadow:0 5px 20px #00000010;
+}
+
+.bkash{
+    border-left:6px solid #e2136e;
+}
+
+.bkash-number{
+    font-size:28px;
+    color:#e2136e;
+    font-weight:bold;
+    margin:12px 0;
+}
+
+.summary{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    margin-top:20px;
+}
+
+.row{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+}
+
+.checkout{
+    width:100%;
+    margin-top:20px;
+    padding:16px;
+    border:0;
+    border-radius:12px;
+    background:#6c2bd9;
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.cart-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    padding:15px;
+    border-bottom:1px solid #eee;
+}
+
+.order-card{
+    background:white;
+    padding:25px;
+    margin-bottom:20px;
+    border-radius:20px;
+    box-shadow:0 5px 20px #00000010;
+}
+
+.status{
+    display:flex;
+    gap:5px;
+    margin-top:20px;
+}
+
+.step{
+    flex:1;
+    text-align:center;
+    padding:10px;
+    background:#eee;
+    border-radius:8px;
+    font-size:13px;
+}
+
+.step.active{
+    background:#6c2bd9;
+    color:white;
+}
+
+footer{
+    margin-top:50px;
+    padding:40px 5%;
+    background:#17172b;
+    color:white;
+    text-align:center;
+}
+
 @media(max-width:700px){
-.top{flex-wrap:wrap}
-.search{flex-basis:100%;order:3}
-.products{grid-template-columns:repeat(2,1fr)}
-.categories{grid-template-columns:repeat(2,1fr)}
-.detail,.form{grid-template-columns:1fr}
-.full{grid-column:auto}
-.tools{grid-template-columns:1fr}
-.hero h1{font-size:32px}
-.footer{grid-template-columns:1fr 1fr}
+
+    .hero h1{
+        font-size:30px;
+    }
+
+    .details,
+    .form{
+        grid-template-columns:1fr;
+    }
+
+    .form .full{
+        grid-column:auto;
+    }
+
+    .nav-buttons{
+        width:100%;
+        justify-content:center;
+    }
+
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="top">
 
-<div class="logo">Smart<span>Bazaar</span> AI</div>
+<div class="navbar">
+
+<div class="logo" onclick="home()">
+🛍️ SmartBazaar AI
+</div>
 
 <div class="search">
-<input id="searchInput" placeholder="Search products, brands, categories...">
-<button onclick="searchProducts()">🔍</button>
+
+<input
+id="searchInput"
+placeholder="আপনি কী খুঁজছেন?"
+onkeydown="searchKey(event)"
+>
+
+<button onclick="searchProducts()">
+🔍
+</button>
+
 </div>
 
-<div class="actions">
-<button onclick="voiceSearch()">🎤</button>
-<button onclick="openImageModal()">📷</button>
-<button onclick="showPage('orders')">📦</button>
-<button onclick="openCart()">🛒 <b id="cartCount">0</b></button>
-</div>
+<div class="nav-buttons">
+
+<button onclick="showCart()">
+🛒 Cart
+<span id="cartCount">0</span>
+</button>
+
+<button onclick="showMyOrders()">
+📦 My Orders
+</button>
 
 </div>
 
-<div class="nav">
-<button onclick="home()">Home</button>
-<button onclick="categoryPage('Men')">👕 Men's Fashion</button>
-<button onclick="categoryPage('Women')">👗 Women's Fashion</button>
-<button onclick="categoryPage('Mobile')">📱 Mobile</button>
-<button onclick="categoryPage('Computer')">💻 Computers</button>
-<button onclick="categoryPage('Electronics')">🎧 Electronics</button>
-<button onclick="categoryPage('Beauty')">💄 Beauty</button>
-<button onclick="categoryPage('Home')">🏠 Home</button>
-<button onclick="categoryPage('Kitchen')">🍳 Kitchen</button>
-<button onclick="categoryPage('Grocery')">🛒 Grocery</button>
-<button onclick="categoryPage('Sports')">🏋️ Sports</button>
 </div>
+
 </header>
 
 
-<main class="container">
-
 <!-- HOME -->
 
-<section id="homePage">
+<main id="homePage">
 
-<div class="hero">
-<h1>Shop Smarter With SmartBazaar AI</h1>
+<section class="hero">
+
+<h1>
+Smart Shopping with AI
+</h1>
+
 <p>
-Discover products, understand reviews, compare options and get intelligent
-shopping guidance from one modern marketplace.
+আপনার পছন্দের Product খুঁজুন, AI-এর সাহায্যে জানুন এবং সহজেই Order করুন।
 </p>
 
-<div class="aiSearch">
-<input id="aiSearchInput" placeholder="Tell AI what product you need...">
-<button onclick="aiRecommend()">🤖 Ask AI</button>
-</div>
-</div>
+<button onclick="document.getElementById('productsSection').scrollIntoView()">
+🛍️ Start Shopping
+</button>
 
-<div class="tools">
+</section>
 
-<div class="tool" onclick="aiRecommend()">
-<div class="toolIcon">🤖</div>
-<h3>AI Shopping Assistant</h3>
-<p>Describe what you need and find suitable products.</p>
+
+<section class="section">
+
+<div class="section-title">
+<h2>🛍️ Shop by Category</h2>
 </div>
-
-<div class="tool" onclick="voiceSearch()">
-<div class="toolIcon">🎤</div>
-<h3>Voice Search</h3>
-<p>Search products using your voice.</p>
-</div>
-
-<div class="tool" onclick="openImageModal()">
-<div class="toolIcon">📸</div>
-<h3>Search By Image</h3>
-<p>Upload a product photo to start visual search.</p>
-</div>
-
-<div class="tool" onclick="showCompare()">
-<div class="toolIcon">⚖️</div>
-<h3>Compare Products</h3>
-<p>Compare selected products before buying.</p>
-</div>
-
-</div>
-
-<h2 class="title">Explore Categories</h2>
 
 <div class="categories">
 
-<div class="category" onclick="categoryPage('Men')"><div class="catIcon">👕</div>Men's Fashion</div>
-<div class="category" onclick="categoryPage('Women')"><div class="catIcon">👗</div>Women's Fashion</div>
-<div class="category" onclick="categoryPage('Mobile')"><div class="catIcon">📱</div>Mobile & Tablets</div>
-<div class="category" onclick="categoryPage('Computer')"><div class="catIcon">💻</div>Computers & Laptops</div>
-<div class="category" onclick="categoryPage('Electronics')"><div class="catIcon">🎧</div>Electronics & Gadgets</div>
-<div class="category" onclick="categoryPage('Beauty')"><div class="catIcon">💄</div>Beauty & Cosmetics</div>
-<div class="category" onclick="categoryPage('Home')"><div class="catIcon">🏠</div>Home & Living</div>
-<div class="category" onclick="categoryPage('Kitchen')"><div class="catIcon">🍳</div>Kitchen & Dining</div>
-<div class="category" onclick="categoryPage('Grocery')"><div class="catIcon">🛒</div>Grocery</div>
-<div class="category" onclick="categoryPage('Kids')"><div class="catIcon">👶</div>Kids & Baby</div>
-<div class="category" onclick="categoryPage('Sports')"><div class="catIcon">🏋️</div>Sports & Fitness</div>
-<div class="category" onclick="categoryPage('Travel')"><div class="catIcon">🎒</div>Bags & Travel</div>
-<div class="category" onclick="categoryPage('Auto')"><div class="catIcon">🚗</div>Automotive</div>
-<div class="category" onclick="categoryPage('Toys')"><div class="catIcon">🧸</div>Toys & Games</div>
-<div class="category" onclick="categoryPage('Books')"><div class="catIcon">📚</div>Books & Stationery</div>
-<div class="category" onclick="categoryPage('Furniture')"><div class="catIcon">🪑</div>Furniture</div>
-<div class="category" onclick="categoryPage('Tools')"><div class="catIcon">🔧</div>Tools & Hardware</div>
-<div class="category" onclick="categoryPage('Garden')"><div class="catIcon">🌿</div>Garden & Outdoor</div>
-<div class="category" onclick="categoryPage('Pets')"><div class="catIcon">🐶</div>Pet Supplies</div>
+<div class="category" onclick="filterCategory('Men Fashion')">
+<div class="icon">👕</div>
+Men's Fashion
+</div>
+
+<div class="category" onclick="filterCategory('Women Fashion')">
+<div class="icon">👗</div>
+Women's Fashion
+</div>
+
+<div class="category" onclick="filterCategory('Mobile')">
+<div class="icon">📱</div>
+Mobile & Tablets
+</div>
+
+<div class="category" onclick="filterCategory('Computer')">
+<div class="icon">💻</div>
+Computers & Laptops
+</div>
+
+<div class="category" onclick="filterCategory('Electronics')">
+<div class="icon">🎧</div>
+Electronics
+</div>
+
+<div class="category" onclick="filterCategory('Beauty')">
+<div class="icon">💄</div>
+Beauty
+</div>
+
+<div class="category" onclick="filterCategory('Home')">
+<div class="icon">🏠</div>
+Home & Living
+</div>
+
+<div class="category" onclick="filterCategory('Kitchen')">
+<div class="icon">🍳</div>
+Kitchen
+</div>
+
+<div class="category" onclick="filterCategory('Grocery')">
+<div class="icon">🛒</div>
+Grocery
+</div>
+
+<div class="category" onclick="filterCategory('Kids')">
+<div class="icon">👶</div>
+Kids & Baby
+</div>
+
+<div class="category" onclick="filterCategory('Sports')">
+<div class="icon">🏋️</div>
+Sports
+</div>
+
+<div class="category" onclick="filterCategory('Bags')">
+<div class="icon">🎒</div>
+Bags & Travel
+</div>
+
+<div class="category" onclick="filterCategory('Automotive')">
+<div class="icon">🚗</div>
+Automotive
+</div>
+
+<div class="category" onclick="filterCategory('Toys')">
+<div class="icon">🧸</div>
+Toys & Games
+</div>
+
+<div class="category" onclick="filterCategory('Books')">
+<div class="icon">📚</div>
+Books
+</div>
 
 </div>
 
-<h2 class="title">Popular Products</h2>
-<div class="products" id="homeProducts"></div>
-
 </section>
 
 
-<!-- CATEGORY -->
+<section class="section" id="productsSection">
 
-<section id="categoryPage" class="hidden">
+<div class="section-title">
 
-<button class="back" onclick="home()">← Home</button>
+<h2 id="productTitle">
+🔥 Featured Products
+</h2>
 
-<h1 id="categoryTitle"></h1>
+<button onclick="showAllProducts()">
+View All
+</button>
 
-<div class="subs" id="subList"></div>
+</div>
 
-<div class="products" id="categoryProducts"></div>
+<div class="products" id="productGrid"></div>
 
 </section>
 
+</main>
 
-<!-- PRODUCT -->
+
+<!-- PRODUCT DETAILS -->
 
 <section id="productPage" class="hidden">
 
-<button class="back" onclick="backCategory()">← Back</button>
+<div class="page">
+
+<button class="back" onclick="home()">
+← Back to Home
+</button>
+
+<div id="productDetails"></div>
+
+</div>
+
+</section>
+
+
+<!-- CART -->
+
+<section id="cartPage" class="hidden">
 
 <div class="page">
 
-<div class="detail">
+<button class="back" onclick="home()">
+← Continue Shopping
+</button>
 
-<div class="largeImage" id="largeImage"></div>
+<h1>🛒 My Cart</h1>
 
-<div class="info">
+<div class="box" id="cartItems"></div>
 
-<span class="brand" id="detailBrand"></span>
+<button
+class="checkout"
+onclick="openCheckout()">
 
-<h1 id="detailName"></h1>
-
-<div class="rating" id="detailRating"></div>
-
-<h2 id="detailPrice"></h2>
-
-<p id="detailDescription"></p>
-
-<div class="buy">
-<button class="add" onclick="addCurrent()">🛒 Add to Cart</button>
-<button class="buyNow" onclick="buyNow()">Buy Now</button>
-</div>
-
-</div>
-</div>
-
-
-<div class="aiProduct">
-
-<h2>🤖 AI Product Expert</h2>
-
-<p>
-Ask questions about this product. For example:
-"Is this good for daily use?" or "What are the pros and cons?"
-</p>
-
-<div class="chat">
-
-<div class="messages" id="messages">
-<div class="msg ai">Hello! Ask me anything about this product.</div>
-</div>
-
-<div class="chatInput">
-<input id="question" placeholder="Ask about this product...">
-<button onclick="askAI()">Ask AI</button>
-</div>
-
-</div>
-
-</div>
-
-
-<div style="margin-top:35px">
-
-<h2>⭐ Customer Reviews</h2>
-
-<div id="reviews"></div>
-
-</div>
+Proceed to Checkout →
+</button>
 
 </div>
 
@@ -338,9 +660,11 @@ Ask questions about this product. For example:
 
 <section id="checkoutPage" class="hidden">
 
-<button class="back" onclick="openCart()">← Back to Cart</button>
-
 <div class="page">
+
+<button class="back" onclick="showCart()">
+← Back to Cart
+</button>
 
 <h1>🛍️ Complete Your Order</h1>
 
@@ -349,125 +673,234 @@ Ask questions about this product. For example:
 <div class="form">
 
 <div>
-<label>Full Name</label>
-<input id="name" placeholder="Your full name">
+
+<label>আপনার নাম</label>
+
+<input
+id="orderName"
+placeholder="আপনার সম্পূর্ণ নাম"
+>
+
 </div>
 
+
 <div>
-<label>Mobile Number</label>
-<input id="phone" placeholder="01XXXXXXXXX">
+
+<label>মোবাইল নম্বর</label>
+
+<input
+id="orderPhone"
+placeholder="017XXXXXXXX"
+>
+
 </div>
+
 
 <div class="full">
+
 <label>Delivery Address</label>
-<textarea id="address" placeholder="House, Road, Area, District"></textarea>
+
+<textarea
+id="orderAddress"
+placeholder="বাসা, রোড, এলাকা, জেলা"
+></textarea>
+
 </div>
 
+
 <div>
-<label>Delivery Method</label>
-<select id="delivery" onchange="updateTotal()">
-<option value="60">Inside Dhaka - ৳60</option>
-<option value="120">Outside Dhaka - ৳120</option>
-<option value="150">Express Delivery - ৳150</option>
+
+<label>Delivery Area</label>
+
+<select
+id="deliveryArea"
+onchange="calculateOrderTotal()">
+
+<option value="60">
+Inside Dhaka — ৳60
+</option>
+
+<option value="120">
+Outside Dhaka — ৳120
+</option>
+
+<option value="150">
+Express Delivery — ৳150
+</option>
+
 </select>
+
 </div>
 
+
 <div>
+
 <label>Payment Method</label>
-<select id="payment">
-<option>bKash - Delivery Charge First</option>
-<option>Cash on Delivery</option>
+
+<select id="paymentMethod">
+
+<option value="bKash">
+bKash
+</option>
+
+<option value="COD">
+Cash on Delivery
+</option>
+
 </select>
+
 </div>
 
-<div class="full box">
+</div>
 
-<h3>📱 bKash Payment</h3>
+
+<div class="box bkash">
+
+<h2>📱 bKash Payment</h2>
+
+<p>
+Delivery Charge আগে bKash করুন।
+</p>
+
+<div class="bkash-number">
+01726409431
+</div>
+
+<p>
+bKash-এ Payment করার পর Transaction ID দিন।
+</p>
 
 <br>
 
-<p>Send your delivery charge to:</p>
-
-<h2 style="margin:10px 0">01726409431</h2>
-
-<p>Then enter your bKash Transaction ID below.</p>
-
-<br>
-
-<input id="trx" placeholder="bKash Transaction ID">
+<input
+id="transactionId"
+placeholder="bKash Transaction ID"
+style="width:100%;padding:13px;border:1px solid #ddd;border-radius:10px;"
+>
 
 </div>
+
 
 <div class="summary">
 
-<h3>Order Summary</h3>
+<h2>📦 Order Summary</h2>
+
+<br>
 
 <div id="checkoutItems"></div>
 
+<hr>
+
 <div class="row">
-<span>Subtotal</span>
-<strong id="subtotal">৳0</strong>
+
+<span>Product Total</span>
+
+<strong id="orderSubtotal">
+৳0
+</strong>
+
 </div>
 
 <div class="row">
-<span>Delivery</span>
-<strong id="deliveryCharge">৳60</strong>
+
+<span>Delivery Charge</span>
+
+<strong id="orderDelivery">
+৳60
+</strong>
+
 </div>
 
 <div class="row">
-<strong>Total</strong>
-<strong id="total">৳0</strong>
+
+<strong>Grand Total</strong>
+
+<strong id="orderGrandTotal">
+৳0
+</strong>
+
 </div>
 
-<button class="checkout" onclick="confirmOrder()">
-✅ Confirm Order
+</div>
+
+
+<button
+class="checkout"
+onclick="confirmOrder()">
+
+✅ Confirm My Order
+
 </button>
-
-</div>
-
-</div>
 
 </div>
 
 </section>
 
 
-<!-- ORDER SUCCESS -->
+<!-- SUCCESS -->
 
-<section id="successPage" class="hidden">
+<section id="orderSuccessPage" class="hidden">
 
-<div class="page" style="text-align:center">
+<div class="page">
 
-<div style="font-size:70px">🎉</div>
+<div class="box" style="text-align:center">
 
-<h1>Order Confirmed!</h1>
+<div style="font-size:70px">
+🎉
+</div>
 
-<p style="margin:15px">
-Thank you for shopping with SmartBazaar.
+<h1>
+Order Successfully Placed!
+</h1>
+
+<br>
+
+<p>
+আপনার Order সফলভাবে গ্রহণ করা হয়েছে।
 </p>
 
-<div class="box" style="max-width:550px;margin:25px auto">
+<br>
 
 <h2 id="successOrderId"></h2>
 
-<p id="successInfo"></p>
+<p id="successOrderDetails"></p>
+
+<br>
+
+<button
+class="checkout"
+onclick="showMyOrders()">
+
+📦 My Orders দেখুন
+
+</button>
+
+<br>
+
+<button
+class="checkout"
+onclick="home()">
+
+🛍️ Continue Shopping
+
+</button>
 
 </div>
-
-<button class="checkout" onclick="home()">
-Continue Shopping
-</button>
 
 </div>
 
 </section>
 
 
-<!-- ORDERS -->
+<!-- MY ORDERS -->
 
 <section id="ordersPage" class="hidden">
 
-<button class="back" onclick="home()">← Home</button>
+<div class="page">
+
+<button class="back" onclick="home()">
+← Back to Home
+</button>
 
 <h1>📦 My Orders</h1>
 
@@ -475,362 +908,378 @@ Continue Shopping
 
 <div id="ordersList"></div>
 
-</section>
-
-
-<!-- COMPARE -->
-
-<section id="comparePage" class="hidden">
-
-<button class="back" onclick="home()">← Home</button>
-
-<h1>⚖️ Product Comparison</h1>
-
-<br>
-
-<div id="compareList"></div>
+</div>
 
 </section>
-
-</main>
-
-
-<!-- CART MODAL -->
-
-<div class="modal" id="cartModal">
-
-<div class="modalContent">
-
-<span class="close" onclick="closeModal('cartModal')">×</span>
-
-<h2>🛒 Your Cart</h2>
-
-<br>
-
-<div id="cartList"></div>
-
-<button class="checkout" onclick="checkout()">
-Proceed to Checkout
-</button>
-
-</div>
-
-</div>
-
-
-<!-- IMAGE SEARCH -->
-
-<div class="modal" id="imageModal">
-
-<div class="modalContent">
-
-<span class="close" onclick="closeModal('imageModal')">×</span>
-
-<h2>📸 Search By Image</h2>
-
-<br>
-
-<input type="file" accept="image/*" onchange="imageSearch(event)">
-
-<div id="imagePreview"></div>
-
-</div>
-
-</div>
 
 
 <footer>
 
-<div class="footer">
+<h2>🛍️ SmartBazaar AI</h2>
 
-<div>
-<h2>SmartBazaar AI</h2>
-<p>Intelligent shopping for everyone.</p>
-</div>
+<br>
 
-<div>
-<h3>AI Services</h3>
-<p>AI Product Expert</p>
-<p>AI Recommendation</p>
-<p>AI Review Analysis</p>
-<p>AI Comparison</p>
-</div>
+<p>
+Smart Shopping. Smart Choice.
+</p>
 
-<div>
-<h3>Marketplace</h3>
-<p>Men's Fashion</p>
-<p>Women's Fashion</p>
-<p>Electronics</p>
-<p>Grocery</p>
-</div>
+<br>
 
-<div>
-<h3>Customer Care</h3>
-<p>Order Tracking</p>
-<p>Returns</p>
-<p>Help Center</p>
-<p>Contact Us</p>
-</div>
-
-</div>
+<p>
+© 2026 SmartBazaar AI
+</p>
 
 </footer>
 
 
 <script>
 
-/* =========================
-PRODUCT DATABASE
-========================= */
 
-const products=[
+// ==============================
+// PRODUCT DATABASE
+// ==============================
 
-{id:1,cat:"Men",sub:"Shirts",brand:"SmartStyle",name:"Premium Formal Shirt",price:2500,icon:"👔",rating:4.8,desc:"Premium cotton formal shirt for office and special occasions.",reviews:["Excellent fabric quality.","Very comfortable.","Good fitting."]},
+const products = [
 
-{id:2,cat:"Men",sub:"T-Shirts",brand:"UrbanWear",name:"Premium Cotton T-Shirt",price:1200,icon:"👕",rating:4.7,desc:"Soft cotton T-shirt for everyday casual wear.",reviews:["Very comfortable.","Good cotton quality."]},
+{
+id:1,
+name:"Premium Punjabi",
+category:"Men Fashion",
+price:1490,
+oldPrice:1990,
+emoji:"👔",
+brand:"Smart Fashion",
+rating:4.8
+},
 
-{id:3,cat:"Men",sub:"Panjabi",brand:"DeshiStyle",name:"Premium Traditional Panjabi",price:2800,icon:"🥻",rating:4.9,desc:"Elegant traditional Panjabi made with premium fabric.",reviews:["Beautiful design.","Excellent fabric."]},
+{
+id:2,
+name:"Premium Men's Shirt",
+category:"Men Fashion",
+price:990,
+oldPrice:1490,
+emoji:"👕",
+brand:"Fashion House",
+rating:4.7
+},
 
-{id:4,cat:"Men",sub:"Shoes",brand:"WalkPro",name:"Men's Casual Shoes",price:3200,icon:"👟",rating:4.6,desc:"Comfortable casual shoes for daily use.",reviews:["Comfortable.","Good grip."]},
+{
+id:3,
+name:"Men's T-Shirt",
+category:"Men Fashion",
+price:590,
+oldPrice:790,
+emoji:"👕",
+brand:"Urban Wear",
+rating:4.6
+},
 
-{id:5,cat:"Women",sub:"Saree",brand:"BanglaFashion",name:"Premium Silk Saree",price:4500,icon:"🥻",rating:4.8,desc:"Elegant silk saree for special occasions.",reviews:["Beautiful saree.","Excellent quality."]},
+{
+id:4,
+name:"Men's Casual Shoes",
+category:"Men Fashion",
+price:1890,
+oldPrice:2490,
+emoji:"👟",
+brand:"WalkPro",
+rating:4.8
+},
 
-{id:6,cat:"Women",sub:"Dress",brand:"LuxeWear",name:"Elegant Women's Dress",price:3200,icon:"👗",rating:4.7,desc:"Modern elegant dress designed for comfort.",reviews:["Beautiful design.","Good fitting."]},
+{
+id:5,
+name:"Women's Saree",
+category:"Women Fashion",
+price:2490,
+oldPrice:3490,
+emoji:"🥻",
+brand:"Elegant Fashion",
+rating:4.9
+},
 
-{id:7,cat:"Women",sub:"Bags",brand:"FashionBag",name:"Women's Premium Handbag",price:2800,icon:"👜",rating:4.6,desc:"Stylish handbag for everyday fashion.",reviews:["Beautiful.","Good quality."]},
+{
+id:6,
+name:"Women's Dress",
+category:"Women Fashion",
+price:1590,
+oldPrice:2190,
+emoji:"👗",
+brand:"Fashion Queen",
+rating:4.7
+},
 
-{id:8,cat:"Mobile",sub:"Smartphone",brand:"Samsung",name:"Samsung Galaxy Smartphone",price:65000,icon:"📱",rating:4.8,desc:"Premium smartphone with powerful performance and advanced camera.",reviews:["Excellent performance.","Great camera."]},
+{
+id:7,
+name:"Women's Handbag",
+category:"Women Fashion",
+price:1290,
+oldPrice:1790,
+emoji:"👜",
+brand:"Lady Bag",
+rating:4.6
+},
 
-{id:9,cat:"Mobile",sub:"Apple",brand:"Apple",name:"iPhone Pro",price:120000,icon:"📱",rating:4.9,desc:"Premium flagship smartphone with powerful performance.",reviews:["Excellent camera.","Very fast."]},
+{
+id:8,
+name:"Samsung Galaxy Smartphone",
+category:"Mobile",
+price:24990,
+oldPrice:28990,
+emoji:"📱",
+brand:"Samsung",
+rating:4.8
+},
 
-{id:10,cat:"Mobile",sub:"Smartphone",brand:"Xiaomi",name:"Xiaomi Performance Phone",price:35000,icon:"📱",rating:4.7,desc:"High performance smartphone at competitive price.",reviews:["Great value.","Fast performance."]},
+{
+id:9,
+name:"iPhone Smartphone",
+category:"Mobile",
+price:79990,
+oldPrice:89990,
+emoji:"📱",
+brand:"Apple",
+rating:4.9
+},
 
-{id:11,cat:"Mobile",sub:"Smartphone",brand:"Oppo",name:"Oppo Camera Phone",price:38000,icon:"📱",rating:4.6,desc:"Smartphone focused on photography and daily performance.",reviews:["Good camera.","Nice display."]},
+{
+id:10,
+name:"Curved Display Smartphone",
+category:"Mobile",
+price:35990,
+oldPrice:39990,
+emoji:"📱",
+brand:"SmartTech",
+rating:4.7
+},
 
-{id:12,cat:"Computer",sub:"Laptop",brand:"Dell",name:"Dell Professional Laptop",price:85000,icon:"💻",rating:4.7,desc:"Reliable laptop for professional work.",reviews:["Very reliable.","Good performance."]},
+{
+id:11,
+name:"Gaming Laptop",
+category:"Computer",
+price:89990,
+oldPrice:99990,
+emoji:"💻",
+brand:"TechPro",
+rating:4.8
+},
 
-{id:13,cat:"Computer",sub:"Gaming",brand:"ASUS",name:"ASUS Gaming Laptop",price:150000,icon:"💻",rating:4.9,desc:"Powerful gaming laptop with high performance hardware.",reviews:["Excellent gaming.","Great display."]},
+{
+id:12,
+name:"Business Laptop",
+category:"Computer",
+price:59990,
+oldPrice:69990,
+emoji:"💻",
+brand:"ProBook",
+rating:4.7
+},
 
-{id:14,cat:"Computer",sub:"Monitor",brand:"LG",name:"LG Ultra HD Monitor",price:35000,icon:"🖥️",rating:4.7,desc:"High resolution monitor for work and entertainment.",reviews:["Great display.","Sharp image."]},
+{
+id:13,
+name:"Wireless Headphone",
+category:"Electronics",
+price:1990,
+oldPrice:2990,
+emoji:"🎧",
+brand:"SoundPro",
+rating:4.6
+},
 
-{id:15,cat:"Electronics",sub:"Headphones",brand:"Sony",name:"Sony Wireless Headphones",price:22000,icon:"🎧",rating:4.8,desc:"Premium wireless headphones with excellent sound.",reviews:["Excellent sound.","Very comfortable."]},
+{
+id:14,
+name:"Smart Watch",
+category:"Electronics",
+price:2490,
+oldPrice:3490,
+emoji:"⌚",
+brand:"SmartLife",
+rating:4.7
+},
 
-{id:16,cat:"Electronics",sub:"Speaker",brand:"JBL",name:"JBL Portable Speaker",price:8500,icon:"🔊",rating:4.7,desc:"Portable speaker with powerful sound.",reviews:["Great bass.","Good battery."]},
+{
+id:15,
+name:"Beauty Skin Care Set",
+category:"Beauty",
+price:1290,
+oldPrice:1790,
+emoji:"💄",
+brand:"Beauty Care",
+rating:4.5
+},
 
-{id:17,cat:"Beauty",sub:"Skincare",brand:"GlowBeauty",name:"Complete Skincare Kit",price:3500,icon:"💄",rating:4.6,desc:"Complete skincare set for daily personal care.",reviews:["Good quality.","Nice packaging."]},
+{
+id:16,
+name:"Modern Home Decor",
+category:"Home",
+price:2990,
+oldPrice:3990,
+emoji:"🏠",
+brand:"HomeStyle",
+rating:4.6
+},
 
-{id:18,cat:"Beauty",sub:"Perfume",brand:"LuxuryScent",name:"Premium Perfume",price:4200,icon:"🌸",rating:4.7,desc:"Long lasting premium fragrance.",reviews:["Lovely fragrance.","Long lasting."]},
+{
+id:17,
+name:"Kitchen Cookware Set",
+category:"Kitchen",
+price:3490,
+oldPrice:4490,
+emoji:"🍳",
+brand:"KitchenPro",
+rating:4.8
+},
 
-{id:19,cat:"Home",sub:"Sofa",brand:"HomeCraft",name:"Modern Living Room Sofa",price:85000,icon:"🛋️",rating:4.7,desc:"Modern comfortable sofa for contemporary homes.",reviews:["Very comfortable.","Beautiful design."]},
+{
+id:18,
+name:"Premium Rice 5KG",
+category:"Grocery",
+price:650,
+oldPrice:750,
+emoji:"🍚",
+brand:"Fresh Food",
+rating:4.8
+},
 
-{id:20,cat:"Home",sub:"Bed",brand:"HomeCraft",name:"Modern Bedroom Bed",price:45000,icon:"🛏️",rating:4.7,desc:"Durable modern bed for comfortable bedrooms.",reviews:["Strong construction.","Beautiful."]},
+{
+id:19,
+name:"Sports Running Shoes",
+category:"Sports",
+price:2490,
+oldPrice:3290,
+emoji:"👟",
+brand:"SportsPro",
+rating:4.8
+},
 
-{id:21,cat:"Kitchen",sub:"Rice Cooker",brand:"Vision",name:"Smart Rice Cooker",price:4500,icon:"🍚",rating:4.6,desc:"Modern electric rice cooker with multiple modes.",reviews:["Easy to use.","Good quality."]},
-
-{id:22,cat:"Kitchen",sub:"Blender",brand:"Philips",name:"Power Blender",price:6500,icon:"🥤",rating:4.7,desc:"Powerful kitchen blender for everyday use.",reviews:["Powerful.","Easy to clean."]},
-
-{id:23,cat:"Grocery",sub:"Rice",brand:"FreshMart",name:"Premium Miniket Rice",price:1200,icon:"🍚",rating:4.7,desc:"Premium quality rice for family meals.",reviews:["Good quality.","Very clean."]},
-
-{id:24,cat:"Grocery",sub:"Snacks",brand:"SnackWorld",name:"Family Snack Box",price:850,icon:"🍿",rating:4.6,desc:"Assorted snacks for family enjoyment.",reviews:["Tasty.","Good variety."]},
-
-{id:25,cat:"Grocery",sub:"Meat",brand:"FreshFood",name:"Fresh Beef Pack",price:950,icon:"🥩",rating:4.5,desc:"Fresh quality beef for family meals.",reviews:["Fresh.","Good quality."]},
-
-{id:26,cat:"Sports",sub:"Shoes",brand:"Nike",name:"Professional Running Shoes",price:12000,icon:"👟",rating:4.8,desc:"Lightweight running shoes for training.",reviews:["Very comfortable.","Excellent grip."]},
-
-{id:27,cat:"Sports",sub:"Football",brand:"Adidas",name:"Professional Football",price:3500,icon:"⚽",rating:4.7,desc:"Durable football for training and matches.",reviews:["Good quality.","Strong material."]},
-
-{id:28,cat:"Kids",sub:"Toys",brand:"PlayWorld",name:"Educational Learning Toy",price:1800,icon:"🧸",rating:4.6,desc:"Educational toy for creative learning.",reviews:["Kids love it.","Good quality."]},
-
-{id:29,cat:"Travel",sub:"Backpacks",brand:"TravelPro",name:"Premium Travel Backpack",price:3500,icon:"🎒",rating:4.7,desc:"Durable backpack with multiple compartments.",reviews:["Very useful.","Strong material."]},
-
-{id:30,cat:"Auto",sub:"Accessories",brand:"AutoMax",name:"Car Accessories Kit",price:5000,icon:"🚗",rating:4.5,desc:"Essential accessories for modern vehicles.",reviews:["Good quality.","Useful."]},
-
-{id:31,cat:"Toys",sub:"Board Games",brand:"GameWorld",name:"Family Board Game",price:1500,icon:"🎲",rating:4.7,desc:"Fun family board game.",reviews:["Very entertaining.","Good family game."]},
-
-{id:32,cat:"Books",sub:"Education",brand:"KnowledgeHouse",name:"Complete Learning Book",price:800,icon:"📚",rating:4.8,desc:"Educational book for learning and development.",reviews:["Very informative.","Easy to understand."]},
-
-{id:33,cat:"Furniture",sub:"Office",brand:"OfficePro",name:"Modern Office Chair",price:15000,icon:"🪑",rating:4.7,desc:"Comfortable ergonomic office chair.",reviews:["Very comfortable.","Good support."]},
-
-{id:34,cat:"Tools",sub:"Power Tools",brand:"ToolMaster",name:"Professional Tool Kit",price:6500,icon:"🔧",rating:4.8,desc:"Professional tool kit for home and workshop.",reviews:["Very useful.","Strong tools."]},
-
-{id:35,cat:"Garden",sub:"Gardening Tools",brand:"GreenLife",name:"Complete Gardening Kit",price:2500,icon:"🌿",rating:4.6,desc:"Complete gardening kit for home gardening.",reviews:["Good tools.","Perfect for gardening."]},
-
-{id:36,cat:"Pets",sub:"Pet Care",brand:"PetLove",name:"Premium Pet Care Pack",price:3000,icon:"🐶",rating:4.7,desc:"Complete pet care essentials package.",reviews:["Good quality.","Pets love it."]}
+{
+id:20,
+name:"Travel Backpack",
+category:"Bags",
+price:1590,
+oldPrice:2190,
+emoji:"🎒",
+brand:"TravelPro",
+rating:4.7
+}
 
 ];
 
 
-/* SUBCATEGORIES */
+let cart = [];
 
-const subs={
-Men:["Shirts","T-Shirts","Panjabi","Pants","Jeans","Polo","Jackets","Shoes","Sandals","Watches","Belts","Wallets"],
-Women:["Saree","Three-Piece","Dress","Salwar Kameez","Hijab","Abaya","Tops","Skirts","Shoes","Bags","Jewelry"],
-Mobile:["Smartphone","Tablets","Apple","Samsung","Xiaomi","Vivo","Oppo","Realme","OnePlus"],
-Computer:["Laptop","Gaming","Desktop","Monitor","Keyboard","Mouse","Printer","SSD","HDD"],
-Electronics:["Headphones","Earbuds","Speaker","Smartwatch","Camera","TV","Gaming Console","Power Bank"],
-Beauty:["Skincare","Makeup","Haircare","Perfume","Hair Tools"],
-Home:["Sofa","Bed","Mattress","Wardrobe","Lighting","Decoration"],
-Kitchen:["Rice Cooker","Blender","Oven","Refrigerator","Cookware"],
-Grocery:["Rice","Dal","Oil","Vegetables","Fruits","Meat","Fish","Snacks","Drinks"],
-Kids:["Baby Care","Toys","Clothing","School"],
-Sports:["Shoes","Fitness","Gym","Football","Cricket","Cycling"],
-Travel:["Backpacks","Suitcases","Travel Accessories"],
-Auto:["Car Accessories","Motorcycle","Tools"],
-Toys:["Board Games","Educational","Outdoor Toys"],
-Books:["Education","Fiction","Business","Stationery"],
-Furniture:["Bedroom","Living Room","Office"],
-Tools:["Hand Tools","Power Tools","Hardware"],
-Garden:["Plants","Gardening Tools","Outdoor"],
-Pets:["Pet Food","Pet Care","Accessories"]
-};
+let selectedProduct = null;
 
 
-let cart=[];
-let current=null;
-let currentCat=null;
-let compare=[];
+// ==============================
+// PAGE CONTROL
+// ==============================
 
-
-/* PAGE CONTROL */
-
-function hidePages(){
-
-document.querySelectorAll("main section")
-.forEach(x=>x.classList.add("hidden"));
-
-}
-
-function showPage(page){
-
-hidePages();
+function hideAllPages(){
 
 document
-.getElementById(page+"Page")
-.classList.remove("hidden");
+.querySelectorAll(
+"main, section[id$='Page']"
+)
+.forEach(el=>{
 
-window.scrollTo(0,0);
-
-}
-
-function home(){
-
-showPage("home");
-
-}
-
-function backCategory(){
-
-categoryPage(currentCat);
-
-}
-
-
-/* CATEGORY */
-
-function categoryPage(cat){
-
-currentCat=cat;
-
-hidePages();
-
-document
-.getElementById("categoryPage")
-.classList.remove("hidden");
-
-document
-.getElementById("categoryTitle")
-.innerText=cat+" Products";
-
-let sub=document
-.getElementById("subList");
-
-sub.innerHTML="";
-
-(subs[cat]||[]).forEach(s=>{
-
-let b=document.createElement("button");
-
-b.innerText=s;
-
-b.onclick=()=>filterSub(cat,s);
-
-sub.appendChild(b);
+el.classList.add("hidden");
 
 });
 
-renderProducts(
-products.filter(p=>p.cat===cat)
-);
-
-window.scrollTo(0,0);
-
-}
-
-function filterSub(cat,sub){
-
-renderProducts(
-products.filter(p=>
-p.cat===cat &&
-p.sub===sub
-)
-);
-
 }
 
 
-/* PRODUCTS */
+function home(){
 
-function renderProducts(list,target="categoryProducts"){
+hideAllPages();
 
-let grid=document.getElementById(target);
+document
+.getElementById("homePage")
+.classList.remove("hidden");
 
-if(!grid)return;
+renderProducts(products);
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+// ==============================
+// RENDER PRODUCTS
+// ==============================
+
+function renderProducts(list){
+
+const grid =
+document.getElementById(
+"productGrid"
+);
 
 grid.innerHTML="";
 
-if(!list.length){
 
-grid.innerHTML="<div class='box'>No products found.</div>";
+if(list.length===0){
+
+grid.innerHTML=
+"<h2>কোনো Product পাওয়া যায়নি।</h2>";
 
 return;
 
 }
 
-list.forEach(p=>{
+
+list.forEach(product=>{
 
 grid.innerHTML+=`
 
 <div class="product">
 
-<div class="productImage">${p.icon}</div>
+<div
+class="product-img"
+onclick="openProduct(${product.id})">
 
-<div class="productBody">
-
-<span class="brand">${p.brand}</span>
-
-<h3>${p.name}</h3>
-
-<div class="rating">⭐ ${p.rating}</div>
-
-<div class="price">৳${p.price.toLocaleString()}</div>
-
-<div class="pButtons">
-
-<button class="view" onclick="openProduct(${p.id})">View</button>
-
-<button class="cart" onclick="addCart(${p.id})">Cart</button>
-
-<button class="wish" onclick="wishlist(${p.id})">♡</button>
+${product.emoji}
 
 </div>
 
-<div style="margin-top:8px">
+<div class="product-info">
+
+<h3>
+${product.name}
+</h3>
+
+<p>
+${product.brand}
+</p>
+
+<div class="rating">
+⭐ ${product.rating}
+</div>
+
+<div class="price">
+৳${product.price.toLocaleString()}
+<span class="old-price">
+৳${product.oldPrice.toLocaleString()}
+</span>
+</div>
+
+<div class="product-actions">
 
 <button
-style="width:100%;padding:8px;border:0;border-radius:8px"
-onclick="addCompare(${p.id})">
+class="cart-btn"
+onclick="addToCart(${product.id})">
 
-⚖️ Compare
+🛒 Cart
+
+</button>
+
+<button
+class="buy-btn"
+onclick="buyNow(${product.id})">
+
+⚡ Buy Now
 
 </button>
 
@@ -847,139 +1296,158 @@ onclick="addCompare(${p.id})">
 }
 
 
-/* PRODUCT */
+// ==============================
+// CATEGORY
+// ==============================
+
+function filterCategory(category){
+
+hideAllPages();
+
+document
+.getElementById("homePage")
+.classList.remove("hidden");
+
+const filtered =
+products.filter(
+p=>p.category===category
+);
+
+document
+.getElementById("productTitle")
+.innerText=
+category+" Products";
+
+renderProducts(filtered);
+
+document
+.getElementById("productsSection")
+.scrollIntoView();
+
+}
+
+
+function showAllProducts(){
+
+document
+.getElementById("productTitle")
+.innerText=
+"🔥 All Products";
+
+renderProducts(products);
+
+}
+
+
+// ==============================
+// PRODUCT DETAILS
+// ==============================
 
 function openProduct(id){
 
-current=products.find(p=>p.id===id);
+const product =
+products.find(
+p=>p.id===id
+);
 
-hidePages();
+selectedProduct=product;
+
+hideAllPages();
 
 document
 .getElementById("productPage")
 .classList.remove("hidden");
 
-document.getElementById("largeImage")
-.innerText=current.icon;
 
-document.getElementById("detailBrand")
-.innerText=current.brand;
+document
+.getElementById("productDetails")
+.innerHTML=`
 
-document.getElementById("detailName")
-.innerText=current.name;
-
-document.getElementById("detailRating")
-.innerText="⭐ "+current.rating+" / 5";
-
-document.getElementById("detailPrice")
-.innerText="৳"+current.price.toLocaleString();
-
-document.getElementById("detailDescription")
-.innerText=current.desc;
-
-document.getElementById("reviews").innerHTML=
-
-current.reviews.map(r=>`
-
-<div class="review">
-
-<div>⭐ ⭐ ⭐ ⭐ ⭐</div>
-
-<p>${r}</p>
-
-<span class="verified">✓ Verified Purchase</span>
-
-</div>
-
-`).join("");
-
-document.getElementById("messages").innerHTML=
-
-`<div class="msg ai">
-Hello! I am the AI Product Expert for
-<strong>${current.name}</strong>.
-Ask me anything about this product.
-</div>`;
-
-window.scrollTo(0,0);
-
-}
-
-
-/* CART */
-
-function addCart(id){
-
-let p=products.find(x=>x.id===id);
-
-cart.push(p);
-
-updateCart();
-
-alert(p.name+" added to cart.");
-
-}
-
-function addCurrent(){
-
-if(current)addCart(current.id);
-
-}
-
-function buyNow(){
-
-if(current){
-
-addCart(current.id);
-
-openCart();
-
-}
-
-}
-
-function updateCart(){
-
-document.getElementById("cartCount")
-.innerText=cart.length;
-
-}
-
-function openCart(){
-
-let list=document.getElementById("cartList");
-
-list.innerHTML="";
-
-if(!cart.length){
-
-list.innerHTML="<p>Your cart is empty.</p>";
-
-}else{
-
-cart.forEach((p,i)=>{
-
-list.innerHTML+=`
-
-<div class="cartItem">
+<div class="details">
 
 <div>
 
-<strong>${p.name}</strong>
-
-<br>
-
-<small>${p.brand}</small>
+<div class="big-img">
+${product.emoji}
+</div>
 
 </div>
 
 <div>
 
-<strong>৳${p.price.toLocaleString()}</strong>
+<h1>
+${product.name}
+</h1>
 
 <br>
 
-<button onclick="removeCart(${i})">Remove</button>
+<p>
+Brand: ${product.brand}
+</p>
+
+<div class="rating">
+⭐ ${product.rating}/5
+</div>
+
+<div class="price">
+৳${product.price.toLocaleString()}
+</div>
+
+<p>
+এই Product-এর বিস্তারিত তথ্য,
+ব্যবহার এবং Customer-এর জন্য
+গুরুত্বপূর্ণ বিষয় জানতে AI Expert-কে
+প্রশ্ন করুন।
+</p>
+
+<br>
+
+<button
+class="checkout"
+onclick="addToCart(${product.id})">
+
+🛒 Add to Cart
+
+</button>
+
+<button
+class="checkout"
+onclick="buyNow(${product.id})">
+
+⚡ Buy Now
+
+</button>
+
+<div class="ai-box">
+
+<h2>
+🤖 AI Product Expert
+</h2>
+
+<p>
+এই Product সম্পর্কে আপনার প্রশ্ন করুন।
+</p>
+
+<input
+id="aiQuestion"
+placeholder="যেমন: এই Product কি ভালো?"
+>
+
+<button onclick="askAI()">
+🤖 Ask AI
+</button>
+
+<br><br>
+
+<div
+class="ai-answer"
+id="aiAnswer">
+
+AI আপনার প্রশ্নের উত্তর এখানে দেখাবে।
+
+</div>
+
+</div>
 
 </div>
 
@@ -987,62 +1455,275 @@ list.innerHTML+=`
 
 `;
 
-});
-
 }
 
+
+// ==============================
+// AI DEMO
+// ==============================
+
+function askAI(){
+
+const question =
 document
-.getElementById("cartModal")
-.classList.add("active");
+.getElementById("aiQuestion")
+.value
+.trim();
 
-}
+const answer =
+document
+.getElementById("aiAnswer");
 
-function removeCart(i){
 
-cart.splice(i,1);
+if(!question){
 
-updateCart();
-
-openCart();
-
-}
-
-function checkout(){
-
-if(!cart.length){
-
-alert("Your cart is empty.");
+answer.innerText=
+"দয়া করে একটি প্রশ্ন লিখুন।";
 
 return;
 
 }
 
-closeModal("cartModal");
 
-showPage("checkout");
+answer.innerText=
+"🤖 AI বিশ্লেষণ করছে...";
+
+
+setTimeout(()=>{
+
+answer.innerHTML=`
+
+<strong>
+AI Product Review:
+</strong>
+
+<br><br>
+
+আপনি যে প্রশ্ন করেছেন:
+
+"${question}"
+
+<br><br>
+
+<strong>
+Product:
+</strong>
+${selectedProduct.name}
+
+<br><br>
+
+এই Product-এর Brand,
+Price এবং Rating দেখে এটি
+আপনার প্রয়োজন অনুযায়ী
+ভালো একটি Option হতে পারে।
+
+<br><br>
+
+⚠️ এটি বর্তমানে Demo AI Response।
+আসল AI-এর জন্য Secure Backend এবং
+AI API Connection প্রয়োজন।
+
+`;
+
+},800);
+
+}
+
+
+// ==============================
+// CART
+// ==============================
+
+function addToCart(id){
+
+const product =
+products.find(
+p=>p.id===id
+);
+
+cart.push(product);
+
+updateCartCount();
+
+alert(
+product.name+
+" Cart-এ যোগ হয়েছে!"
+);
+
+}
+
+
+function updateCartCount(){
+
+document
+.getElementById("cartCount")
+.innerText=
+cart.length;
+
+}
+
+
+function showCart(){
+
+hideAllPages();
+
+document
+.getElementById("cartPage")
+.classList
+.remove("hidden");
+
+
+const box =
+document
+.getElementById("cartItems");
+
+
+box.innerHTML="";
+
+
+if(cart.length===0){
+
+box.innerHTML=
+"<h2>🛒 আপনার Cart খালি।</h2>";
+
+return;
+
+}
+
+
+let total=0;
+
+
+cart.forEach((product,index)=>{
+
+total+=product.price;
+
+box.innerHTML+=`
+
+<div class="cart-item">
+
+<div>
+
+<strong>
+${product.name}
+</strong>
+
+<br>
+
+৳${product.price.toLocaleString()}
+
+</div>
+
+<button
+onclick="removeFromCart(${index})">
+
+❌ Remove
+
+</button>
+
+</div>
+
+`;
+
+});
+
+
+box.innerHTML+=`
+
+<br>
+
+<h2>
+Total:
+৳${total.toLocaleString()}
+</h2>
+
+`;
+
+}
+
+
+function removeFromCart(index){
+
+cart.splice(index,1);
+
+updateCartCount();
+
+showCart();
+
+}
+
+
+// ==============================
+// BUY NOW
+// ==============================
+
+function buyNow(id){
+
+const product =
+products.find(
+p=>p.id===id
+);
+
+cart=[product];
+
+updateCartCount();
+
+openCheckout();
+
+}
+
+
+// ==============================
+// CHECKOUT
+// ==============================
+
+function openCheckout(){
+
+if(cart.length===0){
+
+alert(
+"আপনার Cart খালি।"
+);
+
+return;
+
+}
+
+hideAllPages();
+
+document
+.getElementById("checkoutPage")
+.classList
+.remove("hidden");
 
 renderCheckout();
 
 }
 
 
-/* CHECKOUT */
-
 function renderCheckout(){
 
-let box=document.getElementById("checkoutItems");
+const box =
+document
+.getElementById(
+"checkoutItems"
+);
 
 box.innerHTML="";
 
-cart.forEach(p=>{
+cart.forEach(product=>{
 
 box.innerHTML+=`
 
 <div class="row">
 
-<span>${p.name}</span>
+<span>
+${product.name}
+</span>
 
-<strong>৳${p.price.toLocaleString()}</strong>
+<strong>
+৳${product.price.toLocaleString()}
+</strong>
 
 </div>
 
@@ -1050,572 +1731,528 @@ box.innerHTML+=`
 
 });
 
-updateTotal();
+calculateOrderTotal();
 
 }
 
-function updateTotal(){
 
-let subtotal=
-cart.reduce((sum,p)=>sum+p.price,0);
+function calculateOrderTotal(){
 
-let delivery=
-Number(document.getElementById("delivery").value);
+let subtotal=0;
 
-document.getElementById("subtotal")
-.innerText="৳"+subtotal.toLocaleString();
+cart.forEach(product=>{
 
-document.getElementById("deliveryCharge")
-.innerText="৳"+delivery;
+subtotal+=
+Number(product.price);
 
-document.getElementById("total")
+});
+
+
+const delivery =
+Number(
+document
+.getElementById(
+"deliveryArea"
+)
+.value
+);
+
+
+const total =
+subtotal+delivery;
+
+
+document
+.getElementById(
+"orderSubtotal"
+)
 .innerText=
-"৳"+(subtotal+delivery).toLocaleString();
+"৳"+
+subtotal.toLocaleString();
+
+
+document
+.getElementById(
+"orderDelivery"
+)
+.innerText=
+"৳"+
+delivery.toLocaleString();
+
+
+document
+.getElementById(
+"orderGrandTotal"
+)
+.innerText=
+"৳"+
+total.toLocaleString();
 
 }
 
 
-/* ORDER */
+// ==============================
+// CONFIRM ORDER
+// ==============================
 
 function confirmOrder(){
 
-let name=document.getElementById("name").value.trim();
+const name =
+document
+.getElementById("orderName")
+.value
+.trim();
 
-let phone=document.getElementById("phone").value.trim();
+const phone =
+document
+.getElementById("orderPhone")
+.value
+.trim();
 
-let address=document.getElementById("address").value.trim();
+const address =
+document
+.getElementById("orderAddress")
+.value
+.trim();
 
-let trx=document.getElementById("trx").value.trim();
+const payment =
+document
+.getElementById("paymentMethod")
+.value;
 
-if(!name||!phone||!address){
+const transactionId =
+document
+.getElementById("transactionId")
+.value
+.trim();
 
-alert("Please complete customer information.");
+
+if(!name){
+
+alert(
+"আপনার নাম লিখুন।"
+);
 
 return;
 
 }
 
-let payment=
-document.getElementById("payment").value;
 
-if(payment.includes("bKash")&&!trx){
+if(!phone){
 
-alert("Please enter your bKash Transaction ID.");
+alert(
+"আপনার মোবাইল নম্বর লিখুন।"
+);
 
 return;
 
 }
 
-let subtotal=
-cart.reduce((sum,p)=>sum+p.price,0);
 
-let delivery=
-Number(document.getElementById("delivery").value);
+if(!address){
 
-let order={
+alert(
+"আপনার Delivery Address লিখুন।"
+);
 
-id:"SB-"+Date.now().toString().slice(-8),
+return;
 
-name,
+}
+
+
+if(
+payment==="bKash" &&
+!transactionId
+){
+
+alert(
+"bKash Transaction ID দিন।"
+);
+
+return;
+
+}
+
+
+let subtotal=0;
+
+cart.forEach(product=>{
+
+subtotal+=
+Number(product.price);
+
+});
+
+
+const delivery =
+Number(
+document
+.getElementById(
+"deliveryArea"
+)
+.value
+);
+
+
+const total =
+subtotal+delivery;
+
+
+const orderId =
+"SB-"+
+Date.now()
+.toString()
+.slice(-8);
+
+
+const order={
+
+orderId,
+
+customerName:name,
 
 phone,
 
 address,
 
-payment,
+paymentMethod:payment,
 
-trx,
-
-subtotal,
-
-delivery,
-
-total:subtotal+delivery,
-
-status:"Order Placed",
+transactionId:
+transactionId || "COD",
 
 products:[...cart],
 
-date:new Date().toLocaleString()
+subtotal,
+
+deliveryCharge:delivery,
+
+total,
+
+status:"Order Placed",
+
+date:
+new Date()
+.toLocaleString()
 
 };
 
-let orders=
-JSON.parse(localStorage.getItem("orders")||"[]");
+
+let orders =
+JSON.parse(
+localStorage.getItem(
+"smartBazaarOrders"
+)||"[]"
+);
+
 
 orders.unshift(order);
 
-localStorage.setItem("orders",JSON.stringify(orders));
+
+localStorage.setItem(
+"smartBazaarOrders",
+JSON.stringify(orders)
+);
+
 
 cart=[];
 
-updateCart();
+updateCartCount();
 
-showPage("success");
 
-document.getElementById("successOrderId")
-.innerText="Order ID: #"+order.id;
+showOrderSuccess(order);
 
-document.getElementById("successInfo")
+}
+
+
+// ==============================
+// SUCCESS
+// ==============================
+
+function showOrderSuccess(order){
+
+hideAllPages();
+
+document
+.getElementById(
+"orderSuccessPage"
+)
+.classList
+.remove("hidden");
+
+
+document
+.getElementById(
+"successOrderId"
+)
+.innerText=
+"Order ID: #"+
+order.orderId;
+
+
+document
+.getElementById(
+"successOrderDetails"
+)
 .innerHTML=`
 
-<strong>${name}</strong>
+Customer:
+<strong>
+${order.customerName}
+</strong>
 
 <br><br>
 
-Total: ৳${order.total.toLocaleString()}
+Total:
+<strong>
+৳${order.total.toLocaleString()}
+</strong>
 
 <br><br>
 
-Delivery: ৳${delivery}
+Delivery Charge:
+<strong>
+৳${order.deliveryCharge}
+</strong>
 
 <br><br>
 
-Payment: ${payment}
-
-<br><br>
-
-Status: 🟢 Order Placed
+Status:
+<strong>
+🟢 Order Placed
+</strong>
 
 `;
 
 }
 
 
-/* MY ORDERS */
+// ==============================
+// MY ORDERS
+// ==============================
 
-function renderOrders(){
+function showMyOrders(){
 
-let orders=
-JSON.parse(localStorage.getItem("orders")||"[]");
+hideAllPages();
 
-let box=document.getElementById("ordersList");
+document
+.getElementById(
+"ordersPage"
+)
+.classList
+.remove("hidden");
+
+
+const orders =
+JSON.parse(
+localStorage.getItem(
+"smartBazaarOrders"
+)||"[]"
+);
+
+
+const box =
+document
+.getElementById(
+"ordersList"
+);
+
 
 box.innerHTML="";
 
-if(!orders.length){
 
-box.innerHTML="<div class='box'>No orders yet.</div>";
+if(orders.length===0){
 
-return;
-
-}
-
-orders.forEach(o=>{
-
-box.innerHTML+=`
-
-<div class="orderCard">
-
-<h2>Order #${o.id}</h2>
-
-<p>${o.date}</p>
-
-<br>
-
-<p><strong>Customer:</strong> ${o.name}</p>
-
-<p><strong>Phone:</strong> ${o.phone}</p>
-
-<p><strong>Address:</strong> ${o.address}</p>
-
-<p><strong>Total:</strong> ৳${o.total.toLocaleString()}</p>
-
-<br>
-
-<strong>Status: ${o.status}</strong>
-
-<div class="status">
-
-<div class="step active">Placed</div>
-
-<div class="step">Processing</div>
-
-<div class="step">Shipped</div>
-
-<div class="step">Delivered</div>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-}
-
-
-/* ORDERS PAGE EVENT */
-
-document.querySelector(
-"button[onclick=\"showPage('orders')\"]"
-).onclick=function(){
-
-showPage("orders");
-
-renderOrders();
-
-};
-
-
-/* SEARCH */
-
-function searchProducts(){
-
-let q=
-document.getElementById("searchInput")
-.value.toLowerCase()
-.trim();
-
-hidePages();
-
-document
-.getElementById("categoryPage")
-.classList.remove("hidden");
-
-document.getElementById("categoryTitle")
-.innerText="Search Results";
-
-document.getElementById("subList").innerHTML="";
-
-renderProducts(
-
-products.filter(p=>
-
-p.name.toLowerCase().includes(q)||
-
-p.brand.toLowerCase().includes(q)||
-
-p.cat.toLowerCase().includes(q)||
-
-p.sub.toLowerCase().includes(q)
-
-)
-
-);
-
-}
-
-
-/* AI RECOMMENDATION */
-
-function aiRecommend(){
-
-let q=
-document.getElementById("aiSearchInput")
-.value.toLowerCase();
-
-let result=products;
-
-if(q.includes("phone")||q.includes("mobile")){
-
-result=products.filter(p=>p.cat==="Mobile");
-
-}
-
-else if(q.includes("laptop")||q.includes("computer")){
-
-result=products.filter(p=>p.cat==="Computer");
-
-}
-
-else if(q.includes("shirt")||q.includes("panjabi")||q.includes("men")){
-
-result=products.filter(p=>p.cat==="Men");
-
-}
-
-else if(q.includes("women")||q.includes("dress")||q.includes("saree")){
-
-result=products.filter(p=>p.cat==="Women");
-
-}
-
-else if(q.includes("shoe")||q.includes("sports")){
-
-result=products.filter(p=>p.cat==="Sports");
-
-}
-
-hidePages();
-
-document
-.getElementById("categoryPage")
-.classList.remove("hidden");
-
-document.getElementById("categoryTitle")
-.innerText="🤖 AI Recommended Products";
-
-document.getElementById("subList").innerHTML="";
-
-renderProducts(result);
-
-}
-
-
-/* AI PRODUCT CHAT */
-
-function askAI(){
-
-let q=
-document.getElementById("question")
-.value.trim();
-
-if(!q||!current)return;
-
-let box=
-document.getElementById("messages");
-
-box.innerHTML+=
-`<div class="msg user">${escapeHTML(q)}</div>`;
-
-let answer="";
-
-let lower=q.toLowerCase();
-
-if(lower.includes("quality")){
-
-answer=
-"This product has a customer rating of "+
-current.rating+
-"/5. Based on the available customer reviews, the overall feedback is positive.";
-
-}
-
-else if(lower.includes("good")||lower.includes("best")){
-
-answer=
-"Based on the product information and customer reviews, "+
-current.name+
-" appears to be a good option. Please compare specifications, price and your personal requirements before purchasing.";
-
-}
-
-else if(lower.includes("review")){
-
-answer=
-"Customer reviews for this product are generally positive. The current average rating is "+
-current.rating+
-"/5.";
-
-}
-
-else{
-
-answer=
-"I can help you understand this product. It is "+
-current.desc+
-" Its current rating is "+
-current.rating+
-"/5. For a real AI-generated analysis, connect this interface to your secure AI backend.";
-
-}
-
-box.innerHTML+=
-`<div class="msg ai">${answer}</div>`;
-
-document.getElementById("question").value="";
-
-box.scrollTop=box.scrollHeight;
-
-}
-
-
-/* IMAGE SEARCH */
-
-function openImageModal(){
-
-document
-.getElementById("imageModal")
-.classList.add("active");
-
-}
-
-function imageSearch(e){
-
-let file=e.target.files[0];
-
-if(!file)return;
-
-let url=
-URL.createObjectURL(file);
-
-document.getElementById("imagePreview")
-.innerHTML=`
-
-<br>
-
-<img src="${url}"
-style="max-width:250px;border-radius:15px">
-
-<br><br>
+box.innerHTML=`
 
 <div class="box">
 
-<h3>📸 Image Received</h3>
+<h2>
+📦 No Orders Yet
+</h2>
 
 <p>
-
-The image is ready for AI Vision product matching.
-
-A real visual-search backend can analyze the image
-and match it with your product catalog.
-
+আপনার এখনো কোনো Order নেই।
 </p>
 
 </div>
 
 `;
 
-}
-
-
-/* VOICE */
-
-function voiceSearch(){
-
-let Speech=
-window.SpeechRecognition||
-window.webkitSpeechRecognition;
-
-if(!Speech){
-
-alert("Voice search is not supported in this browser.");
-
 return;
 
 }
 
-let r=new Speech();
 
-r.lang="en-US";
+orders.forEach(order=>{
 
-r.start();
+box.innerHTML+=`
 
-r.onresult=function(e){
+<div class="order-card">
 
-let text=
-e.results[0][0].transcript;
+<h2>
+📦 Order #${order.orderId}
+</h2>
 
-document.getElementById("searchInput")
-.value=text;
+<p>
+Date:
+${order.date}
+</p>
 
-searchProducts();
+<br>
 
-};
+<p>
+Customer:
+${order.customerName}
+</p>
 
-}
+<p>
+Phone:
+${order.phone}
+</p>
 
+<p>
+Address:
+${order.address}
+</p>
 
-/* WISHLIST */
+<br>
 
-function wishlist(id){
+<h3>
+Total:
+৳${order.total.toLocaleString()}
+</h3>
 
-let p=products.find(x=>x.id===id);
+<br>
 
-alert(p.name+" added to Wishlist.");
+<strong>
+Status:
+🟢 ${order.status}
+</strong>
 
-}
+<div class="status">
 
+<div class="step active">
+Order Placed
+</div>
 
-/* COMPARE */
+<div class="step">
+Processing
+</div>
 
-function addCompare(id){
+<div class="step">
+Shipped
+</div>
 
-let p=products.find(x=>x.id===id);
-
-if(compare.find(x=>x.id===id)){
-
-alert("Already added.");
-
-return;
-
-}
-
-if(compare.length>=3){
-
-alert("You can compare up to 3 products.");
-
-return;
-
-}
-
-compare.push(p);
-
-alert(p.name+" added to comparison.");
-
-}
-
-function showCompare(){
-
-showPage("compare");
-
-let box=document.getElementById("compareList");
-
-if(!compare.length){
-
-box.innerHTML="<div class='box'>No products selected for comparison.</div>";
-
-return;
-
-}
-
-box.innerHTML=
-
-compare.map(p=>`
-
-<div class="orderCard">
-
-<h2>${p.icon} ${p.name}</h2>
-
-<p>Brand: ${p.brand}</p>
-
-<p>Category: ${p.cat}</p>
-
-<p>Subcategory: ${p.sub}</p>
-
-<p>Price: ৳${p.price.toLocaleString()}</p>
-
-<p>Rating: ⭐ ${p.rating}</p>
-
-<p>${p.desc}</p>
+<div class="step">
+Delivered
+</div>
 
 </div>
 
-`).join("");
+</div>
+
+`;
+
+});
 
 }
 
 
-/* MODAL */
+// ==============================
+// SEARCH
+// ==============================
 
-function closeModal(id){
+function searchKey(event){
+
+if(event.key==="Enter"){
+
+searchProducts();
+
+}
+
+}
+
+
+function searchProducts(){
+
+const query =
+document
+.getElementById(
+"searchInput"
+)
+.value
+.toLowerCase()
+.trim();
+
+
+if(!query){
+
+showAllProducts();
+
+return;
+
+}
+
+
+const result =
+products.filter(product=>
+
+product.name
+.toLowerCase()
+.includes(query)
+
+||
+
+product.category
+.toLowerCase()
+.includes(query)
+
+||
+
+product.brand
+.toLowerCase()
+.includes(query)
+
+);
+
+
+hideAllPages();
 
 document
-.getElementById(id)
-.classList.remove("active");
+.getElementById(
+"homePage"
+)
+.classList
+.remove("hidden");
+
+
+document
+.getElementById(
+"productTitle"
+)
+.innerText=
+"🔍 Search Results";
+
+
+renderProducts(result);
+
+
+document
+.getElementById(
+"productsSection"
+)
+.scrollIntoView();
 
 }
 
 
-/* SECURITY */
+// ==============================
+// START
+// ==============================
 
-function escapeHTML(text){
+renderProducts(products);
 
-return text
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
-}
-
-
-/* INITIAL */
-
-renderProducts(products.slice(0,12),"homeProducts");
+updateCartCount();
 
 </script>
 
