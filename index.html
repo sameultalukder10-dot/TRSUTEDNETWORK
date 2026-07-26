@@ -1,748 +1,998 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Trusted Network | Premium Online Shopping</title>
+<title>Trusted Network | বিশ্বস্ত অনলাইন শপ</title>
 
 <style>
 
+/* =====================================
+   GLOBAL
+===================================== */
+
 *{
-box-sizing:border-box;
-margin:0;
-padding:0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 :root{
---primary:#2563eb;
---dark:#07152d;
---light:#f5f7fb;
---card:#ffffff;
---text:#172033;
---muted:#667085;
---border:#e5e7eb;
---danger:#ef4444;
---success:#16a34a;
+    --primary:#1554d1;
+    --primary-dark:#082b78;
+    --dark:#07152d;
+    --light:#f5f8fc;
+    --white:#fff;
+    --text:#172033;
+    --muted:#667085;
+    --border:#e5e7eb;
+    --success:#16a34a;
+    --danger:#ef4444;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-font-family:Inter,Arial,sans-serif;
-background:var(--light);
-color:var(--text);
+    font-family:
+    "Noto Sans Bengali",
+    "Segoe UI",
+    Arial,
+    sans-serif;
+    background:var(--light);
+    color:var(--text);
 }
 
 button,
 input,
 textarea,
 select{
-font:inherit;
+    font:inherit;
 }
 
 button{
-cursor:pointer;
+    cursor:pointer;
 }
 
 a{
-text-decoration:none;
-color:inherit;
+    text-decoration:none;
+    color:inherit;
 }
 
 
-/* TOP BAR */
+/* =====================================
+   TOP BAR
+===================================== */
 
 .top{
-background:#07152d;
-color:#fff;
-padding:8px 5%;
-display:flex;
-justify-content:space-between;
-font-size:13px;
+    background:var(--dark);
+    color:#fff;
+    padding:9px 5%;
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    font-size:13px;
+}
+
+.top span{
+    white-space:nowrap;
 }
 
 
-/* HEADER */
+/* =====================================
+   HEADER
+===================================== */
 
 header{
-background:#fff;
-position:sticky;
-top:0;
-z-index:1000;
-box-shadow:0 3px 20px rgba(0,0,0,.08);
+    background:#fff;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 20px rgba(0,0,0,.08);
 }
 
 .nav{
-max-width:1500px;
-margin:auto;
-padding:15px 5%;
-display:flex;
-align-items:center;
-gap:20px;
+    max-width:1500px;
+    margin:auto;
+    padding:15px 5%;
+    display:flex;
+    align-items:center;
+    gap:20px;
 }
 
 .logo{
-font-size:25px;
-font-weight:900;
-color:var(--primary);
-white-space:nowrap;
+    font-size:25px;
+    font-weight:900;
+    color:var(--primary);
+    white-space:nowrap;
 }
 
 .logo span{
-color:var(--dark);
+    color:var(--dark);
 }
 
 .search{
-flex:1;
-display:flex;
-background:#f3f5f8;
-border:1px solid var(--border);
-border-radius:12px;
-overflow:hidden;
+    flex:1;
+    display:flex;
+    background:#f3f5f8;
+    border:1px solid var(--border);
+    border-radius:12px;
+    overflow:hidden;
 }
 
 .search input{
-flex:1;
-border:0;
-outline:0;
-background:transparent;
-padding:14px 18px;
+    flex:1;
+    border:0;
+    outline:0;
+    background:transparent;
+    padding:14px 18px;
 }
 
 .search button{
-width:60px;
-border:0;
-background:var(--primary);
-color:#fff;
+    width:60px;
+    border:0;
+    background:var(--primary);
+    color:#fff;
 }
 
 .actions{
-display:flex;
-gap:8px;
+    display:flex;
+    gap:8px;
 }
 
 .action{
-border:1px solid var(--border);
-background:#fff;
-padding:11px 14px;
-border-radius:9px;
+    border:1px solid var(--border);
+    background:#fff;
+    padding:11px 14px;
+    border-radius:9px;
 }
 
 .badge{
-background:var(--danger);
-color:#fff;
-border-radius:20px;
-padding:2px 7px;
-font-size:11px;
+    background:var(--danger);
+    color:#fff;
+    border-radius:20px;
+    padding:2px 7px;
+    font-size:11px;
 }
 
 
-/* CATEGORY BAR */
+/* =====================================
+   CATEGORY NAV
+===================================== */
 
 .categories{
-border-top:1px solid var(--border);
-padding:11px 5%;
-display:flex;
-gap:25px;
-overflow:auto;
-white-space:nowrap;
-font-size:14px;
-font-weight:700;
+    border-top:1px solid var(--border);
+    padding:11px 5%;
+    display:flex;
+    gap:28px;
+    overflow:auto;
+    white-space:nowrap;
+    font-size:14px;
+    font-weight:700;
 }
 
 .categories span{
-cursor:pointer;
+    cursor:pointer;
 }
 
 .categories span:hover{
-color:var(--primary);
+    color:var(--primary);
 }
 
 
-/* MAIN */
+/* =====================================
+   CONTAINER
+===================================== */
 
 .container{
-max-width:1500px;
-margin:auto;
-padding:0 5%;
+    max-width:1500px;
+    margin:auto;
+    padding:0 5%;
 }
 
 
-/* HERO */
+/* =====================================
+   HERO
+===================================== */
 
 .hero{
-display:grid;
-grid-template-columns:260px 1fr;
-gap:20px;
-margin:25px 0;
+    display:grid;
+    grid-template-columns:250px 1fr;
+    gap:20px;
+    margin:25px 0;
 }
 
+
+/* SIDEBAR */
+
 .sidebar{
-background:#fff;
-border:1px solid var(--border);
-border-radius:20px;
-padding:20px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:20px;
 }
 
 .sidebar h3{
-margin-bottom:15px;
+    margin-bottom:15px;
 }
 
 .cat{
-padding:12px;
-border-radius:9px;
-cursor:pointer;
-margin:3px 0;
+    padding:12px;
+    border-radius:9px;
+    cursor:pointer;
+    margin:3px 0;
 }
 
 .cat:hover,
 .cat.active{
-background:#eff6ff;
-color:var(--primary);
+    background:#eff6ff;
+    color:var(--primary);
 }
 
+
+/* =====================================
+   PREMIUM HERO
+===================================== */
 
 .banner{
-min-height:430px;
-border-radius:24px;
-padding:55px;
-display:flex;
-align-items:center;
-color:#fff;
-background:
-radial-gradient(circle at 80% 20%,#60a5fa55,transparent 30%),
-linear-gradient(120deg,#07162f,#2563eb);
-position:relative;
-overflow:hidden;
+    min-height:500px;
+    position:relative;
+    overflow:hidden;
+    border-radius:24px;
+    display:flex;
+    align-items:center;
+
+    background-image:
+
+    linear-gradient(
+        90deg,
+        rgba(240,248,255,.98) 0%,
+        rgba(240,248,255,.93) 35%,
+        rgba(240,248,255,.55) 60%,
+        rgba(240,248,255,.10) 100%
+    ),
+
+    url("a_wide_website_homepage_ui_e_commerce_landing_pa.png");
+
+    background-size:cover;
+    background-position:center;
+    color:#07152d;
 }
 
-.banner h1{
-font-size:54px;
-line-height:1.08;
-max-width:700px;
+.hero-content{
+    position:relative;
+    z-index:2;
+    width:58%;
+    padding:55px;
 }
 
-.banner p{
-font-size:17px;
-line-height:1.7;
-margin:18px 0;
-max-width:600px;
-color:#e8eefc;
+.hero-badge{
+    display:inline-block;
+    background:#fff;
+    color:#1746b8;
+    padding:10px 16px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:800;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    margin-bottom:18px;
+}
+
+.hero-content h1{
+    font-size:52px;
+    line-height:1.15;
+    font-weight:900;
+    margin-bottom:18px;
+}
+
+.hero-content h1 span{
+    color:#1554d1;
+}
+
+.hero-content p{
+    color:#344054;
+    font-size:17px;
+    line-height:1.8;
+    max-width:600px;
+    margin-bottom:25px;
+}
+
+.hero-features{
+    display:flex;
+    gap:20px;
+    margin-bottom:28px;
+}
+
+.hero-features div{
+    display:grid;
+    grid-template-columns:32px 1fr;
+    column-gap:8px;
+    align-items:center;
+    color:#123b91;
+}
+
+.hero-features strong{
+    font-size:13px;
+}
+
+.hero-features small{
+    grid-column:2;
+    color:#667085;
+    font-size:11px;
 }
 
 .heroBtns{
-display:flex;
-gap:10px;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
 }
 
 .btn{
-border:0;
-padding:13px 22px;
-border-radius:9px;
-font-weight:800;
+    border:0;
+    padding:13px 22px;
+    border-radius:9px;
+    font-weight:800;
 }
 
 .primary{
-background:var(--primary);
-color:#fff;
+    background:var(--primary);
+    color:#fff;
 }
 
 .white{
-background:#fff;
-color:var(--primary);
+    background:#fff;
+    color:var(--primary);
+    border:1px solid var(--primary);
 }
 
 .full{
-width:100%;
+    width:100%;
+}
+
+.premium-hero::after{
+    content:"🚚 Fast & Reliable Delivery";
+
+    position:absolute;
+    right:25px;
+    top:25px;
+
+    background:#0b3da8;
+    color:#fff;
+
+    padding:13px 20px;
+
+    border-radius:12px;
+
+    font-size:14px;
+    font-weight:800;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
 }
 
 
-/* SECTION */
+/* =====================================
+   SERVICE STRIP
+===================================== */
+
+.services{
+    background:#fff;
+    border-radius:18px;
+    padding:20px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:15px;
+    box-shadow:0 8px 30px rgba(0,0,0,.06);
+}
+
+.service{
+    text-align:center;
+    padding:10px;
+    border-right:1px solid var(--border);
+}
+
+.service:last-child{
+    border-right:0;
+}
+
+.service-icon{
+    font-size:30px;
+    margin-bottom:7px;
+}
+
+.service h4{
+    font-size:14px;
+}
+
+.service p{
+    color:var(--muted);
+    font-size:11px;
+    margin-top:5px;
+}
+
+
+/* =====================================
+   SECTION
+===================================== */
 
 .section{
-margin:45px 0;
+    margin:45px 0;
 }
 
 .sectionHead{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.sectionHead h2{
+    font-size:24px;
 }
 
 
-/* FLASH SALE */
+/* =====================================
+   FLASH SALE
+===================================== */
 
 .flash{
-background:linear-gradient(90deg,#111827,#1e3a8a);
-color:#fff;
-padding:25px;
-border-radius:18px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:20px;
+    background:
+    linear-gradient(
+        120deg,
+        #07152d,
+        #1554d1
+    );
+
+    color:#fff;
+    padding:25px;
+    border-radius:18px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:20px;
 }
 
 .timer{
-font-size:22px;
-font-weight:900;
+    font-size:25px;
+    font-weight:900;
 }
 
 
-/* PRODUCTS */
+/* =====================================
+   PRODUCTS
+===================================== */
 
 .products{
-display:grid;
-grid-template-columns:repeat(5,1fr);
-gap:17px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:17px;
 }
 
 .product{
-background:#fff;
-border:1px solid var(--border);
-border-radius:16px;
-overflow:hidden;
-transition:.25s;
-position:relative;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    overflow:hidden;
+    transition:.25s;
+    position:relative;
 }
 
 .product:hover{
-transform:translateY(-5px);
-box-shadow:0 15px 35px #00000012;
+    transform:translateY(-5px);
+    box-shadow:0 15px 35px #00000012;
 }
 
 .productImg{
-height:210px;
-background:#f3f5f8;
-position:relative;
+    height:210px;
+    background:#f3f5f8;
+    position:relative;
 }
 
 .productImg img{
-width:100%;
-height:100%;
-object-fit:cover;
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
 .discount{
-position:absolute;
-top:10px;
-left:10px;
-background:#ef4444;
-color:#fff;
-padding:5px 8px;
-border-radius:6px;
-font-size:11px;
-font-weight:bold;
+    position:absolute;
+    top:10px;
+    left:10px;
+    background:#ef4444;
+    color:#fff;
+    padding:5px 8px;
+    border-radius:6px;
+    font-size:11px;
+    font-weight:bold;
 }
 
 .heart{
-position:absolute;
-right:10px;
-top:10px;
-width:35px;
-height:35px;
-border:0;
-border-radius:50%;
-background:#fff;
-font-size:18px;
+    position:absolute;
+    right:10px;
+    top:10px;
+    width:35px;
+    height:35px;
+    border:0;
+    border-radius:50%;
+    background:#fff;
+    font-size:18px;
 }
 
 .productInfo{
-padding:15px;
+    padding:15px;
 }
 
 .productInfo h3{
-font-size:15px;
-height:40px;
+    font-size:15px;
+    height:42px;
 }
 
 .stars{
-color:#f59e0b;
-font-size:13px;
-margin:7px 0;
+    color:#f59e0b;
+    font-size:13px;
+    margin:7px 0;
 }
 
 .price{
-font-size:21px;
-font-weight:900;
-color:var(--primary);
+    font-size:20px;
+    font-weight:900;
+    color:var(--primary);
 }
 
 .old{
-font-size:12px;
-color:#999;
-text-decoration:line-through;
-margin-left:5px;
+    font-size:12px;
+    color:#999;
+    text-decoration:line-through;
+    margin-left:5px;
 }
 
 .stock{
-font-size:12px;
-color:var(--success);
-margin:7px 0;
+    font-size:12px;
+    color:var(--success);
+    margin:7px 0;
 }
 
 .productBtns{
-display:flex;
-gap:7px;
-margin-top:10px;
+    display:flex;
+    gap:7px;
+    margin-top:10px;
 }
 
 .productBtns button{
-flex:1;
-padding:9px;
-border-radius:7px;
-font-weight:bold;
+    flex:1;
+    padding:9px;
+    border-radius:7px;
+    font-weight:bold;
 }
 
 .cartBtn{
-background:#eff6ff;
-color:var(--primary);
-border:0;
+    background:#eff6ff;
+    color:var(--primary);
+    border:0;
 }
 
 .buyBtn{
-background:var(--primary);
-color:#fff;
-border:0;
+    background:var(--primary);
+    color:#fff;
+    border:0;
 }
 
 
-/* BENEFITS */
+/* =====================================
+   BENEFITS
+===================================== */
 
 .benefits{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:15px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
 }
 
 .benefit{
-background:#fff;
-padding:25px;
-border-radius:15px;
-text-align:center;
-border:1px solid var(--border);
+    background:#fff;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    border:1px solid var(--border);
 }
 
 .benefit div{
-font-size:30px;
-margin-bottom:10px;
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.benefit p{
+    color:var(--muted);
+    font-size:13px;
+    margin-top:7px;
 }
 
 
-/* FOOTER */
+/* =====================================
+   FOOTER
+===================================== */
 
 footer{
-background:#07152d;
-color:#fff;
-padding:50px 5%;
-margin-top:60px;
+    background:#07152d;
+    color:#fff;
+    padding:50px 5%;
+    margin-top:60px;
 }
 
 .footerGrid{
-max-width:1500px;
-margin:auto;
-display:grid;
-grid-template-columns:2fr 1fr 1fr 1fr;
-gap:30px;
+    max-width:1500px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:30px;
 }
 
 footer p{
-color:#cbd5e1;
-margin-top:10px;
-font-size:14px;
+    color:#cbd5e1;
+    margin-top:10px;
+    font-size:14px;
 }
 
 footer a{
-color:#cbd5e1;
-transition:.2s;
-cursor:pointer;
+    color:#cbd5e1;
+    transition:.2s;
 }
 
 footer a:hover{
-color:#60a5fa;
-padding-left:5px;
+    color:#60a5fa;
+    padding-left:5px;
 }
 
 
-/* WHATSAPP */
+/* =====================================
+   WHATSAPP
+===================================== */
 
 .whatsapp{
-position:fixed;
-right:20px;
-bottom:20px;
-width:58px;
-height:58px;
-border-radius:50%;
-background:#25d366;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:25px;
-z-index:3000;
-box-shadow:0 8px 25px #0004;
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    background:#25d366;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+    z-index:3000;
+    box-shadow:0 8px 25px #0004;
 }
 
 
-/* MODAL */
+/* =====================================
+   MODAL
+===================================== */
 
 .modal{
-display:none;
-position:fixed;
-inset:0;
-background:#0009;
-z-index:5000;
-align-items:center;
-justify-content:center;
-padding:20px;
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#0009;
+    z-index:5000;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
 }
 
 .modal.show{
-display:flex;
+    display:flex;
 }
 
 .modalBox{
-background:#fff;
-width:600px;
-max-width:100%;
-max-height:90vh;
-overflow:auto;
-border-radius:20px;
-padding:28px;
+    background:#fff;
+    width:600px;
+    max-width:100%;
+    max-height:90vh;
+    overflow:auto;
+    border-radius:20px;
+    padding:28px;
 }
 
 .modalHead{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:22px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:22px;
 }
 
 .close{
-border:0;
-background:#f1f3f5;
-padding:8px 12px;
-border-radius:8px;
+    border:0;
+    background:#f1f3f5;
+    padding:8px 12px;
+    border-radius:8px;
 }
 
 .form{
-margin-bottom:15px;
+    margin-bottom:15px;
 }
 
 .form label{
-display:block;
-font-weight:bold;
-margin-bottom:7px;
+    display:block;
+    font-weight:bold;
+    margin-bottom:7px;
 }
 
 .form input,
 .form textarea,
 .form select{
-width:100%;
-padding:12px;
-border:1px solid #ddd;
-border-radius:8px;
-outline:0;
+    width:100%;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    outline:0;
 }
 
 .switch{
-text-align:center;
-margin-top:15px;
+    text-align:center;
+    margin-top:15px;
 }
 
 .link{
-border:0;
-background:none;
-color:var(--primary);
-font-weight:bold;
+    border:0;
+    background:none;
+    color:var(--primary);
+    font-weight:bold;
 }
 
 
-/* PROFILE */
+/* =====================================
+   PROFILE
+===================================== */
 
 .profile{
-text-align:center;
+    text-align:center;
 }
 
 .avatar{
-width:75px;
-height:75px;
-border-radius:50%;
-background:var(--primary);
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:30px;
-margin:auto;
+    width:75px;
+    height:75px;
+    border-radius:50%;
+    background:var(--primary);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    margin:auto;
 }
 
 .profileMenu{
-display:grid;
-gap:10px;
-margin-top:20px;
+    display:grid;
+    gap:10px;
+    margin-top:20px;
 }
 
 .profileMenu button{
-padding:13px;
-border:1px solid var(--border);
-background:#fff;
-border-radius:8px;
-text-align:left;
+    padding:13px;
+    border:1px solid var(--border);
+    background:#fff;
+    border-radius:8px;
+    text-align:left;
 }
 
 
-/* CART */
+/* =====================================
+   CART
+===================================== */
 
 .cartDrawer{
-position:fixed;
-right:-500px;
-top:0;
-height:100vh;
-width:460px;
-max-width:95%;
-background:#fff;
-z-index:6000;
-padding:25px;
-transition:.3s;
-box-shadow:-10px 0 40px #0003;
-overflow:auto;
+    position:fixed;
+    right:-500px;
+    top:0;
+    height:100vh;
+    width:460px;
+    max-width:95%;
+    background:#fff;
+    z-index:6000;
+    padding:25px;
+    transition:.3s;
+    box-shadow:-10px 0 40px #0003;
+    overflow:auto;
 }
 
 .cartDrawer.open{
-right:0;
+    right:0;
 }
 
 .cartItem{
-display:flex;
-gap:12px;
-padding:14px 0;
-border-bottom:1px solid #eee;
+    display:flex;
+    gap:12px;
+    padding:14px 0;
+    border-bottom:1px solid #eee;
 }
 
 .cartItem img{
-width:70px;
-height:70px;
-object-fit:cover;
-border-radius:8px;
+    width:70px;
+    height:70px;
+    object-fit:cover;
+    border-radius:8px;
 }
 
 .remove{
-border:0;
-background:none;
-color:#ef4444;
-font-size:12px;
+    border:0;
+    background:none;
+    color:#ef4444;
+    font-size:12px;
 }
 
 
-/* PAYMENT */
+/* =====================================
+   PAYMENT
+===================================== */
 
 .payment{
-background:#f5f7fb;
-padding:15px;
-border-radius:12px;
-margin:15px 0;
+    background:#f5f7fb;
+    padding:15px;
+    border-radius:12px;
+    margin:15px 0;
 }
 
 .payOption{
-display:block;
-background:#fff;
-padding:12px;
-border:1px solid #ddd;
-border-radius:8px;
-margin-top:8px;
+    display:block;
+    background:#fff;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    margin-top:8px;
 }
 
 
-/* ORDER */
+/* =====================================
+   ORDERS
+===================================== */
 
 .orderCard{
-border:1px solid #e5e7eb;
-padding:18px;
-border-radius:12px;
-margin-bottom:12px;
-text-align:left;
+    border:1px solid #e5e7eb;
+    padding:18px;
+    border-radius:12px;
+    margin-bottom:12px;
+    text-align:left;
 }
 
 .orderStatus{
-color:#16a34a;
-font-weight:bold;
+    color:#16a34a;
+    font-weight:bold;
 }
 
 
-/* RESPONSIVE */
+/* =====================================
+   RESPONSIVE
+===================================== */
 
 @media(max-width:1100px){
 
-.products{
-grid-template-columns:repeat(4,1fr);
-}
+    .products{
+        grid-template-columns:repeat(4,1fr);
+    }
 
 }
 
-@media(max-width:800px){
+@media(max-width:900px){
 
-.hero{
-grid-template-columns:1fr;
-}
+    .hero{
+        grid-template-columns:1fr;
+    }
 
-.products{
-grid-template-columns:repeat(3,1fr);
-}
+    .banner{
+        min-height:600px;
+    }
 
-.benefits{
-grid-template-columns:repeat(2,1fr);
-}
+    .hero-content{
+        width:100%;
+        padding:35px;
+        background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.95),
+            rgba(255,255,255,.70)
+        );
+        border-radius:20px;
+    }
 
-.footerGrid{
-grid-template-columns:1fr 1fr;
-}
+    .hero-content h1{
+        font-size:40px;
+    }
+
+    .services{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .products{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .benefits{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .footerGrid{
+        grid-template-columns:1fr 1fr;
+    }
 
 }
 
 @media(max-width:600px){
 
-.top{
-display:none;
-}
+    .top{
+        display:none;
+    }
 
-.nav{
-flex-wrap:wrap;
-}
+    .nav{
+        flex-wrap:wrap;
+    }
 
-.search{
-order:3;
-flex-basis:100%;
-}
+    .search{
+        order:3;
+        flex-basis:100%;
+    }
 
-.banner{
-padding:30px;
-}
+    .banner{
+        min-height:650px;
+    }
 
-.banner h1{
-font-size:36px;
-}
+    .hero-content{
+        padding:25px;
+    }
 
-.products{
-grid-template-columns:repeat(2,1fr);
-}
+    .hero-content h1{
+        font-size:32px;
+    }
 
-.productImg{
-height:160px;
-}
+    .hero-content p{
+        font-size:15px;
+    }
 
-.benefits{
-grid-template-columns:1fr;
-}
+    .hero-features{
+        flex-direction:column;
+        gap:12px;
+    }
 
-.footerGrid{
-grid-template-columns:1fr;
-}
+    .premium-hero::after{
+        display:none;
+    }
 
-.flash{
-display:block;
-}
+    .services{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .service{
+        border-right:0;
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .productImg{
+        height:160px;
+    }
+
+    .benefits{
+        grid-template-columns:1fr;
+    }
+
+    .footerGrid{
+        grid-template-columns:1fr;
+    }
+
+    .flash{
+        display:block;
+    }
+
+    .timer{
+        margin-top:15px;
+    }
 
 }
 
@@ -754,22 +1004,30 @@ display:block;
 <body>
 
 
-<!-- TOP BAR -->
+<!-- =====================================
+     TOP BAR
+===================================== -->
 
 <div class="top">
 
 <span>
-🚚 Fast Delivery Across Bangladesh
+🚚 সারা বাংলাদেশে দ্রুত ডেলিভারি
 </span>
 
 <span>
-📞 WhatsApp Support: 01613040095
+🔒 ১০০% নিরাপদ পেমেন্ট
+</span>
+
+<span>
+📞 WhatsApp: 01613040095
 </span>
 
 </div>
 
 
-<!-- HEADER -->
+<!-- =====================================
+     HEADER
+===================================== -->
 
 <header>
 
@@ -787,7 +1045,7 @@ Trusted <span>Network</span>
 
 <input
 id="search"
-placeholder="Search products, brands and categories..."
+placeholder="পণ্য, ব্র্যান্ড বা ক্যাটাগরি খুঁজুন..."
 >
 
 <button onclick="searchProducts()">
@@ -804,8 +1062,10 @@ class="action"
 onclick="openAccount()"
 >
 
-👤 <span id="accountName">
-Account
+👤
+
+<span id="accountName">
+আমার অ্যাকাউন্ট
 </span>
 
 </button>
@@ -836,36 +1096,41 @@ class="badge"
 <div class="categories">
 
 <span onclick="filterCategory('all')">
-All Products
+হোম
+</span>
+
+<span onclick="filterCategory('all')">
+সকল পণ্য
 </span>
 
 <span onclick="filterCategory('electronics')">
-Electronics
+ইলেকট্রনিক্স
 </span>
 
 <span onclick="filterCategory('mobile')">
-Mobile
+মোবাইল ও গ্যাজেট
 </span>
 
 <span onclick="filterCategory('audio')">
-Audio
+অডিও
 </span>
 
 <span onclick="filterCategory('gaming')">
-Gaming
+গেমিং
 </span>
 
 <span onclick="filterCategory('accessories')">
-Accessories
+অ্যাক্সেসরিজ
 </span>
 
 </div>
 
-
 </header>
 
 
-<!-- MAIN -->
+<!-- =====================================
+     MAIN
+===================================== -->
 
 <main class="container">
 
@@ -878,7 +1143,7 @@ Accessories
 <aside class="sidebar">
 
 <h3>
-🛍️ Shop By Category
+🛍️ Shop by Category
 </h3>
 
 
@@ -886,7 +1151,7 @@ Accessories
 class="cat active"
 onclick="filterCategory('all')"
 >
-🛒 All Products
+🛒 সকল পণ্য
 </div>
 
 
@@ -894,7 +1159,7 @@ onclick="filterCategory('all')"
 class="cat"
 onclick="filterCategory('electronics')"
 >
-💻 Electronics
+💻 ইলেকট্রনিক্স
 </div>
 
 
@@ -902,7 +1167,7 @@ onclick="filterCategory('electronics')"
 class="cat"
 onclick="filterCategory('mobile')"
 >
-📱 Mobile & Gadgets
+📱 মোবাইল ও গ্যাজেট
 </div>
 
 
@@ -910,7 +1175,7 @@ onclick="filterCategory('mobile')"
 class="cat"
 onclick="filterCategory('audio')"
 >
-🎧 Audio
+🎧 অডিও
 </div>
 
 
@@ -918,7 +1183,7 @@ onclick="filterCategory('audio')"
 class="cat"
 onclick="filterCategory('gaming')"
 >
-🎮 Gaming
+🎮 গেমিং
 </div>
 
 
@@ -926,51 +1191,122 @@ onclick="filterCategory('gaming')"
 class="cat"
 onclick="filterCategory('accessories')"
 >
-⌨️ Accessories
+⌨️ অ্যাক্সেসরিজ
 </div>
-
 
 </aside>
 
 
-<div class="banner">
+<!-- PREMIUM HERO -->
 
-<div>
+<div class="banner premium-hero">
+
+<div class="hero-content">
+
+
+<div class="hero-badge">
+
+🚚 সারা বাংলাদেশে দ্রুত ডেলিভারি
+
+</div>
+
 
 <h1>
-Shop Smarter.
-Live Better.
+
+আপনার পছন্দের পণ্য,<br>
+
+<span>
+এখন হাতের নাগালে
+</span>
+
 </h1>
 
 
 <p>
 
-Discover premium products,
-exclusive deals and trusted service
-—all in one place.
+বিশ্বস্ত দামে প্রয়োজনীয় পণ্য কিনুন।
+সহজ অর্ডার, নিরাপদ পেমেন্ট এবং
+সারা বাংলাদেশে দ্রুত ডেলিভারি।
 
 </p>
 
 
+<div class="hero-features">
+
+
+<div>
+
+🛡️
+
+<strong>
+১০০% অরিজিনাল পণ্য
+</strong>
+
+<small>
+Trusted Quality
+</small>
+
+</div>
+
+
+<div>
+
+🔒
+
+<strong>
+নিরাপদ পেমেন্ট
+</strong>
+
+<small>
+Secure Payment
+</small>
+
+</div>
+
+
+<div>
+
+🚚
+
+<strong>
+দ্রুত ডেলিভারি
+</strong>
+
+<small>
+Fast Delivery
+</small>
+
+</div>
+
+
+</div>
+
+
 <div class="heroBtns">
+
+
+<button
+class="btn primary"
+onclick="scrollProducts()"
+>
+
+এখনই কেনাকাটা করুন →
+
+</button>
+
 
 <button
 class="btn white"
-onclick="scrollProducts()"
->
-Shop Now
-</button>
-
-
-<button
-class="btn"
-style="background:#ffffff22;color:white"
 onclick="openAccount()"
 >
-My Account
+
+আমার অ্যাকাউন্ট
+
 </button>
 
+
 </div>
+
 
 </div>
 
@@ -979,21 +1315,118 @@ My Account
 </section>
 
 
+<!-- SERVICE STRIP -->
+
+<section class="services">
+
+
+<div class="service">
+
+<div class="service-icon">
+💵
+</div>
+
+<h4>
+Cash on Delivery
+</h4>
+
+<p>
+পণ্য হাতে পেয়ে মূল্য পরিশোধ করুন
+</p>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-icon">
+💳
+</div>
+
+<h4>
+bKash Payment
+</h4>
+
+<p>
+সহজ ও নিরাপদ ডিজিটাল পেমেন্ট
+</p>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-icon">
+🟠
+</div>
+
+<h4>
+Nagad Payment
+</h4>
+
+<p>
+দ্রুত ও নিরাপদ পেমেন্ট
+</p>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-icon">
+📦
+</div>
+
+<h4>
+Easy Return
+</h4>
+
+<p>
+সহজ রিটার্ন ও রিফান্ড সুবিধা
+</p>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-icon">
+🎧
+</div>
+
+<h4>
+24/7 Support
+</h4>
+
+<p>
+সার্বক্ষণিক কাস্টমার সাপোর্ট
+</p>
+
+</div>
+
+
+</section>
+
+
 <!-- PRODUCTS -->
 
-<section class="section">
+<section
+class="section"
+id="productsSection"
+>
 
 
 <div class="flash">
 
+
 <div>
 
 <h2>
-🔥 Flash Sale
+⚡ Flash Sale
 </h2>
 
 <p>
-Limited time deals. Don't miss out!
+সীমিত সময়ের বিশেষ অফার!
 </p>
 
 </div>
@@ -1006,13 +1439,14 @@ id="timer"
 05:00:00
 </div>
 
+
 </div>
 
 
 <div class="sectionHead">
 
 <h2>
-🔥 Trending Products
+✨ নির্বাচিত পণ্য
 </h2>
 
 </div>
@@ -1036,7 +1470,7 @@ id="productGrid"
 <div class="sectionHead">
 
 <h2>
-✨ Why Choose Trusted Network?
+কেন Trusted Network?
 </h2>
 
 </div>
@@ -1052,11 +1486,11 @@ id="productGrid"
 </div>
 
 <h3>
-Fast Delivery
+দ্রুত ডেলিভারি
 </h3>
 
 <p>
-Reliable delivery service across Bangladesh.
+সারা বাংলাদেশে দ্রুত ও নির্ভরযোগ্য ডেলিভারি।
 </p>
 
 </div>
@@ -1069,11 +1503,11 @@ Reliable delivery service across Bangladesh.
 </div>
 
 <h3>
-Secure Shopping
+নিরাপদ কেনাকাটা
 </h3>
 
 <p>
-Simple and trusted shopping experience.
+সহজ, নিরাপদ এবং বিশ্বস্ত অনলাইন শপিং।
 </p>
 
 </div>
@@ -1086,11 +1520,11 @@ Simple and trusted shopping experience.
 </div>
 
 <h3>
-Flexible Payment
+সহজ পেমেন্ট
 </h3>
 
 <p>
-bKash, Nagad and Cash on Delivery.
+bKash, Nagad এবং Cash on Delivery।
 </p>
 
 </div>
@@ -1103,11 +1537,11 @@ bKash, Nagad and Cash on Delivery.
 </div>
 
 <h3>
-Customer Support
+কাস্টমার সাপোর্ট
 </h3>
 
 <p>
-Fast support through WhatsApp.
+দ্রুত সহায়তার জন্য আমাদের সাথে যোগাযোগ করুন।
 </p>
 
 </div>
@@ -1121,7 +1555,9 @@ Fast support through WhatsApp.
 </main>
 
 
-<!-- FOOTER -->
+<!-- =====================================
+     FOOTER
+===================================== -->
 
 <footer>
 
@@ -1136,7 +1572,11 @@ Trusted Network
 </h2>
 
 <p>
-Premium online shopping experience for everyone.
+আপনার বিশ্বস্ত অনলাইন শপিং পার্টনার।
+</p>
+
+<p>
+Quality Products • Secure Payment • Fast Delivery
 </p>
 
 </div>
@@ -1166,7 +1606,7 @@ Cash on Delivery
 <div>
 
 <h3>
-Support
+Customer Support
 </h3>
 
 <p>
@@ -1174,13 +1614,11 @@ WhatsApp: 01613040095
 </p>
 
 <p>
-Open 24/7
+সার্বক্ষণিক সাপোর্ট
 </p>
 
 </div>
 
-
-<!-- QUICK LINKS -->
 
 <div>
 
@@ -1196,7 +1634,7 @@ href="#"
 onclick="openAccount();return false;"
 >
 
-My Account
+My Account | আমার অ্যাকাউন্ট
 
 </a>
 
@@ -1210,7 +1648,7 @@ href="#"
 onclick="openOrders();return false;"
 >
 
-My Orders
+My Orders | আমার অর্ডার
 
 </a>
 
@@ -1224,7 +1662,7 @@ href="#"
 onclick="openPrivacy();return false;"
 >
 
-Privacy Policy
+Privacy Policy | গোপনীয়তা নীতি
 
 </a>
 
@@ -1252,7 +1690,9 @@ target="_blank"
 </a>
 
 
-<!-- ACCOUNT MODAL -->
+<!-- =====================================
+     ACCOUNT MODAL
+===================================== -->
 
 <div
 class="modal"
@@ -1265,9 +1705,8 @@ id="accountModal"
 
 <div class="modalHead">
 
-
 <h2 id="accountTitle">
-Login
+Login | লগইন
 </h2>
 
 
@@ -1277,7 +1716,6 @@ onclick="closeAccount()"
 >
 ✕
 </button>
-
 
 </div>
 
@@ -1296,7 +1734,7 @@ Email
 <input
 id="loginEmail"
 type="email"
-placeholder="Enter email"
+placeholder="আপনার Email লিখুন"
 >
 
 </div>
@@ -1311,7 +1749,7 @@ Password
 <input
 id="loginPassword"
 type="password"
-placeholder="Enter password"
+placeholder="আপনার Password লিখুন"
 >
 
 </div>
@@ -1322,21 +1760,21 @@ class="btn primary full"
 onclick="login()"
 >
 
-🔐 Login
+🔐 Login | লগইন
 
 </button>
 
 
 <div class="switch">
 
-Don't have an account?
+অ্যাকাউন্ট নেই?
 
 <button
 class="link"
 onclick="showRegister()"
 >
 
-Create Account
+Create Account | অ্যাকাউন্ট তৈরি করুন
 
 </button>
 
@@ -1357,12 +1795,12 @@ style="display:none"
 <div class="form">
 
 <label>
-Full Name
+Full Name | পূর্ণ নাম
 </label>
 
 <input
 id="regName"
-placeholder="Your full name"
+placeholder="আপনার নাম"
 >
 
 </div>
@@ -1377,7 +1815,7 @@ Email
 <input
 id="regEmail"
 type="email"
-placeholder="Your email"
+placeholder="আপনার Email"
 >
 
 </div>
@@ -1392,7 +1830,7 @@ Password
 <input
 id="regPassword"
 type="password"
-placeholder="Minimum 6 characters"
+placeholder="কমপক্ষে ৬ অক্ষর"
 >
 
 </div>
@@ -1410,7 +1848,7 @@ onclick="register()"
 
 <div class="switch">
 
-Already have account?
+অ্যাকাউন্ট আছে?
 
 <button
 class="link"
@@ -1459,7 +1897,7 @@ Customer
 onclick="openOrders()"
 >
 
-📦 My Orders
+📦 My Orders | আমার অর্ডার
 
 </button>
 
@@ -1468,7 +1906,7 @@ onclick="openOrders()"
 onclick="logout()"
 >
 
-🚪 Logout
+🚪 Logout | লগআউট
 
 </button>
 
@@ -1487,7 +1925,9 @@ onclick="logout()"
 </div>
 
 
-<!-- CART -->
+<!-- =====================================
+     CART
+===================================== -->
 
 <div
 class="cartDrawer"
@@ -1498,7 +1938,7 @@ id="cartDrawer"
 <div class="modalHead">
 
 <h2>
-🛒 Your Cart
+🛒 My Cart | আমার কার্ট
 </h2>
 
 
@@ -1544,7 +1984,9 @@ Proceed to Checkout
 </div>
 
 
-<!-- CHECKOUT -->
+<!-- =====================================
+     CHECKOUT
+===================================== -->
 
 <div
 class="modal"
@@ -1558,8 +2000,9 @@ id="checkoutModal"
 <div class="modalHead">
 
 <h2>
-Checkout
+Checkout | অর্ডার সম্পন্ন করুন
 </h2>
+
 
 <button
 class="close"
@@ -1574,12 +2017,12 @@ onclick="closeCheckout()"
 <div class="form">
 
 <label>
-Full Name
+Full Name | নাম
 </label>
 
 <input
 id="orderName"
-placeholder="Your name"
+placeholder="আপনার নাম"
 >
 
 </div>
@@ -1588,7 +2031,7 @@ placeholder="Your name"
 <div class="form">
 
 <label>
-Mobile Number
+Mobile Number | মোবাইল নম্বর
 </label>
 
 <input
@@ -1602,12 +2045,13 @@ placeholder="01XXXXXXXXX"
 <div class="form">
 
 <label>
-Delivery Address
+Delivery Address | ডেলিভারি ঠিকানা
 </label>
 
 <textarea
 id="orderAddress"
 rows="4"
+placeholder="আপনার সম্পূর্ণ ঠিকানা"
 ></textarea>
 
 </div>
@@ -1617,7 +2061,7 @@ rows="4"
 
 
 <h3>
-💳 Payment Method
+💳 Payment Method | পেমেন্ট পদ্ধতি
 </h3>
 
 
@@ -1643,7 +2087,7 @@ name="payment"
 value="bKash"
 >
 
-📱 bKash
+📱 bKash Payment
 
 </label>
 
@@ -1656,7 +2100,7 @@ name="payment"
 value="Nagad"
 >
 
-🟠 Nagad
+🟠 Nagad Payment
 
 </label>
 
@@ -1688,12 +2132,12 @@ Nagad:
 <div class="form">
 
 <label>
-Transaction ID (if paid manually)
+Transaction ID
 </label>
 
 <input
 id="transaction"
-placeholder="Enter transaction ID"
+placeholder="পেমেন্ট করলে Transaction ID দিন"
 >
 
 </div>
@@ -1704,7 +2148,7 @@ class="btn primary full"
 onclick="placeOrder()"
 >
 
-✅ Confirm Order
+✅ Confirm Order | অর্ডার নিশ্চিত করুন
 
 </button>
 
@@ -1714,12 +2158,12 @@ onclick="placeOrder()"
 </div>
 
 
-<!-- JAVASCRIPT -->
-
 <script>
 
 
-/* PRODUCTS */
+/* =====================================
+   PRODUCTS
+===================================== */
 
 const products=[
 
@@ -1827,14 +2271,14 @@ localStorage.getItem(
 );
 
 
-/* RENDER */
+/* =====================================
+   RENDER PRODUCTS
+===================================== */
 
 function render(list){
 
 document
-.getElementById(
-"productGrid"
-)
+.getElementById("productGrid")
 .innerHTML=
 
 list.map(p=>`
@@ -1843,7 +2287,10 @@ list.map(p=>`
 
 <div class="productImg">
 
-<img src="${p.img}">
+<img
+src="${p.img}"
+alt="${p.name}"
+>
 
 <span class="discount">
 
@@ -1891,7 +2338,7 @@ ${p.name}
 
 
 <div class="stock">
-● In Stock
+● In Stock | পণ্য মজুদ আছে
 </div>
 
 
@@ -1903,7 +2350,7 @@ class="cartBtn"
 onclick="addCart(${p.id})"
 >
 
-Add Cart
+কার্টে যোগ করুন
 
 </button>
 
@@ -1913,7 +2360,7 @@ class="buyBtn"
 onclick="buy(${p.id})"
 >
 
-Buy Now
+এখনই কিনুন
 
 </button>
 
@@ -1930,7 +2377,9 @@ Buy Now
 }
 
 
-/* CATEGORY */
+/* =====================================
+   CATEGORY
+===================================== */
 
 function filterCategory(cat){
 
@@ -1941,9 +2390,11 @@ render(products);
 }else{
 
 render(
+
 products.filter(
 p=>p.cat===cat
 )
+
 );
 
 }
@@ -1953,7 +2404,9 @@ scrollProducts();
 }
 
 
-/* SEARCH */
+/* =====================================
+   SEARCH
+===================================== */
 
 function searchProducts(){
 
@@ -1984,7 +2437,9 @@ scrollProducts();
 }
 
 
-/* CART */
+/* =====================================
+   CART
+===================================== */
 
 function addCart(id){
 
@@ -1999,7 +2454,7 @@ cart.push(p);
 saveCart();
 
 alert(
-"Added to cart!"
+"পণ্যটি কার্টে যোগ করা হয়েছে!"
 );
 
 }
@@ -2052,7 +2507,9 @@ html+=`
 
 <div class="cartItem">
 
-<img src="${p.img}">
+<img
+src="${p.img}"
+>
 
 <div style="flex:1">
 
@@ -2088,7 +2545,7 @@ document
 
 html ||
 
-"<p>Your cart is empty.</p>";
+"<p>আপনার কার্ট এখনো খালি।</p>";
 
 
 document
@@ -2128,7 +2585,9 @@ document
 }
 
 
-/* ACCOUNT */
+/* =====================================
+   ACCOUNT
+===================================== */
 
 function openAccount(){
 
@@ -2195,7 +2654,7 @@ document
 document
 .getElementById("accountTitle")
 .innerText=
-"Login";
+"Login | লগইন";
 
 }
 
@@ -2223,12 +2682,14 @@ document
 document
 .getElementById("accountTitle")
 .innerText=
-"Create Account";
+"Create Account | অ্যাকাউন্ট তৈরি করুন";
 
 }
 
 
-/* REGISTER */
+/* =====================================
+   REGISTER
+===================================== */
 
 function register(){
 
@@ -2263,7 +2724,7 @@ if(
 ){
 
 alert(
-"Please fill all fields."
+"অনুগ্রহ করে সব তথ্য পূরণ করুন।"
 );
 
 return;
@@ -2276,7 +2737,7 @@ password.length<6
 ){
 
 alert(
-"Password must be at least 6 characters."
+"Password কমপক্ষে ৬ অক্ষরের হতে হবে।"
 );
 
 return;
@@ -2304,7 +2765,7 @@ u=>u.email===email
 ){
 
 alert(
-"This email is already registered."
+"এই Email দিয়ে ইতোমধ্যে অ্যাকাউন্ট তৈরি করা হয়েছে।"
 );
 
 return;
@@ -2350,7 +2811,7 @@ email:email
 
 
 alert(
-"Account created successfully!"
+"অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে!"
 );
 
 
@@ -2361,7 +2822,9 @@ updateAccount();
 }
 
 
-/* LOGIN */
+/* =====================================
+   LOGIN
+===================================== */
 
 function login(){
 
@@ -2408,7 +2871,7 @@ u.password===password
 if(!user){
 
 alert(
-"Invalid email or password."
+"Email অথবা Password সঠিক নয়।"
 );
 
 return;
@@ -2432,7 +2895,7 @@ email:user.email
 
 
 alert(
-"Login successful!"
+"সফলভাবে Login হয়েছে!"
 );
 
 
@@ -2443,7 +2906,9 @@ updateAccount();
 }
 
 
-/* PROFILE */
+/* =====================================
+   PROFILE
+===================================== */
 
 function showProfile(){
 
@@ -2488,7 +2953,7 @@ document
 document
 .getElementById("accountTitle")
 .innerText=
-"My Account";
+"My Account | আমার অ্যাকাউন্ট";
 
 
 document
@@ -2505,7 +2970,9 @@ user.email;
 }
 
 
-/* LOGOUT */
+/* =====================================
+   LOGOUT
+===================================== */
 
 function logout(){
 
@@ -2520,7 +2987,7 @@ updateAccount();
 
 
 alert(
-"Logged out successfully."
+"আপনি সফলভাবে Logout করেছেন।"
 );
 
 }
@@ -2547,12 +3014,14 @@ user
 ?
 user.name
 :
-"Account";
+"আমার অ্যাকাউন্ট";
 
 }
 
 
-/* MY ORDERS */
+/* =====================================
+   MY ORDERS
+===================================== */
 
 function openOrders(){
 
@@ -2570,7 +3039,7 @@ localStorage.getItem(
 if(!user){
 
 alert(
-"Please login to view your orders."
+"অর্ডার দেখতে আগে Login করুন।"
 );
 
 openAccount();
@@ -2631,7 +3100,7 @@ No Orders Yet
 style="color:#667085;margin-top:8px"
 >
 
-You haven't placed any orders yet.
+আপনি এখনো কোনো অর্ডার করেননি।
 
 </p>
 
@@ -2701,7 +3170,7 @@ ${order.payment}
 document
 .getElementById("accountTitle")
 .innerText=
-"My Orders";
+"My Orders | আমার অর্ডার";
 
 
 document
@@ -2751,14 +3220,16 @@ document
 }
 
 
-/* PRIVACY POLICY */
+/* =====================================
+   PRIVACY POLICY
+===================================== */
 
 function openPrivacy(){
 
 document
 .getElementById("accountTitle")
 .innerText=
-"Privacy Policy";
+"Privacy Policy | গোপনীয়তা নীতি";
 
 
 document
@@ -2785,9 +3256,7 @@ document
 
 `
 
-<div
-style="text-align:left"
->
+<div style="text-align:left">
 
 
 <button
@@ -2814,9 +3283,11 @@ color:#667085;
 "
 >
 
-At Trusted Network, we respect your privacy.
-We collect only the information required to
-process your orders and provide customer support.
+Trusted Network আপনার ব্যক্তিগত তথ্যের
+গোপনীয়তাকে সর্বোচ্চ গুরুত্ব দেয়।
+অর্ডার সম্পন্ন করা এবং কাস্টমার সাপোর্ট
+দেওয়ার জন্য প্রয়োজনীয় তথ্যই শুধুমাত্র
+সংগ্রহ করা হয়।
 
 </p>
 
@@ -2825,7 +3296,7 @@ process your orders and provide customer support.
 style="margin-top:20px"
 >
 
-Information We Collect
+আমরা যে তথ্য সংগ্রহ করি
 
 </h3>
 
@@ -2838,9 +3309,9 @@ color:#667085;
 "
 >
 
-We may collect your name, email address,
-phone number, delivery address and order
-information when you use our services.
+আপনার নাম, Email, মোবাইল নম্বর,
+ডেলিভারি ঠিকানা এবং অর্ডার সংক্রান্ত
+তথ্য সংগ্রহ করা হতে পারে।
 
 </p>
 
@@ -2862,9 +3333,9 @@ color:#667085;
 "
 >
 
-Payment information is used only for processing
-your order. We do not sell or share your personal
-information with third parties.
+আপনার পেমেন্ট সংক্রান্ত তথ্য শুধুমাত্র
+অর্ডার প্রক্রিয়া সম্পন্ন করার জন্য ব্যবহার
+করা হয়।
 
 </p>
 
@@ -2915,7 +3386,9 @@ document
 }
 
 
-/* CHECKOUT */
+/* =====================================
+   CHECKOUT
+===================================== */
 
 function checkout(){
 
@@ -2924,7 +3397,7 @@ cart.length===0
 ){
 
 alert(
-"Your cart is empty!"
+"আপনার কার্ট এখনো খালি।"
 );
 
 return;
@@ -2953,7 +3426,9 @@ document
 }
 
 
-/* PLACE ORDER */
+/* =====================================
+   PLACE ORDER
+===================================== */
 
 function placeOrder(){
 
@@ -2971,7 +3446,7 @@ localStorage.getItem(
 if(!user){
 
 alert(
-"Please login first."
+"অর্ডার করতে আগে Login করুন।"
 );
 
 closeCheckout();
@@ -3027,7 +3502,7 @@ if(
 ){
 
 alert(
-"Please fill all delivery information."
+"অনুগ্রহ করে সব Delivery তথ্য পূরণ করুন।"
 );
 
 return;
@@ -3079,11 +3554,11 @@ transaction:transaction,
 total:total,
 
 status:
-"Pending",
+"Pending | প্রক্রিয়াধীন",
 
 date:
 new Date()
-.toLocaleString()
+.toLocaleString("bn-BD")
 
 });
 
@@ -3105,13 +3580,15 @@ closeCheckout();
 
 
 alert(
-"Order placed successfully!"
+"আপনার অর্ডার সফলভাবে গ্রহণ করা হয়েছে!"
 );
 
 }
 
 
-/* WISHLIST */
+/* =====================================
+   WISHLIST
+===================================== */
 
 function wishlist(id){
 
@@ -3154,13 +3631,13 @@ JSON.stringify(list)
 
 
 alert(
-"Added to wishlist ❤️"
+"পণ্যটি Wishlist-এ যোগ করা হয়েছে ❤️"
 );
 
 }else{
 
 alert(
-"Already in wishlist."
+"পণ্যটি ইতোমধ্যে Wishlist-এ আছে।"
 );
 
 }
@@ -3168,12 +3645,14 @@ alert(
 }
 
 
-/* SCROLL */
+/* =====================================
+   SCROLL
+===================================== */
 
 function scrollProducts(){
 
 document
-.getElementById("productGrid")
+.getElementById("productsSection")
 .scrollIntoView({
 
 behavior:"smooth"
@@ -3183,7 +3662,9 @@ behavior:"smooth"
 }
 
 
-/* TIMER */
+/* =====================================
+   FLASH TIMER
+===================================== */
 
 let seconds=18000;
 
@@ -3253,7 +3734,9 @@ seconds=18000;
 );
 
 
-/* INITIALIZE */
+/* =====================================
+   INITIALIZE
+===================================== */
 
 render(products);
 
