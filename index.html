@@ -1,148 +1,75 @@
-<!-- THANK YOU / ORDER SUCCESS -->
+function confirmOrder(){
 
-<div id="success" class="success">
+    let name =
+    document.getElementById("name").value.trim();
 
-    <div class="success-box">
+    let phone =
+    document.getElementById("phone").value.trim();
 
-        <div class="success-icon">
-            ✓
-        </div>
+    let address =
+    document.getElementById("address").value.trim();
 
-        <h2 style="margin-top:20px;">
-            🎉 Thank You for Your Order!
-        </h2>
+    let district =
+    document.getElementById("district").value;
 
-        <p style="margin-top:10px;color:#666;">
-            আপনার Order সফলভাবে গ্রহণ করা হয়েছে।
-            আমাদের টিম খুব শীঘ্রই আপনার সাথে যোগাযোগ করবে।
-        </p>
+    let area =
+    document.getElementById("area").value;
 
-
-        <!-- ORDER ID -->
-
-        <div class="order-id">
-
-            <span>Order ID</span>
-
-            <strong id="orderId">
-                BM-1234567
-            </strong>
-
-        </div>
+    let transaction =
+    document.getElementById("transaction").value.trim();
 
 
-        <!-- CUSTOMER INFO -->
+    // CHECK REQUIRED INFORMATION
 
-        <div style="
-            text-align:left;
-            background:#f8f9fa;
-            padding:18px;
-            border-radius:10px;
-            margin-top:15px;
-            line-height:1.9;
-        ">
+    if(
+        !name ||
+        !phone ||
+        !address ||
+        !district ||
+        !area ||
+        !transaction
+    ){
 
-            <p>
-                👤 <strong>Customer:</strong>
-                <span id="successName">
-                    Customer
-                </span>
-            </p>
+        alert(
+            "Please complete all delivery information and enter your bKash Transaction ID."
+        );
 
-            <p>
-                📱 <strong>Mobile:</strong>
-                <span id="successPhone">
-                    01XXXXXXXXX
-                </span>
-            </p>
+        return;
 
-            <p>
-                📍 <strong>Delivery Address:</strong>
-                <span id="successAddress">
-                    Your Address
-                </span>
-            </p>
-
-        </div>
+    }
 
 
-        <!-- PAYMENT STATUS -->
+    // CREATE ORDER ID
 
-        <div style="
-            margin-top:15px;
-            padding:15px;
-            background:#fff5ed;
-            border-radius:10px;
-            text-align:left;
-            line-height:1.8;
-        ">
-
-            <p>
-                🚚 <strong>Delivery Charge:</strong>
-                <span style="color:#16a34a;">
-                    Payment Submitted
-                </span>
-            </p>
-
-            <p>
-                💵 <strong>Product Payment:</strong>
-                Cash on Delivery
-            </p>
-
-            <p>
-                📦 <strong>Order Status:</strong>
-                <span style="color:#f85606;">
-                    Order Received
-                </span>
-            </p>
-
-        </div>
+    let orderId =
+    "BM-" +
+    Date.now()
+    .toString()
+    .slice(-7);
 
 
-        <!-- DELIVERY MESSAGE -->
+    // SHOW CUSTOMER INFORMATION
 
-        <div style="
-            margin-top:15px;
-            padding:15px;
-            background:#effff4;
-            border-radius:10px;
-            color:#166534;
-        ">
+    document.getElementById("successName")
+    .textContent = name;
 
-            🚚 আপনার Order আমাদের টিম যাচাই করার পর
-            Delivery-এর জন্য প্রস্তুত করা হবে।
+    document.getElementById("successPhone")
+    .textContent = phone;
 
-            <br><br>
-
-            📅 Estimated Delivery:
-            <strong>
-                3–5 Business Days
-            </strong>
-
-        </div>
+    document.getElementById("successAddress")
+    .textContent =
+    address + ", " + district;
 
 
-        <!-- CONTINUE SHOPPING -->
+    // SHOW ORDER ID
 
-        <button
-            onclick="finishOrder()"
-            style="margin-top:20px;"
-        >
-            🛍️ Continue Shopping
-        </button>
+    document.getElementById("orderId")
+    .textContent = orderId;
 
 
-        <p style="
-            margin-top:15px;
-            font-size:13px;
-            color:#777;
-        ">
+    // SHOW SUCCESS PAGE
 
-            Thank you for shopping with
-            <strong>BanglaMart</strong> ❤️
+    document.getElementById("success")
+    .style.display = "flex";
 
-        </p>
-
-    </div>
-
-</div>
+}
