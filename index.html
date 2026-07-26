@@ -4,1255 +4,810 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NovaMart | Premium Shopping</title>
+<title>Trusted Network | Premium Online Store</title>
 
 <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
-:root{
---primary:#ff9900;
---primary2:#ffb52e;
---dark:#07111f;
---dark2:#0d1b2e;
---text:#17202a;
---muted:#667085;
---bg:#f5f7fa;
---white:#fff;
---success:#16a34a;
---danger:#dc2626;
---pink:#e2136e;
---shadow:0 12px 35px rgba(0,0,0,.08);
-}
-
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 body{
-font-family:Inter,Arial,sans-serif;
-background:var(--bg);
-color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f7fb;
+  color:#172033;
 }
 
-button,
-input,
-textarea,
-select{
-font-family:inherit;
+button,input,select{
+  font:inherit;
 }
-
-button{
-cursor:pointer;
-}
-
-a{
-text-decoration:none;
-color:inherit;
-}
-
-
-/* HEADER */
 
 .topbar{
-background:#020914;
-color:#cbd5e1;
-padding:8px 5%;
-font-size:13px;
-display:flex;
-justify-content:space-between;
+  background:#101828;
+  color:white;
+  padding:9px 5%;
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
 }
 
-.header{
-position:sticky;
-top:0;
-z-index:999;
-background:rgba(7,17,31,.96);
-backdrop-filter:blur(15px);
-color:white;
-padding:15px 5%;
-display:flex;
-align-items:center;
-gap:20px;
-box-shadow:0 5px 25px rgba(0,0,0,.15);
+header{
+  background:white;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 2px 15px rgba(0,0,0,.08);
+}
+
+.nav{
+  max-width:1400px;
+  margin:auto;
+  padding:18px 5%;
+  display:flex;
+  align-items:center;
+  gap:25px;
 }
 
 .logo{
-font-size:28px;
-font-weight:800;
-cursor:pointer;
-white-space:nowrap;
-}
-
-.logo span{
-color:var(--primary);
+  font-size:26px;
+  font-weight:800;
+  color:#0757d5;
+  white-space:nowrap;
 }
 
 .search{
-display:flex;
-flex:1;
-max-width:700px;
-height:46px;
+  flex:1;
+  display:flex;
+  background:#f1f4f8;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid #e2e8f0;
 }
 
 .search input{
-flex:1;
-border:none;
-outline:none;
-padding:0 18px;
-font-size:15px;
-border-radius:8px 0 0 8px;
+  width:100%;
+  border:0;
+  outline:0;
+  background:transparent;
+  padding:14px 18px;
 }
 
 .search button{
-width:55px;
-border:none;
-background:var(--primary);
-font-size:20px;
-border-radius:0 8px 8px 0;
+  border:0;
+  background:#0757d5;
+  color:white;
+  padding:0 22px;
+  cursor:pointer;
 }
 
-.header-btn{
-border:none;
-background:transparent;
-color:white;
-font-weight:600;
-white-space:nowrap;
+.nav-actions{
+  display:flex;
+  gap:10px;
+}
+
+.nav-btn{
+  border:1px solid #e5e7eb;
+  background:white;
+  padding:11px 15px;
+  border-radius:10px;
+  cursor:pointer;
 }
 
 .cart-count{
-background:var(--primary);
-color:#111;
-padding:3px 8px;
-border-radius:20px;
-font-size:12px;
+  background:#e53935;
+  color:white;
+  padding:2px 7px;
+  border-radius:20px;
+  font-size:11px;
 }
 
-
-/* NAV */
-
-.nav{
-background:#10243b;
-color:white;
-display:flex;
-gap:30px;
-padding:12px 5%;
-overflow:auto;
+.menu{
+  border-top:1px solid #eee;
+  padding:12px 5%;
+  display:flex;
+  gap:25px;
+  overflow:auto;
 }
 
-.nav span{
-white-space:nowrap;
-cursor:pointer;
-font-size:14px;
-font-weight:600;
+.menu a{
+  text-decoration:none;
+  color:#344054;
+  white-space:nowrap;
+  font-weight:600;
+  cursor:pointer;
 }
-
-.nav span:hover{
-color:var(--primary);
-}
-
-
-/* PAGE */
-
-.page{
-display:none;
-min-height:650px;
-}
-
-.page.active{
-display:block;
-}
-
-
-/* HERO */
 
 .hero{
-min-height:520px;
-padding:70px 7%;
-display:flex;
-align-items:center;
-background:
-linear-gradient(110deg,rgba(3,12,25,.98),rgba(7,48,76,.92)),
-radial-gradient(circle at 80% 20%,#ff9900,transparent 30%);
-color:white;
-position:relative;
-overflow:hidden;
+  max-width:1400px;
+  margin:25px auto;
+  padding:0 5%;
 }
 
-.hero:after{
-content:"";
-position:absolute;
-width:500px;
-height:500px;
-right:-150px;
-top:-100px;
-border-radius:50%;
-background:linear-gradient(135deg,#ff9900,#ffcc66);
-opacity:.15;
+.hero-box{
+  min-height:390px;
+  border-radius:25px;
+  padding:60px;
+  display:flex;
+  align-items:center;
+  background:linear-gradient(120deg,#071d49,#0757d5);
+  color:white;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-box:after{
+  content:"";
+  position:absolute;
+  width:450px;
+  height:450px;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+  right:-100px;
+  top:-100px;
 }
 
 .hero-content{
-max-width:700px;
-position:relative;
-z-index:2;
+  max-width:650px;
+  position:relative;
+  z-index:2;
 }
 
-.badge{
-display:inline-block;
-padding:8px 14px;
-border-radius:30px;
-background:rgba(255,153,0,.15);
-color:#ffb52e;
-border:1px solid rgba(255,153,0,.3);
-font-size:13px;
-font-weight:700;
-margin-bottom:20px;
+.hero-content h1{
+  font-size:50px;
+  margin-bottom:15px;
 }
 
-.hero h1{
-font-size:58px;
-line-height:1.05;
-margin-bottom:20px;
+.hero-content p{
+  font-size:18px;
+  line-height:1.7;
+  opacity:.9;
 }
 
-.hero h1 span{
-color:var(--primary);
+.hero-btn{
+  display:inline-block;
+  margin-top:25px;
+  background:white;
+  color:#0757d5;
+  border:0;
+  padding:14px 25px;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
 }
-
-.hero p{
-font-size:18px;
-line-height:1.7;
-color:#dbe4ef;
-max-width:600px;
-margin-bottom:30px;
-}
-
-.hero-buttons{
-display:flex;
-gap:12px;
-flex-wrap:wrap;
-}
-
-.btn{
-border:none;
-border-radius:8px;
-padding:13px 20px;
-font-weight:700;
-transition:.25s;
-}
-
-.btn:hover{
-transform:translateY(-2px);
-box-shadow:0 10px 20px rgba(0,0,0,.12);
-}
-
-.primary{
-background:var(--primary);
-color:#111;
-}
-
-.dark{
-background:var(--dark);
-color:white;
-}
-
-.white{
-background:white;
-color:#111;
-border:1px solid #ddd;
-}
-
-.green{
-background:var(--success);
-color:white;
-}
-
-
-/* CONTAINER */
 
 .container{
-width:92%;
-max-width:1400px;
-margin:auto;
-}
-
-.section{
-padding:55px 0;
+  max-width:1400px;
+  margin:auto;
+  padding:20px 5%;
 }
 
 .section-title{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:25px 0;
 }
 
 .section-title h2{
-font-size:28px;
+  font-size:28px;
 }
-
-.section-title p{
-color:var(--muted);
-margin-top:5px;
-}
-
-
-/* FEATURES */
-
-.features{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:18px;
-padding:30px 0;
-}
-
-.feature{
-background:white;
-padding:25px;
-border-radius:15px;
-box-shadow:var(--shadow);
-display:flex;
-gap:15px;
-align-items:center;
-}
-
-.feature-icon{
-width:52px;
-height:52px;
-border-radius:14px;
-background:#fff4df;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:25px;
-}
-
-
-/* CATEGORIES */
 
 .categories{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:15px;
 }
 
 .category{
-height:180px;
-border-radius:18px;
-padding:25px;
-display:flex;
-flex-direction:column;
-justify-content:end;
-color:white;
-cursor:pointer;
-overflow:hidden;
-position:relative;
-box-shadow:var(--shadow);
-transition:.3s;
+  background:white;
+  padding:25px;
+  text-align:center;
+  border-radius:16px;
+  cursor:pointer;
+  box-shadow:0 4px 15px rgba(0,0,0,.05);
+  transition:.3s;
 }
 
 .category:hover{
-transform:translateY(-6px);
-}
-
-.category:nth-child(1){
-background:linear-gradient(135deg,#07111f,#155e91);
-}
-
-.category:nth-child(2){
-background:linear-gradient(135deg,#4c1d95,#9333ea);
-}
-
-.category:nth-child(3){
-background:linear-gradient(135deg,#14532d,#16a34a);
-}
-
-.category:nth-child(4){
-background:linear-gradient(135deg,#831843,#e2136e);
+  transform:translateY(-5px);
+  box-shadow:0 10px 25px rgba(0,0,0,.1);
 }
 
 .category-icon{
-font-size:55px;
-position:absolute;
-right:25px;
-top:20px;
-opacity:.8;
+  font-size:40px;
+  margin-bottom:10px;
 }
-
-
-/* PRODUCTS */
 
 .products{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
-gap:22px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
 }
 
-.card{
-background:white;
-border-radius:16px;
-overflow:hidden;
-box-shadow:var(--shadow);
-transition:.3s;
-position:relative;
+.product{
+  background:white;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 4px 18px rgba(0,0,0,.06);
+  transition:.3s;
 }
 
-.card:hover{
-transform:translateY(-7px);
-box-shadow:0 20px 45px rgba(0,0,0,.12);
+.product:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
 }
 
 .product-img{
-height:240px;
-background:linear-gradient(135deg,#edf2f7,#dce5ee);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:100px;
-cursor:pointer;
-position:relative;
+  height:230px;
+  background:#f3f5f8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
 }
 
-.discount{
-position:absolute;
-top:15px;
-left:15px;
-background:#dc2626;
-color:white;
-padding:6px 9px;
-border-radius:6px;
-font-size:11px;
-font-weight:800;
+.product-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
-.card-body{
-padding:18px;
+.product-info{
+  padding:18px;
 }
 
-.card h3{
-font-size:16px;
-line-height:1.5;
+.product-info h3{
+  font-size:17px;
+  margin-bottom:8px;
 }
 
 .rating{
-color:#f59e0b;
-margin:8px 0;
-font-size:14px;
+  color:#f59e0b;
+  font-size:14px;
 }
 
 .price{
-font-size:23px;
-font-weight:800;
-margin:8px 0;
+  margin:10px 0;
+  font-size:21px;
+  font-weight:bold;
+  color:#0757d5;
 }
 
-.old{
-font-size:13px;
-color:#8993a1;
-text-decoration:line-through;
+.old-price{
+  font-size:13px;
+  color:#98a2b3;
+  text-decoration:line-through;
+  margin-left:6px;
 }
 
-.actions{
-display:flex;
-gap:8px;
-margin-top:14px;
+.variation{
+  width:100%;
+  padding:10px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  margin:8px 0;
 }
 
-.actions button{
-flex:1;
+.product-actions{
+  display:flex;
+  gap:8px;
 }
 
-
-/* PRODUCT VIEW */
-
-.product-view{
-background:white;
-border-radius:20px;
-padding:35px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:50px;
-box-shadow:var(--shadow);
-margin:45px 0;
+.add-cart,.buy-now{
+  flex:1;
+  padding:11px;
+  border:0;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
 }
 
-.big-img{
-height:500px;
-border-radius:18px;
-background:linear-gradient(135deg,#eef2f6,#d9e2ec);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:190px;
+.add-cart{
+  background:#eaf2ff;
+  color:#0757d5;
 }
 
-.product-view h1{
-font-size:38px;
-margin:15px 0;
+.buy-now{
+  background:#0757d5;
+  color:white;
 }
 
-.product-view p{
-color:var(--muted);
-line-height:1.7;
+.features{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin:40px 0;
 }
 
-
-/* CART */
-
-.cart-page{
-padding:50px 0;
+.feature{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  text-align:center;
 }
 
-.cart-layout{
-display:grid;
-grid-template-columns:1fr 380px;
-gap:25px;
+.feature strong{
+  display:block;
+  margin:8px 0;
+}
+
+footer{
+  margin-top:50px;
+  background:#101828;
+  color:white;
+  padding:50px 5%;
+}
+
+.footer-grid{
+  max-width:1400px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:35px;
+}
+
+footer h3{
+  margin-bottom:15px;
+}
+
+footer p{
+  color:#cbd5e1;
+  line-height:1.8;
+}
+
+.whatsapp{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:58px;
+  height:58px;
+  background:#25d366;
+  color:white;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:25px;
+  text-decoration:none;
+  z-index:2000;
+  box-shadow:0 8px 25px rgba(0,0,0,.2);
+}
+
+.cart-panel{
+  position:fixed;
+  right:-450px;
+  top:0;
+  width:420px;
+  max-width:95%;
+  height:100vh;
+  background:white;
+  z-index:3000;
+  box-shadow:-10px 0 40px rgba(0,0,0,.2);
+  transition:.3s;
+  padding:25px;
+  overflow:auto;
+}
+
+.cart-panel.open{
+  right:0;
+}
+
+.cart-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.close{
+  border:0;
+  background:#eee;
+  padding:8px 12px;
+  border-radius:8px;
+  cursor:pointer;
 }
 
 .cart-item{
-background:white;
-padding:20px;
-display:flex;
-gap:20px;
-border-radius:14px;
-margin-bottom:15px;
-box-shadow:var(--shadow);
+  display:flex;
+  gap:12px;
+  padding:15px 0;
+  border-bottom:1px solid #eee;
 }
 
-.cart-img{
-width:120px;
-height:120px;
-background:#edf2f6;
-border-radius:12px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:60px;
+.cart-item img{
+  width:70px;
+  height:70px;
+  object-fit:cover;
+  border-radius:8px;
 }
 
-.cart-summary{
-background:white;
-padding:28px;
-border-radius:15px;
-height:max-content;
-box-shadow:var(--shadow);
+.cart-total{
+  margin-top:20px;
+  font-size:20px;
+  font-weight:bold;
 }
 
-.row{
-display:flex;
-justify-content:space-between;
-padding:12px 0;
+.checkout-btn{
+  width:100%;
+  margin-top:15px;
+  padding:14px;
+  border:0;
+  border-radius:10px;
+  background:#0757d5;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-.total{
-border-top:1px solid #ddd;
-font-size:22px;
-font-weight:800;
-padding-top:18px;
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  z-index:4000;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
 }
 
+.modal.show{
+  display:flex;
+}
 
-/* FORM */
+.modal-box{
+  background:white;
+  width:600px;
+  max-width:100%;
+  max-height:90vh;
+  overflow:auto;
+  border-radius:20px;
+  padding:30px;
+}
 
-.form-card{
-background:white;
-padding:35px;
-max-width:900px;
-margin:50px auto;
-border-radius:18px;
-box-shadow:var(--shadow);
+.modal-box h2{
+  margin-bottom:20px;
 }
 
 .form-group{
-margin:18px 0;
+  margin-bottom:15px;
 }
 
 .form-group label{
-display:block;
-font-weight:700;
-margin-bottom:7px;
+  display:block;
+  margin-bottom:7px;
+  font-weight:bold;
 }
 
 .form-group input,
 .form-group textarea,
 .form-group select{
-width:100%;
-padding:14px;
-border:1px solid #d5dbe3;
-border-radius:8px;
-outline:none;
+  width:100%;
+  padding:13px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  outline:0;
 }
-
-.form-group input:focus,
-.form-group textarea:focus{
-border-color:var(--primary);
-box-shadow:0 0 0 3px rgba(255,153,0,.12);
-}
-
-
-/* PAYMENT */
 
 .payment-box{
-margin:25px 0;
-padding:25px;
-border-radius:15px;
-background:#fff8fb;
-border:2px solid #f3a1c4;
-}
-
-.payment-number{
-font-size:27px;
-font-weight:800;
-color:var(--pink);
-margin:10px 0 20px;
+  background:#f5f7fb;
+  padding:15px;
+  border-radius:10px;
+  margin:15px 0;
 }
 
 .payment-option{
-background:white;
-padding:18px;
-border:1px solid #ddd;
-border-radius:10px;
-margin:12px 0;
-transition:.2s;
+  padding:12px;
+  background:white;
+  border:1px solid #ddd;
+  border-radius:8px;
+  margin:8px 0;
+  cursor:pointer;
 }
 
-.payment-option:hover{
-border-color:var(--pink);
+.payment-option input{
+  margin-right:8px;
 }
-
-.payment-option label{
-cursor:pointer;
-}
-
-.payment-details{
-background:#fff3cd;
-padding:18px;
-border-radius:10px;
-margin-top:15px;
-}
-
-
-/* ORDERS */
-
-.order-card{
-background:white;
-padding:25px;
-border-radius:15px;
-margin:18px 0;
-box-shadow:var(--shadow);
-}
-
-.order-head{
-display:flex;
-justify-content:space-between;
-border-bottom:1px solid #eee;
-padding-bottom:15px;
-margin-bottom:15px;
-}
-
-.status{
-color:var(--success);
-font-weight:800;
-}
-
-
-/* HELP */
-
-.help{
-padding:50px 0;
-}
-
-.help-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:25px;
-}
-
-.help-card{
-background:white;
-padding:30px;
-border-radius:18px;
-box-shadow:var(--shadow);
-}
-
-.help-icon{
-font-size:45px;
-margin-bottom:15px;
-}
-
-
-/* EMPTY */
-
-.empty{
-background:white;
-padding:80px 20px;
-text-align:center;
-border-radius:18px;
-box-shadow:var(--shadow);
-}
-
-
-/* FOOTER */
-
-footer{
-background:#020914;
-color:white;
-padding:55px 5%;
-margin-top:60px;
-}
-
-.footer-grid{
-display:grid;
-grid-template-columns:2fr 1fr 1fr 1fr;
-gap:35px;
-}
-
-footer h2{
-margin-bottom:15px;
-}
-
-footer h3{
-margin-bottom:15px;
-}
-
-footer p{
-color:#9eabbc;
-margin:9px 0;
-font-size:14px;
-}
-
-.footer-bottom{
-border-top:1px solid #243244;
-margin-top:35px;
-padding-top:20px;
-text-align:center;
-color:#7f8da0;
-}
-
-
-/* FLOATING SUPPORT */
-
-.support{
-position:fixed;
-right:20px;
-bottom:20px;
-z-index:900;
-display:flex;
-flex-direction:column;
-gap:10px;
-}
-
-.support a{
-width:52px;
-height:52px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:23px;
-color:white;
-box-shadow:0 8px 20px rgba(0,0,0,.2);
-}
-
-.call{
-background:#16a34a;
-}
-
-.whatsapp{
-background:#25d366;
-}
-
-
-/* TOAST */
-
-.toast{
-position:fixed;
-bottom:30px;
-left:50%;
-transform:translateX(-50%);
-background:#111827;
-color:white;
-padding:15px 25px;
-border-radius:10px;
-display:none;
-z-index:9999;
-box-shadow:0 10px 30px rgba(0,0,0,.25);
-}
-
-.toast.show{
-display:block;
-}
-
-
-/* RESPONSIVE */
 
 @media(max-width:1000px){
-
-.hero h1{
-font-size:45px;
+  .products{
+    grid-template-columns:repeat(3,1fr);
+  }
+  .categories{
+    grid-template-columns:repeat(3,1fr);
+  }
+  .features{
+    grid-template-columns:repeat(2,1fr);
+  }
 }
 
-.features{
-grid-template-columns:repeat(2,1fr);
+@media(max-width:700px){
+  .topbar{
+    display:none;
+  }
+
+  .nav{
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  .logo{
+    font-size:21px;
+  }
+
+  .search{
+    order:3;
+    flex-basis:100%;
+  }
+
+  .nav-actions{
+    margin-left:auto;
+  }
+
+  .hero-box{
+    padding:35px 25px;
+    min-height:330px;
+  }
+
+  .hero-content h1{
+    font-size:34px;
+  }
+
+  .products{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+
+  .product-img{
+    height:170px;
+  }
+
+  .categories{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .features{
+    grid-template-columns:1fr;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+  .product-info{
+    padding:12px;
+  }
+
+  .product-actions{
+    flex-direction:column;
+  }
 }
-
-.categories{
-grid-template-columns:repeat(2,1fr);
-}
-
-.footer-grid{
-grid-template-columns:repeat(2,1fr);
-}
-
-}
-
-@media(max-width:800px){
-
-.topbar{
-display:none;
-}
-
-.header{
-flex-wrap:wrap;
-}
-
-.search{
-order:5;
-flex-basis:100%;
-}
-
-.cart-layout,
-.product-view{
-grid-template-columns:1fr;
-}
-
-.big-img{
-height:350px;
-}
-
-.help-grid{
-grid-template-columns:1fr;
-}
-
-}
-
-@media(max-width:600px){
-
-.hero{
-min-height:500px;
-padding:50px 6%;
-}
-
-.hero h1{
-font-size:37px;
-}
-
-.features{
-grid-template-columns:1fr;
-}
-
-.categories{
-grid-template-columns:1fr 1fr;
-}
-
-.products{
-grid-template-columns:repeat(2,1fr);
-gap:12px;
-}
-
-.product-img{
-height:160px;
-font-size:65px;
-}
-
-.card-body{
-padding:12px;
-}
-
-.card h3{
-font-size:13px;
-}
-
-.price{
-font-size:18px;
-}
-
-.footer-grid{
-grid-template-columns:1fr;
-}
-
-.cart-item{
-flex-direction:column;
-}
-
-}
-
 </style>
 </head>
 
-
 <body>
 
-
 <div class="topbar">
-
-<span>🚚 Fast Delivery Across Bangladesh</span>
-
-<span>☎ Customer Support: 01613040095</span>
-
+  <span>🚚 Fast Delivery Across Bangladesh</span>
+  <span>📞 Help: 01613040095</span>
 </div>
 
+<header>
 
-<header class="header">
+<div class="nav">
 
-
-<div class="logo" onclick="go('home')">
-
-Nova<span>Mart</span>
-
-</div>
-
+<div class="logo">Trusted Network</div>
 
 <div class="search">
+<input id="searchInput" type="text" placeholder="Search products...">
+<button onclick="searchProducts()">🔍</button>
+</div>
 
-<input
-id="searchInput"
-placeholder="What are you looking for?"
-onkeydown="searchEnter(event)"
->
-
-<button onclick="search()">🔍</button>
+<div class="nav-actions">
+<button class="nav-btn">👤 Account</button>
+<button class="nav-btn" onclick="openCart()">
+🛒 Cart <span class="cart-count" id="cartCount">0</span>
+</button>
+</div>
 
 </div>
 
-
-<button class="header-btn" onclick="go('orders')">
-
-📦 Orders
-
-</button>
-
-
-<button class="header-btn" onclick="go('help')">
-
-☎ Help
-
-</button>
-
-
-<button class="header-btn" onclick="go('cart')">
-
-🛒 Cart
-
-<span class="cart-count" id="cartCount">0</span>
-
-</button>
-
+<div class="menu">
+<a onclick="filterProducts('all')">All Products</a>
+<a onclick="filterProducts('electronics')">Electronics</a>
+<a onclick="filterProducts('audio')">Audio</a>
+<a onclick="filterProducts('accessories')">Accessories</a>
+<a onclick="filterProducts('new')">New Arrivals</a>
+<a onclick="filterProducts('offer')">Special Offers</a>
+</div>
 
 </header>
 
 
-<nav class="nav">
+<section class="hero">
 
-<span onclick="go('home')">Home</span>
-
-<span onclick="filter('Electronics')">Electronics</span>
-
-<span onclick="filter('Fashion')">Fashion</span>
-
-<span onclick="filter('Home')">Home & Living</span>
-
-<span onclick="filter('Beauty')">Beauty</span>
-
-<span onclick="go('orders')">My Orders</span>
-
-<span onclick="go('help')">Customer Support</span>
-
-</nav>
-
-
-<!-- HOME -->
-
-<section id="home" class="page active">
-
-
-<div class="hero">
+<div class="hero-box">
 
 <div class="hero-content">
 
-<div class="badge">
-✨ Bangladesh's Premium Online Shopping
-</div>
-
-<h1>
-Shop Smarter.<br>
-Live <span>Better.</span>
-</h1>
+<h1>Shop Smart.<br>Live Better.</h1>
 
 <p>
-Discover quality products, flexible payment options,
-Cash on Delivery and reliable customer support —
-all in one premium shopping experience.
+Discover premium electronics, accessories and everyday essentials
+with trusted quality, competitive prices and reliable delivery.
 </p>
 
-<div class="hero-buttons">
-
-<button
-class="btn primary"
-onclick="scrollProducts()"
->
-Explore Products →
-</button>
-
-<button
-class="btn white"
-onclick="go('help')"
->
-Need Help?
+<button class="hero-btn" onclick="scrollToProducts()">
+Shop Now →
 </button>
 
 </div>
 
 </div>
 
-</div>
+</section>
 
 
 <div class="container">
+
+<div class="section-title">
+<h2>Shop by Category</h2>
+</div>
+
+<div class="categories">
+
+<div class="category" onclick="filterProducts('electronics')">
+<div class="category-icon">💻</div>
+<strong>Electronics</strong>
+</div>
+
+<div class="category" onclick="filterProducts('audio')">
+<div class="category-icon">🎧</div>
+<strong>Audio</strong>
+</div>
+
+<div class="category" onclick="filterProducts('accessories')">
+<div class="category-icon">⌨️</div>
+<strong>Accessories</strong>
+</div>
+
+<div class="category" onclick="filterProducts('new')">
+<div class="category-icon">✨</div>
+<strong>New Arrivals</strong>
+</div>
+
+<div class="category" onclick="filterProducts('offer')">
+<div class="category-icon">🔥</div>
+<strong>Hot Deals</strong>
+</div>
+
+</div>
 
 
 <div class="features">
 
 <div class="feature">
-
-<div class="feature-icon">🚚</div>
-
-<div>
-
-<b>Fast Delivery</b>
-
-<p>Quick & reliable delivery</p>
-
+<div>🚚</div>
+<strong>Fast Delivery</strong>
+<p>Quick delivery service</p>
 </div>
-
-</div>
-
 
 <div class="feature">
-
-<div class="feature-icon">💳</div>
-
-<div>
-
-<b>Flexible Payment</b>
-
-<p>bKash & COD available</p>
-
+<div>🔒</div>
+<strong>Secure Shopping</strong>
+<p>Safe & trusted service</p>
 </div>
-
-</div>
-
 
 <div class="feature">
-
-<div class="feature-icon">🔒</div>
-
-<div>
-
-<b>Secure Shopping</b>
-
-<p>Safe ordering experience</p>
-
+<div>💳</div>
+<strong>Flexible Payment</strong>
+<p>COD & bKash available</p>
 </div>
-
-</div>
-
 
 <div class="feature">
+<div>📞</div>
+<strong>Customer Support</strong>
+<p>WhatsApp support</p>
+</div>
 
-<div class="feature-icon">☎</div>
+</div>
+
+
+<div class="section-title" id="productsSection">
+<h2>Featured Products</h2>
+</div>
+
+<div class="products" id="productGrid"></div>
+
+</div>
+
+
+<footer>
+
+<div class="footer-grid">
 
 <div>
-
-<b>Customer Support</b>
-
-<p>We're here to help</p>
-
+<h3>Trusted Network</h3>
+<p>
+Your trusted destination for quality products,
+reliable service and convenient online shopping.
+</p>
 </div>
-
-</div>
-
-</div>
-
-
-<div class="section">
-
-
-<div class="section-title">
 
 <div>
-
-<h2>Explore Categories</h2>
-
-<p>Find what you need, faster.</p>
-
+<h3>Customer Service</h3>
+<p>Order Tracking</p>
+<p>Return Policy</p>
+<p>Help Center</p>
 </div>
-
-</div>
-
-
-<div class="categories">
-
-
-<div class="category" onclick="filter('Electronics')">
-
-<div class="category-icon">📱</div>
-
-<h3>Electronics</h3>
-
-<p>Smart devices & technology</p>
-
-</div>
-
-
-<div class="category" onclick="filter('Fashion')">
-
-<div class="category-icon">👟</div>
-
-<h3>Fashion</h3>
-
-<p>Style for every occasion</p>
-
-</div>
-
-
-<div class="category" onclick="filter('Home')">
-
-<div class="category-icon">🏠</div>
-
-<h3>Home & Living</h3>
-
-<p>Make your home better</p>
-
-</div>
-
-
-<div class="category" onclick="filter('Beauty')">
-
-<div class="category-icon">💄</div>
-
-<h3>Beauty</h3>
-
-<p>Care & personal essentials</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<div
-class="section"
-id="productsSection"
->
-
-
-<div class="section-title">
 
 <div>
+<h3>Payment</h3>
+<p>bKash</p>
+<p>Cash on Delivery</p>
+<p>Secure Checkout</p>
+</div>
 
-<h2>🔥 Featured Products</h2>
-
-<p>Popular products selected for you.</p>
+<div>
+<h3>Contact</h3>
+<p>WhatsApp: 01613040095</p>
+<p>bKash: 01726409431</p>
+</div>
 
 </div>
 
-<button
-class="btn white"
-onclick="render(products)"
->
-View All
+</footer>
+
+
+<a class="whatsapp"
+href="https://wa.me/8801613040095"
+target="_blank">
+💬
+</a>
+
+
+<!-- CART -->
+
+<div class="cart-panel" id="cartPanel">
+
+<div class="cart-header">
+<h2>Your Cart</h2>
+<button class="close" onclick="closeCart()">✕</button>
+</div>
+
+<div id="cartItems"></div>
+
+<div class="cart-total">
+Total: ৳<span id="cartTotal">0</span>
+</div>
+
+<button class="checkout-btn" onclick="openCheckout()">
+Proceed to Checkout
 </button>
 
 </div>
 
 
-<div
-class="products"
-id="productGrid"
->
-</div>
-
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<!-- PRODUCT -->
-
-<section id="product" class="page">
-
-<div class="container">
-
-<div id="productDetails"></div>
-
-</div>
-
-</section>
-
-
-<!-- CART -->
-
-<section id="cart" class="page">
-
-<div class="container cart-page">
-
-<h2>🛒 Your Shopping Cart</h2>
-
-<br>
-
-<div id="cartContent"></div>
-
-</div>
-
-</section>
-
-
 <!-- CHECKOUT -->
 
-<section id="checkout" class="page">
+<div class="modal" id="checkoutModal">
 
-<div class="container">
+<div class="modal-box">
 
-<div class="form-card">
+<div class="cart-header">
 
-<h2>Secure Checkout</h2>
+<h2>Checkout</h2>
 
-<p style="color:#667085;margin-top:8px">
-Complete your information and choose a payment method.
-</p>
+<button class="close" onclick="closeCheckout()">✕</button>
+
+</div>
 
 
 <div class="form-group">
 
 <label>Customer Name</label>
 
-<input
-id="customerName"
-placeholder="আপনার সম্পূর্ণ নাম"
->
+<input id="customerName" placeholder="Enter your name">
 
 </div>
 
@@ -1261,10 +816,7 @@ placeholder="আপনার সম্পূর্ণ নাম"
 
 <label>Mobile Number</label>
 
-<input
-id="customerPhone"
-placeholder="01XXXXXXXXX"
->
+<input id="customerPhone" placeholder="01XXXXXXXXX">
 
 </div>
 
@@ -1273,1007 +825,312 @@ placeholder="01XXXXXXXXX"
 
 <label>Delivery Address</label>
 
-<textarea
-id="customerAddress"
-rows="4"
-placeholder="আপনার সম্পূর্ণ ঠিকানা"
-></textarea>
+<textarea id="customerAddress" rows="4"
+placeholder="Enter complete delivery address"></textarea>
 
 </div>
 
 
 <div class="payment-box">
 
-<h2>💳 Choose Payment Method</h2>
+<strong>Payment Method</strong>
+
+<label class="payment-option">
+
+<input type="radio"
+name="payment"
+value="cod"
+checked>
+
+Cash on Delivery
+
+</label>
+
+
+<label class="payment-option">
+
+<input type="radio"
+name="payment"
+value="bkash">
+
+bKash Payment
+
+</label>
+
+</div>
+
+
+<div id="bkashInfo"
+style="display:none">
+
+<div class="payment-box">
+
+<strong>bKash Payment</strong>
+
+<p style="margin-top:10px">
+Delivery Charge bKash করতে পারেন।
+</p>
 
 <p style="margin-top:8px">
 bKash Number:
-</p>
-
-<div class="payment-number">
-01726409431
-</div>
-
-
-<div class="payment-option">
-
-<label>
-
-<input
-type="radio"
-name="payment"
-value="delivery"
-checked
-onchange="paymentChange()"
->
-
-<b>🟣 Delivery Charge bKash + COD</b>
-
-</label>
-
-<p style="margin-top:8px;color:#667085">
-
-শুধু Delivery Charge bKash করবেন।
-Product Price Delivery-এর সময় Cash on Delivery দিতে পারবেন।
-
-</p>
-
-</div>
-
-
-<div class="payment-option">
-
-<label>
-
-<input
-type="radio"
-name="payment"
-value="full"
-onchange="paymentChange()"
->
-
-<b>🟣 Full Payment via bKash</b>
-
-</label>
-
-<p style="margin-top:8px;color:#667085">
-
-Product + Delivery Charge পুরো টাকা bKash করবেন।
-
-</p>
-
-</div>
-
-
-<div class="payment-option">
-
-<label>
-
-<input
-type="radio"
-name="payment"
-value="cod"
-onchange="paymentChange()"
->
-
-<b>💵 Cash on Delivery</b>
-
-</label>
-
-<p style="margin-top:8px;color:#667085">
-
-কোনো অগ্রিম Payment লাগবে না।
-
-</p>
-
-</div>
-
-
-<div
-id="bkashDetails"
-class="payment-details"
->
-
-<b>🟣 bKash Payment Instruction</b>
-
-<p style="margin-top:10px">
-
-Send Money / Payment করুন:
-
 <strong>01726409431</strong>
-
 </p>
+
+<p style="margin-top:8px">
+আপনি চাইলে পুরো Product Price-ও bKash করতে পারবেন।
+Product Price Cash on Delivery-তেও দেওয়া যাবে।
+</p>
+
+</div>
 
 <div class="form-group">
 
-<label>Transaction ID</label>
+<label>bKash Transaction ID (Optional)</label>
 
-<input
-id="transactionId"
-placeholder="bKash Transaction ID"
->
+<input id="transactionId"
+placeholder="Enter Transaction ID">
 
 </div>
 
 </div>
 
-</div>
 
+<button class="checkout-btn"
+onclick="placeOrder()">
 
-<div id="checkoutSummary"></div>
-
-
-<button
-class="btn primary"
-style="width:100%;margin-top:20px"
-onclick="placeOrder()"
->
-
-📦 Confirm & Place Order
+Confirm Order
 
 </button>
 
-
 </div>
 
 </div>
-
-</section>
-
-
-<!-- ORDERS -->
-
-<section id="orders" class="page">
-
-<div class="container" style="padding:50px 0">
-
-<h2>📦 My Orders</h2>
-
-<p style="color:#667085;margin-top:8px">
-Track your recent orders.
-</p>
-
-<div id="ordersContent" style="margin-top:25px"></div>
-
-</div>
-
-</section>
-
-
-<!-- HELP -->
-
-<section id="help" class="page">
-
-<div class="container help">
-
-<h2>How Can We Help?</h2>
-
-<p style="color:#667085;margin:8px 0 30px">
-Our customer support team is ready to help you.
-</p>
-
-
-<div class="help-grid">
-
-
-<div class="help-card">
-
-<div class="help-icon">📞</div>
-
-<h2>Call Support</h2>
-
-<p style="margin:12px 0;color:#667085">
-Need immediate assistance?
-Call our helpline.
-</p>
-
-<h3>01613040095</h3>
-
-<br>
-
-<a
-href="tel:01613040095"
-class="btn green"
->
-Call Now
-</a>
-
-</div>
-
-
-<div class="help-card">
-
-<div class="help-icon">💬</div>
-
-<h2>WhatsApp Support</h2>
-
-<p style="margin:12px 0;color:#667085">
-Chat with our support team on WhatsApp.
-</p>
-
-<h3>01613040095</h3>
-
-<br>
-
-<a
-href="https://wa.me/8801613040095"
-target="_blank"
-class="btn green"
->
-Open WhatsApp
-</a>
-
-</div>
-
-
-<div class="help-card">
-
-<div class="help-icon">🟣</div>
-
-<h2>bKash Payment</h2>
-
-<p style="margin:12px 0;color:#667085">
-Use this number for your bKash payment.
-</p>
-
-<h3>01726409431</h3>
-
-</div>
-
-
-<div class="help-card">
-
-<div class="help-icon">📦</div>
-
-<h2>Order Support</h2>
-
-<p style="margin:12px 0;color:#667085">
-For order-related issues, keep your Order ID ready and contact our support team.
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<footer>
-
-
-<div class="footer-grid">
-
-
-<div>
-
-<h2>Nova<span style="color:#ff9900">Mart</span></h2>
-
-<p>
-A premium online shopping experience
-built for modern customers.
-</p>
-
-</div>
-
-
-<div>
-
-<h3>Quick Links</h3>
-
-<p onclick="go('home')">Home</p>
-
-<p onclick="go('orders')">My Orders</p>
-
-<p onclick="go('cart')">Shopping Cart</p>
-
-</div>
-
-
-<div>
-
-<h3>Customer Care</h3>
-
-<p>☎ 01613040095</p>
-
-<p>💬 WhatsApp Support</p>
-
-<p>🟣 bKash: 01726409431</p>
-
-</div>
-
-
-<div>
-
-<h3>Payment</h3>
-
-<p>🟣 bKash</p>
-
-<p>💵 Cash on Delivery</p>
-
-<p>🔒 Secure Checkout</p>
-
-</div>
-
-
-</div>
-
-
-<div class="footer-bottom">
-
-© 2026 NovaMart. All Rights Reserved.
-
-</div>
-
-
-</footer>
-
-
-<div class="support">
-
-<a
-class="call"
-href="tel:01613040095"
->
-☎
-</a>
-
-<a
-class="whatsapp"
-href="https://wa.me/8801613040095"
-target="_blank"
->
-💬
-</a>
-
-</div>
-
-
-<div id="toast" class="toast"></div>
 
 
 <script>
-
-
-/* =========================
-   SETTINGS
-========================= */
-
-const DELIVERY_CHARGE = 100;
-
-
-/* =========================
-   PRODUCTS
-========================= */
 
 const products = [
 
 {
 id:1,
-name:"Nova X Pro Smartphone",
-category:"Electronics",
-price:699,
-oldPrice:799,
-rating:4.8,
-reviews:1245,
-icon:"📱"
+name:"Premium Wireless Mouse",
+category:"electronics",
+price:850,
+oldPrice:1200,
+rating:"★★★★★",
+image:"https://images.unsplash.com/photo-1527814050087-3793815479db?w=800"
 },
 
 {
 id:2,
-name:"UltraBook Pro Laptop",
-category:"Electronics",
-price:1199,
-oldPrice:1399,
-rating:4.9,
-reviews:876,
-icon:"💻"
+name:"Wireless Bluetooth Earbuds",
+category:"audio",
+price:1450,
+oldPrice:2200,
+rating:"★★★★★",
+image:"https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=800"
 },
 
 {
 id:3,
-name:"Wireless Premium Headphones",
-category:"Electronics",
-price:149,
-oldPrice:199,
-rating:4.7,
-reviews:2340,
-icon:"🎧"
+name:"Mechanical Gaming Keyboard",
+category:"accessories",
+price:2850,
+oldPrice:3500,
+rating:"★★★★☆",
+image:"https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800"
 },
 
 {
 id:4,
-name:"Premium Running Shoes",
-category:"Fashion",
-price:89,
-oldPrice:129,
-rating:4.6,
-reviews:981,
-icon:"👟"
+name:"Premium Smart Watch",
+category:"electronics",
+price:3200,
+oldPrice:4500,
+rating:"★★★★★",
+image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800"
 },
 
 {
 id:5,
-name:"Classic Premium Watch",
-category:"Fashion",
-price:179,
-oldPrice:249,
-rating:4.8,
-reviews:453,
-icon:"⌚"
+name:"USB-C Fast Charger",
+category:"accessories",
+price:950,
+oldPrice:1300,
+rating:"★★★★☆",
+image:"https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=800"
 },
 
 {
 id:6,
-name:"Modern Coffee Maker",
-category:"Home",
-price:129,
-oldPrice:169,
-rating:4.5,
-reviews:643,
-icon:"☕"
+name:"Portable Bluetooth Speaker",
+category:"audio",
+price:1850,
+oldPrice:2500,
+rating:"★★★★★",
+image:"https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=800"
 },
 
 {
 id:7,
-name:"Smart LED Lamp",
-category:"Home",
-price:39,
-oldPrice:59,
-rating:4.4,
-reviews:318,
-icon:"💡"
+name:"HD Webcam",
+category:"electronics",
+price:2100,
+oldPrice:2800,
+rating:"★★★★☆",
+image:"https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800"
 },
 
 {
 id:8,
-name:"Luxury Skincare Set",
-category:"Beauty",
-price:79,
-oldPrice:109,
-rating:4.7,
-reviews:761,
-icon:"🧴"
+name:"Premium Power Bank",
+category:"electronics",
+price:1750,
+oldPrice:2300,
+rating:"★★★★★",
+image:"https://images.unsplash.com/photo-1609592424818-9b9d0a7e8c0d?w=800"
 }
 
 ];
 
 
-let cart =
-JSON.parse(
-localStorage.getItem("cart") || "[]"
-);
-
-let orders =
-JSON.parse(
-localStorage.getItem("orders") || "[]"
-);
-
-let currentProduct=null;
-
-let productQty=1;
+let cart=[];
 
 
-/* PAGE */
+function renderProducts(list=products){
 
-function go(id){
+const grid=document.getElementById("productGrid");
 
-document
-.querySelectorAll(".page")
-.forEach(
-p=>p.classList.remove("active")
-);
+grid.innerHTML="";
 
-document
-.getElementById(id)
-.classList.add("active");
+if(list.length===0){
 
-if(id==="cart")
-renderCart();
+grid.innerHTML=
+"<p style='grid-column:1/-1;text-align:center;padding:50px'>No products found.</p>";
 
-if(id==="checkout")
-paymentChange();
-
-if(id==="orders")
-renderOrders();
-
-window.scrollTo(0,0);
+return;
 
 }
 
 
-/* SAVE */
+list.forEach(product=>{
 
-function save(){
+grid.innerHTML+=`
 
-localStorage.setItem(
-"cart",
-JSON.stringify(cart)
-);
+<div class="product">
 
-localStorage.setItem(
-"orders",
-JSON.stringify(orders)
-);
+<div class="product-img">
+
+<img src="${product.image}" alt="${product.name}">
+
+</div>
+
+<div class="product-info">
+
+<h3>${product.name}</h3>
+
+<div class="rating">${product.rating}</div>
+
+<div class="price">
+
+৳${product.price}
+
+<span class="old-price">
+৳${product.oldPrice}
+</span>
+
+</div>
+
+<select class="variation" id="variation-${product.id}">
+
+<option>Standard</option>
+<option>Black</option>
+<option>White</option>
+<option>Blue</option>
+
+</select>
+
+<div class="product-actions">
+
+<button class="add-cart"
+onclick="addToCart(${product.id})">
+
+Add to Cart
+
+</button>
+
+<button class="buy-now"
+onclick="buyNow(${product.id})">
+
+Buy Now
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+
+function addToCart(id){
+
+const product=products.find(p=>p.id===id);
+
+const variation=
+document.getElementById("variation-"+id).value;
+
+cart.push({
+...product,
+variation
+});
 
 updateCart();
 
-}
-
-
-/* MONEY */
-
-function money(n){
-
-return "৳"+Number(n).toLocaleString();
+alert("Product added to cart!");
 
 }
 
-
-/* CART COUNT */
 
 function updateCart(){
 
-document
-.getElementById("cartCount")
-.innerText=
-cart.reduce(
-(a,b)=>a+b.qty,
-0
-);
+document.getElementById("cartCount").innerText=cart.length;
 
-}
+const items=document.getElementById("cartItems");
 
+items.innerHTML="";
 
-/* RENDER PRODUCTS */
+let total=0;
 
-function render(list){
 
-document
-.getElementById("productGrid")
-.innerHTML=
+cart.forEach((item,index)=>{
 
-list.map(p=>`
+total+=item.price;
 
-<div class="card">
-
-<div class="product-img"
-onclick="openProduct(${p.id})">
-
-<div class="discount">
-SALE
-</div>
-
-${p.icon}
-
-</div>
-
-<div class="card-body">
-
-<h3>${p.name}</h3>
-
-<div class="rating">
-★★★★★ ${p.rating}
-<span style="color:#8993a1">
-(${p.reviews})
-</span>
-</div>
-
-<div class="price">
-${money(p.price)}
-</div>
-
-<span class="old">
-${money(p.oldPrice)}
-</span>
-
-<div class="actions">
-
-<button
-class="btn white"
-onclick="openProduct(${p.id})"
->
-View
-</button>
-
-<button
-class="btn primary"
-onclick="addCart(${p.id})"
->
-Add
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-`).join("");
-
-}
-
-
-/* OPEN PRODUCT */
-
-function openProduct(id){
-
-currentProduct=
-products.find(
-p=>p.id===id
-);
-
-productQty=1;
-
-document
-.getElementById("productDetails")
-.innerHTML=`
-
-<div class="product-view">
-
-<div class="big-img">
-
-${currentProduct.icon}
-
-</div>
-
-
-<div>
-
-<div class="rating">
-
-★★★★★ ${currentProduct.rating}
-
-(${currentProduct.reviews} Reviews)
-
-</div>
-
-
-<h1>
-${currentProduct.name}
-</h1>
-
-
-<p>
-
-Premium quality product with excellent value.
-Designed for customers who want quality and reliability.
-
-</p>
-
-
-<div class="price">
-
-${money(currentProduct.price)}
-
-</div>
-
-
-<p class="old">
-
-${money(currentProduct.oldPrice)}
-
-</p>
-
-
-<br>
-
-
-<button
-class="btn white"
-onclick="qty(-1)"
->
-−
-</button>
-
-
-<span
-id="qtyValue"
-style="padding:20px;font-weight:bold"
->
-1
-</span>
-
-
-<button
-class="btn white"
-onclick="qty(1)"
->
-+
-</button>
-
-
-<br><br>
-
-
-<div class="actions">
-
-<button
-class="btn primary"
-onclick="addCurrent()"
->
-🛒 Add to Cart
-</button>
-
-
-<button
-class="btn dark"
-onclick="buyNow()"
->
-Buy Now
-</button>
-
-</div>
-
-
-<br>
-
-
-<p>🚚 Fast Delivery</p>
-
-<p>🟣 bKash Payment Available</p>
-
-<p>💵 Cash on Delivery Available</p>
-
-<p>☎ Customer Support Available</p>
-
-
-</div>
-
-</div>
-
-`;
-
-go("product");
-
-}
-
-
-function qty(n){
-
-productQty=
-Math.max(
-1,
-productQty+n
-);
-
-document
-.getElementById("qtyValue")
-.innerText=
-productQty;
-
-}
-
-
-function addCurrent(){
-
-addCart(
-currentProduct.id,
-productQty
-);
-
-}
-
-
-function addCart(id,qty=1){
-
-let item=
-cart.find(
-x=>x.id===id
-);
-
-if(item){
-
-item.qty+=qty;
-
-}else{
-
-cart.push({
-id,
-qty
-});
-
-}
-
-save();
-
-toast("Product added to cart");
-
-setTimeout(
-()=>go("cart"),
-400
-);
-
-}
-
-
-function buyNow(){
-
-cart=[{
-id:currentProduct.id,
-qty:productQty
-}];
-
-save();
-
-go("cart");
-
-}
-
-
-/* SUBTOTAL */
-
-function subtotal(){
-
-return cart.reduce(
-(total,item)=>{
-
-let p=
-products.find(
-x=>x.id===item.id
-);
-
-return total+
-p.price*item.qty;
-
-},
-0
-);
-
-}
-
-
-/* CART */
-
-function renderCart(){
-
-let box=
-document.getElementById(
-"cartContent"
-);
-
-if(!cart.length){
-
-box.innerHTML=`
-
-<div class="empty">
-
-<h2>Your Cart is Empty 🛒</h2>
-
-<p style="margin:12px 0;color:#667085">
-Add some products to get started.
-</p>
-
-<button
-class="btn primary"
-onclick="go('home')"
->
-Continue Shopping
-</button>
-
-</div>
-
-`;
-
-return;
-
-}
-
-
-let sub=subtotal();
-
-let total=
-sub+DELIVERY_CHARGE;
-
-
-box.innerHTML=`
-
-<div class="cart-layout">
-
-<div>
-
-${cart.map((item,i)=>{
-
-let p=
-products.find(
-x=>x.id===item.id
-);
-
-return`
+items.innerHTML+=`
 
 <div class="cart-item">
 
-<div class="cart-img">
-${p.icon}
-</div>
+<img src="${item.image}">
 
-<div>
+<div style="flex:1">
 
-<h2>${p.name}</h2>
+<strong>${item.name}</strong>
 
-<p style="margin:10px 0">
-${money(p.price)}
-</p>
+<p>Variation: ${item.variation}</p>
 
+<p>৳${item.price}</p>
 
-<button
-class="btn white"
-onclick="changeCart(${i},-1)"
->
-−
-</button>
+<button onclick="removeCart(${index})"
+style="margin-top:5px;border:0;background:#fee;color:#d00;padding:5px 9px;border-radius:5px">
 
-<b style="padding:15px">
-${item.qty}
-</b>
-
-<button
-class="btn white"
-onclick="changeCart(${i},1)"
->
-+
-</button>
-
-
-<button
-class="btn"
-style="background:#fee2e2;color:red;margin-left:10px"
-onclick="removeCart(${i})"
->
 Remove
-</button>
-
-</div>
-
-</div>
-
-`;
-
-}).join("")}
-
-</div>
-
-
-<div class="cart-summary">
-
-<h2>Order Summary</h2>
-
-<div class="row">
-
-<span>Products</span>
-
-<b>${money(sub)}</b>
-
-</div>
-
-
-<div class="row">
-
-<span>Delivery</span>
-
-<b>${money(DELIVERY_CHARGE)}</b>
-
-</div>
-
-
-<div class="row total">
-
-<span>Total</span>
-
-<b>${money(total)}</b>
-
-</div>
-
-
-<button
-class="btn primary"
-style="width:100%;margin-top:20px"
-onclick="checkout()"
->
-
-Proceed to Checkout →
 
 </button>
 
@@ -2283,554 +1140,233 @@ Proceed to Checkout →
 
 `;
 
-}
+});
 
 
-function changeCart(i,n){
-
-cart[i].qty=
-Math.max(
-1,
-cart[i].qty+n
-);
-
-save();
-
-renderCart();
+document.getElementById("cartTotal").innerText=total;
 
 }
 
 
-function removeCart(i){
+function removeCart(index){
 
-cart.splice(i,1);
+cart.splice(index,1);
 
-save();
-
-renderCart();
+updateCart();
 
 }
 
 
-/* CHECKOUT */
+function openCart(){
 
-function checkout(){
+document.getElementById("cartPanel")
+.classList.add("open");
 
-if(!cart.length){
+}
 
-toast("Your cart is empty");
+
+function closeCart(){
+
+document.getElementById("cartPanel")
+.classList.remove("open");
+
+}
+
+
+function buyNow(id){
+
+addToCart(id);
+
+openCheckout();
+
+}
+
+
+function openCheckout(){
+
+if(cart.length===0){
+
+alert("Please add a product first.");
 
 return;
 
 }
 
-go("checkout");
+document.getElementById("checkoutModal")
+.classList.add("show");
+
+closeCart();
 
 }
 
 
-/* PAYMENT */
+function closeCheckout(){
 
-function paymentChange(){
-
-let selected=
-document.querySelector(
-'input[name="payment"]:checked'
-);
-
-if(!selected)return;
-
-
-let method=
-selected.value;
-
-
-let bkash=
-document.getElementById(
-"bkashDetails"
-);
-
-
-bkash.style.display=
-method==="cod"
-?
-"none"
-:
-"block";
-
-
-let sub=subtotal();
-
-let total=
-sub+DELIVERY_CHARGE;
-
-let bkashPaid=0;
-
-let codDue=total;
-
-
-if(method==="delivery"){
-
-bkashPaid=
-DELIVERY_CHARGE;
-
-codDue=sub;
+document.getElementById("checkoutModal")
+.classList.remove("show");
 
 }
 
 
-if(method==="full"){
+document.querySelectorAll(
+'input[name="payment"]'
+).forEach(input=>{
 
-bkashPaid=
-total;
+input.addEventListener("change",function(){
 
-codDue=0;
+document.getElementById("bkashInfo").style.display=
+this.value==="bkash" ? "block" : "none";
 
-}
+});
 
+});
 
-document
-.getElementById(
-"checkoutSummary"
-)
-.innerHTML=`
-
-<div class="cart-summary">
-
-<h3>Payment Summary</h3>
-
-<div class="row">
-
-<span>Product Total</span>
-
-<b>${money(sub)}</b>
-
-</div>
-
-
-<div class="row">
-
-<span>Delivery Charge</span>
-
-<b>${money(DELIVERY_CHARGE)}</b>
-
-</div>
-
-
-<div class="row">
-
-<span>bKash Paid</span>
-
-<b>${money(bkashPaid)}</b>
-
-</div>
-
-
-<div class="row">
-
-<span>COD Due</span>
-
-<b>${money(codDue)}</b>
-
-</div>
-
-
-<div class="row total">
-
-<span>Grand Total</span>
-
-<b>${money(total)}</b>
-
-</div>
-
-</div>
-
-`;
-
-}
-
-
-/* PLACE ORDER */
 
 function placeOrder(){
 
-let name=
-document
-.getElementById("customerName")
-.value.trim();
+const name=
+document.getElementById("customerName").value.trim();
 
-let phone=
-document
-.getElementById("customerPhone")
-.value.trim();
+const phone=
+document.getElementById("customerPhone").value.trim();
 
-let address=
-document
-.getElementById("customerAddress")
-.value.trim();
+const address=
+document.getElementById("customerAddress").value.trim();
 
-let selected=
+
+if(!name || !phone || !address){
+
+alert("Please fill all customer information.");
+
+return;
+
+}
+
+
+let payment=
 document.querySelector(
 'input[name="payment"]:checked'
-);
-
-let transaction=
-document
-.getElementById("transactionId")
-.value.trim();
+).value;
 
 
-if(!name||!phone||!address){
-
-toast(
-"Please complete customer information"
-);
-
-return;
-
-}
-
-
-let method=
-selected.value;
-
-
-if(
-method!=="cod"
-&&
-!transaction
-){
-
-toast(
-"Please enter bKash Transaction ID"
-);
-
-return;
-
-}
-
-
-let sub=subtotal();
-
-let total=
-sub+DELIVERY_CHARGE;
-
-let bkashPaid=0;
-
-let codDue=total;
-
-let paymentName="";
-
-
-if(method==="delivery"){
-
-paymentName=
-"bKash Delivery Charge + COD";
-
-bkashPaid=
-DELIVERY_CHARGE;
-
-codDue=sub;
-
-}
-
-
-if(method==="full"){
-
-paymentName=
-"Full bKash Payment";
-
-bkashPaid=
-total;
-
-codDue=0;
-
-}
-
-
-if(method==="cod"){
-
-paymentName=
-"Cash on Delivery";
-
-}
-
-
-let order={
-
-id:
-"NM-"+Date.now(),
-
-date:
-new Date().toLocaleString(),
-
-name,
-
-phone,
-
-address,
-
-payment:
-paymentName,
-
-transaction:
-transaction||"N/A",
-
-productTotal:sub,
-
-delivery:
-DELIVERY_CHARGE,
-
-bkashPaid,
-
-codDue,
-
-total,
-
-status:
-"Order Received",
-
-items:
-JSON.parse(
-JSON.stringify(cart)
-)
-
-};
-
-
-orders.unshift(order);
-
-cart=[];
-
-save();
-
-toast(
-"🎉 Order Successfully Placed!"
+let total=cart.reduce(
+(sum,item)=>sum+item.price,0
 );
 
 
-setTimeout(
-()=>go("orders"),
-900
+let orderText=
+"Hello Trusted Network,%0A%0A"+
+"*NEW ORDER*%0A%0A"+
+"Customer: "+encodeURIComponent(name)+"%0A"+
+"Phone: "+encodeURIComponent(phone)+"%0A"+
+"Address: "+encodeURIComponent(address)+"%0A"+
+"Payment: "+payment+"%0A%0A"+
+"Products:%0A";
+
+
+cart.forEach(item=>{
+
+orderText+=
+"- "+encodeURIComponent(item.name)+
+" | "+encodeURIComponent(item.variation)+
+" | ৳"+item.price+"%0A";
+
+});
+
+
+orderText+=
+"%0ATotal Product Price: ৳"+total+
+"%0A%0APlease confirm my order.";
+
+
+window.open(
+"https://wa.me/8801613040095?text="+orderText,
+"_blank"
 );
 
 }
 
 
-/* ORDERS */
+function searchProducts(){
 
-function renderOrders(){
+const query=
+document.getElementById("searchInput")
+.value.toLowerCase();
 
-let box=
+const result=
+products.filter(p=>
+p.name.toLowerCase()
+.includes(query)
+);
+
+renderProducts(result);
+
+scrollToProducts();
+
+}
+
+
+function filterProducts(category){
+
+if(category==="all"){
+
+renderProducts(products);
+
+}
+
+else if(category==="new"){
+
+renderProducts(products.slice(3,7));
+
+}
+
+else if(category==="offer"){
+
+renderProducts(
+products.filter(p=>p.oldPrice>p.price)
+);
+
+}
+
+else{
+
+renderProducts(
+products.filter(p=>p.category===category)
+);
+
+}
+
+scrollToProducts();
+
+}
+
+
+function scrollToProducts(){
+
 document.getElementById(
-"ordersContent"
-);
-
-if(!orders.length){
-
-box.innerHTML=`
-
-<div class="empty">
-
-<h2>No Orders Yet</h2>
-
-<p style="margin:12px;color:#667085">
-Your order history will appear here.
-</p>
-
-<button
-class="btn primary"
-onclick="go('home')"
->
-Start Shopping
-</button>
-
-</div>
-
-`;
-
-return;
-
-}
-
-
-box.innerHTML=
-
-orders.map(o=>`
-
-<div class="order-card">
-
-<div class="order-head">
-
-<strong>
-Order #${o.id}
-</strong>
-
-<span class="status">
-● ${o.status}
-</span>
-
-</div>
-
-
-<p>
-<b>Date:</b> ${o.date}
-</p>
-
-<p>
-<b>Customer:</b> ${o.name}
-</p>
-
-<p>
-<b>Phone:</b> ${o.phone}
-</p>
-
-<p>
-<b>Address:</b> ${o.address}
-</p>
-
-
-<br>
-
-
-<p>
-<b>Payment:</b> ${o.payment}
-</p>
-
-<p>
-<b>bKash Paid:</b> ${money(o.bkashPaid)}
-</p>
-
-<p>
-<b>COD Due:</b> ${money(o.codDue)}
-</p>
-
-<p>
-<b>Transaction ID:</b> ${o.transaction}
-</p>
-
-
-<br>
-
-
-<h3>
-Grand Total: ${money(o.total)}
-</h3>
-
-</div>
-
-`).join("");
-
-}
-
-
-/* SEARCH */
-
-function search(){
-
-let q=
-document
-.getElementById("searchInput")
-.value
-.toLowerCase();
-
-
-let result=
-products.filter(
-p=>
-
-p.name
-.toLowerCase()
-.includes(q)
-
-||
-
-p.category
-.toLowerCase()
-.includes(q)
-
-);
-
-
-go("home");
-
-render(result);
-
-scrollProducts();
-
-}
-
-
-function searchEnter(e){
-
-if(e.key==="Enter")
-search();
-
-}
-
-
-function filter(category){
-
-let result=
-products.filter(
-p=>p.category===category
-);
-
-go("home");
-
-render(result);
-
-scrollProducts();
-
-}
-
-
-function scrollProducts(){
-
-setTimeout(
-()=>{
-
-document
-.getElementById(
 "productsSection"
-)
-.scrollIntoView({
+).scrollIntoView({
 behavior:"smooth"
 });
 
-},
-150
-);
-
 }
 
 
-/* TOAST */
+document.getElementById("searchInput")
+.addEventListener(
+"keyup",
+function(e){
 
-function toast(message){
+if(e.key==="Enter"){
 
-let t=
-document.getElementById(
-"toast"
-);
-
-t.innerText=message;
-
-t.classList.add("show");
-
-setTimeout(
-()=>t.classList.remove("show"),
-2500
-);
+searchProducts();
 
 }
 
+});
 
-/* START */
 
-render(products);
-
-updateCart();
+renderProducts();
 
 </script>
 
