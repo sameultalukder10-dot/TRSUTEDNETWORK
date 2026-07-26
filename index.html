@@ -1,1124 +1,442 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<meta name="description"
-content="Nexora Mart - Premium online marketplace in Bangladesh">
-
-<title>Nexora Mart | Online Marketplace</title>
-
-<style>
-
 /* =====================================================
-   RESET
+   NEXORA MART — PART 2 JAVASCRIPT
 ===================================================== */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:
-    "Segoe UI",
-    Arial,
-    sans-serif;
-
-    background:#f5f7fb;
-    color:#172033;
-    line-height:1.6;
-}
-
-button,
-input,
-select,
-textarea{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-}
-
-img{
-    max-width:100%;
-    display:block;
-}
-
-a{
-    text-decoration:none;
-    color:inherit;
-}
 
 
 /* =====================================================
-   VARIABLES
+   CONFIGURATION
 ===================================================== */
 
-:root{
+// আপনার WhatsApp নম্বর এখানে দিন
+// উদাহরণ: 8801726409431
+const WHATSAPP_NUMBER = "8801726409431";
 
-    --primary:#1554d1;
-    --primary-dark:#0b2f82;
+// Discount names
+const DISCOUNT_NAMES = ["rifa", "afsana"];
 
-    --secondary:#07152d;
+// Discount percentage
+const SPECIAL_DISCOUNT = 10;
 
-    --success:#16a34a;
-    --danger:#ef4444;
-    --warning:#f59e0b;
-
-    --white:#ffffff;
-
-    --muted:#667085;
-
-    --border:#e5e7eb;
-
-    --soft:#f3f6fb;
-
-    --shadow:
-    0 10px 35px rgba(15,23,42,.08);
-
-}
+// Delivery Charge
+const DELIVERY_DHAKA = 70;
+const DELIVERY_OUTSIDE = 150;
 
 
 /* =====================================================
-   TOP OFFER BAR
+   PRODUCT DATABASE
 ===================================================== */
 
-.top-offer{
+const products = [
 
-    background:
-    linear-gradient(
-    90deg,
-    #07152d,
-    #1554d1,
-    #07152d
-    );
+    {
+        id: 1,
+        name: "Premium Men's Casual Shirt",
+        category: "men",
+        subcategory: "shirt",
+        price: 850,
+        oldPrice: 1100,
+        rating: 4.8,
+        image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=800&q=80",
+        description:
+        "Premium quality men's casual shirt. Comfortable fabric and stylish design for everyday use."
+    },
 
-    color:white;
+    {
+        id: 2,
+        name: "Premium Panjabi",
+        category: "men",
+        subcategory: "panjabi",
+        price: 1250,
+        oldPrice: 1600,
+        rating: 4.9,
+        image: "https://images.unsplash.com/photo-1627225924765-552d49cf47ad?auto=format&fit=crop&w=800&q=80",
+        description:
+        "Elegant premium Panjabi suitable for Eid, festivals and special occasions."
+    },
 
-    text-align:center;
+    {
+        id: 3,
+        name: "Men's Premium T-Shirt",
+        category: "men",
+        subcategory: "tshirt",
+        price: 550,
+        oldPrice: 750,
+        rating: 4.7,
+        image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
+        description:
+        "Comfortable cotton T-shirt with modern design."
+    },
 
-    padding:9px 15px;
+    {
+        id: 4,
+        name: "Women's Premium Dress",
+        category: "women",
+        subcategory: "dress",
+        price: 1450,
+        oldPrice: 1900,
+        rating: 4.8,
+        image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80",
+        description:
+        "Stylish women's premium dress for casual and special occasions."
+    },
 
-    font-size:13px;
+    {
+        id: 5,
+        name: "Women's Fashion Kurti",
+        category: "women",
+        subcategory: "kurti",
+        price: 950,
+        oldPrice: 1200,
+        rating: 4.6,
+        image: "https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=800&q=80",
+        description:
+        "Beautiful and comfortable fashion Kurti."
+    },
 
-    font-weight:700;
+    {
+        id: 6,
+        name: "Wireless Bluetooth Headphone",
+        category: "electronics",
+        subcategory: "headphone",
+        price: 1650,
+        oldPrice: 2200,
+        rating: 4.7,
+        image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
+        description:
+        "Wireless Bluetooth headphone with clear sound and comfortable fit."
+    },
 
-}
+    {
+        id: 7,
+        name: "Smart Watch Series X",
+        category: "accessories",
+        subcategory: "watch",
+        price: 2200,
+        oldPrice: 3000,
+        rating: 4.8,
+        image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
+        description:
+        "Modern smart watch with premium design and multiple useful features."
+    },
 
-.top-offer span{
+    {
+        id: 8,
+        name: "Premium Smartphone",
+        category: "mobile",
+        subcategory: "smartphone",
+        price: 18999,
+        oldPrice: 21000,
+        rating: 4.9,
+        image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
+        description:
+        "Modern smartphone with powerful performance and premium display."
+    },
 
-    color:#ffd43b;
+    {
+        id: 9,
+        name: "Gaming Mechanical Keyboard",
+        category: "gaming",
+        subcategory: "keyboard",
+        price: 2800,
+        oldPrice: 3500,
+        rating: 4.8,
+        image: "https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=800&q=80",
+        description:
+        "RGB mechanical gaming keyboard for gamers and professionals."
+    },
 
-}
+    {
+        id: 10,
+        name: "Wireless Gaming Mouse",
+        category: "gaming",
+        subcategory: "mouse",
+        price: 1450,
+        oldPrice: 1800,
+        rating: 4.7,
+        image: "https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=800&q=80",
+        description:
+        "Fast and responsive wireless gaming mouse."
+    },
+
+    {
+        id: 11,
+        name: "Premium Face Care Kit",
+        category: "beauty",
+        subcategory: "skincare",
+        price: 1200,
+        oldPrice: 1500,
+        rating: 4.6,
+        image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=800&q=80",
+        description:
+        "Premium face care kit for daily skincare routine."
+    },
+
+    {
+        id: 12,
+        name: "Modern Home Decoration Lamp",
+        category: "home",
+        subcategory: "decoration",
+        price: 1800,
+        oldPrice: 2300,
+        rating: 4.7,
+        image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80",
+        description:
+        "Beautiful modern decorative lamp for your home."
+    },
+
+    {
+        id: 13,
+        name: "Premium Backpack",
+        category: "accessories",
+        subcategory: "bag",
+        price: 1100,
+        oldPrice: 1450,
+        rating: 4.8,
+        image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80",
+        description:
+        "Strong and stylish backpack for school, office and travel."
+    },
+
+    {
+        id: 14,
+        name: "Sports Running Shoes",
+        category: "men",
+        subcategory: "shoes",
+        price: 1950,
+        oldPrice: 2500,
+        rating: 4.7,
+        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80",
+        description:
+        "Comfortable sports running shoes with modern design."
+    },
+
+    {
+        id: 15,
+        name: "Premium Sunglasses",
+        category: "accessories",
+        subcategory: "sunglasses",
+        price: 750,
+        oldPrice: 1000,
+        rating: 4.6,
+        image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80",
+        description:
+        "Stylish sunglasses with premium frame."
+    }
+
+];
 
 
 /* =====================================================
-   HEADER
+   GLOBAL VARIABLES
 ===================================================== */
 
-header{
+let currentProducts = [...products];
 
-    position:sticky;
+let cart = JSON.parse(
+    localStorage.getItem("nexoraCart")
+) || [];
 
-    top:0;
+let currentUser = JSON.parse(
+    localStorage.getItem("nexoraUser")
+) || null;
 
-    z-index:1000;
+let selectedProduct = null;
 
-    background:white;
 
-    box-shadow:
-    0 4px 20px rgba(0,0,0,.08);
+/* =====================================================
+   FORMAT PRICE
+===================================================== */
 
-}
+function formatPrice(price){
 
-.header-main{
+    return new Intl.NumberFormat("en-BD", {
 
-    width:min(1450px,94%);
+        style: "currency",
 
-    margin:auto;
+        currency: "BDT",
 
-    display:flex;
+        maximumFractionDigits: 0
 
-    align-items:center;
-
-    gap:20px;
-
-    padding:15px 0;
-
-}
-
-
-/* LOGO */
-
-.logo{
-
-    min-width:220px;
-
-    font-size:25px;
-
-    font-weight:900;
-
-    color:var(--primary);
-
-}
-
-.logo span{
-
-    color:#07152d;
-
-}
-
-
-/* SEARCH */
-
-.search-box{
-
-    flex:1;
-
-    display:flex;
-
-    background:#f3f5f8;
-
-    border:1px solid var(--border);
-
-    border-radius:12px;
-
-    overflow:hidden;
-
-}
-
-.search-box input{
-
-    flex:1;
-
-    border:0;
-
-    outline:0;
-
-    background:transparent;
-
-    padding:13px 17px;
-
-}
-
-.search-box button{
-
-    width:58px;
-
-    border:0;
-
-    background:var(--primary);
-
-    color:white;
-
-}
-
-
-/* HEADER BUTTONS */
-
-.header-actions{
-
-    display:flex;
-
-    gap:8px;
-
-}
-
-.icon-btn{
-
-    position:relative;
-
-    width:45px;
-
-    height:45px;
-
-    border:1px solid var(--border);
-
-    background:white;
-
-    border-radius:10px;
-
-    font-size:19px;
-
-}
-
-.count{
-
-    position:absolute;
-
-    top:-5px;
-
-    right:-5px;
-
-    min-width:19px;
-
-    height:19px;
-
-    border-radius:50%;
-
-    background:var(--danger);
-
-    color:white;
-
-    font-size:10px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
+    }).format(price);
 
 }
 
 
 /* =====================================================
-   NAVIGATION
+   LOAD PRODUCTS
 ===================================================== */
 
-.navbar{
+function renderProducts(list = currentProducts){
 
-    border-top:1px solid var(--border);
+    const grid =
+    document.getElementById("productGrid");
 
-    overflow:auto;
+    const result =
+    document.getElementById("productResult");
 
-    white-space:nowrap;
 
-}
+    if(!grid) return;
 
-.nav-inner{
 
-    width:min(1450px,94%);
+    grid.innerHTML = "";
 
-    margin:auto;
 
-    display:flex;
+    if(list.length === 0){
 
-    gap:30px;
+        grid.innerHTML = `
 
-    padding:11px 0;
+        <div style="
+        grid-column:1/-1;
+        text-align:center;
+        padding:50px;
+        background:white;
+        border-radius:15px;
+        ">
 
-    font-size:14px;
+        <h3>😔 কোনো পণ্য পাওয়া যায়নি</h3>
 
-    font-weight:700;
+        <p style="color:#667085;margin-top:8px">
 
-}
+        অন্য কোনো নাম দিয়ে আবার চেষ্টা করুন।
 
-.nav-inner a:hover{
+        </p>
 
-    color:var(--primary);
+        </div>
 
-}
+        `;
 
+        if(result){
 
-/* =====================================================
-   CONTAINER
-===================================================== */
+            result.innerText =
+            "কোনো পণ্য পাওয়া যায়নি";
 
-.container{
+        }
 
-    width:min(1450px,94%);
+        return;
 
-    margin:auto;
+    }
 
-}
 
+    if(result){
 
-/* =====================================================
-   REQUEST PRODUCT
-===================================================== */
+        result.innerText =
+        `${list.length}টি পণ্য দেখানো হচ্ছে`;
 
-.request-box{
+    }
 
-    margin:25px 0;
 
-    background:
+    list.forEach(product => {
 
-    linear-gradient(
-    135deg,
-    #ffffff,
-    #eef5ff
-    );
+        const card =
+        document.createElement("div");
 
-    border:1px solid #dbe7ff;
+        card.className =
+        "product-card";
 
-    border-radius:20px;
 
-    padding:22px;
+        card.innerHTML = `
 
-    box-shadow:var(--shadow);
+        <div
+        class="product-image"
+        onclick="openProductDetails(${product.id})"
+        style="cursor:pointer"
+        >
 
-}
+            <img
+            src="${product.image}"
+            alt="${product.name}"
+            loading="lazy"
+            >
 
-.request-box h2{
+            <div class="discount-badge">
 
-    font-size:20px;
+            ${Math.round(
+                ((product.oldPrice-product.price)
+                /product.oldPrice)*100
+            )}% OFF
 
-    margin-bottom:5px;
+            </div>
 
-}
+            <button
+            class="wishlist"
+            onclick="event.stopPropagation();toggleWishlist(${product.id})"
+            >
 
-.request-box p{
+            ♡
 
-    color:var(--muted);
+            </button>
 
-    font-size:13px;
+        </div>
 
-    margin-bottom:15px;
 
-}
+        <div class="product-info">
 
-.request-form{
+            <h3
+            onclick="openProductDetails(${product.id})"
+            style="cursor:pointer"
+            >
 
-    display:flex;
+            ${product.name}
 
-    gap:10px;
+            </h3>
 
-}
 
-.request-form input{
+            <div class="rating">
 
-    flex:1;
+            ⭐ ${product.rating}
 
-    padding:13px 15px;
+            </div>
 
-    border:1px solid var(--border);
 
-    border-radius:10px;
+            <div>
 
-    outline:0;
+                <span class="price">
 
-    background:white;
+                ${formatPrice(product.price)}
 
-}
+                </span>
 
-.request-form button{
 
-    border:0;
+                <span class="old-price">
 
-    background:#25d366;
+                ${formatPrice(product.oldPrice)}
 
-    color:white;
+                </span>
 
-    padding:12px 20px;
+            </div>
 
-    border-radius:10px;
 
-    font-weight:800;
+            <div class="product-actions">
 
-}
+                <button
+                class="add-cart"
+                onclick="addToCart(${product.id})"
+                >
 
+                🛒 Add
 
-/* =====================================================
-   HERO
-===================================================== */
+                </button>
 
-.hero{
 
-    min-height:480px;
+                <button
+                class="buy-now"
+                onclick="buyNow(${product.id})"
+                >
 
-    margin:25px 0;
+                Buy Now
 
-    border-radius:25px;
+                </button>
 
-    overflow:hidden;
+            </div>
 
-    position:relative;
+        </div>
 
-    display:flex;
+        `;
 
-    align-items:center;
 
-    background:
+        grid.appendChild(card);
 
-    linear-gradient(
-    90deg,
-    rgba(239,247,255,.98),
-    rgba(239,247,255,.90) 40%,
-    rgba(239,247,255,.30) 75%
-    ),
-
-    url("hero-bg.jpg");
-
-    background-size:cover;
-
-    background-position:center;
-
-}
-
-.hero-content{
-
-    width:65%;
-
-    padding:55px;
-
-}
-
-.offer-badge{
-
-    display:inline-block;
-
-    background:#fff;
-
-    color:var(--primary);
-
-    padding:8px 15px;
-
-    border-radius:30px;
-
-    font-weight:800;
-
-    font-size:13px;
-
-    margin-bottom:15px;
-
-}
-
-.hero h1{
-
-    font-size:48px;
-
-    line-height:1.2;
-
-    font-weight:900;
-
-    color:#07152d;
-
-}
-
-.hero h1 span{
-
-    color:var(--primary);
-
-}
-
-.hero p{
-
-    margin:18px 0;
-
-    color:#344054;
-
-    max-width:600px;
-
-}
-
-.hero-buttons{
-
-    display:flex;
-
-    gap:10px;
-
-    flex-wrap:wrap;
-
-}
-
-.btn{
-
-    border:0;
-
-    border-radius:9px;
-
-    padding:12px 20px;
-
-    font-weight:800;
-
-}
-
-.btn-primary{
-
-    background:var(--primary);
-
-    color:white;
-
-}
-
-.btn-primary:hover{
-
-    background:var(--primary-dark);
-
-}
-
-.btn-outline{
-
-    background:white;
-
-    color:var(--primary);
-
-    border:1px solid var(--primary);
-
-}
-
-.btn-danger{
-
-    background:var(--danger);
-
-    color:white;
-
-}
-
-.btn-success{
-
-    background:var(--success);
-
-    color:white;
-
-}
-
-
-/* =====================================================
-   RIFA + AFSANA DISCOUNT
-===================================================== */
-
-.special-offer{
-
-    position:absolute;
-
-    right:25px;
-
-    top:25px;
-
-    width:270px;
-
-    background:
-
-    linear-gradient(
-    135deg,
-    #ff3d71,
-    #8b1cff
-    );
-
-    color:white;
-
-    padding:22px;
-
-    border-radius:18px;
-
-    box-shadow:
-    0 15px 40px rgba(139,28,255,.30);
-
-    text-align:center;
-
-}
-
-.special-offer .discount{
-
-    font-size:38px;
-
-    font-weight:900;
-
-    line-height:1;
-
-    margin:8px 0;
-
-}
-
-.special-offer p{
-
-    color:white;
-
-    font-size:13px;
-
-    margin:0;
-
-}
-
-
-/* =====================================================
-   CATEGORY SECTION
-===================================================== */
-
-.section{
-
-    margin:50px 0;
-
-}
-
-.section-title{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:20px;
-
-}
-
-.section-title h2{
-
-    font-size:26px;
-
-}
-
-.section-title a{
-
-    color:var(--primary);
-
-    font-weight:700;
-
-}
-
-
-/* CATEGORY GRID */
-
-.categories{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(8,1fr);
-
-    gap:15px;
-
-}
-
-.category-card{
-
-    background:white;
-
-    border:1px solid var(--border);
-
-    border-radius:15px;
-
-    padding:20px 10px;
-
-    text-align:center;
-
-    cursor:pointer;
-
-    transition:.25s;
-
-    box-shadow:var(--shadow);
-
-}
-
-.category-card:hover{
-
-    transform:translateY(-5px);
-
-    border-color:var(--primary);
-
-}
-
-.category-icon{
-
-    font-size:32px;
-
-    margin-bottom:8px;
-
-}
-
-.category-card h3{
-
-    font-size:13px;
-
-}
-
-
-/* =====================================================
-   SERVICES
-===================================================== */
-
-.services{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(5,1fr);
-
-    gap:15px;
-
-}
-
-.service-card{
-
-    background:white;
-
-    border:1px solid var(--border);
-
-    border-radius:16px;
-
-    padding:20px;
-
-    text-align:center;
-
-    box-shadow:var(--shadow);
-
-}
-
-.service-icon{
-
-    font-size:30px;
-
-}
-
-.service-card h4{
-
-    font-size:14px;
-
-    margin-top:7px;
-
-}
-
-.service-card p{
-
-    color:var(--muted);
-
-    font-size:11px;
-
-}
-
-
-/* =====================================================
-   PRODUCT TOOLBAR
-===================================================== */
-
-.product-toolbar{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:15px;
-
-    margin-bottom:20px;
-
-}
-
-.sort-select{
-
-    padding:10px 14px;
-
-    border:1px solid var(--border);
-
-    border-radius:9px;
-
-    background:white;
-
-}
-
-
-/* =====================================================
-   PRODUCT GRID
-===================================================== */
-
-.products{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(5,1fr);
-
-    gap:17px;
-
-}
-
-.product-card{
-
-    background:white;
-
-    border:1px solid var(--border);
-
-    border-radius:16px;
-
-    overflow:hidden;
-
-    position:relative;
-
-    transition:.25s;
-
-}
-
-.product-card:hover{
-
-    transform:translateY(-6px);
-
-    box-shadow:
-    0 15px 40px rgba(0,0,0,.10);
-
-}
-
-.product-image{
-
-    height:220px;
-
-    background:#f3f5f8;
-
-    position:relative;
-
-}
-
-.product-image img{
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:cover;
-
-}
-
-.discount-badge{
-
-    position:absolute;
-
-    top:10px;
-
-    left:10px;
-
-    background:var(--danger);
-
-    color:white;
-
-    padding:5px 8px;
-
-    border-radius:6px;
-
-    font-size:11px;
-
-    font-weight:800;
-
-}
-
-.wishlist{
-
-    position:absolute;
-
-    top:10px;
-
-    right:10px;
-
-    width:35px;
-
-    height:35px;
-
-    border:0;
-
-    background:white;
-
-    border-radius:50%;
-
-}
-
-.product-info{
-
-    padding:15px;
-
-}
-
-.product-info h3{
-
-    font-size:15px;
-
-    min-height:45px;
-
-}
-
-.rating{
-
-    color:#f59e0b;
-
-    font-size:13px;
-
-    margin:5px 0;
-
-}
-
-.price{
-
-    color:var(--primary);
-
-    font-size:20px;
-
-    font-weight:900;
-
-}
-
-.old-price{
-
-    color:#999;
-
-    text-decoration:line-through;
-
-    font-size:12px;
-
-    margin-left:5px;
-
-}
-
-.product-actions{
-
-    display:flex;
-
-    gap:7px;
-
-    margin-top:10px;
-
-}
-
-.product-actions button{
-
-    flex:1;
-
-    padding:9px;
-
-    border-radius:7px;
-
-    font-size:12px;
-
-    font-weight:700;
-
-}
-
-.add-cart{
-
-    border:0;
-
-    background:#eff6ff;
-
-    color:var(--primary);
-
-}
-
-.buy-now{
-
-    border:0;
-
-    background:var(--primary);
-
-    color:white;
-
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer{
-
-    background:#07152d;
-
-    color:white;
-
-    padding:55px 0;
-
-    margin-top:60px;
-
-}
-
-.footer-grid{
-
-    display:grid;
-
-    grid-template-columns:
-    2fr 1fr 1fr 1fr;
-
-    gap:30px;
-
-}
-
-.footer-grid h3{
-
-    margin-bottom:15px;
-
-}
-
-.footer-grid p{
-
-    color:#cbd5e1;
-
-    font-size:13px;
-
-    margin:7px 0;
-
-}
-
-
-/* =====================================================
-   MODAL
-===================================================== */
-
-.modal{
-
-    display:none;
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:5000;
-
-    background:#0009;
-
-    align-items:center;
-
-    justify-content:center;
-
-    padding:20px;
-
-}
-
-.modal.show{
-
-    display:flex;
-
-}
-
-.modal-box{
-
-    width:700px;
-
-    max-width:100%;
-
-    max-height:90vh;
-
-    overflow:auto;
-
-    background:white;
-
-    border-radius:20px;
-
-    padding:28px;
-
-}
-
-.modal-header{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:20px;
-
-}
-
-.close{
-
-    border:0;
-
-    background:#f1f3f5;
-
-    width:35px;
-
-    height:35px;
-
-    border-radius:8px;
+    });
 
 }
 
@@ -1127,423 +445,117 @@ footer{
    PRODUCT DETAILS
 ===================================================== */
 
-.product-details-image{
+function openProductDetails(id){
 
-    width:100%;
+    const product =
+    products.find(p => p.id === id);
 
-    height:350px;
 
-    object-fit:cover;
+    if(!product) return;
 
-    border-radius:15px;
 
-}
+    selectedProduct = product;
 
-.product-details-price{
 
-    color:var(--primary);
+    const box =
+    document.getElementById("productDetails");
 
-    font-size:30px;
 
-    font-weight:900;
+    box.innerHTML = `
 
-    margin:10px 0;
+    <img
+    class="product-details-image"
+    src="${product.image}"
+    alt="${product.name}"
+    >
 
-}
 
+    <h2 style="margin-top:20px">
 
-/* =====================================================
-   FORMS
-===================================================== */
+    ${product.name}
 
-.form-group{
+    </h2>
 
-    margin-bottom:15px;
 
-}
+    <div class="rating">
 
-.form-group label{
+    ⭐ ${product.rating} / 5
 
-    display:block;
+    </div>
 
-    font-weight:700;
 
-    font-size:13px;
+    <div class="product-details-price">
 
-    margin-bottom:6px;
+    ${formatPrice(product.price)}
 
-}
+    <span class="old-price">
 
-.form-group input,
-.form-group textarea,
-.form-group select{
+    ${formatPrice(product.oldPrice)}
 
-    width:100%;
+    </span>
 
-    padding:12px;
+    </div>
 
-    border:1px solid #d0d5dd;
 
-    border-radius:8px;
-
-    outline:0;
-
-}
-
-
-/* =====================================================
-   CART DRAWER
-===================================================== */
-
-.cart-drawer{
-
-    position:fixed;
-
-    top:0;
-
-    right:-500px;
-
-    width:460px;
-
-    max-width:95%;
-
-    height:100vh;
-
-    background:white;
-
-    z-index:6000;
-
-    padding:25px;
-
-    overflow:auto;
-
-    transition:.3s;
-
-    box-shadow:
-    -10px 0 40px #0003;
-
-}
-
-.cart-drawer.open{
-
-    right:0;
-
-}
-
-.cart-item{
-
-    display:flex;
-
-    gap:12px;
-
-    padding:15px 0;
-
-    border-bottom:1px solid #eee;
-
-}
-
-.cart-item img{
-
-    width:75px;
-
-    height:75px;
-
-    object-fit:cover;
-
-    border-radius:8px;
-
-}
-
-
-/* =====================================================
-   PAYMENT
-===================================================== */
-
-.payment-box{
-
-    background:#f7f9fc;
-
-    border-radius:12px;
-
-    padding:15px;
-
+    <p style="
+    color:#667085;
     margin:15px 0;
+    ">
 
-}
+    ${product.description}
 
-.payment-option{
-
-    display:block;
-
-    background:white;
-
-    padding:12px;
-
-    border:1px solid #ddd;
-
-    border-radius:8px;
-
-    margin-top:8px;
-
-}
+    </p>
 
 
-/* =====================================================
-   WHATSAPP
-===================================================== */
-
-.whatsapp{
-
-    position:fixed;
-
-    right:20px;
-
-    bottom:20px;
-
-    width:58px;
-
-    height:58px;
-
-    border-radius:50%;
-
-    background:#25d366;
-
-    color:white;
-
+    <div style="
     display:flex;
+    gap:10px;
+    margin-top:20px;
+    ">
 
-    align-items:center;
+        <button
+        class="btn btn-primary"
+        onclick="addToCart(${product.id});closeModal('productModal')"
+        >
 
-    justify-content:center;
+        🛒 Add to Cart
 
-    font-size:26px;
+        </button>
 
-    z-index:3000;
+
+        <button
+        class="btn btn-success"
+        onclick="buyNow(${product.id});closeModal('productModal')"
+        >
+
+        Buy Now
+
+        </button>
+
+    </div>
+
+    `;
+
+
+    document
+    .getElementById("productModal")
+    .classList.add("show");
 
 }
 
 
 /* =====================================================
-   MOBILE NAV
+   CLOSE MODAL
 ===================================================== */
 
-.mobile-nav{
+function closeModal(id){
 
-    display:none;
+    const modal =
+    document.getElementById(id);
 
-}
+    if(modal){
 
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-
-@media(max-width:1200px){
-
-    .products{
-
-        grid-template-columns:
-        repeat(4,1fr);
-
-    }
-
-    .categories{
-
-        grid-template-columns:
-        repeat(4,1fr);
-
-    }
-
-}
-
-@media(max-width:900px){
-
-    .hero-content{
-
-        width:100%;
-
-        padding:35px;
-
-    }
-
-    .special-offer{
-
-        position:relative;
-
-        right:auto;
-
-        top:auto;
-
-        margin:20px 35px;
-
-    }
-
-    .hero{
-
-        display:block;
-
-        padding-bottom:20px;
-
-    }
-
-    .services{
-
-        grid-template-columns:
-        repeat(3,1fr);
-
-    }
-
-    .footer-grid{
-
-        grid-template-columns:
-        repeat(2,1fr);
-
-    }
-
-}
-
-@media(max-width:700px){
-
-    .top-offer{
-
-        font-size:11px;
-
-    }
-
-    .header-main{
-
-        flex-wrap:wrap;
-
-    }
-
-    .logo{
-
-        min-width:auto;
-
-    }
-
-    .search-box{
-
-        order:3;
-
-        flex-basis:100%;
-
-    }
-
-    .products{
-
-        grid-template-columns:
-        repeat(2,1fr);
-
-        gap:10px;
-
-    }
-
-    .categories{
-
-        grid-template-columns:
-        repeat(4,1fr);
-
-        gap:8px;
-
-    }
-
-    .services{
-
-        grid-template-columns:
-        repeat(2,1fr);
-
-    }
-
-    .hero h1{
-
-        font-size:34px;
-
-    }
-
-    .hero-content{
-
-        padding:25px;
-
-    }
-
-    .request-form{
-
-        flex-direction:column;
-
-    }
-
-    .request-form button{
-
-        width:100%;
-
-    }
-
-    .product-image{
-
-        height:160px;
-
-    }
-
-    .product-info{
-
-        padding:10px;
-
-    }
-
-    .product-info h3{
-
-        font-size:13px;
-
-    }
-
-    .price{
-
-        font-size:17px;
-
-    }
-
-}
-
-@media(max-width:500px){
-
-    .header-actions{
-
-        margin-left:auto;
-
-    }
-
-    .icon-btn{
-
-        width:40px;
-
-        height:40px;
-
-    }
-
-    .categories{
-
-        grid-template-columns:
-        repeat(2,1fr);
-
-    }
-
-    .services{
-
-        grid-template-columns:
-        repeat(2,1fr);
-
-    }
-
-    .footer-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .modal-box{
-
-        padding:18px;
+        modal.classList.remove("show");
 
     }
 
@@ -1551,1079 +563,1565 @@ footer{
 
 
 /* =====================================================
-   MOBILE BOTTOM NAV
+   PRODUCT SEARCH
 ===================================================== */
 
-@media(max-width:600px){
+function searchProducts(){
 
-    body{
+    const input =
+    document.getElementById("searchInput");
 
-        padding-bottom:65px;
 
-    }
+    const keyword =
+    input.value
+    .trim()
+    .toLowerCase();
 
-    .mobile-nav{
 
-        display:flex;
+    if(!keyword){
 
-        position:fixed;
+        currentProducts = [...products];
 
-        bottom:0;
+        renderProducts();
 
-        left:0;
-
-        right:0;
-
-        background:white;
-
-        border-top:1px solid #ddd;
-
-        z-index:2500;
-
-        justify-content:space-around;
-
-        padding:7px 0;
+        return;
 
     }
 
-    .mobile-nav button{
 
-        border:0;
+    currentProducts =
+    products.filter(product =>
 
-        background:none;
+        product.name
+        .toLowerCase()
+        .includes(keyword)
 
-        font-size:11px;
+        ||
+
+        product.category
+        .toLowerCase()
+        .includes(keyword)
+
+        ||
+
+        product.subcategory
+        .toLowerCase()
+        .includes(keyword)
+
+    );
+
+
+    renderProducts(currentProducts);
+
+
+    document
+    .getElementById("products")
+    .scrollIntoView({
+
+        behavior:"smooth"
+
+    });
+
+}
+
+
+/* ENTER KEY SEARCH */
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
+    const search =
+    document.getElementById("searchInput");
+
+
+    if(search){
+
+        search.addEventListener(
+        "keydown",
+        function(e){
+
+            if(e.key === "Enter"){
+
+                searchProducts();
+
+            }
+
+        });
+
+    }
+
+});
+
+
+/* =====================================================
+   CATEGORY FILTER
+===================================================== */
+
+function filterCategory(category){
+
+    currentProducts =
+    products.filter(
+    product =>
+    product.category === category
+    );
+
+
+    renderProducts(currentProducts);
+
+
+    document
+    .getElementById("products")
+    .scrollIntoView({
+
+        behavior:"smooth"
+
+    });
+
+}
+
+
+/* =====================================================
+   SORT PRODUCTS
+===================================================== */
+
+function sortProducts(){
+
+    const value =
+    document
+    .getElementById("sortSelect")
+    .value;
+
+
+    let sorted =
+    [...currentProducts];
+
+
+    if(value === "low"){
+
+        sorted.sort(
+        (a,b) =>
+        a.price - b.price
+        );
+
+    }
+
+
+    if(value === "high"){
+
+        sorted.sort(
+        (a,b) =>
+        b.price - a.price
+        );
+
+    }
+
+
+    if(value === "name"){
+
+        sorted.sort(
+        (a,b) =>
+        a.name.localeCompare(b.name)
+        );
+
+    }
+
+
+    renderProducts(sorted);
+
+}
+
+
+/* =====================================================
+   SCROLL TO PRODUCTS
+===================================================== */
+
+function scrollToProducts(){
+
+    document
+    .getElementById("products")
+    .scrollIntoView({
+
+        behavior:"smooth"
+
+    });
+
+}
+
+
+/* =====================================================
+   CART
+===================================================== */
+
+function saveCart(){
+
+    localStorage.setItem(
+
+        "nexoraCart",
+
+        JSON.stringify(cart)
+
+    );
+
+}
+
+
+/* ADD TO CART */
+
+function addToCart(id){
+
+    const product =
+    products.find(p => p.id === id);
+
+
+    if(!product) return;
+
+
+    const existing =
+    cart.find(item => item.id === id);
+
+
+    if(existing){
+
+        existing.quantity += 1;
+
+    }else{
+
+        cart.push({
+
+            ...product,
+
+            quantity:1
+
+        });
+
+    }
+
+
+    saveCart();
+
+    updateCartUI();
+
+
+    alert(
+    `${product.name} কার্টে যোগ হয়েছে।`
+    );
+
+}
+
+
+/* =====================================================
+   REMOVE CART ITEM
+===================================================== */
+
+function removeFromCart(id){
+
+    cart =
+    cart.filter(
+    item => item.id !== id
+    );
+
+
+    saveCart();
+
+    updateCartUI();
+
+}
+
+
+/* =====================================================
+   CHANGE QUANTITY
+===================================================== */
+
+function changeQuantity(id,change){
+
+    const item =
+    cart.find(
+    product => product.id === id
+    );
+
+
+    if(!item) return;
+
+
+    item.quantity += change;
+
+
+    if(item.quantity <= 0){
+
+        removeFromCart(id);
+
+        return;
+
+    }
+
+
+    saveCart();
+
+    updateCartUI();
+
+}
+
+
+/* =====================================================
+   CART UI
+===================================================== */
+
+function updateCartUI(){
+
+    const cartCount =
+    document.getElementById("cartCount");
+
+
+    const cartItems =
+    document.getElementById("cartItems");
+
+
+    const cartTotal =
+    document.getElementById("cartTotal");
+
+
+    let totalQuantity = 0;
+
+    let totalPrice = 0;
+
+
+    cart.forEach(item => {
+
+        totalQuantity +=
+        item.quantity;
+
+        totalPrice +=
+        item.price *
+        item.quantity;
+
+    });
+
+
+    if(cartCount){
+
+        cartCount.innerText =
+        totalQuantity;
+
+    }
+
+
+    if(cartTotal){
+
+        cartTotal.innerText =
+        totalPrice.toLocaleString();
+
+    }
+
+
+    if(!cartItems) return;
+
+
+    if(cart.length === 0){
+
+        cartItems.innerHTML = `
+
+        <div style="
+        text-align:center;
+        padding:50px 10px;
+        ">
+
+        <div style="font-size:45px">
+
+        🛒
+
+        </div>
+
+        <h3>
+
+        আপনার Cart খালি
+
+        </h3>
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    cartItems.innerHTML = "";
+
+
+    cart.forEach(item => {
+
+        const div =
+        document.createElement("div");
+
+
+        div.className =
+        "cart-item";
+
+
+        div.innerHTML = `
+
+        <img
+        src="${item.image}"
+        alt="${item.name}"
+        >
+
+
+        <div style="flex:1">
+
+            <h4>
+
+            ${item.name}
+
+            </h4>
+
+
+            <p style="
+            color:#1554d1;
+            font-weight:800;
+            ">
+
+            ${formatPrice(item.price)}
+
+            </p>
+
+
+            <div style="
+            display:flex;
+            align-items:center;
+            gap:8px;
+            margin-top:7px;
+            ">
+
+                <button
+                onclick="changeQuantity(${item.id},-1)"
+                style="
+                width:28px;
+                height:28px;
+                border:1px solid #ddd;
+                background:white;
+                "
+                >
+
+                −
+
+                </button>
+
+
+                <b>
+
+                ${item.quantity}
+
+                </b>
+
+
+                <button
+                onclick="changeQuantity(${item.id},1)"
+                style="
+                width:28px;
+                height:28px;
+                border:1px solid #ddd;
+                background:white;
+                "
+                >
+
+                +
+
+                </button>
+
+
+                <button
+                onclick="removeFromCart(${item.id})"
+                style="
+                margin-left:auto;
+                border:0;
+                background:#fee2e2;
+                color:#dc2626;
+                padding:5px 8px;
+                border-radius:5px;
+                "
+                >
+
+                Remove
+
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+
+        cartItems.appendChild(div);
+
+    });
+
+}
+
+
+/* =====================================================
+   OPEN / CLOSE CART
+===================================================== */
+
+function openCart(){
+
+    updateCartUI();
+
+
+    document
+    .getElementById("cartDrawer")
+    .classList.add("open");
+
+}
+
+
+function closeCart(){
+
+    document
+    .getElementById("cartDrawer")
+    .classList.remove("open");
+
+}
+
+
+/* =====================================================
+   BUY NOW
+===================================================== */
+
+function buyNow(id){
+
+    addToCart(id);
+
+    setTimeout(
+
+        () => checkout(),
+
+        200
+
+    );
+
+}
+
+
+/* =====================================================
+   CHECKOUT
+===================================================== */
+
+function checkout(){
+
+    if(cart.length === 0){
+
+        alert(
+        "আপনার Cart এখনো খালি।"
+        );
+
+        return;
+
+    }
+
+
+    closeCart();
+
+
+    updateCheckoutSummary();
+
+
+    document
+    .getElementById("checkoutModal")
+    .classList.add("show");
+
+}
+
+
+/* =====================================================
+   DELIVERY CHARGE
+===================================================== */
+
+function getDeliveryCharge(){
+
+    const location =
+    document
+    .getElementById("deliveryLocation")
+    .value;
+
+
+    if(location === "outside"){
+
+        return DELIVERY_OUTSIDE;
+
+    }
+
+
+    return DELIVERY_DHAKA;
+
+}
+
+
+/* =====================================================
+   CHECKOUT SUMMARY
+===================================================== */
+
+function updateCheckoutSummary(){
+
+    let subtotal = 0;
+
+
+    cart.forEach(item => {
+
+        subtotal +=
+        item.price *
+        item.quantity;
+
+    });
+
+
+    const delivery =
+    getDeliveryCharge();
+
+
+    const total =
+    subtotal +
+    delivery;
+
+
+    const box =
+    document.getElementById(
+    "checkoutSummary"
+    );
+
+
+    if(box){
+
+        box.innerHTML = `
+
+        Subtotal:
+        ${formatPrice(subtotal)}
+
+        <br>
+
+        Delivery Charge:
+        ${formatPrice(delivery)}
+
+        <br><br>
+
+        <strong>
+
+        Total:
+        ${formatPrice(total)}
+
+        </strong>
+
+        `;
 
     }
 
 }
 
-</style>
 
-</head>
+/* =====================================================
+   DELIVERY CHANGE
+===================================================== */
 
-<body>
+function updateDeliveryCharge(){
 
+    updateCheckoutSummary();
 
-<!-- =====================================================
-     TOP OFFER
-===================================================== -->
+}
 
-<div class="top-offer">
 
-🎉 Special Offer:
-<span>Rifa & Afsana</span>
-নামের মেয়েদের জন্য
-<span>১০% Discount</span>
+/* =====================================================
+   PRODUCT REQUEST → WHATSAPP
+===================================================== */
 
-</div>
+function sendProductRequest(){
 
+    const input =
+    document
+    .getElementById("requestProduct");
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
 
-<header>
+    const productName =
+    input.value.trim();
 
-<div class="header-main">
 
+    if(!productName){
 
-<a href="#" class="logo">
+        alert(
+        "দয়া করে আপনি যে পণ্যটি চান তার নাম লিখুন।"
+        );
 
-Nexora <span>Mart</span>
+        input.focus();
 
-</a>
+        return;
 
+    }
 
-<!-- MAIN PRODUCT SEARCH -->
 
-<div class="search-box">
+    const message =
 
-<input
-id="searchInput"
-type="search"
-placeholder="পণ্য, ব্র্যান্ড বা ক্যাটাগরি খুঁজুন..."
->
+    `আসসালামু আলাইকুম,
 
-<button onclick="searchProducts()">
+আমি Nexora Mart-এ একটি পণ্য খুঁজছি।
 
-🔍
+পণ্যের নাম:
+${productName}
 
-</button>
+দয়া করে পণ্যটি খুঁজে দিতে পারবেন কি?
 
-</div>
+ধন্যবাদ।`;
 
 
-<div class="header-actions">
+    const url =
 
+    `https://wa.me/${WHATSAPP_NUMBER}?text=`
+    +
+    encodeURIComponent(message);
 
-<button
-class="icon-btn"
-onclick="openAccount()"
-title="Account"
->
 
-👤
+    window.open(
 
-</button>
+        url,
 
+        "_blank"
 
-<button
-class="icon-btn"
-onclick="openCart()"
-title="Cart"
->
+    );
 
-🛒
 
-<span
-id="cartCount"
-class="count"
->
-0
-</span>
+    input.value = "";
 
-</button>
+}
 
 
-</div>
+/* =====================================================
+   PLACE ORDER
+===================================================== */
 
+function placeOrder(){
 
-</div>
+    const name =
+    document
+    .getElementById("orderName")
+    .value.trim();
 
 
-<nav class="navbar">
+    const phone =
+    document
+    .getElementById("orderPhone")
+    .value.trim();
 
-<div class="nav-inner">
 
-<a href="#home">Home</a>
+    const address =
+    document
+    .getElementById("orderAddress")
+    .value.trim();
 
-<a href="#categories">Categories</a>
 
-<a href="#products">Products</a>
+    const payment =
+    document
+    .querySelector(
+    'input[name="payment"]:checked'
+    );
 
-<a href="#offers">Offers</a>
 
-<a href="#reviews">Reviews</a>
+    const transaction =
+    document
+    .getElementById("transactionId")
+    .value.trim();
 
-<a href="#support">Support</a>
 
-</div>
+    if(!name){
 
-</nav>
+        alert("আপনার নাম লিখুন।");
 
-</header>
+        return;
 
+    }
 
-<main class="container">
 
+    if(!phone){
 
-<!-- =====================================================
-     REQUEST PRODUCT
-===================================================== -->
+        alert("আপনার মোবাইল নম্বর লিখুন।");
 
-<section class="request-box">
+        return;
 
-<h2>🔎 Request a Product</h2>
+    }
 
-<p>
-আপনার প্রয়োজনীয় কোনো পণ্য আমাদের ওয়েবসাইটে না পেলে
-এখানে পণ্যের নাম লিখে পাঠান। আমরা খুঁজে এনে দেওয়ার চেষ্টা করব।
-</p>
 
-<div class="request-form">
+    if(!address){
 
-<input
-id="requestProduct"
-type="text"
-placeholder="যে পণ্যটি খুঁজছেন তার নাম লিখুন..."
->
+        alert("আপনার সম্পূর্ণ ঠিকানা লিখুন।");
 
-<button onclick="sendProductRequest()">
+        return;
 
-💬 WhatsApp-এ পাঠান
+    }
 
-</button>
 
-</div>
+    if(!payment){
 
-</section>
+        alert("একটি Payment Method নির্বাচন করুন।");
 
+        return;
 
-<!-- =====================================================
-     HERO
-===================================================== -->
+    }
 
-<section
-id="home"
-class="hero"
->
 
+    let subtotal = 0;
 
-<div class="hero-content">
 
+    cart.forEach(item => {
 
-<div class="offer-badge">
+        subtotal +=
+        item.price *
+        item.quantity;
 
-🚚 সারা বাংলাদেশে Delivery Available
+    });
 
-</div>
 
+    const delivery =
+    getDeliveryCharge();
 
-<h1>
 
-আপনার প্রয়োজনীয় সবকিছু,
+    const total =
+    subtotal +
+    delivery;
 
-<span>এক জায়গায়</span>
 
-</h1>
+    let itemsText = "";
 
 
-<p>
+    cart.forEach(item => {
 
-Fashion, Electronics, Gadgets, Beauty,
-Home & Lifestyle সহ বিভিন্ন ধরনের পণ্য
-সহজে খুঁজুন এবং অর্ডার করুন।
+        itemsText +=
 
-</p>
+        `• ${item.name}
+Qty: ${item.quantity}
+Price: ${formatPrice(item.price)}
 
+`;
 
-<div class="hero-buttons">
+    });
 
-<button
-class="btn btn-primary"
-onclick="scrollToProducts()"
->
 
-🛍️ এখনই কেনাকাটা করুন
+    const message =
 
-</button>
+    `🛍️ NEW ORDER — NEXORA MART
 
+👤 Customer:
+${name}
 
-<button
-class="btn btn-outline"
-onclick="openAccount()"
->
+📱 Phone:
+${phone}
 
-👤 My Account
+📍 Address:
+${address}
 
-</button>
+🚚 Delivery:
+${delivery === 70
+? "ঢাকার ভিতরে"
+: "ঢাকার বাইরে"}
 
-</div>
+💳 Payment:
+${payment.value}
 
+🧾 Transaction ID:
+${transaction || "N/A"}
 
-</div>
+📦 Products:
 
+${itemsText}
 
-<!-- SPECIAL DISCOUNT -->
+💰 Subtotal:
+${formatPrice(subtotal)}
 
-<div class="special-offer">
+🚚 Delivery Charge:
+${formatPrice(delivery)}
 
-<div>
+💵 Total:
+${formatPrice(total)}
 
-🎁 Exclusive Offer
+ধন্যবাদ।`;
 
-</div>
 
+    const url =
 
-<div class="discount">
+    `https://wa.me/${WHATSAPP_NUMBER}?text=`
+    +
+    encodeURIComponent(message);
 
-10% OFF
 
-</div>
+    window.open(
 
+        url,
 
-<p>
+        "_blank"
 
-Rifa & Afsana নামের মেয়েদের জন্য
-বিশেষ ১০% Discount
+    );
 
-</p>
 
-</div>
+    alert(
 
+    "আপনার Order WhatsApp-এ পাঠানোর জন্য প্রস্তুত হয়েছে।"
 
-</section>
+    );
 
 
-<!-- =====================================================
-     CATEGORIES
-===================================================== -->
+    cart = [];
 
-<section
-id="categories"
-class="section"
->
+    saveCart();
 
+    updateCartUI();
 
-<div class="section-title">
 
-<h2>🛍️ Shop by Category</h2>
+    closeModal("checkoutModal");
 
-</div>
+}
 
 
-<div class="categories">
+/* =====================================================
+   ACCOUNT SYSTEM — DEMO
+===================================================== */
 
+function openAccount(){
 
-<div class="category-card"
-onclick="filterCategory('men')">
+    const box =
+    document.getElementById(
+    "accountContent"
+    );
 
-<div class="category-icon">👔</div>
 
-<h3>Men's Fashion</h3>
+    if(currentUser){
 
-</div>
+        box.innerHTML = `
 
+        <div style="text-align:center">
 
-<div class="category-card"
-onclick="filterCategory('women')">
+        <div style="font-size:55px">
 
-<div class="category-icon">👗</div>
+        👤
 
-<h3>Women's Fashion</h3>
+        </div>
 
-</div>
 
+        <h2>
 
-<div class="category-card"
-onclick="filterCategory('electronics')">
+        Welcome,
+        ${currentUser.name}
 
-<div class="category-icon">💻</div>
+        </h2>
 
-<h3>Electronics</h3>
 
-</div>
+        <p style="color:#667085">
 
+        ${currentUser.email}
 
-<div class="category-card"
-onclick="filterCategory('mobile')">
+        </p>
 
-<div class="category-icon">📱</div>
 
-<h3>Mobile & Gadgets</h3>
+        <button
+        class="btn btn-danger"
+        style="margin-top:20px"
+        onclick="logoutUser()"
+        >
 
-</div>
+        Logout
 
+        </button>
 
-<div class="category-card"
-onclick="filterCategory('beauty')">
+        </div>
 
-<div class="category-icon">💄</div>
+        `;
 
-<h3>Beauty</h3>
+    }else{
 
-</div>
+        showLoginForm();
 
+    }
 
-<div class="category-card"
-onclick="filterCategory('home')">
 
-<div class="category-icon">🏠</div>
+    document
+    .getElementById("accountModal")
+    .classList.add("show");
 
-<h3>Home & Living</h3>
+}
 
-</div>
 
+/* =====================================================
+   LOGIN FORM
+===================================================== */
 
-<div class="category-card"
-onclick="filterCategory('gaming')">
+function showLoginForm(){
 
-<div class="category-icon">🎮</div>
+    const box =
+    document.getElementById(
+    "accountContent"
+    );
 
-<h3>Gaming</h3>
 
-</div>
+    box.innerHTML = `
 
+    <h3>
 
-<div class="category-card"
-onclick="filterCategory('accessories')">
+    Login to Your Account
 
-<div class="category-icon">⌚</div>
+    </h3>
 
-<h3>Accessories</h3>
 
-</div>
+    <div class="form-group"
+    style="margin-top:20px">
 
+    <label>Email</label>
 
-</div>
+    <input
+    id="loginEmail"
+    type="email"
+    placeholder="আপনার Email"
+    >
 
-</section>
+    </div>
 
 
-<!-- =====================================================
-     SERVICES
-===================================================== -->
+    <div class="form-group">
 
-<section class="services">
+    <label>Password</label>
 
+    <input
+    id="loginPassword"
+    type="password"
+    placeholder="Password"
+    >
 
-<div class="service-card">
+    </div>
 
-<div class="service-icon">💵</div>
 
-<h4>Cash on Delivery</h4>
+    <button
+    class="btn btn-primary"
+    style="width:100%"
+    onclick="loginUser()"
+    >
 
-<p>Pay when you receive</p>
+    Login
 
-</div>
+    </button>
 
 
-<div class="service-card">
+    <button
+    style="
+    border:0;
+    background:none;
+    color:#1554d1;
+    margin-top:15px;
+    "
+    onclick="showRegisterForm()"
+    >
 
-<div class="service-icon">🔒</div>
+    Create New Account
 
-<h4>Secure Shopping</h4>
+    </button>
 
-<p>Safe shopping experience</p>
 
-</div>
+    <br>
 
 
-<div class="service-card">
+    <button
+    style="
+    border:0;
+    background:none;
+    color:#ef4444;
+    margin-top:10px;
+    "
+    onclick="showForgotPassword()"
+    >
 
-<div class="service-icon">🚚</div>
+    Forgot Password?
 
-<h4>Fast Delivery</h4>
+    </button>
 
-<p>Across Bangladesh</p>
+    `;
 
-</div>
+}
 
 
-<div class="service-card">
+/* =====================================================
+   REGISTER FORM
+===================================================== */
 
-<div class="service-icon">📦</div>
+function showRegisterForm(){
 
-<h4>Easy Return</h4>
+    const box =
+    document.getElementById(
+    "accountContent"
+    );
 
-<p>Customer friendly policy</p>
 
-</div>
+    box.innerHTML = `
 
+    <h3>
 
-<div class="service-card">
+    Create Account
 
-<div class="service-icon">💬</div>
+    </h3>
 
-<h4>Customer Support</h4>
 
-<p>We're here to help</p>
+    <div class="form-group"
+    style="margin-top:20px">
 
-</div>
+    <label>Your Name</label>
 
+    <input
+    id="registerName"
+    placeholder="আপনার নাম"
+    >
 
-</section>
+    </div>
 
 
-<!-- =====================================================
-     PRODUCTS
-===================================================== -->
+    <div class="form-group">
 
-<section
-id="products"
-class="section"
->
+    <label>Email</label>
 
+    <input
+    id="registerEmail"
+    type="email"
+    placeholder="আপনার Email"
+    >
 
-<div class="section-title">
+    </div>
 
-<h2>✨ Featured Products</h2>
 
-</div>
+    <div class="form-group">
 
+    <label>Password</label>
 
-<div class="product-toolbar">
+    <input
+    id="registerPassword"
+    type="password"
+    placeholder="Password"
+    >
 
-<p id="productResult">
+    </div>
 
-সব পণ্য দেখানো হচ্ছে
 
-</p>
+    <button
+    class="btn btn-primary"
+    style="width:100%"
+    onclick="registerUser()"
+    >
 
+    Create Account
 
-<select
-id="sortSelect"
-class="sort-select"
-onchange="sortProducts()"
->
+    </button>
 
-<option value="default">
 
-Sort by
+    <button
+    style="
+    border:0;
+    background:none;
+    color:#1554d1;
+    margin-top:15px;
+    "
+    onclick="showLoginForm()"
+    >
 
-</option>
+    Already have an account? Login
 
-<option value="low">
+    </button>
 
-Price: Low to High
+    `;
 
-</option>
+}
 
-<option value="high">
 
-Price: High to Low
+/* =====================================================
+   REGISTER USER
+===================================================== */
 
-</option>
+function registerUser(){
 
-<option value="name">
+    const name =
+    document
+    .getElementById("registerName")
+    .value.trim();
 
-Name: A-Z
 
-</option>
+    const email =
+    document
+    .getElementById("registerEmail")
+    .value.trim();
 
-</select>
 
-</div>
+    const password =
+    document
+    .getElementById("registerPassword")
+    .value.trim();
 
 
-<div
-id="productGrid"
-class="products"
->
+    if(!name || !email || !password){
 
-<!-- PRODUCTS WILL LOAD HERE -->
+        alert(
+        "সব তথ্য পূরণ করুন।"
+        );
 
-</div>
+        return;
 
+    }
 
-</section>
 
+    const user = {
 
-</main>
+        name:name,
 
+        email:email,
 
-<!-- =====================================================
-     PRODUCT DETAILS MODAL
-===================================================== -->
+        password:password
 
-<div
-id="productModal"
-class="modal"
->
+    };
 
 
-<div class="modal-box">
+    localStorage.setItem(
 
+        "nexoraUser",
 
-<div class="modal-header">
+        JSON.stringify(user)
 
-<h2>Product Details</h2>
+    );
 
-<button
-class="close"
-onclick="closeModal('productModal')"
->
 
-✕
+    currentUser = user;
 
-</button>
 
-</div>
+    alert(
 
+    "Account সফলভাবে তৈরি হয়েছে।"
 
-<div id="productDetails">
+    );
 
-</div>
 
+    openAccount();
 
-</div>
+}
 
-</div>
 
+/* =====================================================
+   LOGIN USER
+===================================================== */
 
-<!-- =====================================================
-     ACCOUNT MODAL
-===================================================== -->
+function loginUser(){
 
-<div
-id="accountModal"
-class="modal"
->
+    const email =
+    document
+    .getElementById("loginEmail")
+    .value.trim();
 
 
-<div class="modal-box">
+    const password =
+    document
+    .getElementById("loginPassword")
+    .value.trim();
 
 
-<div class="modal-header">
+    const savedUser =
+    JSON.parse(
 
-<h2>My Account</h2>
+        localStorage.getItem(
+        "nexoraUser"
+        )
 
-<button
-class="close"
-onclick="closeModal('accountModal')"
->
+    );
 
-✕
 
-</button>
+    if(!savedUser){
 
-</div>
+        alert(
 
+        "কোনো Account পাওয়া যায়নি।"
 
-<div id="accountContent">
+        );
 
-</div>
+        return;
 
+    }
 
-</div>
 
-</div>
+    if(
 
+        email === savedUser.email
 
-<!-- =====================================================
-     CART DRAWER
-===================================================== -->
+        &&
 
-<div
-id="cartDrawer"
-class="cart-drawer"
->
+        password === savedUser.password
 
+    ){
 
-<div class="modal-header">
+        currentUser =
+        savedUser;
 
-<h2>🛒 My Cart</h2>
 
-<button
-class="close"
-onclick="closeCart()"
->
+        alert(
 
-✕
+        "Login সফল হয়েছে।"
 
-</button>
+        );
 
-</div>
 
+        openAccount();
 
-<div id="cartItems">
+    }else{
 
-</div>
+        alert(
 
+        "Email অথবা Password ভুল।"
 
-<h3 style="margin-top:20px">
+        );
 
-Subtotal:
-৳<span id="cartTotal">0</span>
+    }
 
-</h3>
+}
 
 
-<button
-class="btn btn-primary"
-style="width:100%;margin-top:15px"
-onclick="checkout()"
->
+/* =====================================================
+   FORGOT PASSWORD
+===================================================== */
 
-Proceed to Checkout
+function showForgotPassword(){
 
-</button>
+    const box =
+    document.getElementById(
+    "accountContent"
+    );
 
 
-</div>
+    box.innerHTML = `
 
+    <h3>
 
-<!-- =====================================================
-     CHECKOUT MODAL
-===================================================== -->
+    Forgot Password
 
-<div
-id="checkoutModal"
-class="modal"
->
+    </h3>
 
 
-<div class="modal-box">
+    <p style="
+    color:#667085;
+    margin:10px 0 20px;
+    ">
 
+    আপনার Account-এর Email দিন।
 
-<div class="modal-header">
+    </p>
 
-<h2>Checkout</h2>
 
-<button
-class="close"
-onclick="closeModal('checkoutModal')"
->
+    <div class="form-group">
 
-✕
+    <input
+    id="forgotEmail"
+    type="email"
+    placeholder="আপনার Email"
+    >
 
-</button>
+    </div>
 
-</div>
 
+    <button
+    class="btn btn-primary"
+    style="width:100%"
+    onclick="resetPassword()"
+    >
 
-<div class="form-group">
+    Reset Password
 
-<label>
+    </button>
 
-Full Name
 
-</label>
+    <button
+    style="
+    border:0;
+    background:none;
+    color:#1554d1;
+    margin-top:15px;
+    "
+    onclick="showLoginForm()"
+    >
 
-<input
-id="orderName"
-placeholder="আপনার নাম"
->
+    Back to Login
 
-</div>
+    </button>
 
+    `;
 
-<div class="form-group">
+}
 
-<label>
 
-Mobile Number
+/* =====================================================
+   RESET PASSWORD — DEMO
+===================================================== */
 
-</label>
+function resetPassword(){
 
-<input
-id="orderPhone"
-placeholder="01XXXXXXXXX"
->
+    const email =
+    document
+    .getElementById("forgotEmail")
+    .value.trim();
 
-</div>
 
+    const savedUser =
+    JSON.parse(
 
-<div class="form-group">
+        localStorage.getItem(
+        "nexoraUser"
+        )
 
-<label>
+    );
 
-Delivery Address
 
-</label>
+    if(
 
-<textarea
-id="orderAddress"
-rows="4"
-placeholder="সম্পূর্ণ ঠিকানা লিখুন"
-></textarea>
+        savedUser
 
-</div>
+        &&
 
+        savedUser.email === email
 
-<div class="form-group">
+    ){
 
-<label>
+        alert(
 
-Delivery Location
+        "Password reset request গ্রহণ করা হয়েছে। বাস্তব Email Reset-এর জন্য Backend/Firebase প্রয়োজন।"
 
-</label>
+        );
 
-<select
-id="deliveryLocation"
-onchange="updateDeliveryCharge()"
->
+    }else{
 
-<option value="dhaka">
+        alert(
 
-ঢাকার ভিতরে — ৳70
+        "এই Email দিয়ে কোনো Account পাওয়া যায়নি।"
 
-</option>
+        );
 
-<option value="outside">
+    }
 
-ঢাকার বাইরে — ৳150
+}
 
-</option>
 
-</select>
+/* =====================================================
+   LOGOUT
+===================================================== */
 
-</div>
+function logoutUser(){
 
+    currentUser = null;
 
-<div class="payment-box">
+    localStorage.removeItem(
+    "nexoraUser"
+    );
 
 
-<h3>
+    alert(
 
-Payment Method
+    "আপনি Logout করেছেন।"
 
-</h3>
+    );
 
 
-<label class="payment-option">
+    closeModal("accountModal");
 
-<input
-type="radio"
-name="payment"
-value="COD"
-checked
->
+}
 
-💵 Cash on Delivery
 
-</label>
+/* =====================================================
+   WISHLIST DEMO
+===================================================== */
 
+function toggleWishlist(id){
 
-<label class="payment-option">
+    const product =
+    products.find(
+    p => p.id === id
+    );
 
-<input
-type="radio"
-name="payment"
-value="bkash"
->
 
-📱 bKash — 01726409431
+    if(product){
 
-</label>
+        alert(
 
+        `${product.name} Wishlist-এ যোগ হয়েছে ❤️`
 
-<label class="payment-option">
+        );
 
-<input
-type="radio"
-name="payment"
-value="nagad"
->
+    }
 
-🟠 Nagad — 01356001478
+}
 
-</label>
 
+/* =====================================================
+   INITIALIZE
+===================================================== */
 
-<label class="payment-option">
+document.addEventListener(
 
-<input
-type="radio"
-name="payment"
-value="full"
->
+"DOMContentLoaded",
 
-💳 Full Payment in Advance
+function(){
 
-</label>
+    renderProducts();
 
+    updateCartUI();
 
-</div>
+});
 
 
-<div
-id="checkoutSummary"
-class="payment-box"
->
+/* =====================================================
+   CLOSE MODAL WHEN CLICKING OUTSIDE
+===================================================== */
 
-Subtotal:
-৳0
+document.addEventListener(
 
-<br>
+"click",
 
-Delivery:
-৳70
+function(e){
 
-<br>
+    if(
 
-<strong>
+        e.target.classList.contains(
+        "modal"
+        )
 
-Total:
-৳70
+    ){
 
-</strong>
+        e.target.classList.remove(
+        "show"
+        );
 
-</div>
+    }
 
+});
 
-<div class="form-group">
 
-<label>
+/* =====================================================
+   ESC KEY CLOSE
+===================================================== */
 
-Transaction ID
+document.addEventListener(
 
-</label>
+"keydown",
 
-<input
-id="transactionId"
-placeholder="Prepaid হলে Transaction ID দিন"
->
+function(e){
 
-</div>
+    if(e.key === "Escape"){
 
+        document
+        .querySelectorAll(".modal")
+        .forEach(modal => {
 
-<button
-class="btn btn-primary"
-style="width:100%"
-onclick="placeOrder()"
->
+            modal.classList.remove(
+            "show"
+            );
 
-Confirm Order
+        });
 
-</button>
 
+        closeCart();
 
-</div>
+    }
 
-</div>
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer
-id="support"
->
-
-
-<div class="container footer-grid">
-
-
-<div>
-
-<h2>Nexora Mart</h2>
-
-<p>
-
-আপনার trusted online marketplace।
-Fashion, Electronics, Gadgets এবং
-প্রয়োজনীয় বিভিন্ন পণ্য এক জায়গায়।
-
-</p>
-
-</div>
-
-
-<div>
-
-<h3>Quick Links</h3>
-
-<p>
-<a href="#home">Home</a>
-</p>
-
-<p>
-<a href="#categories">Categories</a>
-</p>
-
-<p>
-<a href="#products">Products</a>
-</p>
-
-</div>
-
-
-<div>
-
-<h3>Payment</h3>
-
-<p>
-
-bKash:
-01726409431
-
-</p>
-
-<p>
-
-Nagad:
-01356001478
-
-</p>
-
-</div>
-
-
-<div>
-
-<h3>Delivery</h3>
-
-<p>
-
-ঢাকার ভিতরে: ৳70
-
-</p>
-
-<p>
-
-ঢাকার বাইরে: ৳150
-
-</p>
-
-<p>
-
-WhatsApp Support Available
-
-</p>
-
-</div>
-
-
-</div>
-
-</footer>
-
-
-<!-- =====================================================
-     WHATSAPP
-===================================================== -->
-
-<a
-class="whatsapp"
-href="https://wa.me/8801613040095"
-target="_blank"
->
-
-💬
-
-</a>
-
-
-<!-- =====================================================
-     MOBILE NAV
-===================================================== -->
-
-<div class="mobile-nav">
-
-
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})">
-
-🏠
-<br>
-Home
-
-</button>
-
-
-<button onclick="scrollToProducts()">
-
-🛍️
-<br>
-Shop
-
-</button>
-
-
-<button onclick="openCart()">
-
-🛒
-<br>
-Cart
-
-</button>
-
-
-<button onclick="openAccount()">
-
-👤
-<br>
-Account
-
-</button>
-
-
-</div>
-
-
-<!-- =====================================================
-     PART 2 JAVASCRIPT WILL GO HERE
-===================================================== -->
-
-<script>
-
-/* PART 2 এখানে বসবে */
-
-</script>
-
-
-</body>
-
-</html>
+});
