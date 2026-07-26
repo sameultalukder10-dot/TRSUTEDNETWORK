@@ -1,8 +1,1985 @@
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "trusted-network-9ee9f.firebaseapp.com",
-  projectId: "trusted-network-9ee9f",
-  storageBucket: "trusted-network-9ee9f.firebasestorage.app",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Trusted Network</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f7fb;
+  color:#172033;
+}
+
+button,input{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.header{
+  background:#fff;
+  padding:15px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 3px 15px rgba(0,0,0,.08);
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:900;
+  color:#0757d5;
+}
+
+.logo span{
+  color:#111827;
+}
+
+.nav{
+  display:flex;
+  gap:10px;
+}
+
+.nav button{
+  border:1px solid #ddd;
+  background:#fff;
+  padding:10px 16px;
+  border-radius:8px;
+}
+
+.account-btn{
+  background:#0757d5!important;
+  color:#fff;
+  border:0!important;
+}
+
+.hero{
+  min-height:450px;
+  display:flex;
+  align-items:center;
+  padding:60px 8%;
+  background:
+  linear-gradient(
+    120deg,
+    #061735,
+    #0757d5
+  );
+  color:white;
+}
+
+.hero h1{
+  font-size:50px;
+  max-width:700px;
+  margin-bottom:20px;
+}
+
+.hero p{
+  font-size:18px;
+  line-height:1.7;
+  max-width:600px;
+}
+
+.shop{
+  margin-top:25px;
+  padding:14px 25px;
+  border:0;
+  border-radius:8px;
+  background:#fff;
+  color:#0757d5;
+  font-weight:bold;
+}
+
+.products{
+  padding:50px 5%;
+}
+
+.products h2{
+  margin-bottom:25px;
+}
+
+.product-grid{
+  display:grid;
+  grid-template-columns:
+  repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.product{
+  background:#fff;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 5px 20px rgba(0,0,0,.06);
+}
+
+.product img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
+
+.product-info{
+  padding:18px;
+}
+
+.product-info h3{
+  margin-bottom:10px;
+}
+
+.price{
+  color:#0757d5;
+  font-size:20px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+
+.cart-btn{
+  width:100%;
+  padding:11px;
+  border:0;
+  border-radius:7px;
+  background:#0757d5;
+  color:#fff;
+  font-weight:bold;
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  z-index:5000;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.modal.active{
+  display:flex;
+}
+
+.modal-box{
+  width:450px;
+  max-width:100%;
+  background:#fff;
+  border-radius:18px;
+  padding:30px;
+  max-height:90vh;
+  overflow:auto;
+}
+
+.modal-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
+}
+
+.close{
+  border:0;
+  background:#f1f3f5;
+  padding:8px 12px;
+  border-radius:8px;
+}
+
+.form-group{
+  margin-bottom:16px;
+}
+
+.form-group label{
+  display:block;
+  margin-bottom:7px;
+  font-weight:bold;
+}
+
+.form-group input{
+  width:100%;
+  padding:13px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  outline:none;
+}
+
+.form-group input:focus{
+  border-color:#0757d5;
+}
+
+.primary{
+  width:100%;
+  padding:13px;
+  border:0;
+  border-radius:8px;
+  background:#0757d5;
+  color:#fff;
+  font-weight:bold;
+}
+
+.switch{
+  text-align:center;
+  margin-top:18px;
+}
+
+.switch button{
+  background:none;
+  border:0;
+  color:#0757d5;
+  font-weight:bold;
+}
+
+.forgot{
+  text-align:right;
+  margin:10px 0;
+}
+
+.forgot button{
+  border:0;
+  background:none;
+  color:#0757d5;
+}
+
+.profile{
+  text-align:center;
+}
+
+.avatar{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  background:#0757d5;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:35px;
+  margin:0 auto 15px;
+}
+
+.profile h2{
+  margin-bottom:5px;
+}
+
+.profile p{
+  color:#667085;
+  margin-bottom:20px;
+}
+
+.profile-menu{
+  display:grid;
+  gap:10px;
+}
+
+.profile-menu button{
+  padding:13px;
+  border:1px solid #ddd;
+  background:#fff;
+  border-radius:8px;
+  text-align:left;
+}
+
+.logout{
+  color:#dc2626;
+}
+
+.orders{
+  margin-top:20px;
+  text-align:left;
+}
+
+.order{
+  padding:15px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  margin-bottom:10px;
+}
+
+.status{
+  color:#16a34a;
+  font-weight:bold;
+}
+
+footer{
+  background:#0b1220;
+  color:#fff;
+  padding:40px 5%;
+  margin-top:40px;
+}
+
+@media(max-width:600px){
+
+.header{
+  padding:12px 4%;
+}
+
+.logo{
+  font-size:20px;
+}
+
+.nav button{
+  padding:8px 10px;
+}
+
+.hero{
+  padding:40px 6%;
+}
+
+.hero h1{
+  font-size:35px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+<div class="logo">
+Trusted <span>Network</span>
+</div>
+
+<div class="nav">
+
+<button onclick="openAccount()">
+👤 <span id="accountText">
+Account
+</span>
+</button>
+
+<button
+class="account-btn"
+onclick="openAccount()">
+
+Login / Register
+
+</button>
+
+</div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div>
+
+<h1>
+Everything You Need.
+All in One Place.
+</h1>
+
+<p>
+Welcome to Trusted Network.
+Shop quality products with
+fast delivery and flexible payment.
+</p>
+
+<button class="shop">
+Shop Now
+</button>
+
+</div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+
+<section class="products">
+
+<h2>
+Featured Products
+</h2>
+
+<div class="product-grid">
+
+
+<div class="product">
+
+<img
+src="https://images.unsplash.com/photo-1527814050087-3793815479db?w=800"
+>
+
+<div class="product-info">
+
+<h3>
+Wireless Mouse
+</h3>
+
+<div class="price">
+$15
+</div>
+
+<button class="cart-btn">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+
+<div class="product">
+
+<img
+src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=800"
+>
+
+<div class="product-info">
+
+<h3>
+Wireless Earbuds
+</h3>
+
+<div class="price">
+$25
+</div>
+
+<button class="cart-btn">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+
+<div class="product">
+
+<img
+src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800"
+>
+
+<div class="product-info">
+
+<h3>
+Gaming Keyboard
+</h3>
+
+<div class="price">
+$45
+</div>
+
+<button class="cart-btn">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<h2>
+Trusted Network
+</h2>
+
+<p>
+Customer Support WhatsApp:
+01613040095
+</p>
+
+<p>
+bKash:
+01726409431
+</p>
+
+<p>
+Nagad:
+01356001478
+</p>
+
+</footer>
+
+
+<!-- ACCOUNT MODAL -->
+
+<div
+class="modal"
+id="accountModal">
+
+<div class="modal-box">
+
+
+<div class="modal-header">
+
+<h2 id="modalTitle">
+Login
+</h2>
+
+<button
+class="close"
+onclick="closeAccount()">
+
+✕
+
+</button>
+
+</div>
+
+
+<!-- LOGIN -->
+
+<div id="loginSection">
+
+
+<div class="form-group">
+
+<label>
+Email Address
+</label>
+
+<input
+type="email"
+id="loginEmail"
+placeholder="Enter your email"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Password
+</label>
+
+<input
+type="password"
+id="loginPassword"
+placeholder="Enter your password"
+>
+
+</div>
+
+
+<div class="forgot">
+
+<button onclick="forgotPassword()">
+
+Forgot Password?
+
+</button>
+
+</div>
+
+
+<button
+class="primary"
+onclick="loginUser()">
+
+🔐 Login
+
+</button>
+
+
+<div class="switch">
+
+Don't have an account?
+
+<button onclick="showRegister()">
+
+Create Account
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- REGISTER -->
+
+<div
+id="registerSection"
+style="display:none">
+
+
+<div class="form-group">
+
+<label>
+Full Name
+</label>
+
+<input
+type="text"
+id="registerName"
+placeholder="Enter your full name"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Email Address
+</label>
+
+<input
+type="email"
+id="registerEmail"
+placeholder="Enter your email"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Password
+</label>
+
+<input
+type="password"
+id="registerPassword"
+placeholder="Minimum 6 characters"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Confirm Password
+</label>
+
+<input
+type="password"
+id="registerConfirmPassword"
+placeholder="Confirm your password"
+>
+
+</div>
+
+
+<button
+class="primary"
+onclick="registerUser()">
+
+📝 Create Account
+
+</button>
+
+
+<div class="switch">
+
+Already have an account?
+
+<button onclick="showLogin()">
+
+Login
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PROFILE -->
+
+<div
+id="profileSection"
+style="display:none">
+
+
+<div class="profile">
+
+<div class="avatar">
+👤
+</div>
+
+<h2 id="userName">
+Customer
+</h2>
+
+<p id="userEmail">
+email@example.com
+</p>
+
+
+<div class="profile-menu">
+
+<button onclick="showMyOrders()">
+
+📦 My Orders
+
+</button>
+
+
+<button onclick="editProfile()">
+
+✏️ Edit Profile
+
+</button>
+
+
+<button
+class="logout"
+onclick="logoutUser()">
+
+🚪 Logout
+
+</button>
+
+</div>
+
+
+<div
+class="orders"
+id="ordersSection"
+style="display:none">
+
+<h3>
+My Orders
+</h3>
+
+<div id="ordersList">
+
+<p>
+No orders yet.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<script>
+
+
+/* =====================================
+   STORAGE DATABASE
+===================================== */
+
+
+/*
+
+All registered users are stored here.
+
+Example:
+
+[
+ {
+   id:"...",
+   name:"John",
+   email:"john@email.com",
+   password:"123456",
+   createdAt:"..."
+ }
+]
+
+*/
+
+
+const USERS_KEY =
+"trustedNetworkUsers";
+
+
+const CURRENT_USER_KEY =
+"trustedNetworkCurrentUser";
+
+
+const ORDERS_KEY =
+"trustedNetworkOrders";
+
+
+
+/* =====================================
+   GET USERS
+===================================== */
+
+function getUsers(){
+
+try{
+
+return JSON.parse(
+
+localStorage.getItem(
+USERS_KEY
+)
+
+) || [];
+
+}
+
+catch(error){
+
+return [];
+
+}
+
+}
+
+
+
+/* =====================================
+   SAVE USERS
+===================================== */
+
+function saveUsers(users){
+
+localStorage.setItem(
+
+USERS_KEY,
+
+JSON.stringify(users)
+
+);
+
+}
+
+
+
+/* =====================================
+   GET CURRENT USER
+===================================== */
+
+function getCurrentUser(){
+
+try{
+
+return JSON.parse(
+
+localStorage.getItem(
+CURRENT_USER_KEY
+)
+
+);
+
+}
+
+catch(error){
+
+return null;
+
+}
+
+}
+
+
+
+/* =====================================
+   OPEN ACCOUNT
+===================================== */
+
+function openAccount(){
+
+document
+.getElementById(
+"accountModal"
+)
+.classList
+.add("active");
+
+
+const user =
+getCurrentUser();
+
+
+if(user){
+
+showProfile();
+
+}
+
+else{
+
+showLogin();
+
+}
+
+}
+
+
+
+/* =====================================
+   CLOSE ACCOUNT
+===================================== */
+
+function closeAccount(){
+
+document
+.getElementById(
+"accountModal"
+)
+.classList
+.remove("active");
+
+}
+
+
+
+/* =====================================
+   LOGIN PAGE
+===================================== */
+
+function showLogin(){
+
+document
+.getElementById(
+"loginSection"
+)
+.style
+.display="block";
+
+
+document
+.getElementById(
+"registerSection"
+)
+.style
+.display="none";
+
+
+document
+.getElementById(
+"profileSection"
+)
+.style
+.display="none";
+
+
+document
+.getElementById(
+"modalTitle"
+)
+.innerText="Login";
+
+}
+
+
+
+/* =====================================
+   REGISTER PAGE
+===================================== */
+
+function showRegister(){
+
+document
+.getElementById(
+"loginSection"
+)
+.style
+.display="none";
+
+
+document
+.getElementById(
+"registerSection"
+)
+.style
+.display="block";
+
+
+document
+.getElementById(
+"profileSection"
+)
+.style
+.display="none";
+
+
+document
+.getElementById(
+"modalTitle"
+)
+.innerText=
+"Create Account";
+
+}
+
+
+
+/* =====================================
+   REGISTER USER
+===================================== */
+
+function registerUser(){
+
+
+const name =
+document
+.getElementById(
+"registerName"
+)
+.value
+.trim();
+
+
+const email =
+document
+.getElementById(
+"registerEmail"
+)
+.value
+.trim()
+.toLowerCase();
+
+
+const password =
+document
+.getElementById(
+"registerPassword"
+)
+.value;
+
+
+const confirmPassword =
+document
+.getElementById(
+"registerConfirmPassword"
+)
+.value;
+
+
+
+/* VALIDATION */
+
+
+if(
+!name ||
+!email ||
+!password ||
+!confirmPassword
+){
+
+alert(
+"Please fill all fields."
+);
+
+return;
+
+}
+
+
+if(
+password.length < 6
+){
+
+alert(
+"Password must contain at least 6 characters."
+);
+
+return;
+
+}
+
+
+if(
+password !== confirmPassword
+){
+
+alert(
+"Passwords do not match."
+);
+
+return;
+
+}
+
+
+
+const users =
+getUsers();
+
+
+
+/* CHECK DUPLICATE EMAIL */
+
+
+const existingUser =
+
+users.find(
+
+user =>
+user.email === email
+
+);
+
+
+
+if(existingUser){
+
+alert(
+
+"This email is already registered. Please login."
+
+);
+
+showLogin();
+
+document
+.getElementById(
+"loginEmail"
+)
+.value=email;
+
+return;
+
+}
+
+
+
+/* CREATE USER */
+
+
+const newUser={
+
+id:
+
+"USER_"+
+
+Date.now()+
+
+"_"+
+
+Math.random()
+.toString(36)
+.substring(2,8),
+
+name:name,
+
+email:email,
+
+password:password,
+
+createdAt:
+
+new Date()
+.toISOString()
+
 };
+
+
+
+/* SAVE USER */
+
+
+users.push(newUser);
+
+saveUsers(users);
+
+
+
+/* AUTO LOGIN */
+
+
+localStorage.setItem(
+
+CURRENT_USER_KEY,
+
+JSON.stringify({
+
+id:newUser.id,
+
+name:newUser.name,
+
+email:newUser.email
+
+})
+
+);
+
+
+
+alert(
+
+"Account created successfully!"
+
+);
+
+
+
+showProfile();
+
+
+
+updateAccountButton();
+
+}
+
+
+
+/* =====================================
+   LOGIN USER
+===================================== */
+
+function loginUser(){
+
+
+const email =
+
+document
+.getElementById(
+"loginEmail"
+)
+.value
+.trim()
+.toLowerCase();
+
+
+const password =
+
+document
+.getElementById(
+"loginPassword"
+)
+.value;
+
+
+
+if(
+!email ||
+!password
+){
+
+alert(
+
+"Please enter email and password."
+
+);
+
+return;
+
+}
+
+
+
+const users =
+
+getUsers();
+
+
+
+/* FIND USER */
+
+
+const user =
+
+users.find(
+
+u =>
+
+u.email === email &&
+
+u.password === password
+
+);
+
+
+
+if(!user){
+
+alert(
+
+"Incorrect email or password."
+
+);
+
+return;
+
+}
+
+
+
+/* SAVE LOGIN */
+
+
+localStorage.setItem(
+
+CURRENT_USER_KEY,
+
+JSON.stringify({
+
+id:user.id,
+
+name:user.name,
+
+email:user.email
+
+})
+
+);
+
+
+
+alert(
+
+"Login successful!"
+
+);
+
+
+
+showProfile();
+
+
+
+updateAccountButton();
+
+}
+
+
+
+/* =====================================
+   SHOW PROFILE
+===================================== */
+
+function showProfile(){
+
+
+const user =
+
+getCurrentUser();
+
+
+
+if(!user){
+
+showLogin();
+
+return;
+
+}
+
+
+
+document
+.getElementById(
+"loginSection"
+)
+.style
+.display="none";
+
+
+document
+.getElementById(
+"registerSection"
+)
+.style
+.display="none";
+
+
+document
+.getElementById(
+"profileSection"
+)
+.style
+.display="block";
+
+
+document
+.getElementById(
+"modalTitle"
+)
+.innerText=
+
+"My Account";
+
+
+
+document
+.getElementById(
+"userName"
+)
+.innerText=
+
+user.name;
+
+
+
+document
+.getElementById(
+"userEmail"
+)
+.innerText=
+
+user.email;
+
+
+
+document
+.getElementById(
+"ordersSection"
+)
+.style
+.display="none";
+
+}
+
+
+
+/* =====================================
+   LOGOUT
+===================================== */
+
+function logoutUser(){
+
+
+localStorage.removeItem(
+
+CURRENT_USER_KEY
+
+);
+
+
+
+alert(
+
+"You have been logged out."
+
+);
+
+
+
+showLogin();
+
+
+
+updateAccountButton();
+
+}
+
+
+
+/* =====================================
+   ACCOUNT BUTTON
+===================================== */
+
+function updateAccountButton(){
+
+
+const user =
+
+getCurrentUser();
+
+
+
+const text =
+
+document
+.getElementById(
+"accountText"
+);
+
+
+
+if(user){
+
+text.innerText=
+
+user.name;
+
+}
+
+else{
+
+text.innerText=
+
+"Account";
+
+}
+
+}
+
+
+
+/* =====================================
+   FORGOT PASSWORD
+===================================== */
+
+function forgotPassword(){
+
+
+const email =
+
+prompt(
+
+"Enter your registered email:"
+
+);
+
+
+
+if(!email){
+
+return;
+
+}
+
+
+
+const users =
+
+getUsers();
+
+
+
+const user =
+
+users.find(
+
+u =>
+
+u.email ===
+
+email
+.trim()
+.toLowerCase()
+
+);
+
+
+
+if(!user){
+
+alert(
+
+"No account found with this email."
+
+);
+
+return;
+
+}
+
+
+
+/*
+
+IMPORTANT:
+
+Frontend-only system cannot safely
+send real password reset email.
+
+So we ask user to create a
+new password.
+
+*/
+
+
+const newPassword =
+
+prompt(
+
+"Enter your new password (minimum 6 characters):"
+
+);
+
+
+
+if(
+!newPassword ||
+newPassword.length < 6
+){
+
+alert(
+
+"Password must contain at least 6 characters."
+
+);
+
+return;
+
+}
+
+
+
+/* UPDATE PASSWORD */
+
+
+user.password =
+
+newPassword;
+
+
+
+saveUsers(users);
+
+
+
+alert(
+
+"Password updated successfully. You can now login."
+
+);
+
+
+
+showLogin();
+
+
+
+document
+.getElementById(
+"loginEmail"
+)
+.value=
+
+user.email;
+
+}
+
+
+
+/* =====================================
+   EDIT PROFILE
+===================================== */
+
+function editProfile(){
+
+
+const currentUser =
+
+getCurrentUser();
+
+
+
+if(!currentUser){
+
+return;
+
+}
+
+
+
+const newName =
+
+prompt(
+
+"Enter your new name:",
+
+currentUser.name
+
+);
+
+
+
+if(
+!newName ||
+!newName.trim()
+){
+
+return;
+
+}
+
+
+
+const users =
+
+getUsers();
+
+
+
+const index =
+
+users.findIndex(
+
+u =>
+
+u.id ===
+currentUser.id
+
+);
+
+
+
+if(index === -1){
+
+return;
+
+}
+
+
+
+users[index].name =
+
+newName.trim();
+
+
+
+saveUsers(users);
+
+
+
+currentUser.name =
+
+newName.trim();
+
+
+
+localStorage.setItem(
+
+CURRENT_USER_KEY,
+
+JSON.stringify(
+currentUser
+)
+
+);
+
+
+
+showProfile();
+
+
+
+updateAccountButton();
+
+
+
+alert(
+
+"Profile updated successfully."
+
+);
+
+}
+
+
+
+/* =====================================
+   MY ORDERS
+===================================== */
+
+function showMyOrders(){
+
+
+const user =
+
+getCurrentUser();
+
+
+
+if(!user){
+
+return;
+
+}
+
+
+
+document
+.getElementById(
+"ordersSection"
+)
+.style
+.display="block";
+
+
+
+const orders =
+
+JSON.parse(
+
+localStorage.getItem(
+
+ORDERS_KEY
+
+)
+
+) || [];
+
+
+
+const myOrders =
+
+orders.filter(
+
+order =>
+
+order.userId ===
+user.id
+
+);
+
+
+
+const list =
+
+document
+.getElementById(
+"ordersList"
+);
+
+
+
+if(
+myOrders.length === 0
+){
+
+list.innerHTML=
+
+"<p>No orders yet.</p>";
+
+return;
+
+}
+
+
+
+list.innerHTML=
+
+myOrders.map(
+
+order => `
+
+<div class="order">
+
+<b>
+Order ID:
+</b>
+
+${order.id}
+
+<br><br>
+
+<b>
+Total:
+</b>
+
+$${order.total}
+
+<br><br>
+
+<b>
+Status:
+</b>
+
+<span class="status">
+
+${order.status}
+
+</span>
+
+</div>
+
+`
+
+).join("");
+
+}
+
+
+
+/* =====================================
+   AUTO LOGIN AFTER REFRESH
+===================================== */
+
+
+/*
+
+This is the important part.
+
+If user was logged in before
+refreshing the page, the account
+will remain logged in.
+
+*/
+
+
+window.addEventListener(
+
+"DOMContentLoaded",
+
+function(){
+
+const user =
+
+getCurrentUser();
+
+
+
+if(user){
+
+updateAccountButton();
+
+}
+
+}
+
+);
+
+
+
+/* =====================================
+   CLOSE MODAL OUTSIDE
+===================================== */
+
+document
+.getElementById(
+"accountModal"
+)
+.addEventListener(
+
+"click",
+
+function(event){
+
+if(
+event.target === this
+){
+
+closeAccount();
+
+}
+
+}
+
+);
+
+
+
+/* =====================================
+   INITIALIZE
+===================================== */
+
+updateAccountButton();
+
+
+</script>
+
+</body>
+</html>
