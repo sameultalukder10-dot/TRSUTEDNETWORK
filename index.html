@@ -3,990 +3,3178 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NovaMart Premium Shop</title>
+
+<title>NovaMart | Premium Shopping</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#f3f4f6;color:#17202a}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-.top{background:#07111f;color:#fff;padding:8px 5%;display:flex;justify-content:space-between;font-size:13px}
-.nav{background:#0b1727;color:#fff;padding:12px 4%;display:flex;gap:15px;align-items:center;position:sticky;top:0;z-index:20}
-.logo{font-size:26px;font-weight:bold;cursor:pointer}
-.logo span{color:#ff9900}
-.search{display:flex;flex:1;max-width:800px}
-.search input{flex:1;padding:12px;border:0}
-.search button{background:#ff9900;border:0;padding:0 20px}
-.nav button{background:none;color:#fff;border:0}
-.cart-count{background:#ff9900;color:#111;border-radius:50%;padding:2px 7px}
-.sub{background:#12243a;color:#fff;padding:10px 5%;display:flex;gap:25px;overflow:auto}
-.sub span{white-space:nowrap;cursor:pointer}
-.container{width:92%;max-width:1400px;margin:auto}
-.page{display:none;padding:35px 0;min-height:600px}
-.page.active{display:block}
-.hero{min-height:390px;padding:70px 8%;color:#fff;background:linear-gradient(90deg,#061426,#155c75,#d48a18)}
-.hero h1{font-size:50px;max-width:650px}
-.hero p{font-size:18px;margin:20px 0}
-.btn{border:0;border-radius:6px;padding:12px 20px;font-weight:bold}
-.primary{background:#ff9900;color:#111}
-.dark{background:#07111f;color:#fff}
-.white{background:#fff;border:1px solid #ccc}
-.section{margin:30px 0}
-.title{display:flex;justify-content:space-between;margin-bottom:15px}
-.categories,.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
-.category,.card,.box{background:#fff;border-radius:10px;padding:20px;box-shadow:0 5px 20px #00000012}
-.category{text-align:center;cursor:pointer}
-.category div{font-size:50px}
-.product-img{height:210px;background:#eef2f5;display:flex;align-items:center;justify-content:center;font-size:90px;border-radius:8px;margin-bottom:15px}
-.card h3{margin-bottom:8px}
-.price{font-size:22px;font-weight:bold;margin:10px 0}
-.old{text-decoration:line-through;color:#888;font-size:14px}
-.rating{color:#f59e0b}
-.actions{display:flex;gap:8px;margin-top:15px}
-.actions button{flex:1}
-.product-view{background:#fff;padding:30px;border-radius:12px;display:grid;grid-template-columns:1fr 1fr;gap:35px}
-.big-img{height:500px;background:#eef2f5;display:flex;align-items:center;justify-content:center;font-size:180px}
-.option{margin:20px 0}
-.option button{padding:9px 15px;margin:5px;background:#fff;border:1px solid #aaa;border-radius:5px}
-.option button.active{border:2px solid #ff9900}
-.qty{display:flex;align-items:center;gap:12px;margin:20px 0}
-.qty button{width:35px;height:35px;border:1px solid #aaa;background:#fff}
-.cart-grid{display:grid;grid-template-columns:1fr 350px;gap:25px}
-.cart-item{background:#fff;padding:20px;display:flex;gap:20px;border-bottom:1px solid #ddd}
-.cart-icon{width:120px;height:120px;background:#eef2f5;display:flex;align-items:center;justify-content:center;font-size:60px}
-.summary{background:#fff;padding:25px;border-radius:10px;height:max-content}
-.row{display:flex;justify-content:space-between;padding:10px 0}
-.total{font-size:23px;font-weight:bold;border-top:1px solid #ddd;padding-top:15px;margin-top:10px}
-.form{background:#fff;padding:30px;border-radius:12px;max-width:850px;margin:auto}
-.form-group{margin-bottom:16px}
-.form-group label{display:block;font-weight:bold;margin-bottom:6px}
-.form-group input,.form-group select,.form-group textarea{width:100%;padding:13px;border:1px solid #ccc;border-radius:6px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-.payment-box{border:2px solid #e2136e;background:#fff7fa;padding:20px;border-radius:10px;margin:20px 0}
-.payment-box h3{color:#e2136e}
-.hidden{display:none}
-.order{background:#fff;padding:20px;border-radius:10px;margin-bottom:15px;border:1px solid #ddd}
-.status{color:#16833a;font-weight:bold}
-.help{position:fixed;right:20px;bottom:20px;z-index:50;display:flex;flex-direction:column;gap:10px}
-.help a{padding:13px 18px;border-radius:30px;color:#fff;text-decoration:none;font-weight:bold;box-shadow:0 5px 15px #0003}
-.call{background:#16833a}
-.whatsapp{background:#25d366}
-footer{background:#101827;color:#fff;margin-top:40px;padding:40px 6%}
-.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px}
-footer p{color:#cbd5e1;margin:8px 0}
-.toast{position:fixed;right:20px;top:90px;background:#111;color:#fff;padding:15px 22px;border-radius:8px;display:none;z-index:100}
-.toast.show{display:block}
-@media(max-width:800px){
-.nav{flex-wrap:wrap}
-.search{order:5;flex-basis:100%}
-.hero h1{font-size:36px}
-.product-view,.cart-grid{grid-template-columns:1fr}
-.big-img{height:320px}
-.grid2{grid-template-columns:1fr}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
+
+:root{
+    --navy:#07111f;
+    --navy2:#10243b;
+    --orange:#ff9900;
+    --orange2:#ffb84d;
+    --pink:#e2136e;
+    --green:#15803d;
+    --blue:#146eb4;
+    --bg:#f3f4f6;
+    --white:#ffffff;
+    --text:#17202a;
+    --muted:#667085;
+    --border:#e5e7eb;
+    --shadow:0 8px 30px rgba(0,0,0,.08);
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.5;
+}
+
+button,
+input,
+select,
+textarea{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    text-decoration:none;
+}
+
+.topbar{
+    background:#050b13;
+    color:white;
+    padding:7px 4%;
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+}
+
+.navbar{
+    background:var(--navy);
+    color:white;
+    padding:12px 4%;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-size:27px;
+    font-weight:800;
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+.logo span{
+    color:var(--orange);
+}
+
+.search{
+    flex:1;
+    max-width:850px;
+    height:45px;
+    display:flex;
+}
+
+.search select{
+    width:110px;
+    border:0;
+    padding:0 8px;
+    background:#eee;
+}
+
+.search input{
+    flex:1;
+    border:0;
+    outline:0;
+    padding:0 15px;
+}
+
+.search button{
+    width:55px;
+    border:0;
+    background:var(--orange);
+    font-size:20px;
+}
+
+.navlink{
+    color:white;
+    background:none;
+    border:0;
+    white-space:nowrap;
+}
+
+.navlink small{
+    display:block;
+}
+
+.navlink strong{
+    font-size:14px;
+}
+
+.cart-link{
+    color:white;
+    background:none;
+    border:0;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.cart-count{
+    background:var(--orange);
+    color:#111;
+    border-radius:50%;
+    padding:2px 7px;
+}
+
+.subnav{
+    background:var(--navy2);
+    color:white;
+    padding:10px 4%;
+    display:flex;
+    gap:25px;
+    overflow:auto;
+}
+
+.subnav span{
+    white-space:nowrap;
+    cursor:pointer;
+}
+
+.hero{
+    min-height:420px;
+    padding:65px 8%;
+    display:flex;
+    align-items:center;
+    color:white;
+    background:
+    linear-gradient(90deg,rgba(3,13,26,.96),rgba(3,13,26,.55),rgba(3,13,26,.1)),
+    linear-gradient(135deg,#17375e,#126b82,#d79019);
+}
+
+.hero-content{
+    max-width:680px;
+}
+
+.hero-badge{
+    display:inline-block;
+    background:var(--orange);
+    color:#111;
+    padding:7px 14px;
+    border-radius:25px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:52px;
+    line-height:1.05;
+    margin-bottom:18px;
+}
+
+.hero p{
+    font-size:19px;
+    margin-bottom:25px;
+}
+
+.container{
+    width:92%;
+    max-width:1450px;
+    margin:auto;
+}
+
+.section{
+    margin:32px 0;
+}
+
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.section-title h2{
+    font-size:26px;
+}
+
+.btn{
+    border:0;
+    border-radius:6px;
+    padding:12px 20px;
+    font-weight:bold;
+}
+
+.btn-primary{
+    background:var(--orange);
+    color:#111;
+}
+
+.btn-dark{
+    background:var(--navy);
+    color:white;
+}
+
+.btn-white{
+    background:white;
+    border:1px solid var(--border);
+}
+
+.btn-danger{
+    background:#fee2e2;
+    color:#b91c1c;
+}
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+    gap:15px;
+}
+
+.category{
+    background:white;
+    padding:22px;
+    text-align:center;
+    border-radius:10px;
+    box-shadow:var(--shadow);
+    cursor:pointer;
+    transition:.2s;
+}
+
+.category:hover{
+    transform:translateY(-4px);
+}
+
+.category-icon{
+    font-size:45px;
+    margin-bottom:8px;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:18px;
+}
+
+.card{
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 4px 18px rgba(0,0,0,.06);
+    transition:.2s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:var(--shadow);
+}
+
+.product-image{
+    height:220px;
+    background:linear-gradient(135deg,#eef3f7,#dce7ef);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:90px;
+    cursor:pointer;
+}
+
+.card-body{
+    padding:15px;
+}
+
+.card h3{
+    font-size:16px;
+    margin-bottom:8px;
+}
+
+.rating{
+    color:#f59e0b;
+    font-size:14px;
+}
+
+.rating span{
+    color:#667085;
+}
+
+.price{
+    font-size:23px;
+    font-weight:bold;
+    margin:8px 0;
+}
+
+.old-price{
+    color:#888;
+    text-decoration:line-through;
+    font-size:13px;
+}
+
+.discount{
+    color:var(--green);
+    font-size:13px;
+    font-weight:bold;
+}
+
+.card-actions{
+    display:flex;
+    gap:8px;
+    margin-top:12px;
+}
+
+.card-actions button{
+    flex:1;
+}
+
+.page{
+    display:none;
+    min-height:600px;
+    padding:35px 0;
+}
+
+.page.active{
+    display:block;
+}
+
+.product-view{
+    background:white;
+    border-radius:12px;
+    padding:30px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    box-shadow:var(--shadow);
+}
+
+.big-product-image{
+    height:500px;
+    background:#eef3f7;
+    border-radius:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:180px;
+}
+
+.product-info h1{
+    font-size:34px;
+    margin:12px 0;
+}
+
+.big-price{
+    color:#b12704;
+    font-size:35px;
+    font-weight:bold;
+    margin:15px 0;
+}
+
+.option{
+    margin:20px 0;
+}
+
+.option button{
+    padding:9px 15px;
+    background:white;
+    border:1px solid #aaa;
+    border-radius:5px;
+    margin:5px;
+}
+
+.option button.active{
+    border:2px solid var(--orange);
+}
+
+.quantity{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:20px 0;
+}
+
+.quantity button{
+    width:35px;
+    height:35px;
+    border:1px solid #aaa;
+    background:white;
+}
+
+.quantity span{
+    min-width:30px;
+    text-align:center;
+}
+
+.cart-layout{
+    display:grid;
+    grid-template-columns:1fr 360px;
+    gap:25px;
+}
+
+.cart-item{
+    background:white;
+    padding:20px;
+    display:flex;
+    gap:20px;
+    border-bottom:1px solid var(--border);
+}
+
+.cart-product-image{
+    width:120px;
+    height:120px;
+    background:#eef3f7;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:60px;
+}
+
+.cart-summary{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    height:max-content;
+    box-shadow:var(--shadow);
+}
+
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+}
+
+.summary-total{
+    border-top:1px solid #ddd;
+    padding-top:15px;
+    margin-top:10px;
+    font-size:23px;
+    font-weight:bold;
+}
+
+.form-card{
+    background:white;
+    padding:30px;
+    max-width:850px;
+    margin:auto;
+    border-radius:12px;
+    box-shadow:var(--shadow);
+}
+
+.form-group{
+    margin-bottom:16px;
+}
+
+.form-group label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    outline:none;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.payment-card{
+    margin:22px 0;
+    padding:22px;
+    border-radius:10px;
+    border:2px solid var(--pink);
+    background:#fff7fa;
+}
+
+.payment-card h3{
+    color:var(--pink);
+}
+
+.payment-option{
+    background:white;
+    padding:14px;
+    margin:10px 0;
+    border:1px solid #ddd;
+    border-radius:7px;
+}
+
+.payment-option label{
+    cursor:pointer;
+    display:block;
+}
+
+.payment-details{
+    margin-top:15px;
+}
+
+.payment-number{
+    font-size:22px;
+    font-weight:bold;
+    color:var(--pink);
+    margin:8px 0;
+}
+
+.payment-notice{
+    background:#fff3cd;
+    padding:12px;
+    border-radius:6px;
+    margin:12px 0;
+}
+
+.order-summary-box{
+    background:#f8fafc;
+    padding:18px;
+    border-radius:8px;
+    margin:20px 0;
+}
+
+.order-card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:15px;
+    border:1px solid var(--border);
+}
+
+.order-header{
+    display:flex;
+    justify-content:space-between;
+    background:#f8fafc;
+    padding:12px;
+    margin:-20px -20px 15px;
+}
+
+.status{
+    color:var(--green);
+    font-weight:bold;
+}
+
+.empty{
+    background:white;
+    text-align:center;
+    padding:70px 20px;
+    border-radius:10px;
+}
+
+.help-section{
+    background:white;
+    padding:35px;
+    border-radius:12px;
+    box-shadow:var(--shadow);
+}
+
+.help-item{
+    padding:20px 0;
+    border-bottom:1px solid #eee;
+}
+
+.help-item h3{
+    margin-bottom:8px;
+}
+
+.help-buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.help-buttons a{
+    color:white;
+    padding:12px 20px;
+    border-radius:6px;
+    font-weight:bold;
+}
+
+.call-button{
+    background:var(--green);
+}
+
+.whatsapp-button{
+    background:#25d366;
+}
+
+footer{
+    background:#101827;
+    color:white;
+    margin-top:50px;
+}
+
+.footer-grid{
+    padding:45px 5%;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:30px;
+}
+
+.footer-grid p{
+    color:#cbd5e1;
+    margin:7px 0;
+}
+
+.footer-bottom{
+    border-top:1px solid #334155;
+    padding:20px;
+    text-align:center;
+    color:#cbd5e1;
+}
+
+.floating-help{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    z-index:50;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.floating-help a{
+    color:white;
+    padding:12px 17px;
+    border-radius:30px;
+    font-weight:bold;
+    box-shadow:0 5px 20px #0003;
+}
+
+.float-call{
+    background:var(--green);
+}
+
+.float-whatsapp{
+    background:#25d366;
+}
+
+.toast{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    background:#111;
+    color:white;
+    padding:15px 22px;
+    border-radius:8px;
+    display:none;
+    z-index:999;
+}
+
+.toast.show{
+    display:block;
+}
+
+@media(max-width:900px){
+
+    .navbar{
+        flex-wrap:wrap;
+    }
+
+    .search{
+        order:5;
+        flex-basis:100%;
+        max-width:none;
+    }
+
+    .navlink{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .product-view,
+    .cart-layout{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .topbar{
+        display:none;
+    }
+
+    .hero{
+        min-height:450px;
+        padding:45px 6%;
+    }
+
+    .hero h1{
+        font-size:34px;
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+
+    .product-image{
+        height:160px;
+        font-size:65px;
+    }
+
+    .card-body{
+        padding:10px;
+    }
+
+    .product-view{
+        padding:15px;
+    }
+
+    .big-product-image{
+        height:300px;
+        font-size:120px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .cart-item{
+        flex-direction:column;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="top">
-<span>🚚 Fast Delivery Available</span>
-<span>📞 Help: 01613040095</span>
+<div class="topbar">
+    <span>🚚 Fast & Reliable Delivery</span>
+    <span>📞 Customer Support: 01613040095</span>
 </div>
 
-<div class="nav">
-<div class="logo" onclick="page('home')">Nova<span>Mart</span></div>
+<header class="navbar">
 
-<div class="search">
-<input id="search" placeholder="Search products..." onkeydown="enterSearch(event)">
-<button onclick="searchProducts()">🔍</button>
-</div>
+    <div class="logo" onclick="showPage('home')">
+        Nova<span>Mart</span>
+    </div>
 
-<button onclick="page('orders')">📦 Orders</button>
-<button onclick="page('wishlist')">❤️ Wishlist</button>
-<button onclick="page('cart')">🛒 Cart <span class="cart-count" id="count">0</span></button>
-</div>
+    <div class="search">
 
-<div class="sub">
-<span onclick="page('home')">Home</span>
-<span onclick="category('Electronics')">Electronics</span>
-<span onclick="category('Fashion')">Fashion</span>
-<span onclick="category('Home')">Home</span>
-<span onclick="category('Beauty')">Beauty</span>
-<span onclick="page('orders')">My Orders</span>
-<span onclick="page('help')">Help Center</span>
-</div>
+        <select id="searchCategory">
+            <option value="All">All</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Home">Home</option>
+            <option value="Beauty">Beauty</option>
+        </select>
+
+        <input
+            id="searchInput"
+            placeholder="Search products..."
+            onkeydown="handleSearchKey(event)"
+        >
+
+        <button onclick="searchProducts()">🔍</button>
+
+    </div>
+
+    <button class="navlink" onclick="showPage('orders')">
+        <small>Returns</small>
+        <strong>& Orders</strong>
+    </button>
+
+    <button class="navlink" onclick="showPage('help')">
+        <small>Need Help?</small>
+        <strong>Customer Care</strong>
+    </button>
+
+    <button class="cart-link" onclick="showPage('cart')">
+        🛒 Cart
+        <span class="cart-count" id="cartCount">0</span>
+    </button>
+
+</header>
+
+<nav class="subnav">
+
+    <span onclick="showPage('home')">☰ All</span>
+    <span onclick="showPage('home')">Today's Deals</span>
+    <span onclick="filterCategory('Electronics')">Electronics</span>
+    <span onclick="filterCategory('Fashion')">Fashion</span>
+    <span onclick="filterCategory('Home')">Home</span>
+    <span onclick="filterCategory('Beauty')">Beauty</span>
+    <span onclick="showPage('orders')">My Orders</span>
+    <span onclick="showPage('help')">Help Center</span>
+
+</nav>
+
 
 <main>
 
+<!-- HOME -->
+
 <section id="home" class="page active">
 
-<div class="hero">
-<h1>Premium Shopping, Simple & Secure.</h1>
-<p>Discover quality products with Cash on Delivery and convenient bKash payment.</p>
-<button class="btn primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now</button>
-</div>
+    <div class="hero">
 
-<div class="container">
+        <div class="hero-content">
 
-<div class="section">
-<div class="title"><h2>Shop by Category</h2></div>
+            <span class="hero-badge">
+                PREMIUM SHOPPING
+            </span>
 
-<div class="categories">
-<div class="category" onclick="category('Electronics')"><div>📱</div><h3>Electronics</h3></div>
-<div class="category" onclick="category('Fashion')"><div>👕</div><h3>Fashion</h3></div>
-<div class="category" onclick="category('Home')"><div>🏠</div><h3>Home</h3></div>
-<div class="category" onclick="category('Beauty')"><div>💄</div><h3>Beauty</h3></div>
-</div>
-</div>
+            <h1>
+                Everything You Love. Delivered.
+            </h1>
 
-<div class="section" id="products">
-<div class="title">
-<h2>Featured Products</h2>
-<button class="btn white" onclick="render(products)">View All</button>
-</div>
-<div class="products" id="productGrid"></div>
-</div>
+            <p>
+                Discover quality products with flexible bKash payment
+                and Cash on Delivery.
+            </p>
 
-</div>
+            <button
+                class="btn btn-primary"
+                onclick="scrollToProducts()"
+            >
+                Shop Now →
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="container">
+
+        <div class="section">
+
+            <div class="section-title">
+                <h2>Shop by Category</h2>
+            </div>
+
+            <div class="categories">
+
+                <div class="category"
+                    onclick="filterCategory('Electronics')">
+
+                    <div class="category-icon">📱</div>
+                    <h3>Electronics</h3>
+
+                </div>
+
+                <div class="category"
+                    onclick="filterCategory('Fashion')">
+
+                    <div class="category-icon">👕</div>
+                    <h3>Fashion</h3>
+
+                </div>
+
+                <div class="category"
+                    onclick="filterCategory('Home')">
+
+                    <div class="category-icon">🏠</div>
+                    <h3>Home</h3>
+
+                </div>
+
+                <div class="category"
+                    onclick="filterCategory('Beauty')">
+
+                    <div class="category-icon">💄</div>
+                    <h3>Beauty</h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="section" id="productSection">
+
+            <div class="section-title">
+
+                <h2>Featured Products</h2>
+
+                <button
+                    class="btn btn-white"
+                    onclick="renderProducts(products)"
+                >
+                    View All
+                </button>
+
+            </div>
+
+            <div
+                class="products"
+                id="productGrid"
+            ></div>
+
+        </div>
+
+    </div>
+
 </section>
+
+
+<!-- PRODUCT -->
 
 <section id="product" class="page">
-<div class="container" id="productDetails"></div>
+
+    <div class="container">
+
+        <div id="productDetails"></div>
+
+    </div>
+
 </section>
+
+
+<!-- CART -->
 
 <section id="cart" class="page">
-<div class="container">
-<h2>🛒 Shopping Cart</h2><br>
-<div id="cartContent"></div>
-</div>
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>🛒 Your Shopping Cart</h2>
+
+        </div>
+
+        <div id="cartContent"></div>
+
+    </div>
+
 </section>
+
+
+<!-- CHECKOUT -->
 
 <section id="checkout" class="page">
-<div class="container">
-<h2>Checkout</h2><br>
-<div class="form">
 
-<h2>Delivery Information</h2><br>
+    <div class="container">
 
-<div class="grid2">
-<div class="form-group">
-<label>Customer Name</label>
-<input id="customerName">
-</div>
+        <div class="section-title">
 
-<div class="form-group">
-<label>Phone Number</label>
-<input id="customerPhone">
-</div>
-</div>
+            <h2>Checkout</h2>
 
-<div class="form-group">
-<label>Delivery Address</label>
-<textarea id="address" rows="4"></textarea>
-</div>
+        </div>
 
-<h3>Payment Method</h3>
+        <div class="form-card">
 
-<div class="payment-box">
+            <h2>Delivery Information</h2>
 
-<h3>🟣 bKash Payment</h3>
+            <br>
 
-<p><b>bKash Number: 01726409431</b></p>
+            <div class="form-grid">
 
-<br>
+                <div class="form-group">
 
-<p>
-আপনি চাইলে শুধুমাত্র Delivery Charge bKash করতে পারবেন,
-অথবা পুরো Order Amount bKash করতে পারবেন।
-</p>
+                    <label>
+                        Customer Name
+                    </label>
 
-<br>
+                    <input
+                        id="customerName"
+                        placeholder="আপনার নাম"
+                    >
 
-<select id="bkashType" onchange="paymentChange()">
-<option value="delivery">শুধু Delivery Charge bKash</option>
-<option value="full">পুরো Amount bKash</option>
-<option value="cod">Cash on Delivery</option>
-</select>
+                </div>
 
-<div id="bkashInfo">
 
-<br>
+                <div class="form-group">
 
-<p>1️⃣ bKash করুন: <b>01726409431</b></p>
-<p>2️⃣ নিচে Transaction ID দিন</p>
+                    <label>
+                        Phone Number
+                    </label>
 
-<br>
+                    <input
+                        id="customerPhone"
+                        placeholder="01XXXXXXXXX"
+                    >
 
-<div class="form-group">
-<label>আপনার bKash Transaction ID</label>
-<input id="trx" placeholder="Example: 8A7B6C5D">
-</div>
+                </div>
 
-</div>
+            </div>
 
-</div>
 
-<div id="paymentSummary"></div>
+            <div class="form-group">
 
-<button class="btn primary" style="width:100%" onclick="placeOrder()">
-Confirm & Place Order
-</button>
+                <label>
+                    Full Delivery Address
+                </label>
 
-</div>
-</div>
+                <textarea
+                    id="customerAddress"
+                    rows="4"
+                    placeholder="House, Road, Area, City"
+                ></textarea>
+
+            </div>
+
+
+            <!-- PAYMENT -->
+
+            <div class="payment-card">
+
+                <h3>🟣 Payment Options</h3>
+
+                <p>
+                    bKash Number:
+                </p>
+
+                <div class="payment-number">
+                    01726409431
+                </div>
+
+                <div class="payment-notice">
+
+                    আপনি চাইলে:
+
+                    <br><br>
+
+                    <b>Option 1:</b>
+                    শুধু Delivery Charge bKash করে
+                    Product-এর বাকি টাকা Cash on Delivery দিতে পারবেন।
+
+                    <br><br>
+
+                    <b>Option 2:</b>
+                    Product Price + Delivery Charge
+                    পুরো টাকা bKash করতে পারবেন।
+
+                    <br><br>
+
+                    <b>Option 3:</b>
+                    সম্পূর্ণ Cash on Delivery নিতে পারবেন।
+
+                </div>
+
+
+                <div class="payment-option">
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="delivery"
+                            checked
+                            onchange="updatePayment()"
+                        >
+
+                        🟣 শুধু Delivery Charge bKash
+                        + বাকি টাকা COD
+
+                    </label>
+
+                </div>
+
+
+                <div class="payment-option">
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="full"
+                            onchange="updatePayment()"
+                        >
+
+                        🟣 Full Payment via bKash
+
+                    </label>
+
+                </div>
+
+
+                <div class="payment-option">
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="cod"
+                            onchange="updatePayment()"
+                        >
+
+                        💵 Full Cash on Delivery
+
+                    </label>
+
+                </div>
+
+
+                <div
+                    id="bkashPaymentDetails"
+                    class="payment-details"
+                >
+
+                    <p>
+                        1️⃣ bKash করুন:
+                        <b>01726409431</b>
+                    </p>
+
+                    <p>
+                        2️⃣ Payment করার পর
+                        Transaction ID দিন।
+                    </p>
+
+                    <br>
+
+                    <div class="form-group">
+
+                        <label>
+                            bKash Transaction ID
+                        </label>
+
+                        <input
+                            id="transactionId"
+                            placeholder="Example: 8A7B6C5D"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="checkoutSummary"
+                class="order-summary-box"
+            ></div>
+
+
+            <button
+                class="btn btn-primary"
+                style="width:100%"
+                onclick="placeOrder()"
+            >
+
+                📦 Confirm & Place Order
+
+            </button>
+
+        </div>
+
+    </div>
+
 </section>
+
+
+<!-- ORDERS -->
 
 <section id="orders" class="page">
-<div class="container">
-<h2>📦 My Orders</h2><br>
-<div id="ordersContent"></div>
-</div>
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>📦 My Orders</h2>
+
+        </div>
+
+        <div id="ordersContent"></div>
+
+    </div>
+
 </section>
 
-<section id="wishlist" class="page">
-<div class="container">
-<h2>❤️ Wishlist</h2><br>
-<div class="products" id="wishlistContent"></div>
-</div>
-</section>
+
+<!-- HELP -->
 
 <section id="help" class="page">
-<div class="container">
-<div class="box">
-<h1>Customer Help Center</h1><br>
 
-<h3>📞 Customer Helpline</h3>
-<p>01613040095</p><br>
+    <div class="container">
 
-<h3>💬 WhatsApp Support</h3>
-<p>01613040095</p><br>
+        <div class="help-section">
 
-<a class="btn primary" href="tel:01613040095">Call Customer Care</a>
+            <h1>Customer Help Center</h1>
 
-<a class="btn dark" target="_blank"
-href="https://wa.me/8801613040095">
-WhatsApp Us
-</a>
+            <br>
 
-<hr><br>
+            <div class="help-item">
 
-<h3>Common Help</h3><br>
-<p>• Order কোথায় আছে জানতে Customer Care-এ যোগাযোগ করুন।</p>
-<p>• Payment সমস্যা হলে Transaction ID দিন।</p>
-<p>• Delivery সমস্যা হলে Order ID উল্লেখ করুন।</p>
-<p>• Return বা Refund-এর জন্য Helpline-এ যোগাযোগ করুন।</p>
+                <h3>📞 Customer Helpline</h3>
 
-</div>
-</div>
+                <p>
+                    01613040095
+                </p>
+
+            </div>
+
+
+            <div class="help-item">
+
+                <h3>💬 WhatsApp Support</h3>
+
+                <p>
+                    01613040095
+                </p>
+
+            </div>
+
+
+            <div class="help-item">
+
+                <h3>🟣 bKash Payment Support</h3>
+
+                <p>
+                    bKash Number:
+                    01726409431
+                </p>
+
+            </div>
+
+
+            <div class="help-buttons">
+
+                <a
+                    class="call-button"
+                    href="tel:01613040095"
+                >
+                    📞 Call Customer Care
+                </a>
+
+                <a
+                    class="whatsapp-button"
+                    target="_blank"
+                    href="https://wa.me/8801613040095"
+                >
+                    💬 WhatsApp Support
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </section>
 
 </main>
 
+
+<!-- FOOTER -->
+
 <footer>
 
-<div class="footer-grid">
+    <div class="footer-grid">
 
-<div>
-<h2>NovaMart</h2>
-<p>Premium shopping experience for everyone.</p>
-</div>
+        <div>
 
-<div>
-<h3>Customer Service</h3>
-<p>📞 01613040095</p>
-<p>💬 WhatsApp: 01613040095</p>
-</div>
+            <h2>
+                NovaMart
+            </h2>
 
-<div>
-<h3>Payment</h3>
-<p>🟣 bKash: 01726409431</p>
-<p>💵 Cash on Delivery</p>
-</div>
+            <p>
+                Premium online shopping experience.
+            </p>
 
-<div>
-<h3>Quick Links</h3>
-<p onclick="page('home')">Home</p>
-<p onclick="page('orders')">My Orders</p>
-<p onclick="page('help')">Help Center</p>
-</div>
+        </div>
 
-</div>
+
+        <div>
+
+            <h3>
+                Customer Support
+            </h3>
+
+            <p>
+                📞 01613040095
+            </p>
+
+            <p>
+                💬 WhatsApp 01613040095
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Payment
+            </h3>
+
+            <p>
+                🟣 bKash 01726409431
+            </p>
+
+            <p>
+                💵 Cash on Delivery
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <p onclick="showPage('home')">
+                Home
+            </p>
+
+            <p onclick="showPage('cart')">
+                Cart
+            </p>
+
+            <p onclick="showPage('orders')">
+                My Orders
+            </p>
+
+            <p onclick="showPage('help')">
+                Help Center
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 NovaMart. All Rights Reserved.
+
+    </div>
 
 </footer>
 
-<div class="help">
-<a class="call" href="tel:01613040095">📞 Call</a>
-<a class="whatsapp" target="_blank" href="https://wa.me/8801613040095">💬 WhatsApp</a>
+
+<!-- FLOATING SUPPORT -->
+
+<div class="floating-help">
+
+    <a
+        class="float-call"
+        href="tel:01613040095"
+    >
+        📞 Call
+    </a>
+
+    <a
+        class="float-whatsapp"
+        target="_blank"
+        href="https://wa.me/8801613040095"
+    >
+        💬 WhatsApp
+    </a>
+
 </div>
 
-<div class="toast" id="toast"></div>
+
+<div
+    id="toast"
+    class="toast"
+></div>
+
 
 <script>
 
-const products=[
 
-{id:1,name:"Nova X Pro Smartphone",category:"Electronics",price:699,icon:"📱",rating:4.8},
-{id:2,name:"UltraBook Pro Laptop",category:"Electronics",price:1199,icon:"💻",rating:4.9},
-{id:3,name:"Wireless Headphones",category:"Electronics",price:149,icon:"🎧",rating:4.7},
-{id:4,name:"Premium Running Shoes",category:"Fashion",price:89,icon:"👟",rating:4.6},
-{id:5,name:"Classic Premium Watch",category:"Fashion",price:179,icon:"⌚",rating:4.8},
-{id:6,name:"Modern Coffee Maker",category:"Home",price:129,icon:"☕",rating:4.5},
-{id:7,name:"Smart LED Lamp",category:"Home",price:39,icon:"💡",rating:4.4},
-{id:8,name:"Luxury Skincare Set",category:"Beauty",price:79,icon:"🧴",rating:4.7}
+/* =========================
+   WEBSITE SETTINGS
+========================= */
+
+const DELIVERY_CHARGE = 100;
+
+const BKASH_NUMBER = "01726409431";
+
+const HELPLINE = "01613040095";
+
+
+/* =========================
+   PRODUCTS
+========================= */
+
+const products = [
+
+    {
+        id:1,
+        name:"Nova X Pro Smartphone",
+        category:"Electronics",
+        price:699,
+        oldPrice:799,
+        rating:4.8,
+        reviews:1245,
+        icon:"📱"
+    },
+
+    {
+        id:2,
+        name:"UltraBook Pro Laptop",
+        category:"Electronics",
+        price:1199,
+        oldPrice:1399,
+        rating:4.9,
+        reviews:876,
+        icon:"💻"
+    },
+
+    {
+        id:3,
+        name:"Wireless Noise Cancelling Headphones",
+        category:"Electronics",
+        price:149,
+        oldPrice:199,
+        rating:4.7,
+        reviews:2340,
+        icon:"🎧"
+    },
+
+    {
+        id:4,
+        name:"Premium Running Shoes",
+        category:"Fashion",
+        price:89,
+        oldPrice:129,
+        rating:4.6,
+        reviews:981,
+        icon:"👟"
+    },
+
+    {
+        id:5,
+        name:"Classic Premium Watch",
+        category:"Fashion",
+        price:179,
+        oldPrice:249,
+        rating:4.8,
+        reviews:453,
+        icon:"⌚"
+    },
+
+    {
+        id:6,
+        name:"Modern Coffee Maker",
+        category:"Home",
+        price:129,
+        oldPrice:169,
+        rating:4.5,
+        reviews:643,
+        icon:"☕"
+    },
+
+    {
+        id:7,
+        name:"Smart LED Home Lamp",
+        category:"Home",
+        price:39,
+        oldPrice:59,
+        rating:4.4,
+        reviews:318,
+        icon:"💡"
+    },
+
+    {
+        id:8,
+        name:"Luxury Skincare Set",
+        category:"Beauty",
+        price:79,
+        oldPrice:109,
+        rating:4.7,
+        reviews:761,
+        icon:"🧴"
+    }
 
 ];
 
-let cart=JSON.parse(localStorage.getItem("cart")||"[]");
-let wishlist=JSON.parse(localStorage.getItem("wishlist")||"[]");
-let orders=JSON.parse(localStorage.getItem("orders")||"[]");
 
-let currentProduct=null;
+/* =========================
+   LOCAL DATA
+========================= */
 
-const DELIVERY_CHARGE=100;
+let cart =
+JSON.parse(
+localStorage.getItem("novamart_cart") || "[]"
+);
 
-function save(){
+let orders =
+JSON.parse(
+localStorage.getItem("novamart_orders") || "[]"
+);
 
-localStorage.setItem("cart",JSON.stringify(cart));
-localStorage.setItem("wishlist",JSON.stringify(wishlist));
-localStorage.setItem("orders",JSON.stringify(orders));
+let currentProduct = null;
 
-updateCount();
+let productQuantity = 1;
 
-}
 
-function updateCount(){
+/* =========================
+   SAVE DATA
+========================= */
 
-document.getElementById("count").innerText=
-cart.reduce((a,b)=>a+b.qty,0);
+function saveData(){
 
-}
+    localStorage.setItem(
+        "novamart_cart",
+        JSON.stringify(cart)
+    );
 
-function page(id){
+    localStorage.setItem(
+        "novamart_orders",
+        JSON.stringify(orders)
+    );
 
-document.querySelectorAll(".page")
-.forEach(x=>x.classList.remove("active"));
-
-document.getElementById(id).classList.add("active");
-
-if(id==="cart")renderCart();
-if(id==="orders")renderOrders();
-if(id==="wishlist")renderWishlist();
-
-window.scrollTo(0,0);
-
-}
-
-function money(n){
-
-return "৳"+n.toFixed(0);
+    updateCartCount();
 
 }
 
-function render(list){
 
-let grid=document.getElementById("productGrid");
+/* =========================
+   MONEY
+========================= */
 
-grid.innerHTML=list.map(p=>`
+function money(amount){
 
-<div class="card">
-
-<div class="product-img" onclick="openProduct(${p.id})">
-${p.icon}
-</div>
-
-<h3>${p.name}</h3>
-
-<div class="rating">★★★★★ ${p.rating}</div>
-
-<div class="price">${money(p.price)}</div>
-
-<div class="actions">
-
-<button class="btn white"
-onclick="openProduct(${p.id})">
-View
-</button>
-
-<button class="btn primary"
-onclick="addCart(${p.id})">
-Add
-</button>
-
-</div>
-
-</div>
-
-`).join("");
+    return "৳" +
+    Number(amount).toLocaleString("en-BD");
 
 }
+
+
+/* =========================
+   PAGE NAVIGATION
+========================= */
+
+function showPage(pageId){
+
+    document
+    .querySelectorAll(".page")
+    .forEach(
+        page =>
+        page.classList.remove("active")
+    );
+
+    const page =
+    document.getElementById(pageId);
+
+    if(page){
+
+        page.classList.add("active");
+
+    }
+
+    if(pageId === "cart"){
+
+        renderCart();
+
+    }
+
+    if(pageId === "orders"){
+
+        renderOrders();
+
+    }
+
+    if(pageId === "checkout"){
+
+        updatePayment();
+
+    }
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   CART COUNT
+========================= */
+
+function updateCartCount(){
+
+    const count =
+    cart.reduce(
+        (total,item)=>
+        total + item.quantity,
+        0
+    );
+
+    document
+    .getElementById("cartCount")
+    .innerText = count;
+
+}
+
+
+/* =========================
+   RENDER PRODUCTS
+========================= */
+
+function renderProducts(list){
+
+    const grid =
+    document.getElementById(
+        "productGrid"
+    );
+
+    if(!list.length){
+
+        grid.innerHTML = `
+
+        <div class="empty">
+
+            <h2>
+                No products found
+            </h2>
+
+            <br>
+
+            <button
+                class="btn btn-primary"
+                onclick="renderProducts(products)"
+            >
+                View All Products
+            </button>
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    grid.innerHTML =
+
+    list.map(product => `
+
+        <div class="card">
+
+            <div
+                class="product-image"
+                onclick="openProduct(${product.id})"
+            >
+
+                ${product.icon}
+
+            </div>
+
+
+            <div class="card-body">
+
+                <h3>
+                    ${product.name}
+                </h3>
+
+
+                <div class="rating">
+
+                    ★★★★★
+
+                    <span>
+                        ${product.rating}
+                        (${product.reviews})
+                    </span>
+
+                </div>
+
+
+                <div class="price">
+
+                    ${money(product.price)}
+
+                </div>
+
+
+                <div>
+
+                    <span class="old-price">
+
+                        ${money(product.oldPrice)}
+
+                    </span>
+
+                    <span class="discount">
+
+                        ${Math.round(
+                            (1 -
+                            product.price /
+                            product.oldPrice)
+                            * 100
+                        )}% OFF
+
+                    </span>
+
+                </div>
+
+
+                <div class="card-actions">
+
+                    <button
+                        class="btn btn-white"
+                        onclick="openProduct(${product.id})"
+                    >
+                        View
+                    </button>
+
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="addToCart(${product.id})"
+                    >
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `).join("");
+
+}
+
+
+/* =========================
+   OPEN PRODUCT
+========================= */
 
 function openProduct(id){
 
-currentProduct=products.find(p=>p.id===id);
+    currentProduct =
+    products.find(
+        product =>
+        product.id === id
+    );
 
-document.getElementById("productDetails").innerHTML=`
+    productQuantity = 1;
 
-<div class="product-view">
 
-<div class="big-img">${currentProduct.icon}</div>
+    document
+    .getElementById("productDetails")
+    .innerHTML = `
 
-<div>
+        <div class="product-view">
 
-<div class="rating">★★★★★ ${currentProduct.rating}</div>
 
-<h1>${currentProduct.name}</h1>
+            <div class="big-product-image">
 
-<p>Premium quality product with reliable performance and excellent value.</p>
+                ${currentProduct.icon}
 
-<div class="price">${money(currentProduct.price)}</div>
+            </div>
 
-<div class="option">
 
-<strong>Choose Option</strong><br>
+            <div class="product-info">
 
-<button class="active">Standard</button>
-<button>Premium</button>
 
-</div>
+                <div class="rating">
 
-<div class="qty">
-<button onclick="changeQty(-1)">−</button>
-<span id="qty">1</span>
-<button onclick="changeQty(1)">+</button>
-</div>
+                    ★★★★★
 
-<div class="actions">
+                    ${currentProduct.rating}
 
-<button class="btn primary"
-onclick="addCurrent()">
-🛒 Add to Cart
-</button>
+                    (${currentProduct.reviews}
+                    reviews)
 
-<button class="btn dark"
-onclick="buyNow()">
-Buy Now
-</button>
+                </div>
 
-</div>
 
-<br>
+                <h1>
 
-<p>🚚 Fast Delivery</p>
-<p>💵 Cash on Delivery Available</p>
-<p>🟣 bKash Payment Available</p>
+                    ${currentProduct.name}
 
-</div>
+                </h1>
 
-</div>
 
-`;
+                <p>
 
-page("product");
+                    Premium quality product
+                    with excellent value
+                    and reliable performance.
+
+                </p>
+
+
+                <div class="big-price">
+
+                    ${money(
+                        currentProduct.price
+                    )}
+
+                </div>
+
+
+                <div>
+
+                    <span class="old-price">
+
+                        ${money(
+                            currentProduct.oldPrice
+                        )}
+
+                    </span>
+
+                </div>
+
+
+                <div class="option">
+
+                    <strong>
+                        Choose Option
+                    </strong>
+
+                    <br>
+
+                    <button class="active">
+                        Standard
+                    </button>
+
+                    <button>
+                        Premium
+                    </button>
+
+                </div>
+
+
+                <div class="quantity">
+
+                    <strong>
+                        Quantity
+                    </strong>
+
+                    <button
+                        onclick="changeProductQuantity(-1)"
+                    >
+                        −
+                    </button>
+
+                    <span id="productQuantity">
+                        1
+                    </span>
+
+                    <button
+                        onclick="changeProductQuantity(1)"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+
+                <div class="card-actions">
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="addCurrentProduct()"
+                    >
+                        🛒 Add to Cart
+                    </button>
+
+
+                    <button
+                        class="btn btn-dark"
+                        onclick="buyNow()"
+                    >
+                        Buy Now
+                    </button>
+
+                </div>
+
+
+                <br>
+
+
+                <p>
+                    🚚 Fast Delivery Available
+                </p>
+
+                <p>
+                    🟣 bKash Payment Available
+                </p>
+
+                <p>
+                    💵 Cash on Delivery Available
+                </p>
+
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    showPage("product");
 
 }
 
-let qty=1;
 
-function changeQty(x){
+/* =========================
+   PRODUCT QUANTITY
+========================= */
 
-qty=Math.max(1,qty+x);
+function changeProductQuantity(amount){
 
-document.getElementById("qty").innerText=qty;
+    productQuantity =
+    Math.max(
+        1,
+        productQuantity + amount
+    );
+
+    document
+    .getElementById(
+        "productQuantity"
+    )
+    .innerText =
+    productQuantity;
+
+}
+
+
+/* =========================
+   ADD CURRENT PRODUCT
+========================= */
+
+function addCurrentProduct(){
+
+    addToCart(
+        currentProduct.id,
+        productQuantity
+    );
 
 }
 
-function addCurrent(){
 
-addCart(currentProduct.id,qty);
+/* =========================
+   ADD TO CART
+========================= */
 
-qty=1;
+function addToCart(
+    productId,
+    quantity = 1
+){
+
+    const existing =
+    cart.find(
+        item =>
+        item.productId === productId
+    );
+
+
+    if(existing){
+
+        existing.quantity +=
+        quantity;
+
+    }else{
+
+        cart.push({
+
+            productId:
+            productId,
+
+            quantity:
+            quantity
+
+        });
+
+    }
+
+
+    saveData();
+
+
+    showToast(
+        "Product added to cart!"
+    );
+
+
+    /*
+       Add to Cart করলে
+       সরাসরি Payment খুলবে না।
+       Customer আগে Cart দেখবে।
+    */
+
+    setTimeout(
+        () => showPage("cart"),
+        500
+    );
 
 }
 
-function addCart(id,q=1){
 
-let item=cart.find(x=>x.id===id);
-
-if(item)item.qty+=q;
-
-else cart.push({id:id,qty:q});
-
-save();
-
-toast("Product added to cart");
-
-}
+/* =========================
+   BUY NOW
+========================= */
 
 function buyNow(){
 
-cart=[];
+    cart = [];
 
-addCart(currentProduct.id,1);
 
-page("cart");
+    cart.push({
 
-}
+        productId:
+        currentProduct.id,
 
-function renderCart(){
+        quantity:
+        productQuantity
 
-let box=document.getElementById("cartContent");
+    });
 
-if(!cart.length){
 
-box.innerHTML=`
-<div class="box">
-<h2>Your cart is empty</h2><br>
-<button class="btn primary" onclick="page('home')">Shop Now</button>
-</div>`;
+    saveData();
 
-return;
+
+    showPage("cart");
 
 }
 
-let subtotal=cart.reduce((sum,i)=>{
 
-let p=products.find(x=>x.id===i.id);
-
-return sum+p.price*i.qty;
-
-},0);
-
-box.innerHTML=`
-
-<div class="cart-grid">
-
-<div>
-
-${cart.map((item,index)=>{
-
-let p=products.find(x=>x.id===item.id);
-
-return `
-
-<div class="cart-item">
-
-<div class="cart-icon">${p.icon}</div>
-
-<div>
-
-<h2>${p.name}</h2>
-
-<p>Price: ${money(p.price)}</p>
-
-<div class="qty">
-
-<button onclick="cartQty(${index},-1)">−</button>
-
-<span>${item.qty}</span>
-
-<button onclick="cartQty(${index},1)">+</button>
-
-<button class="btn white" onclick="removeCart(${index})">
-Remove
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-}).join("")}
-
-</div>
-
-<div class="summary">
-
-<h2>Order Summary</h2>
-
-<div class="row">
-<span>Product Total</span>
-<strong>${money(subtotal)}</strong>
-</div>
-
-<div class="row">
-<span>Delivery Charge</span>
-<strong>${money(DELIVERY_CHARGE)}</strong>
-</div>
-
-<div class="total">
-Total: ${money(subtotal+DELIVERY_CHARGE)}
-</div>
-
-<button class="btn primary"
-style="width:100%;margin-top:20px"
-onclick="checkout()">
-Proceed to Checkout
-</button>
-
-</div>
-
-</div>
-
-`;
-
-}
-
-function cartQty(i,x){
-
-cart[i].qty=Math.max(1,cart[i].qty+x);
-
-save();
-
-renderCart();
-
-}
-
-function removeCart(i){
-
-cart.splice(i,1);
-
-save();
-
-renderCart();
-
-}
-
-function checkout(){
-
-if(!cart.length){
-
-toast("Cart is empty");
-
-return;
-
-}
-
-page("checkout");
-
-paymentChange();
-
-}
-
-function paymentChange(){
-
-let type=document.getElementById("bkashType").value;
-
-let subtotal=getSubtotal();
-
-let total=subtotal+DELIVERY_CHARGE;
-
-let bkashPaid=0;
-
-let codDue=total;
-
-if(type==="delivery"){
-
-bkashPaid=DELIVERY_CHARGE;
-
-codDue=subtotal;
-
-}
-
-if(type==="full"){
-
-bkashPaid=total;
-
-codDue=0;
-
-}
-
-if(type==="cod"){
-
-bkashPaid=0;
-
-codDue=total;
-
-}
-
-document.getElementById("bkashInfo").style.display=
-type==="cod"?"none":"block";
-
-document.getElementById("paymentSummary").innerHTML=`
-
-<div class="box">
-
-<div class="row">
-<span>Product Total</span>
-<strong>${money(subtotal)}</strong>
-</div>
-
-<div class="row">
-<span>Delivery Charge</span>
-<strong>${money(DELIVERY_CHARGE)}</strong>
-</div>
-
-<div class="row">
-<span>bKash Paid</span>
-<strong>${money(bkashPaid)}</strong>
-</div>
-
-<div class="total">
-Cash on Delivery Due: ${money(codDue)}
-</div>
-
-</div>
-
-`;
-
-}
+/* =========================
+   GET SUBTOTAL
+========================= */
 
 function getSubtotal(){
 
-return cart.reduce((sum,item)=>{
+    return cart.reduce(
+        (total,item) => {
 
-let p=products.find(x=>x.id===item.id);
+            const product =
+            products.find(
+                p =>
+                p.id ===
+                item.productId
+            );
 
-return sum+p.price*item.qty;
+            return total +
+            (
+                product.price *
+                item.quantity
+            );
 
-},0);
+        },
+        0
+    );
 
 }
+
+
+/* =========================
+   RENDER CART
+========================= */
+
+function renderCart(){
+
+    const container =
+    document.getElementById(
+        "cartContent"
+    );
+
+
+    if(!cart.length){
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                <h2>
+                    Your Cart is Empty
+                </h2>
+
+                <br>
+
+                <button
+                    class="btn btn-primary"
+                    onclick="showPage('home')"
+                >
+                    Continue Shopping
+                </button>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    const subtotal =
+    getSubtotal();
+
+
+    const total =
+    subtotal +
+    DELIVERY_CHARGE;
+
+
+    container.innerHTML = `
+
+        <div class="cart-layout">
+
+
+            <div>
+
+                ${cart.map(
+                    (item,index) => {
+
+                        const product =
+                        products.find(
+                            p =>
+                            p.id ===
+                            item.productId
+                        );
+
+
+                        return `
+
+                            <div
+                                class="cart-item"
+                            >
+
+
+                                <div
+                                    class="cart-product-image"
+                                >
+                                    ${product.icon}
+                                </div>
+
+
+                                <div
+                                    style="flex:1"
+                                >
+
+
+                                    <h2>
+
+                                        ${product.name}
+
+                                    </h2>
+
+
+                                    <p>
+
+                                        ${money(
+                                            product.price
+                                        )}
+
+                                    </p>
+
+
+                                    <div
+                                        class="quantity"
+                                    >
+
+                                        <button
+                                            onclick="
+                                            changeCartQuantity(
+                                                ${index},
+                                                -1
+                                            )"
+                                        >
+                                            −
+                                        </button>
+
+
+                                        <span>
+
+                                            ${item.quantity}
+
+                                        </span>
+
+
+                                        <button
+                                            onclick="
+                                            changeCartQuantity(
+                                                ${index},
+                                                1
+                                            )"
+                                        >
+                                            +
+                                        </button>
+
+
+                                        <button
+                                            class="
+                                            btn
+                                            btn-danger
+                                            "
+                                            onclick="
+                                            removeFromCart(
+                                                ${index}
+                                            )"
+                                        >
+                                            Remove
+                                        </button>
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+                        `;
+
+                    }
+                ).join("")}
+
+            </div>
+
+
+            <div
+                class="cart-summary"
+            >
+
+
+                <h2>
+                    Order Summary
+                </h2>
+
+
+                <div
+                    class="summary-row"
+                >
+
+                    <span>
+                        Product Total
+                    </span>
+
+                    <strong>
+                        ${money(subtotal)}
+                    </strong>
+
+                </div>
+
+
+                <div
+                    class="summary-row"
+                >
+
+                    <span>
+                        Delivery Charge
+                    </span>
+
+                    <strong>
+                        ${money(
+                            DELIVERY_CHARGE
+                        )}
+                    </strong>
+
+                </div>
+
+
+                <div
+                    class="summary-total"
+                >
+
+                    Total:
+                    ${money(total)}
+
+                </div>
+
+
+                <button
+                    class="btn btn-primary"
+                    style="
+                    width:100%;
+                    margin-top:20px
+                    "
+                    onclick="goToCheckout()"
+                >
+
+                    Proceed to Checkout →
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================
+   CART QUANTITY
+========================= */
+
+function changeCartQuantity(
+    index,
+    amount
+){
+
+    cart[index].quantity =
+    Math.max(
+        1,
+        cart[index].quantity +
+        amount
+    );
+
+
+    saveData();
+
+
+    renderCart();
+
+}
+
+
+/* =========================
+   REMOVE CART
+========================= */
+
+function removeFromCart(index){
+
+    cart.splice(
+        index,
+        1
+    );
+
+
+    saveData();
+
+
+    renderCart();
+
+
+    showToast(
+        "Product removed"
+    );
+
+}
+
+
+/* =========================
+   CHECKOUT
+========================= */
+
+function goToCheckout(){
+
+    if(!cart.length){
+
+        showToast(
+            "Your cart is empty"
+        );
+
+        return;
+
+    }
+
+
+    showPage(
+        "checkout"
+    );
+
+}
+
+
+/* =========================
+   PAYMENT UPDATE
+========================= */
+
+function updatePayment(){
+
+    const selected =
+    document.querySelector(
+        'input[name="paymentMethod"]:checked'
+    );
+
+
+    if(!selected){
+        return;
+    }
+
+
+    const method =
+    selected.value;
+
+
+    const subtotal =
+    getSubtotal();
+
+
+    const total =
+    subtotal +
+    DELIVERY_CHARGE;
+
+
+    let bkashPaid = 0;
+
+    let codDue = total;
+
+
+    if(method === "delivery"){
+
+        bkashPaid =
+        DELIVERY_CHARGE;
+
+        codDue =
+        subtotal;
+
+    }
+
+
+    if(method === "full"){
+
+        bkashPaid =
+        total;
+
+        codDue = 0;
+
+    }
+
+
+    if(method === "cod"){
+
+        bkashPaid = 0;
+
+        codDue =
+        total;
+
+    }
+
+
+    const details =
+    document.getElementById(
+        "bkashPaymentDetails"
+    );
+
+
+    if(method === "cod"){
+
+        details.style.display =
+        "none";
+
+    }else{
+
+        details.style.display =
+        "block";
+
+    }
+
+
+    document
+    .getElementById(
+        "checkoutSummary"
+    )
+    .innerHTML = `
+
+        <h3>
+            Payment Summary
+        </h3>
+
+        <br>
+
+
+        <div
+            class="summary-row"
+        >
+
+            <span>
+                Product Total
+            </span>
+
+            <strong>
+                ${money(subtotal)}
+            </strong>
+
+        </div>
+
+
+        <div
+            class="summary-row"
+        >
+
+            <span>
+                Delivery Charge
+            </span>
+
+            <strong>
+                ${money(
+                    DELIVERY_CHARGE
+                )}
+            </strong>
+
+        </div>
+
+
+        <div
+            class="summary-row"
+        >
+
+            <span>
+                bKash Paid
+            </span>
+
+            <strong>
+                ${money(
+                    bkashPaid
+                )}
+            </strong>
+
+        </div>
+
+
+        <div
+            class="summary-row"
+        >
+
+            <span>
+                Cash on Delivery Due
+            </span>
+
+            <strong>
+                ${money(
+                    codDue
+                )}
+            </strong>
+
+        </div>
+
+
+        <div
+            class="summary-total"
+        >
+
+            Grand Total:
+            ${money(total)}
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================
+   PLACE ORDER
+========================= */
 
 function placeOrder(){
 
-let name=document.getElementById("customerName").value.trim();
+    const name =
+    document
+    .getElementById(
+        "customerName"
+    )
+    .value.trim();
 
-let phone=document.getElementById("customerPhone").value.trim();
 
-let address=document.getElementById("address").value.trim();
+    const phone =
+    document
+    .getElementById(
+        "customerPhone"
+    )
+    .value.trim();
 
-let type=document.getElementById("bkashType").value;
 
-let trx=document.getElementById("trx").value.trim();
+    const address =
+    document
+    .getElementById(
+        "customerAddress"
+    )
+    .value.trim();
 
-if(!name||!phone||!address){
 
-toast("Please fill delivery information");
+    const selected =
+    document.querySelector(
+        'input[name="paymentMethod"]:checked'
+    );
 
-return;
+
+    const transactionId =
+    document
+    .getElementById(
+        "transactionId"
+    )
+    .value.trim();
+
+
+    if(
+        !name ||
+        !phone ||
+        !address
+    ){
+
+        showToast(
+            "Please complete delivery information"
+        );
+
+        return;
+
+    }
+
+
+    const method =
+    selected.value;
+
+
+    const subtotal =
+    getSubtotal();
+
+
+    const total =
+    subtotal +
+    DELIVERY_CHARGE;
+
+
+    let bkashPaid = 0;
+
+    let codDue = total;
+
+
+    if(
+        method === "delivery"
+    ){
+
+        bkashPaid =
+        DELIVERY_CHARGE;
+
+        codDue =
+        subtotal;
+
+    }
+
+
+    if(
+        method === "full"
+    ){
+
+        bkashPaid =
+        total;
+
+        codDue = 0;
+
+    }
+
+
+    if(
+        method !== "cod" &&
+        !transactionId
+    ){
+
+        showToast(
+            "Please enter bKash Transaction ID"
+        );
+
+        return;
+
+    }
+
+
+    let paymentName;
+
+
+    if(
+        method === "delivery"
+    ){
+
+        paymentName =
+        "bKash Delivery Charge + COD";
+
+    }
+
+
+    if(
+        method === "full"
+    ){
+
+        paymentName =
+        "Full bKash Payment";
+
+    }
+
+
+    if(
+        method === "cod"
+    ){
+
+        paymentName =
+        "Cash on Delivery";
+
+    }
+
+
+    const order = {
+
+        orderId:
+        "NM" +
+        Date.now(),
+
+        date:
+        new Date()
+        .toLocaleString(),
+
+        customerName:
+        name,
+
+        phone:
+        phone,
+
+        address:
+        address,
+
+        paymentMethod:
+        paymentName,
+
+        transactionId:
+        transactionId ||
+        "Not Applicable",
+
+        productTotal:
+        subtotal,
+
+        deliveryCharge:
+        DELIVERY_CHARGE,
+
+        bkashPaid:
+        bkashPaid,
+
+        codDue:
+        codDue,
+
+        grandTotal:
+        total,
+
+        status:
+        "Order Received",
+
+        items:
+        JSON.parse(
+            JSON.stringify(cart)
+        )
+
+    };
+
+
+    orders.unshift(
+        order
+    );
+
+
+    cart = [];
+
+
+    saveData();
+
+
+    showToast(
+        "Order placed successfully!"
+    );
+
+
+    setTimeout(
+        () => {
+
+            showPage(
+                "orders"
+            );
+
+        },
+        900
+    );
 
 }
 
-let subtotal=getSubtotal();
 
-let total=subtotal+DELIVERY_CHARGE;
-
-let bkashPaid=0;
-
-let codDue=total;
-
-if(type==="delivery"){
-
-bkashPaid=DELIVERY_CHARGE;
-
-codDue=subtotal;
-
-}
-
-if(type==="full"){
-
-bkashPaid=total;
-
-codDue=0;
-
-}
-
-if(type!=="cod"&&!trx){
-
-toast("Please enter bKash Transaction ID");
-
-return;
-
-}
-
-let order={
-
-id:"NM"+Date.now(),
-
-date:new Date().toLocaleString(),
-
-name:name,
-
-phone:phone,
-
-address:address,
-
-payment:type==="cod"?"Cash on Delivery":
-type==="delivery"?"bKash Delivery Charge + COD":
-"Full bKash Payment",
-
-transactionId:trx||"N/A",
-
-subtotal:subtotal,
-
-delivery:DELIVERY_CHARGE,
-
-bkashPaid:bkashPaid,
-
-codDue:codDue,
-
-total:total,
-
-items:[...cart],
-
-status:"Order Received"
-
-};
-
-orders.unshift(order);
-
-cart=[];
-
-save();
-
-toast("Order successfully placed!");
-
-setTimeout(()=>page("orders"),800);
-
-}
+/* =========================
+   ORDERS
+========================= */
 
 function renderOrders(){
 
-let box=document.getElementById("ordersContent");
+    const container =
+    document.getElementById(
+        "ordersContent"
+    );
 
-if(!orders.length){
 
-box.innerHTML=`
-<div class="box">
-<h2>No orders found</h2>
-</div>`;
+    if(!orders.length){
 
-return;
+        container.innerHTML = `
+
+            <div class="empty">
+
+                <h2>
+                    No Orders Yet
+                </h2>
+
+                <br>
+
+                <button
+                    class="btn btn-primary"
+                    onclick="showPage('home')"
+                >
+                    Start Shopping
+                </button>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+
+    orders.map(
+        order => `
+
+        <div
+            class="order-card"
+        >
+
+
+            <div
+                class="order-header"
+            >
+
+                <div>
+
+                    <strong>
+                        Order #${order.orderId}
+                    </strong>
+
+                    <br>
+
+                    ${order.date}
+
+                </div>
+
+
+                <div
+                    class="status"
+                >
+
+                    ${order.status}
+
+                </div>
+
+            </div>
+
+
+            <p>
+
+                <b>
+                    Customer:
+                </b>
+
+                ${order.customerName}
+
+            </p>
+
+
+            <p>
+
+                <b>
+                    Phone:
+                </b>
+
+                ${order.phone}
+
+            </p>
+
+
+            <p>
+
+                <b>
+                    Address:
+                </b>
+
+                ${order.address}
+
+            </p>
+
+
+            <br>
+
+
+            <p>
+
+                <b>
+                    Payment:
+                </b>
+
+                ${order.paymentMethod}
+
+            </p>
+
+
+            <p>
+
+                <b>
+                    bKash Paid:
+                </b>
+
+                ${money(
+                    order.bkashPaid
+                )}
+
+            </p>
+
+
+            <p>
+
+                <b>
+                    COD Due:
+                </b>
+
+                ${money(
+                    order.codDue
+                )}
+
+            </p>
+
+
+            <p>
+
+                <b>
+                    Transaction ID:
+                </b>
+
+                ${order.transactionId}
+
+            </p>
+
+
+            <br>
+
+
+            <h3>
+
+                Grand Total:
+                ${money(
+                    order.grandTotal
+                )}
+
+            </h3>
+
+
+        </div>
+
+        `
+    ).join("");
 
 }
 
-box.innerHTML=orders.map(o=>`
 
-<div class="order">
-
-<h3>Order ID: ${o.id}</h3>
-
-<p>${o.date}</p>
-
-<p class="status">${o.status}</p>
-
-<hr><br>
-
-<p>Customer: ${o.name}</p>
-
-<p>Phone: ${o.phone}</p>
-
-<p>Address: ${o.address}</p>
-
-<br>
-
-<p>Payment: <b>${o.payment}</b></p>
-
-<p>bKash Paid: <b>${money(o.bkashPaid)}</b></p>
-
-<p>COD Due: <b>${money(o.codDue)}</b></p>
-
-<p>Transaction ID: ${o.transactionId}</p>
-
-<br>
-
-<h3>Total: ${money(o.total)}</h3>
-
-</div>
-
-`).join("");
-
-}
-
-function toggleWish(id){
-
-if(wishlist.includes(id))
-
-wishlist=wishlist.filter(x=>x!==id);
-
-else wishlist.push(id);
-
-save();
-
-}
-
-function renderWishlist(){
-
-let list=products.filter(p=>wishlist.includes(p.id));
-
-document.getElementById("wishlistContent").innerHTML=
-
-list.length?
-
-list.map(p=>`
-
-<div class="card">
-
-<div class="product-img">${p.icon}</div>
-
-<h3>${p.name}</h3>
-
-<div class="price">${money(p.price)}</div>
-
-<button class="btn primary"
-onclick="addCart(${p.id})">
-Add to Cart
-</button>
-
-</div>
-
-`).join("")
-
-:
-
-`<div class="box"><h2>Wishlist is empty</h2></div>`;
-
-}
-
-function category(cat){
-
-render(products.filter(p=>p.category===cat));
-
-page("home");
-
-document.getElementById("products")
-.scrollIntoView({behavior:"smooth"});
-
-}
+/* =========================
+   SEARCH
+========================= */
 
 function searchProducts(){
 
-let q=document.getElementById("search").value.toLowerCase();
+    const query =
+    document
+    .getElementById(
+        "searchInput"
+    )
+    .value
+    .toLowerCase();
 
-render(products.filter(p=>
-p.name.toLowerCase().includes(q)||
-p.category.toLowerCase().includes(q)
-));
 
-page("home");
+    const category =
+    document
+    .getElementById(
+        "searchCategory"
+    )
+    .value;
+
+
+    const results =
+    products.filter(
+        product =>
+
+        (
+            product.name
+            .toLowerCase()
+            .includes(query)
+
+            ||
+
+            product.category
+            .toLowerCase()
+            .includes(query)
+        )
+
+        &&
+
+        (
+            category ===
+            "All"
+
+            ||
+
+            product.category ===
+            category
+        )
+    );
+
+
+    showPage(
+        "home"
+    );
+
+
+    renderProducts(
+        results
+    );
+
+
+    scrollToProducts();
 
 }
 
-function enterSearch(e){
 
-if(e.key==="Enter")searchProducts();
+/* =========================
+   SEARCH ENTER
+========================= */
+
+function handleSearchKey(
+    event
+){
+
+    if(
+        event.key ===
+        "Enter"
+    ){
+
+        searchProducts();
+
+    }
 
 }
 
-function toast(msg){
 
-let t=document.getElementById("toast");
+/* =========================
+   CATEGORY
+========================= */
 
-t.innerText=msg;
+function filterCategory(
+    category
+){
 
-t.classList.add("show");
+    const results =
+    products.filter(
+        product =>
+        product.category ===
+        category
+    );
 
-setTimeout(()=>t.classList.remove("show"),2500);
+
+    showPage(
+        "home"
+    );
+
+
+    renderProducts(
+        results
+    );
+
+
+    scrollToProducts();
 
 }
 
-render(products);
 
-updateCount();
+/* =========================
+   SCROLL PRODUCTS
+========================= */
+
+function scrollToProducts(){
+
+    setTimeout(
+        () => {
+
+            document
+            .getElementById(
+                "productSection"
+            )
+            .scrollIntoView({
+                behavior:
+                "smooth"
+            });
+
+        },
+        200
+    );
+
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+function showToast(
+    message
+){
+
+    const toast =
+    document
+    .getElementById(
+        "toast"
+    );
+
+
+    toast.innerText =
+    message;
+
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    setTimeout(
+        () => {
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },
+        2500
+    );
+
+}
+
+
+/* =========================
+   START WEBSITE
+========================= */
+
+renderProducts(
+    products
+);
+
+updateCartCount();
+
 
 </script>
 
