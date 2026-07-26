@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BanglaZon - বাংলাদেশের সব পণ্য এক ঠিকানায়</title>
+    <title>BanglaZon - Online Shopping in Bangladesh</title>
     <style>
         * {
             margin: 0;
@@ -19,11 +19,11 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 20px;
+            padding: 12px 20px;
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
             color: #ff9900;
         }
@@ -46,9 +46,10 @@
         .search-box button {
             background-color: #febd69;
             border: none;
-            padding: 0 15px;
+            padding: 0 18px;
             border-radius: 0 4px 4px 0;
             cursor: pointer;
+            font-weight: bold;
         }
 
         .nav-links a {
@@ -67,7 +68,7 @@
             background-color: #232f3e;
             padding: 10px 20px;
             display: flex;
-            gap: 20px;
+            gap: 25px;
         }
 
         .sub-nav a {
@@ -80,15 +81,16 @@
             text-decoration: underline;
         }
 
-        /* Main Content */
+        /* Main Container */
         .container {
             max-width: 1200px;
             margin: 20px auto;
             padding: 0 20px;
         }
 
+        /* Hero Banner */
         .banner {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1200&q=80');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             height: 300px;
             color: white;
@@ -102,11 +104,11 @@
         }
 
         .banner h1 {
-            font-size: 36px;
+            font-size: 38px;
             margin-bottom: 10px;
         }
 
-        /* Delivery & Payment Info Box */
+        /* Policy Notice Box */
         .policy-box {
             background-color: #f3f3f3;
             border: 1px solid #ddd;
@@ -117,20 +119,30 @@
 
         .policy-box h3 {
             color: #131921;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
-        /* Product Section */
+        .policy-box p {
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        /* Section Styling */
         .section-title {
             font-size: 22px;
             margin-bottom: 15px;
             color: #131921;
+            border-bottom: 2px solid #ff9900;
+            padding-bottom: 5px;
+            display: inline-block;
         }
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
+            margin-bottom: 40px;
         }
 
         .product-card {
@@ -143,7 +155,7 @@
         }
 
         .product-card:hover {
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
         .product-card img {
@@ -151,28 +163,57 @@
             height: 180px;
             object-fit: cover;
             margin-bottom: 10px;
+            border-radius: 4px;
         }
 
         .product-card h4 {
             font-size: 16px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            color: #0f1111;
+        }
+
+        /* Variations Styling */
+        .variations {
+            margin: 10px 0;
+            font-size: 13px;
+            text-align: left;
+            background: #fafafa;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .variations label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 3px;
+            color: #555;
+        }
+
+        .variations select {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 5px;
+            outline: none;
         }
 
         .product-card .price {
             color: #B12704;
             font-weight: bold;
             font-size: 18px;
-            margin-bottom: 10px;
+            margin: 10px 0;
         }
 
         .btn-buy {
             background-color: #ffd814;
             border: 1px solid #fcd200;
-            padding: 8px 15px;
+            padding: 10px 15px;
             border-radius: 20px;
             cursor: pointer;
             width: 100%;
             font-weight: bold;
+            font-size: 14px;
         }
 
         .btn-buy:hover {
@@ -196,23 +237,24 @@
     <header>
         <div class="logo">BanglaZon</div>
         <div class="search-box">
-            <input type="text" placeholder="সারা বাংলাদেশের পণ্য খুঁজুন...">
-            <button>🔍</button>
+            <input type="text" placeholder="Search products across Bangladesh...">
+            <button>Search</button>
         </div>
         <div class="nav-links">
-            <a href="#">লগইন (Login)</a>
-            <a href="#">রেজিস্ট্রেশন</a>
-            <a href="#">পাসওয়ার্ড ভুলে গেছেন?</a>
+            <a href="#">Login</a>
+            <a href="#">Register</a>
+            <a href="#">Forgot Password?</a>
+            <a href="#">Logout</a>
         </div>
     </header>
 
-    <!-- Sub Navbar -->
+    <!-- Sub Navbar (Categories & Sub-pages) -->
     <div class="sub-nav">
-        <a href="#">সব ক্যাটাগরি</a>
-        <a href="#">মেনস ফ্যাশন (শার্ট, টি-শার্ট)</a>
-        <a href="#">উমেনস ফ্যাশন</a>
-        <a href="#">ইলেকট্রনিক্স</a>
-        <a href="#">মুদি বাজার</a>
+        <a href="#">All Categories</a>
+        <a href="#">Men's Fashion (Shirts & More)</a>
+        <a href="#">Women's Fashion</a>
+        <a href="#">Electronics</a>
+        <a href="#">Groceries</a>
     </div>
 
     <!-- Main Container -->
@@ -220,46 +262,160 @@
 
         <!-- Hero Banner -->
         <div class="banner">
-            <h1>BanglaZon-এ স্বাগতম</h1>
-            <p>আপনার পছন্দের সকল দেশি পণ্য এখন এক ক্লিকেই!</p>
+            <h1>Welcome to BanglaZon</h1>
+            <p>Your ultimate destination for authentic products across Bangladesh!</p>
         </div>
 
-        <!-- Payment & Delivery Notice -->
+        <!-- Payment & Delivery Policy Information -->
         <div class="policy-box">
-            <h3>💳 পেমেন্ট ও ডেলিভারি পলিসি:</h3>
-            <p>• বিকাশ মার্চেন্ট/পার্সোনাল নম্বর: <strong>01726409431</strong> (অর্ডার কনফার্ম করতে আগে পেমেন্ট করতে হবে)।</p>
-            <p>• ডেলিভারি চার্জ: ঢাকার মধ্যে <strong>৭০ টাকা</strong> এবং ঢাকার বাইরে <strong>১২০ টাকা</strong> (আগে প্রদান করতে হবে)।</p>
-            <p>• বাকি টাকা পণ্য হাতে পাওয়ার পর <strong>Cash on Delivery</strong> দিতে হবে।</p>
+            <h3>💳 Payment & Delivery Guidelines:</h3>
+            <p>• <strong>Bikash Merchant/Personal Number:</strong> 01726409431 (Advance payment required to confirm orders).</p>
+            <p>• <strong>Delivery Charge (Advance Required):</strong> Inside Dhaka: ৳70 | Outside Dhaka: ৳120.</p>
+            <p>• <strong>Cash on Delivery:</strong> Remaining balance will be collected via Cash on Delivery upon product receipt.</p>
         </div>
 
-        <!-- Men's Shirt Section -->
-        <h2 class="section-title">মেনস ফ্যাশন - শার্ট কালেকশন</h2>
+        <!-- Men's Section: Shirts with Multiple Variations -->
+        <h2 class="section-title">Men's Fashion - Shirt Collection (With Variations)</h2>
         <div class="products-grid">
+            
+            <!-- Product 1 -->
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=300&q=80" alt="Shirt">
-                <h4>প্রিমিয়াম ক্যাজুয়াল শার্ট</h4>
-                <div class="price">৳ ১২০০</div>
-                <button class="btn-buy">অর্ডার করুন</button>
+                <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=300&q=80" alt="Casual Shirt">
+                <h4>Premium Casual Shirt</h4>
+                
+                <div class="variations">
+                    <label>Size:</label>
+                    <select>
+                        <option>M (Medium)</option>
+                        <option>L (Large)</option>
+                        <option>XL (Extra Large)</option>
+                        <option>XXL (Double XL)</option>
+                    </select>
+
+                    <label>Color:</label>
+                    <select>
+                        <option>Navy Blue</option>
+                        <option>Olive Green</option>
+                        <option>Maroon</option>
+                        <option>Charcoal Black</option>
+                    </select>
+
+                    <label>Fabric Type:</label>
+                    <select>
+                        <option>Pure Cotton</option>
+                        <option>Linen Blend</option>
+                        <option>Oxford Fabric</option>
+                    </select>
+                </div>
+
+                <div class="price">৳ 1,200</div>
+                <button class="btn-buy">Order Now</button>
             </div>
+
+            <!-- Product 2 -->
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=300&q=80" alt="Shirt">
-                <h4>স্টাইলিশ ফরমাল শার্ট</h4>
-                <div class="price">৳ ১৪০০</div>
-                <button class="btn-buy">অর্ডার করুন</button>
+                <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=300&q=80" alt="Formal Shirt">
+                <h4>Executive Formal Shirt</h4>
+                
+                <div class="variations">
+                    <label>Size:</label>
+                    <select>
+                        <option>15 (Medium)</option>
+                        <option>15.5 (Large)</option>
+                        <option>16 (Extra Large)</option>
+                        <option>16.5 (XXL)</option>
+                    </select>
+
+                    <label>Color:</label>
+                    <select>
+                        <option>Classic White</option>
+                        <option>Sky Blue</option>
+                        <option>Light Grey</option>
+                        <option>Soft Pink</option>
+                    </select>
+
+                    <label>Fit Type:</label>
+                    <select>
+                        <option>Slim Fit</option>
+                        <option>Regular Fit</option>
+                        <option>Tailored Fit</option>
+                    </select>
+                </div>
+
+                <div class="price">৳ 1,400</div>
+                <button class="btn-buy">Order Now</button>
             </div>
+
+            <!-- Product 3 -->
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=300&q=80" alt="Shirt">
-                <h4>ডেনিম জিন্স শার্ট</h4>
-                <div class="price">৳ ১৫০০</div>
-                <button class="btn-buy">অর্ডার করুন</button>
+                <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=300&q=80" alt="Denim Shirt">
+                <h4>Rugged Denim Shirt</h4>
+                
+                <div class="variations">
+                    <label>Size:</label>
+                    <select>
+                        <option>S (Small)</option>
+                        <option>M (Medium)</option>
+                        <option>L (Large)</option>
+                        <option>XL (Extra Large)</option>
+                    </select>
+
+                    <label>Wash Type:</label>
+                    <select>
+                        <option>Dark Wash</option>
+                        <option>Light Wash</option>
+                        <option>Acid Wash</option>
+                    </select>
+
+                    <label>Material:</label>
+                    <select>
+                        <option>100% Cotton Denim</option>
+                        <option>Stretch Denim</option>
+                    </select>
+                </div>
+
+                <div class="price">৳ 1,500</div>
+                <button class="btn-buy">Order Now</button>
             </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=300&q=80" alt="Check Shirt">
+                <h4>Flannel Check Shirt</h4>
+                
+                <div class="variations">
+                    <label>Size:</label>
+                    <select>
+                        <option>M (Medium)</option>
+                        <option>L (Large)</option>
+                        <option>XL (Extra Large)</option>
+                    </select>
+
+                    <label>Pattern Style:</label>
+                    <select>
+                        <option>Red & Black Plaid</option>
+                        <option>Blue & White Check</option>
+                        <option>Yellow & Brown Flannel</option>
+                    </select>
+
+                    <label>Thickness:</label>
+                    <select>
+                        <option>Heavy Winter Flannel</option>
+                        <option>Lightweight Check</option>
+                    </select>
+                </div>
+
+                <div class="price">৳ 1,350</div>
+                <button class="btn-buy">Order Now</button>
+            </div>
+
         </div>
 
     </div>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 BanglaZon. All Rights Reserved.</p>
+        <p>&copy; 2026 BanglaZon. All Rights Reserved. | Designed for E-commerce in Bangladesh.</p>
     </footer>
 
 </body>
